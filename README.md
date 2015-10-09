@@ -5,5 +5,5 @@ gmap 377 game
 
 Each of you have been given a folder:
 ```
-  /assets/Scenes/colanScene
+/assets/Scenes/colanScene
 ```
