@@ -41,6 +41,11 @@ public class MotionBaseMover : MonoBehaviour {
 	}
 
 	void LateUpdate() {
+		if (InducedPitch < -1) InducedPitch = -1;
+		if (InducedPitch > 1) InducedPitch = 1;
+		if (InducedTilt < -1) InducedTilt = -1;
+		if (InducedTilt > 1) InducedTilt = 1;
+
 		TargetRotation = Vector3.zero;
 		TargetRotation.z = InducedTilt * MAX_TILT_ANGLE;
 		TargetRotation.x = InducedPitch * MAX_PITCH_ANGLE;
@@ -62,8 +67,6 @@ public class MotionBaseMover : MonoBehaviour {
 	/// <param name="tiltPercent">[-1, 1]</param>
 	public void InduceTilt(float tiltPercent) {
 		InducedTilt += tiltPercent;
-		if (InducedTilt < -1) InducedTilt = -1;
-		if (InducedTilt > 1) InducedTilt = 1;
 	}
 
 	/// <summary>
@@ -73,7 +76,5 @@ public class MotionBaseMover : MonoBehaviour {
 	/// <param name="pitchPercent">[-1, 1]</param>
 	public void InducePitch(float pitchPercent) {
 		InducedPitch += pitchPercent;
-		if (InducedPitch < -1) InducedPitch = -1;
-		if (InducedPitch > 1) InducedPitch = 1;
 	}
 }
