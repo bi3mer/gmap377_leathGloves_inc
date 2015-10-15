@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ForceMover : MonoBehaviour {
+public class ForceMoverTest : MonoBehaviour {
 
-	public float moveSpeed = 0f;
-	//public float maxMoveSpeed = 50f;
-	//public float accel = .05f;
+	public float moveSpeed = 10f;
 	public float turnSpeed = 50f;
 	private Rigidbody m_Rigidbody;
 	public float movePower = 500;
@@ -19,8 +17,8 @@ public class ForceMover : MonoBehaviour {
 
 
 
-		if (Input.GetKey(KeyCode.S))
-			transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
+		//if (Input.GetKey(KeyCode.S))
+		//	transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
 
 		if (Input.GetKey(KeyCode.A)) {
 			transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
@@ -37,11 +35,16 @@ public class ForceMover : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-	    if (Input.GetKey(KeyCode.W))
-	    {
+	    if (Input.GetKey(KeyCode.W)) {
 			Vector3 force = Vector3.forward * moveSpeed;
             m_Rigidbody.AddRelativeForce(force, ForceMode.Force );
 			Debug.Log(force);
 	    }
+
+		if (Input.GetKey(KeyCode.S)) {
+			Vector3 force = -1 * Vector3.forward * moveSpeed * 0.7f;
+			m_Rigidbody.AddRelativeForce(force, ForceMode.Force);
+			Debug.Log(force);
+		}
 	}
 }
