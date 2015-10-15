@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CollisionDestroy : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+public class CollisionDestroy : MonoBehaviour 
+{
+	void OnCollisionEnter(Collision collision) 
+	{
+		if(collision.gameObject.tag == "enemy")
+			Destroy(collision.gameObject);
+    }
 }
