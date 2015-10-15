@@ -13,7 +13,7 @@ public class GravityBody : MonoBehaviour {
 
 		
 		rigidbody.useGravity = false;
-		rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+		//rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 	}
 	
 	void FixedUpdate () {

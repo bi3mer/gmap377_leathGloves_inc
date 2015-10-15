@@ -17,7 +17,9 @@ public class Gravity : MonoBehaviour
             {
                 rbs.Add(rb);
                 Vector3 offset = transform.position - c.transform.position;
-                rb.AddForce(offset / offset.sqrMagnitude * GetComponent<Rigidbody>().mass);
+				Vector3 force = offset / offset.sqrMagnitude * GetComponent<Rigidbody>().mass;
+                Debug.DrawLine(c.transform.position, c.transform.position + force);
+                rb.AddForce(force);
             }
         }
     }
