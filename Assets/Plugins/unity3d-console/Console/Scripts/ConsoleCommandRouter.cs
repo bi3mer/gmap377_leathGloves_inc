@@ -11,24 +11,32 @@ namespace UnityStandardAssets.Vehicles.Car
 			var repo = ConsoleCommandsRepository.Instance;
 			repo.RegisterCommand("load", Load);
 			repo.RegisterCommand("test", Test);
+			repo.RegisterCommand("restart", Restart);
 		}
 
-		// Load other Scenes
+		/// <summary>
+		/// 	Example to load another scene
+		/// </summary>
+		/// <param name="args">Arguments.</param>
 		public string Load(params string[] args) 
 		{
 			return "Loaded not implemented";
 		}
 
-		// Testing to make sure console is working
+		/// <summary>
+		/// 	Test
+		/// </summary>
+		/// <param name="args">Arguments.</param>
 		public string Test(params string[] args) 
 		{
 			return "colan rulez";
 		}
 
-		// Get current speed of player car
-		public string Speed(params string[] args)
+		public string Restart(params string[] args)
 		{
-			return "Current Speed: ";
+			// Bryan, restart command goes here
+			// Make sure to put attach this script to a game manager empty object
+			return "Bryan";
 		}
 	}
 }
