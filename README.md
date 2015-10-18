@@ -39,4 +39,6 @@ this will generate comments for you like:
 On top of that, complicated functions will require comments for the more difficult parts to understand. Use common 
 sense, I believe in you guys.
 
+change.log is where you can log added details of what was done for the day.
+
 As I think of more, this file will be updated to include new guidelines.
