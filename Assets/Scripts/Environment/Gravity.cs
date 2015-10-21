@@ -20,6 +20,14 @@ public class Gravity : MonoBehaviour
 				Vector3 force = offset / offset.sqrMagnitude * GetComponent<Rigidbody>().mass;
                 Debug.DrawLine(c.transform.position, c.transform.position + force);
                 rb.AddForce(force);
+
+				InterplanetaryObject io = c.gameObject.GetComponent<InterplanetaryObject>();
+				if (io) {
+					if (force.magnitude > io.NearestPlanetForce) {
+						io.NearestPlanet = this;
+						io.NearestPlanetForce = force.magnitude;
+					}
+				}
             }
         }
     }
