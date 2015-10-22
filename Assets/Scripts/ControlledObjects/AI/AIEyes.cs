@@ -19,6 +19,11 @@ public class AIEyes : MonoBehaviour
     // Movement strength
     public float movementStrength;
     public float rotationStrength;
+    public float backUpStrength;
+    public float breakMultiplier;
+
+    // Limits
+    public float maxVelocity;
 
     // Rigid body
     private Rigidbody rb;
@@ -34,18 +39,28 @@ public class AIEyes : MonoBehaviour
     /// <summary>
     ///     Move forward
     /// </summary>
-    private void applyMovementForce()
+    private void moveForward()
     {
-        this.rb.AddRelativeForce(Vector3.forward * this.movementStrength);
+        Debug.Log("Moving forward");
+        this.rb.AddRelativeForce(this.transform.forward * this.movementStrength, ForceMode.VelocityChange);
+    }
+
+    /// <summary>
+    ///     Slow down velocity and move forward
+    /// </summary>
+    private void backUp()
+    {
+        Debug.Log("Backing up");
+        this.rb.velocity *= this.breakMultiplier;
+        this.rb.AddRelativeForce(this.transform.forward * -1 * this.backUpStrength, ForceMode.VelocityChange); // negative one to move backwards
     }
 
     /// <summary>
     ///     Move towards the player
     /// </summary>
-    private void moveTowardsthePlayer()
-    { 
-        // Look at Player
-		transform.LookAt(Player.Instance.getTransformPosition());
+    private void lookTowardsthePlayer()
+    {
+        this.transform.LookAt(new Vector3(0, 0, Player.Instance.getTransformPosition().z));
     }
 
     /// <summary>
@@ -55,25 +70,32 @@ public class AIEyes : MonoBehaviour
     /// <param name="right"></param>
     public void avoidObstacle(RaycastHit left, RaycastHit right)
     {
+        Vector3 rotation;
+
+        // find rotation vector
         if (left.collider && !right.collider) // nothing to the right
         {
-            this.transform.Rotate(new Vector3(0, this.rotationStrength * -1, 0));
+            rotation = new Vector3(0, 1, 0);
         }
         else if (!left.collider && right.collider) // nothing to the left
         {
-            this.transform.Rotate(new Vector3(0, this.rotationStrength, 0));
+            rotation = new Vector3(0, -1, 0);
         }
         else // nothing in either left or right directions
         {
             // TODO: update this to use better decision making
-            this.transform.Rotate(new Vector3(0, this.rotationStrength, 0));
+            rotation = new Vector3(0, 1, 0);
         }
+
+        // Apply vector for force
+        Debug.Log("rotation: " + rotation);
+        this.rb.AddTorque(rotation * this.rotationStrength, ForceMode.VelocityChange);
     }
 	
 	/// <summary>
 	///     Update every fame, and move enemey Ai towards Player based on the raycasts
 	/// </summary>
-	void Update () 
+    void Update()
     {
         // RayCast hits
         //RaycastHit forwardSightHit;
@@ -86,43 +108,59 @@ public class AIEyes : MonoBehaviour
         RaycastHit rightPaddingMaxHit;
 
         // Show Ray casts in scene
-        if(this.shouldDrawDebugRays)
+        if (this.shouldDrawDebugRays)
         {
             // sight
             Debug.DrawRay(this.forward.position, this.forward.forward * this.sightLength, Color.cyan);
 
-            // max
+            // max padding
             Debug.DrawRay(this.forward.position, this.forward.forward * this.paddingMaxLength, Color.yellow);
             Debug.DrawRay(this.left.position, this.left.forward * this.paddingMaxLength, Color.white);
             Debug.DrawRay(this.right.position, this.right.forward * this.paddingMaxLength, Color.magenta);
 
-            // min
+            // min padding
             Debug.DrawRay(this.forward.position, this.forward.forward * this.paddingMinLength, Color.green);
             Debug.DrawRay(this.left.position, this.left.forward * this.paddingMinLength, Color.blue);
             Debug.DrawRay(this.right.position, this.right.forward * this.paddingMinLength, Color.red);
         }
 
-        // Check for hits min
+        // Check for raycast hits min
         Physics.Raycast(this.forward.position, this.forward.forward * this.paddingMinLength, out forwardPaddingMinHit);
         Physics.Raycast(this.left.position, this.left.forward * this.paddingMinLength, out leftPaddingMinHit);
         Physics.Raycast(this.right.position, this.right.forward * this.paddingMinLength, out rightPaddingMinHit);
 
-        // Check for hits max
+        // Check for raycast hits max
         Physics.Raycast(this.forward.position, this.forward.forward * this.paddingMaxLength, out forwardPaddingMaxHit);
         Physics.Raycast(this.left.position, this.left.forward * this.paddingMaxLength, out leftPaddingMaxHit);
         Physics.Raycast(this.right.position, this.right.forward * this.paddingMaxLength, out rightPaddingMaxHit);
 
-        //// Define movement behvaiour based on this
-        if (forwardPaddingMaxHit.collider)
+        // define bool to see if we should apply foce
+        bool shouldMoveForward = true;
+
+        // Define movement behvaiour based on this
+        if (forwardPaddingMinHit.distance != 0 && forwardPaddingMinHit.distance <= this.paddingMinLength)
+        {
+            shouldMoveForward = false;
+            this.backUp();
+        }
+        else if (forwardPaddingMaxHit.collider)
         {
             this.avoidObstacle(leftPaddingMinHit, rightPaddingMinHit);
         }
         else
         {
-            this.moveTowardsthePlayer();
+            // TODO: Update this to include patrolling behaviour
+            this.lookTowardsthePlayer();
         }
-        
-        // apply force
-        this.applyMovementForce();
-	}
+
+        if (this.maxVelocity < this.rb.velocity.x || this.maxVelocity < this.rb.velocity.y || this.maxVelocity < this.rb.velocity.z)
+        {
+            Debug.Log("auto breaking");
+            this.rb.velocity *= this.breakMultiplier;
+        }
+        else if (shouldMoveForward)
+        {
+            this.moveForward();
+        }
+    }
 }

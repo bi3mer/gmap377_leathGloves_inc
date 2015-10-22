@@ -15,7 +15,9 @@ public class Player : MonoBehaviour
 			if(instance == null)
 			{
 				instance = GameObject.FindObjectOfType<Player>();
-				DontDestroyOnLoad(instance.gameObject);
+                // NOTE: DontDestroyOnLoad was causing major issues with restarts 
+                // be aware that if we need this to survive on loads it will cause 
+                // problems with the gravity system - Bryan
 			}
 			return instance;
 		}

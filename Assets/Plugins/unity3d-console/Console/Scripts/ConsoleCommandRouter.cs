@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 namespace UnityStandardAssets.Vehicles.Car
 {
@@ -29,14 +30,25 @@ namespace UnityStandardAssets.Vehicles.Car
 		/// <param name="args">Arguments.</param>
 		public string Test(params string[] args) 
 		{
-			return "colan rulez";
+			return "colan droolz";
 		}
 
 		public string Restart(params string[] args)
 		{
 			// Bryan, restart command goes here
-			// Make sure to put attach this script to a game manager empty object
-			return "Bryan";
+            string input;
+            if (args[0] == null)
+            {
+                input = "0";
+            }
+            else
+            {
+                input = args[0];
+            }
+
+            int level = Int32.Parse(input);
+            Application.LoadLevel(level);
+			return "Level " + input + " restarting";
 		}
 	}
 }
