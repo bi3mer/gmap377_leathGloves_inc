@@ -24,7 +24,7 @@ public class Shooting : MonoBehaviour {
                 Debug.DrawLine(character.position, hit.point);
 
                 GameObject newBullet= Instantiate(bullet, spwnPt.transform.position, transform.rotation) as GameObject;
-                newBullet.GetComponent<Rigidbody>().velocity = ((hit.point - transform.position).normalized * bullet.GetComponent<Weapon>().Speed)  ;
+                newBullet.GetComponent<Rigidbody>().velocity = ((hit.point - transform.position).normalized * GetComponent<Weapon>().Speed)  ;
 
                 //GameObject projectiles = Instantiate(bullet, spwnPt.transform.position, character.transform.rotation) as GameObject;
                 //projectiles.GetComponent<Rigidbody>().velocity = (hit.point - transform.position).normalized * 10;
