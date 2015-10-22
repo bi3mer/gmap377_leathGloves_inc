@@ -30,7 +30,7 @@ namespace UnityStandardAssets.Vehicles.Car
 		/// <param name="args">Arguments.</param>
 		public string Test(params string[] args) 
 		{
-			return "colan droolz";
+			return "colan rulez";
 		}
 
 		public string Restart(params string[] args)
