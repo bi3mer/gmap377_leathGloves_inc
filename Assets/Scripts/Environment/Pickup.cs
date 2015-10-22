@@ -11,12 +11,14 @@ public class Pickup : MonoBehaviour
 
     // The array that holds the different actions
     private template[] Type;
+    private WeaponCache cahce;
 
     void Start()
     {
         // When adding a new pickup type, don't forget to add 1 to the size of the array
         this.Type = new template[2];
 
+        this.cahce = GetComponent<WeaponCache>();
         // A function to initialize the array
         this.initializePickupTypes();
     }
@@ -44,9 +46,9 @@ public class Pickup : MonoBehaviour
         // Example pickup type one
         template pickupOne = (obj) =>
         {
-            if (obj.gameObject.GetComponent<Rigidbody>() != null)
+            if (obj.gameObject.GetComponent<Shooting>() != null)
             {
-                obj.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.back * 1000f, ForceMode.Force);
+                obj.gameObject.GetComponent<Shooting>().bullet = GetComponent<WeaponCache>().Weapon2;
             }
         };
 
