@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MotionBaseFollower : MonoBehaviour {
 
-	void Update () {
+	void LateUpdate () {
 		transform.localRotation = MotionBaseMover.Instance.transform.rotation;
 	}
 }
