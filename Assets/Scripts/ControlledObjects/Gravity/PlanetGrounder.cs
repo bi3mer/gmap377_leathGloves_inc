@@ -22,7 +22,11 @@ public class PlanetGrounder : MonoBehaviour {
 	private InterplanetaryObject _io;
 	private BoxCollider _collider;
 
+	public GameObject PlanetMarker;
 	public GameObject DownMarker;
+	public GameObject ForwardMarker;
+	public GameObject RightMarker;
+
 	private GameObject _groundCheckers;
 	private GameObject _gcCenter;
 	private GameObject _gcTopRight;
@@ -35,12 +39,29 @@ public class PlanetGrounder : MonoBehaviour {
 		_io = GetComponent<InterplanetaryObject>();
 		_collider = GetComponent<BoxCollider>();
 
+		PlanetMarker = new GameObject("PlanetMarker");
+		PlanetMarker.transform.SetParent(transform);
+		PlanetMarker.transform.position = Vector3.zero;
+		PlanetMarker.transform.localRotation = new Quaternion(0, 0, 0, 0);
+		PlanetMarker.transform.localScale = new Vector3(1, 1, 1);
+
 		DownMarker = new GameObject("DownMarker");
 		DownMarker.transform.SetParent(transform);
-		DownMarker.transform.localPosition = new Vector3(0, -5, 0);
+		DownMarker.transform.localPosition = new Vector3(0, -500, 0);
 		DownMarker.transform.localRotation = new Quaternion(0, 0, 0, 0);
 		DownMarker.transform.localScale = new Vector3(1, 1, 1);
 
+		ForwardMarker = new GameObject("ForwardMarker");
+		ForwardMarker.transform.SetParent(transform);
+		ForwardMarker.transform.localPosition = new Vector3(0, 0, 500);
+		ForwardMarker.transform.localRotation = new Quaternion(0, 0, 0, 0);
+		ForwardMarker.transform.localScale = new Vector3(1, 1, 1);
+
+		RightMarker = new GameObject("RightMarker");
+		RightMarker.transform.SetParent(transform);
+		RightMarker.transform.localPosition = new Vector3(500, 0, 0);
+		RightMarker.transform.localRotation = new Quaternion(0, 0, 0, 0);
+		RightMarker.transform.localScale = new Vector3(1, 1, 1);
 
 		// Objects to detect the ground with
 		float gcConst = 0.75f / 2;
@@ -85,9 +106,11 @@ public class PlanetGrounder : MonoBehaviour {
 	void Update() {
 		Gravity planet = _io.NearestPlanet;
 		if (planet) {
+			PlanetMarker.transform.position = planet.transform.position;
+
 			//float angle = Vector3.Angle(transform.position, planet.transform.position);
 			AngleDown = (transform.position - DownMarker.transform.position);
-			Debug.Log(transform.position + " " + DownMarker.transform.position + " " + AngleDown);
+			//Debug.Log(transform.position + " " + DownMarker.transform.position + " " + AngleDown);
 			AngleToPlanet = (transform.position - _io.NearestPlanet.transform.position);
 			AngleFromSurface = Vector3.Angle(AngleDown, AngleToPlanet);
 			CrossProduct = Vector3.Cross(AngleDown, AngleToPlanet).normalized;
@@ -95,7 +118,7 @@ public class PlanetGrounder : MonoBehaviour {
 			DistanceToGroundMarker = Vector3.Distance(transform.position, DownMarker.transform.position);
 			DistanceToPlanet = Vector3.Distance(transform.position, _io.NearestPlanet.transform.position);
 
-            Debug.Log(AngleFromSurface);
+            //Debug.Log(AngleFromSurface);
 		}
 		else {
 			AngleFromSurface = 0;

@@ -33,41 +33,52 @@ public class ForceMoverTest : MonoBehaviour {
 
 		Vector3 angleDown = m_planetGrounder.AngleDown;
 		Vector3 anglePlanet = m_planetGrounder.AngleToPlanet;
-		float distanceToDownMarker = m_planetGrounder.DistanceToGroundMarker;
+		double distanceToDownMarker = m_planetGrounder.DistanceToGroundMarker;
 
-		/*Vector3 angleDownX = new Vector3(angleDown.x, angleDown.x, angleDown.x);
-		Vector3 angleDownZ = new Vector3(angleDown.z, angleDown.z, angleDown.z);
-		Vector3 anglePlanetX = new Vector3(anglePlanet.x, anglePlanet.x, anglePlanet.x);
-		Vector3 anglePlanetZ = new Vector3(anglePlanet.z, anglePlanet.z, anglePlanet.z);
+		Vector3 vertexRoll = Vector3.zero;
+		Vector3 pointDownRoll = new Vector3(m_planetGrounder.DownMarker.transform.localPosition.x, m_planetGrounder.DownMarker.transform.localPosition.y, 0);
+		Vector3 pointPlanetRoll = new Vector3(m_planetGrounder.PlanetMarker.transform.localPosition.x, m_planetGrounder.PlanetMarker.transform.localPosition.y, 0);
+		double dvdRoll = Vector3.Distance(vertexRoll, pointDownRoll) / 10;
+		double dvpRoll = Vector3.Distance(vertexRoll, pointPlanetRoll) / 10;
+		double ddpRoll = Vector3.Distance(pointDownRoll, pointPlanetRoll) / 10;
+		double acosRollValue = (Pow(dvdRoll, 2) + Pow(dvpRoll, 2) - Pow(ddpRoll, 2)) / (2 * dvdRoll * dvpRoll);
+		double angleRoll;
+		if (Mathf.Abs((float) acosRollValue) > 1 - double.Epsilon)
+			angleRoll = 0;
+		else
+			angleRoll = Mathf.Rad2Deg * Mathf.Acos((float)(acosRollValue)); //arcos((P12^2 + P13^2 - P23^2) / (2 * P12 * P13))
+		if (dvdRoll < float.Epsilon || dvpRoll < float.Epsilon) angleRoll = 0;
 
-		float angleRoll = Vector3.Angle(angleDownZ, anglePlanetZ);
-		float anglePitch = Vector3.Angle(angleDownX, anglePlanetX);
-		MotionBaseMover.Instance.InducePhysicsPitch(anglePitch / MotionBaseMover.Instance.MAX_PITCH_ANGLE);
-		MotionBaseMover.Instance.InducePhysicsRoll(angleRoll / MotionBaseMover.Instance.MAX_ROLL_ANGLE);
-		Debug.Log(angleRoll + " " + anglePitch);*/
+		Vector3 vertexPitch = Vector3.zero;
+		Vector3 pointDownPitch = new Vector3(0, m_planetGrounder.DownMarker.transform.localPosition.y, m_planetGrounder.DownMarker.transform.localPosition.z);
+		Vector3 pointPlanetPitch = new Vector3(0, m_planetGrounder.PlanetMarker.transform.localPosition.y, m_planetGrounder.PlanetMarker.transform.localPosition.z);
+		double dvdPitch = Vector3.Distance(vertexPitch, pointDownPitch) / 10;
+		double dvpPitch = Vector3.Distance(vertexPitch, pointPlanetPitch) / 10;
+		double ddpPitch = Vector3.Distance(pointDownPitch, pointPlanetPitch) / 10;
+		double acosPitchValue = (Pow(dvdPitch, 2) + Pow(dvpPitch, 2) - Pow(ddpPitch, 2)) / (2 * dvdPitch * dvpPitch);
+		double anglePitch;
+		if (Mathf.Abs((float)acosPitchValue) > 1 - double.Epsilon)
+			anglePitch = 0;
+		else
+			anglePitch = Mathf.Rad2Deg * Mathf.Acos((float)(acosPitchValue)); //arcos((P12^2 + P13^2 - P23^2) / (2 * P12 * P13))
+		
+		Vector3 pointRightRoll = new Vector3(m_planetGrounder.RightMarker.transform.localPosition.x, m_planetGrounder.RightMarker.transform.localPosition.y, 0);
+		double dvrRoll = Vector3.Distance(vertexRoll, pointRightRoll) / 10;
+		double drpRoll = Vector3.Distance(pointRightRoll, pointPlanetRoll) / 10;
+		double rightAngle = Mathf.Rad2Deg * Mathf.Acos((float)((Pow(dvrRoll, 2) + Pow(dvpRoll, 2) - Pow(drpRoll, 2)) / (2 * dvrRoll * dvpRoll))); //arcos((P12^2 + P13^2 - P23^2) / (2 * P12 * P13))
 
-		Vector3 vertexRoll = new Vector3(transform.position.x, transform.position.y, 0);
-		Vector3 pointDownRoll = new Vector3(m_planetGrounder.DownMarker.transform.position.x, m_planetGrounder.DownMarker.transform.position.y, 0);
-		Vector3 pointPlanetRoll = new Vector3(m_ipObject.NearestPlanet.transform.position.x, m_ipObject.NearestPlanet.transform.position.y, 0);
-		float dvdRoll = Vector3.Distance(vertexRoll, pointDownRoll);
-		float dvpRoll = Vector3.Distance(vertexRoll, pointPlanetRoll);
-		float ddpRoll = Vector3.Distance(pointDownRoll, pointPlanetRoll);
+		Vector3 pointForwardPitch = new Vector3(0, m_planetGrounder.ForwardMarker.transform.localPosition.y, m_planetGrounder.ForwardMarker.transform.localPosition.z);
+		double dvfPitch = Vector3.Distance(vertexPitch, pointForwardPitch) / 10;
+		double dfpPitch = Vector3.Distance(pointForwardPitch, pointPlanetPitch) / 10;
+		double forwardAngle = Mathf.Rad2Deg * Mathf.Acos((float)((Pow(dvfPitch, 2) + Pow(dvpPitch, 2) - Pow(dfpPitch, 2)) / (2 * dvfPitch * dvpPitch))); //arcos((P12^2 + P13^2 - P23^2) / (2 * P12 * P13))
 
-		float angleRoll = Mathf.Rad2Deg * Mathf.Acos((Mathf.Pow(dvdRoll, 2) + Mathf.Pow(dvpRoll, 2) - Mathf.Pow(ddpRoll, 2)) / (2 * dvdRoll * dvpRoll)); //arcos((P12^2 + P13^2 - P23^2) / (2 * P12 * P13))
+		Debug.Log(angleRoll + " (" + rightAngle + ") " + anglePitch + " (" + forwardAngle + ")");
 
-		Vector3 vertexPitch = new Vector3(0, transform.position.y, transform.position.z);
-		Vector3 pointDownPitch = new Vector3(0, m_planetGrounder.DownMarker.transform.position.y, m_planetGrounder.DownMarker.transform.position.z);
-		Vector3 pointPlanetPitch = new Vector3(0, m_ipObject.NearestPlanet.transform.position.y, m_ipObject.NearestPlanet.transform.position.z);
-		float dvdPitch = Vector3.Distance(vertexPitch, pointDownPitch);
-		float dvpPitch = Vector3.Distance(vertexPitch, pointPlanetPitch);
-		float ddpPitch = Vector3.Distance(pointDownPitch, pointPlanetPitch);
+		int pitchDirection = (forwardAngle > 90) ? -1 : 1;
+		int rollDirection = (rightAngle > 90) ? -1 : 1;
 
-		float anglePitch = Mathf.Rad2Deg * Mathf.Acos((Mathf.Pow(dvdPitch, 2) + Mathf.Pow(dvpPitch, 2) - Mathf.Pow(ddpPitch, 2)) / (2 * dvdPitch * dvpPitch)); //arcos((P12^2 + P13^2 - P23^2) / (2 * P12 * P13))
-
-
-		//float angleRoll = Mathf.Asin((m_planetGrounder.DownMarker.transform.position.x - m_ipObject.transform.position.x) / distanceToDownMarker);
-		//float anglePitch = Mathf.Asin(angleDown.z / distanceToDownMarker);
-		Debug.Log(angleRoll + " " + anglePitch);
+		MotionBaseMover.Instance.InducePhysicsPitch((float) (pitchDirection * anglePitch / MotionBaseMover.Instance.MAX_PITCH_ANGLE));
+		MotionBaseMover.Instance.InducePhysicsRoll((float) (rollDirection * angleRoll / MotionBaseMover.Instance.MAX_ROLL_ANGLE));
 
 		Debug.DrawLine(transform.position, transform.position + m_Rigidbody.velocity);
 	}
@@ -93,5 +104,16 @@ public class ForceMoverTest : MonoBehaviour {
 		if (m_Rigidbody.velocity.magnitude > topSpeed) {
 			m_Rigidbody.velocity = m_Rigidbody.velocity * (topSpeed / m_Rigidbody.velocity.magnitude);
 		}
+	}
+
+	double Pow(double b, int e) {
+		double res = 1.0;
+		int i = 0;
+		while (i < e) {
+			res = res * b;
+			i++;
+		}
+
+		return res;
 	}
 }
