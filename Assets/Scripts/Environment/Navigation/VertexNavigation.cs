@@ -3,16 +3,41 @@ using System.Collections;
 
 public class VertexNavigation : MonoBehaviour 
 {
-	public GameObject cube;
-	// Use this for initialization
-	void Start () 
+	/// <summary>
+	/// 	Create Singleton
+	/// </summary>
+	public static VertexNavigation instance;
+	
+	public static VertexNavigation Instance
 	{
-		Mesh mesh = GetComponent<MeshFilter>().mesh;
-		Vector3[] vertices = mesh.vertices;
-		for(int i = 0; i < vertices.Length; ++i)
+		get
 		{
-			Instantiate(this.cube, vertices[i], Quaternion.identity);
+			if(instance == null)
+			{
+				instance = GameObject.FindObjectOfType<VertexNavigation>();
+			}
+			return instance;
 		}
 	}
 
+	private Vector3[][] mappedSphere;
+	
+	/// <summary>
+	/// 	Map 3d sphere to 2d coordiante system
+	/// </summary>
+	void Start () 
+	{
+		// Get mesh of planet
+		Mesh mesh = GetComponent<MeshFilter>().mesh;
+
+		// Get vertices of planet
+		Vector3[] vertices = mesh.vertices;
+
+		// Convert
+	}
+
+	public Vector3[][] getMatrix()
+	{
+		return this.mappedSphere;
+	}
 }
