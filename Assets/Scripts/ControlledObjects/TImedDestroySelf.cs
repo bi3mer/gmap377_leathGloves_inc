@@ -9,9 +9,4 @@ public class TImedDestroySelf : MonoBehaviour
     {
         Destroy(gameObject, lifetime);
     }
-    void OnCollisionEnter(Collision hit)
-    {
-        Destroy(transform.gameObject);
-    }
-
 }

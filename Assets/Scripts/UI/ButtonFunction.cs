@@ -4,10 +4,14 @@ using System.Collections;
 public class ButtonFunction : MonoBehaviour {
 
     /// <summary>
-    /// What the button does when clicked
+    /// Called every frame
     /// </summary>
-    public void ButtonLoadLevel()
+    void Update()
     {
-        Application.LoadLevel("OriginalScene");
+        // If any button is pressed, load the game.
+        if (Input.anyKeyDown)
+        {
+            Application.LoadLevel("OriginalScene");
+        }
     }
 }
