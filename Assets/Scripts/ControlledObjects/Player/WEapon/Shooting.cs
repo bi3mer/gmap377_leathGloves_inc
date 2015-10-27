@@ -30,7 +30,7 @@ public class Shooting : MonoBehaviour {
                     Input.mousePosition.y,
                     10000f
                     )
-                ).normalized * GetComponent<Weapon>().Speed) ;
+                ).normalized * bullet.GetComponent<Weapon>().Speed) ;
         }
     }
 }
