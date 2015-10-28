@@ -49,7 +49,7 @@ public class VertexNavigation : MonoBehaviour
 
 		// Get mesh of planet
 		this.mesh = GetComponent<MeshFilter>().mesh;
-        print(this.mesh);
+
 
         // Get copy of vertices
         this.vertices = this.mesh.vertices;
@@ -65,34 +65,13 @@ public class VertexNavigation : MonoBehaviour
     // TODO: make this array instead of list for optimization (term 2)
     public ArrayList getMoves(int vertexIndex)
     {
-        ArrayList verts = new ArrayList();
-        for (int i = 0; i < this.mesh.triangles.Length / 3; ++i)
-        {
-            bool found = false;
+		ArrayList verts = new ArrayList();
+        
+		print ("0: " + this.mesh.triangles[vertexIndex + 0]);
+		print ("1: " + this.mesh.triangles[vertexIndex + 1]);
+		print ("2: " + this.mesh.triangles[vertexIndex + 2]);
 
-            // Look for triangle that matches index
-            for (int j = 0; j < 3; ++j)
-            {
-                if (this.mesh.triangles[(i * 3) + j] == vertexIndex)
-                {
-                    found = true;
-                    break;
-                }
-            }
-
-            if (found)
-            {
-                for (int j = 0; j < 3; ++j)
-                {
-                    // TODO: rename tri
-                    int tri = verts.IndexOf((i * 3) + j);
-                    if (tri == -1 && tri != vertexIndex)
-                    {
-                        verts.Add(tri);
-                    }
-                }
-            }
-        }
+		verts.Add(0);
 
         return verts;
     }
