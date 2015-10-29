@@ -28,7 +28,7 @@ public class EnemyStats : MonoBehaviour
         if (isDead)
         {
             // Increase the score by the enemy's score value.
-            ScoreManager.score += scoreValue;
+            ScoreManager.Instance.IncreaseScore(scoreValue);
             Destroy(gameObject);
         }
 
