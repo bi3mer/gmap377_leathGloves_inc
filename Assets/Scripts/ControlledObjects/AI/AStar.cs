@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class AStar : MonoBehaviour {
 
@@ -7,10 +8,10 @@ public class AStar : MonoBehaviour {
 	void Update () 
     {
 		print("test: " + VertexNavigation.Instance.getMoves(0).Count);
-		print("---");
-		print("test: " + VertexNavigation.Instance.getMoves(40).Count);
-		print("---");
-		print("test: " + VertexNavigation.Instance.getMoves(200).Count);
-		Debug.Break();
+        //print("---");
+        //print("test: " + VertexNavigation.Instance.getMoves(2).Count);
+        //print("---");
+        //print("test: " + VertexNavigation.Instance.getMoves(3).Count);
+        //Debug.Break();
 	}
 }
