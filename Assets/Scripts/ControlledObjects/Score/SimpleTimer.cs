@@ -22,7 +22,7 @@ public class SimpleTimer : MonoBehaviour {
 
         TimeS -= Time.deltaTime;
         text.text = "Time: " + (int)TimeS;
-        Debug.Log(TimeS);
+       
 
         if (TimeS <= 0)
         {
