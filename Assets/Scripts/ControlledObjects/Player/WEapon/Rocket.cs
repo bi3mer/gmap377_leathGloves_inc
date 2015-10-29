@@ -28,7 +28,7 @@ public class Rocket : MonoBehaviour
                     hitColliders[i].gameObject.GetComponent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, this.ExplosionRadius);
               
                     // Try and find an EnemyHealth script on the gameobject hit.
-                    EnemyHealth enemyHealth = hitColliders[i].gameObject.GetComponent<EnemyHealth>();
+                    EnemyStats enemyHealth = hitColliders[i].gameObject.GetComponent<EnemyStats>();
 
                     // If the EnemyHealth component exist...
                     if (enemyHealth != null)

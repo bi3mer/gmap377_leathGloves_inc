@@ -16,7 +16,7 @@ public class Weapon: MonoBehaviour
         if (col.gameObject.tag == "Enemy")
         {
             // Try and find an EnemyHealth script on the gameobject hit.
-            EnemyHealth enemyHealth = col.gameObject.GetComponent<EnemyHealth>();
+            EnemyStats enemyHealth = col.gameObject.GetComponent<EnemyStats>();
 
             // If the EnemyHealth component exist...
             if (enemyHealth != null)
