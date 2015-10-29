@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class VertexNavigation : MonoBehaviour 
 {
+
 	/// <summary>
 	/// 	Create Singleton
 	/// </summary>
@@ -20,7 +21,9 @@ public class VertexNavigation : MonoBehaviour
 		}
 	}
 
+    // TODO: document this stuff
     private Dictionary<int, Vertice> movementDictionary = new Dictionary<int, Vertice>();
+    private int[] trinagles;
 
     // TODO: comment
     private float _radius;
@@ -50,6 +53,9 @@ public class VertexNavigation : MonoBehaviour
 
         // Get copy of vertices
         Vector3[] vertices = mesh.vertices;
+        
+        // Get copy of triangles
+        this.trinagles = mesh.triangles;
 
         // Convert vertices to global coordiantes
         float scale = transform.localScale.x;
@@ -74,7 +80,7 @@ public class VertexNavigation : MonoBehaviour
                 {
                     // Create new Vertice
                     Vertice vert = new Vertice();
-                    vert.position = mesh.vertices[key];
+                    vert.position = vertices[key];
 
                     // add new vertice to dicitonary
                     this.movementDictionary.Add(key, vert);
@@ -100,7 +106,7 @@ public class VertexNavigation : MonoBehaviour
             }
         }
 
-        // Debugging print statements
+        // Debugging print statements for later
         //foreach (KeyValuePair<int,Vertice> key in this.movementDictionary)
         //{
         //    print(key.Key + " -> " + key.Value.getMoves().Count);
@@ -117,12 +123,27 @@ public class VertexNavigation : MonoBehaviour
 	}
 
     // TODO: make this array instead of list for optimization (term 2)
-    public ArrayList getMoves(int vertexIndex)
+    public ArrayList getMovesTriangle(int triangleIndex)
     {
-		ArrayList verts = new ArrayList();
+        // initialize
+        ArrayList indices = new ArrayList();
 
-		verts.Add(0);
+        // add indices to arraylist
+        indices.Add(this.trinagles[triangleIndex]);
+        indices.Add(this.trinagles[triangleIndex + 1]);
+        indices.Add(this.trinagles[triangleIndex + 2]);
 
-        return verts;
+        // return arraylist
+        return indices;
+    }
+
+    public ArrayList getMovesVertex(int vertexIndex)
+    {
+        return this.movementDictionary[vertexIndex].getMoves();
+    }
+
+    public Vertice getVertex(int vertexIndex)
+    {
+        return this.movementDictionary[vertexIndex];
     }
 }
