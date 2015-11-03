@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 	/// <summary>
 	/// 	Create Singleton
 	/// </summary>
-	public static Player instance;
+	private static Player instance;
 	
 	public static Player Instance
 	{
