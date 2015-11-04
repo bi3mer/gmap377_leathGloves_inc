@@ -28,6 +28,7 @@ public class AStar : MonoBehaviour
             MeshCollider meshCollider = hit.collider as MeshCollider;
             if (meshCollider == null || meshCollider.sharedMesh == null)
             {
+				print ("empty: " + hit.collider.tag);
                 continue;
             }
             else

@@ -23,7 +23,9 @@ public class VertexNavigation : MonoBehaviour
 
     // TODO: document this stuff
     private Dictionary<int, Vertice> movementDictionary = new Dictionary<int, Vertice>();
-    private int[] trinagles;
+    public int[] trinagles;
+	public Mesh mesh;
+	public Vector3[] vertices;
 
     // TODO: comment
     private float _radius;
@@ -49,10 +51,10 @@ public class VertexNavigation : MonoBehaviour
         this._radius = GetComponent<SphereCollider>().radius * transform.localScale.x;
 
 		// Get mesh of planet
-		Mesh mesh = GetComponent<MeshFilter>().mesh;
+		this.mesh = GetComponent<MeshFilter>().mesh;
 
         // Get copy of vertices
-        Vector3[] vertices = mesh.vertices;
+        this.vertices = mesh.vertices;
         
         // Get copy of triangles
         this.trinagles = mesh.triangles;
@@ -61,7 +63,7 @@ public class VertexNavigation : MonoBehaviour
         float scale = transform.localScale.x;
         for (int i = 0; i < mesh.vertexCount; ++i)
         {
-            vertices[i] = vertices[i] * scale;
+            vertices[i] *= scale;
         }
 
         // TODO: magic number 3, fix this!
@@ -105,7 +107,7 @@ public class VertexNavigation : MonoBehaviour
                 }
             }
         }
-
+		print ("sup");
         // Debugging print statements for later
         //foreach (KeyValuePair<int,Vertice> key in this.movementDictionary)
         //{
