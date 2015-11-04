@@ -65,6 +65,8 @@ public class VertexNavigation : MonoBehaviour
         {
             vertices[i] *= scale;
         }
+		// VertexNavigation.Instance.vertices[VertexNavigation.Instance.trinagles[hit.triangleIndex * 3 + 0]]
+
 
         // TODO: magic number 3, fix this!
         // Construct linked list with dictionary and vertices
@@ -107,7 +109,7 @@ public class VertexNavigation : MonoBehaviour
                 }
             }
         }
-		print ("sup");
+
         // Debugging print statements for later
         //foreach (KeyValuePair<int,Vertice> key in this.movementDictionary)
         //{

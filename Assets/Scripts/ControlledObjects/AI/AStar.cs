@@ -33,7 +33,7 @@ public class AStar : MonoBehaviour
             }
             else
             {
-                unExaminedMoves = VertexNavigation.Instance.getMovesTriangle(hit.triangleIndex);
+                unExaminedMoves = VertexNavigation.Instance.getMovesTriangle(hit.triangleIndex * 3);
                 break;
             }
         }
