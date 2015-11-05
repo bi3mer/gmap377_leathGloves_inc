@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class AStarNode
 {
     // Constructor
-    public AStarNode(int _g, int _h, int _index, ArrayList _moves)
+    public AStarNode(int _g, float _h, int _index, List<int> _moves)
     {
         this.G = _g;
         this.H = _h;
@@ -27,8 +28,8 @@ public class AStarNode
     }
 
     // Heuristic val
-    private int h;
-    public int H
+    private float h;
+    public float H
     {
         get
         {
@@ -55,8 +56,8 @@ public class AStarNode
     }
 
     // Moves
-    private ArrayList moves;
-    public ArrayList Moves
+    private List<int> moves = new List<int>();
+    public List<int> Moves
     {
         get
         {
@@ -67,11 +68,12 @@ public class AStarNode
             this.moves = value;
         }
     }
+
     /// <summary>
     ///     return cost
     /// </summary>
     /// <returns></returns>
-    public int getCost()
+    public float getCost()
     {
         return this.G + this.H;
     }

@@ -39,13 +39,13 @@ public class DistanceCalculator
 	}
 
 	/// <summary>
-	/// 	Calculates the haver sine dist with vector3's.
+	/// Calculates the haver sine dist with vector3's.
 	/// </summary>
 	/// <returns>The haver sine dist vector3.</returns>
 	/// <param name="radius">Radius.</param>
 	/// <param name="pos1">Pos1.</param>
 	/// <param name="pos2">Pos2.</param>
-	private static float calculateHaverSineDistVector3(float radius, Vector3 pos1, Vector3 pos2)
+	public static float calculateHaverSineDistVector3(float radius, Vector3 pos1, Vector3 pos2)
 	{
 		return DistanceCalculator.haversineDist(radius, DistanceCalculator.convertVector3(radius, pos1), DistanceCalculator.convertVector3(radius, pos2));
 	}

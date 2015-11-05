@@ -109,28 +109,13 @@ public class VertexNavigation : MonoBehaviour
                 }
             }
         }
-
-        // Debugging print statements for later
-        //foreach (KeyValuePair<int,Vertice> key in this.movementDictionary)
-        //{
-        //    print(key.Key + " -> " + key.Value.getMoves().Count);
-        //    string str = "";
-        //    foreach (int item in key.Value.getMoves())
-        //    {
-        //        str += item + ", ";
-        //    }
-        //    print("items: " + str);
-        //}
-
-        //print("Vertice Count: " + mesh.vertexCount);
-        //print("Triangle Count: " + mesh.triangles.Length / 3);
 	}
 
     // TODO: make this array instead of list for optimization (term 2)
-    public ArrayList getMovesTriangle(int triangleIndex)
+    public List<int> getMovesTriangle(int triangleIndex)
     {
         // initialize
-        ArrayList indices = new ArrayList();
+        List<int> indices = new List<int>();
 
         // add indices to arraylist
         indices.Add(this.trinagles[triangleIndex]);
@@ -141,7 +126,7 @@ public class VertexNavigation : MonoBehaviour
         return indices;
     }
 
-    public ArrayList getMovesVertex(int vertexIndex)
+    public List<int> getMovesVertex(int vertexIndex)
     {
         return this.movementDictionary[vertexIndex].getMoves();
     }

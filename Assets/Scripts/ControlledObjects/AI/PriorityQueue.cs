@@ -6,7 +6,7 @@ public class PriorityQueue
 {
     private List<AStarNode> queue = new List<AStarNode>();
 
-    private int binarySearch(int targetHeuristic)
+    private int binarySearch(float targetHeuristic)
     {
         int left = 0;
         int right = queue.Count - 1;
@@ -18,7 +18,7 @@ public class PriorityQueue
         {
             // C# doesn't require conversion to int, so get mid point
             mid = (left + right) / 2;
-            int currentHeuristic = queue[mid].getCost();
+            float currentHeuristic = queue[mid].getCost();
 
             if (currentHeuristic == targetHeuristic)
             {
@@ -104,5 +104,10 @@ public class PriorityQueue
     public void debugSimulatePop()
     {
         Debug.Log("simulated pop: " + this.queue[this.queue.Count - 1].getCost());
+    }
+
+    public int Length()
+    {
+        return this.queue.Count;
     }
 }

@@ -25,7 +25,7 @@ public class Vertice
 
     private Dictionary<int, bool> foundVerts = new Dictionary<int, bool>();
 
-    private ArrayList _vertices = new ArrayList();
+    private List<int> _vertices = new List<int>();
 
     /// <summary>
     ///     Add vertice to array list of connecting vertices
@@ -45,7 +45,7 @@ public class Vertice
     ///     Get array list
     /// </summary>
     /// <returns>Return arraylist of moves</returns>
-    public ArrayList getMoves()
+    public List<int> getMoves()
     {
         return this._vertices;
     }
