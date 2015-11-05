@@ -40,7 +40,7 @@ public class PlanetOrientation : MonoBehaviour {
 
 
 	private InterplanetaryObject _io;
-	private BoxCollider _collider;
+	public BoxCollider _collider;
 
 	private GameObject _groundCheckers;
 	private GameObject _gcCenter;
