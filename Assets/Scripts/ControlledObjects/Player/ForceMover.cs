@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 [RequireComponent(typeof (PlanetOrientation))]
-public class ForceMoverTest : MonoBehaviour {
+public class ForceMover : MonoBehaviour {
+
+    public float CurrentVelocity;
 
 	public float acceleration = 10f;
 	public float topSpeed = 10f;
@@ -35,16 +38,21 @@ public class ForceMoverTest : MonoBehaviour {
 		MotionBaseMover.Instance.InducePhysicsRoll((float) (m_planetOrientation.Roll / MotionBaseMover.Instance.MAX_ROLL_ANGLE));
 
 		Debug.DrawLine(transform.position, transform.position + m_Rigidbody.velocity);
+
+        CurrentVelocity = m_Rigidbody.velocity.magnitude;
 	}
 
 	void FixedUpdate()
 	{
 		bool grounded = m_planetOrientation.Grounded;
 
-	    if (Input.GetKey(KeyCode.W)) {
-			Vector3 force = Vector3.forward * m_Rigidbody.mass * acceleration;
+        Vector3 direction = (Vector3.forward.normalized/* - new Vector3(0, 1, -2).normalized*/).normalized;
+        Debug.Log(direction);
+
+	    if (Input.GetKey(KeyCode.W) && grounded) {
+			Vector3 force = direction * m_Rigidbody.mass * acceleration;
 			if (m_Rigidbody.velocity.magnitude < topSpeed) {
-				m_Rigidbody.AddRelativeForce(force, ForceMode.Force);
+				m_Rigidbody.AddRelativeForce(force, ForceMode.Acceleration);
 			}
 		}
 
@@ -60,3 +68,4 @@ public class ForceMoverTest : MonoBehaviour {
 		}
 	}
 }
+

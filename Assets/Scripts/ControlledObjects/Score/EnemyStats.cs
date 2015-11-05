@@ -2,15 +2,13 @@
 
 public class EnemyStats : MonoBehaviour
 {
-    public int startingHealth = 100;          // The amount of health the enemy starts the game with.
-    public int currentHealth;                    // The current health the enemy has.
+    public int startingHealth = 100;        // The amount of health the enemy starts the game with.
+    public int currentHealth;               // The current health the enemy has.
    
-    public int scoreValue = 10;               // The amount added to the player's score when the enemy dies.
-   
+    public int scoreValue = 10;             // The amount added to the player's score when the enemy dies.
 
-   
-    Collider eCollider;                         // Reference to the collider.
-    bool isDead;                                  // Whether the enemy is dead.
+    Collider eCollider;                    // Reference to the collider.
+    bool isDead;                           // Whether the enemy is dead.
    
 
     void Awake()
@@ -38,15 +36,13 @@ public class EnemyStats : MonoBehaviour
     {
         // If the enemy is dead...
         if (isDead)
+        {
             // ... no need to take damage so exit the function.
             return;
-
-       
-
+        }
+            
         // Reduce the current health by the amount of damage sustained.
         currentHealth -= amount;
-
-       
 
         // If the current health is less than or equal to zero...
         if (currentHealth <= 0)
@@ -60,8 +56,6 @@ public class EnemyStats : MonoBehaviour
     {
         // The enemy is dead.
         isDead = true;
-
         
-
     }
 }

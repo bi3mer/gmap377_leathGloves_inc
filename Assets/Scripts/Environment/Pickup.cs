@@ -11,14 +11,14 @@ public class Pickup : MonoBehaviour
 
     // The array that holds the different actions
     private template[] Type;
-    private WeaponCache cahce;
+    private PickupCache cahce;
 
     void Start()
     {
         // When adding a new pickup type, don't forget to add 1 to the size of the array
-        this.Type = new template[2];
+        this.Type = new template[3];
 
-        this.cahce = GetComponent<WeaponCache>();
+        this.cahce = GetComponent<PickupCache>();
         // A function to initialize the array
         this.initializePickupTypes();
     }
@@ -27,7 +27,7 @@ public class Pickup : MonoBehaviour
     /// What happens when this object collides with something
     /// </summary>
     /// <param name="obj">The object it collided with</param>
-    void OnCollisionEnter(Collision obj)
+    void OnTriggerEnter(Collider obj)
     {
         if (obj.gameObject.tag == "Player")
         {
@@ -48,7 +48,7 @@ public class Pickup : MonoBehaviour
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
-                obj.gameObject.GetComponent<Shooting>().bullet = GetComponent<WeaponCache>().Weapon2;
+                obj.gameObject.GetComponent<Shooting>().bullet = GetComponent<PickupCache>().Weapon2;
             }
         };
 
@@ -57,12 +57,19 @@ public class Pickup : MonoBehaviour
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
-                obj.gameObject.GetComponent<Shooting>().bullet = GetComponent<WeaponCache>().LaserBeam;
+                obj.gameObject.GetComponent<Shooting>().bullet = GetComponent<PickupCache>().LaserBeam;
             }
+        };
+        // Example pickup type 3
+        template pickupThree = (obj) =>
+        {
+            GameObject multi = new GameObject();
+            multi.AddComponent<ScoreMulti>();
         };
 
         // Add them to the array
         this.Type[0] = pickupOne;
         this.Type[1] = pickupTwo;
+        this.Type[2] = pickupThree;
     }
 }
