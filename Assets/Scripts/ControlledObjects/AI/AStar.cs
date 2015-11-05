@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class AStar: MonoBehaviour
 {
+	public GameObject debugCube;
     public int distanceToGround = 10;
     public int stepCount = 1;
     public bool drawPath = false;
@@ -57,7 +58,7 @@ public class AStar: MonoBehaviour
     /// <returns></returns>
     private float calculateHeuristcFromPos(Vector3 pos)
     {
-        return DistanceCalculator.calculateHaverSineDistVector3(0f, pos, this.target);
+        return DistanceCalculator.euclidianDistance(pos, this.target);
     }
 
     /// <summary>
@@ -96,7 +97,7 @@ public class AStar: MonoBehaviour
                 break;
             }
         }
-
+	
         // Instantiate priority queue
         PriorityQueue queue = new PriorityQueue();
 
@@ -126,11 +127,16 @@ public class AStar: MonoBehaviour
                 if (!visitedNodes.ContainsKey(vertex))
                 {
                     // Are we close enough to the player
-                    if (DistanceCalculator.euclidianDistance(this.transform.position, target) < this.minDistance)
+					Instantiate(this.debugCube,VertexNavigation.Instance.getVertex(vertex).position,Quaternion.identity);
+
+					Debug.Break();
+                    if (DistanceCalculator.euclidianDistance(VertexNavigation.Instance.getVertex(vertex).position, target) < this.MinDistance)
                     {
                         // Yes we are, solved
                         this.plan = node.Moves;
                         this.plan.Add(vertex);
+
+						print("found Plan!");
 
                         // return plan
                         return this.plan;
@@ -171,8 +177,10 @@ public class AStar: MonoBehaviour
 
     void Update()
     {
-        this.target = new Vector3(0f, -3.23f, 4.35f);
+		this.target = new Vector3(0f, 3.56f,0f);
+		this.MinDistance = 3f;
         List<int> test = this.getNewPlan();
-        Debug.Break();
+		print("done");
+//        Debug.Break();
     }
 }
