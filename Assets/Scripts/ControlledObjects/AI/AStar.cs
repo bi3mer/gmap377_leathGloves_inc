@@ -68,7 +68,7 @@ public class AStar: MonoBehaviour
     /// <returns></returns>
     private float calculateHeuristicFromVertex(int vertex)
     {
-        return this.calculateHeuristcFromPos(VertexNavigation.Instance.getVertex(vertex).position);
+        return this.calculateHeuristcFromPos(VertexNavigationTemp.Instance.getVertex(vertex).position);
     }
 
     /// <summary>
@@ -121,16 +121,16 @@ public class AStar: MonoBehaviour
             AStarNode node = queue.popNode();
 
             // Loop through the nodes available paths
-            foreach (int vertex in VertexNavigation.Instance.getMovesVertex(node.Index))
+            foreach (int vertex in VertexNavigationTemp.Instance.getMovesVertex(node.Index))
             {
                 // Only use vertex if we haven't already explored this node
                 if (!visitedNodes.ContainsKey(vertex))
                 {
                     // Are we close enough to the player
-					Instantiate(this.debugCube,VertexNavigation.Instance.getVertex(vertex).position,Quaternion.identity);
+					Instantiate(this.debugCube,VertexNavigationTemp.Instance.getVertex(vertex).position,Quaternion.identity);
 
 					Debug.Break();
-                    if (DistanceCalculator.euclidianDistance(VertexNavigation.Instance.getVertex(vertex).position, target) < this.MinDistance)
+                    if (DistanceCalculator.euclidianDistance(VertexNavigationTemp.Instance.getVertex(vertex).position, target) < this.MinDistance)
                     {
                         // Yes we are, solved
                         this.plan = node.Moves;
@@ -177,8 +177,8 @@ public class AStar: MonoBehaviour
 
     void Update()
     {
-		this.target = new Vector3(0f, 3.56f,0f);
-		this.MinDistance = 3f;
+        this.target = new Vector3(-0.1528034f, 0.127f, 1.2991f);
+		this.MinDistance = 10f;
         List<int> test = this.getNewPlan();
 		print("done");
 //        Debug.Break();
