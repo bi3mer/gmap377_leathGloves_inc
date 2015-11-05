@@ -4,13 +4,12 @@ using UnityEngine.UI;
 
 
 public class ScoreMulti : MonoBehaviour {
-    public int multiplier;
+    public int multiplier = 2;
     float TimeS = 10;
 
     Text text;
     void Start()
     {
-
         ScoreManager.Instance.SetMultiplier(multiplier);
         text = ScoreManager.Instance.multiplierText;
         text.text = "x" + multiplier;
