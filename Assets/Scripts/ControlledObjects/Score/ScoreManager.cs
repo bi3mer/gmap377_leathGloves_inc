@@ -5,9 +5,9 @@ using System.Collections;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance = null;
-    public static int multi = 1;
+    public int multi = 1;
     public static int score;        // The player's score.
-
+    public Text multiplierText;
 
     Text text;                      // Reference to the Text component.
 
@@ -36,7 +36,10 @@ public class ScoreManager : MonoBehaviour
         text.text = "Score: " + score; // Set the displayed text to be the word "Score" followed by the score value.
         
     }
-
+    public void SetMultiplier(int mult)
+    {
+        this.multi = mult;
+    }
    public void IncreaseScore(int increaseAmount)
     {
         score += increaseAmount * multi;
