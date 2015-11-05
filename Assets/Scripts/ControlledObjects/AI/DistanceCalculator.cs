@@ -56,9 +56,9 @@ public class DistanceCalculator
 	/// <returns>The distance.</returns>
 	/// <param name="pos1">Pos1.</param>
 	/// <param name="pos2">Pos2.</param>
-	public static float euclidianDistance(Vector2 pos1, Vector2 pos2)
+	public static float euclidianDistance(Vector3 pos1, Vector3 pos2)
 	{
-		return Mathf.Sqrt(Mathf.Pow(pos1.x - pos2.x, 2) + Mathf.Pow(pos1.y - pos2.y, 2));
+		return Mathf.Sqrt(Mathf.Pow(pos1.x - pos2.x, 2) + Mathf.Pow(pos1.y - pos2.y, 2) + Mathf.Pow(pos1.z - pos2.z, 2));
 	}
 
 	/// <summary>
