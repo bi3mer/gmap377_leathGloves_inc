@@ -27,7 +27,7 @@ public class EnemyStats : MonoBehaviour
         {
             // Increase the score by the enemy's score value.
             ScoreManager.Instance.IncreaseScore(scoreValue);
-            Destroy(gameObject);
+            DestroySelf();
         }
 
     }
@@ -57,5 +57,17 @@ public class EnemyStats : MonoBehaviour
         // The enemy is dead.
         isDead = true;
         
+    }
+    public virtual void MakeExplosion()
+    {
+        Vector3 explosionPosition = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+        Instantiate(ParticleHolder.Instance.enemySimpleExplosion, explosionPosition, Quaternion.identity);
+    }
+
+    public void DestroySelf()
+    {
+        MakeExplosion();
+        
+        Destroy(this.gameObject);            // delete self
     }
 }
