@@ -55,9 +55,9 @@ public class Pickup : MonoBehaviour
         // Example pickup type 2
         template pickupTwo = (obj) =>
         {
-            if (obj.gameObject.GetComponent<Rigidbody>() != null)
+            if (obj.gameObject.GetComponent<Shooting>() != null)
             {
-                obj.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 1000f, ForceMode.Force);
+                obj.gameObject.GetComponent<Shooting>().bullet = GetComponent<WeaponCache>().LaserBeam;
             }
         };
 

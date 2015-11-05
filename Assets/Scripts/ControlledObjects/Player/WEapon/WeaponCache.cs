@@ -3,5 +3,5 @@ using System.Collections;
 
 public class WeaponCache : MonoBehaviour {
 
-    public GameObject Laser, Weapon2;
+    public GameObject Laser, Weapon2, LaserBeam;
 }
