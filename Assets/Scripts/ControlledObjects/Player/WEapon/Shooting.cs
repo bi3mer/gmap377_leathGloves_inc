@@ -24,13 +24,16 @@ public class Shooting : MonoBehaviour {
             // to the mouse point. I just made this 10000f so it knows where to go more
             // accurately. It seems fine to me, but if aim fine tuning is needed check here.
             // - Bryan
-            newBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenToWorldPoint(
-                new Vector3(
-                    Input.mousePosition.x,
-                    Input.mousePosition.y,
-                    10000f
-                    )
-                ).normalized * bullet.GetComponent<Weapon>().Speed) ;
+            if (newBullet.GetComponent<Rigidbody>() != null)
+            {
+                newBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenToWorldPoint(
+                    new Vector3(
+                        Input.mousePosition.x,
+                        Input.mousePosition.y,
+                        10000f
+                        )
+                    ).normalized * bullet.GetComponent<Weapon>().Speed);
+            }
         }
     }
 }

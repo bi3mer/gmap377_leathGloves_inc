@@ -5,7 +5,7 @@ using System.Collections;
 public class WeebleWobble : MonoBehaviour {
 
 	public float WeebleWobbleFactor = 0.1f;
-	public float Tolerance = 5;
+	public float Tolerance = 5; 
 
 	private PlanetOrientation m_planetOrientation;
 	private Rigidbody m_rigidbody;
