@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
 
 [RequireComponent(typeof (PlanetOrientation))]
 public class ForceMover : MonoBehaviour {
