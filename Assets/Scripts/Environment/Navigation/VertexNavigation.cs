@@ -90,7 +90,7 @@ public class VertexNavigation : MonoBehaviour
 				int key = mesh.triangles[globalTriangleIndex];
 				
 				// If first time seeing this key, add to dictionary
-				if (key < this.movemementLookup.Count && this.movemementLookup[key] != null)
+				if (key <= this.movemementLookup.Count || this.movemementLookup[key] == null)
 				{
 					// Create new Vertice
 					Vertice vert = new Vertice();
