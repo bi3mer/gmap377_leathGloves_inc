@@ -22,15 +22,19 @@ public class VertexNavigation : MonoBehaviour
 	}
 
     // TODO: document this stuff
+	[HideInInspector]
 	[SerializeField]
 	public List<Vertice> movemementLookup;
 
+	[HideInInspector]
 	[SerializeField]
     public int[] triangles;
 
+	[HideInInspector]
 	[SerializeField]
 	public Mesh mesh;
 
+	[HideInInspector]
 	[SerializeField]
 	public Vector3[] vertices;
 
