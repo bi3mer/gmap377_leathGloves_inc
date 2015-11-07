@@ -26,7 +26,7 @@ public class VertexNavigation : MonoBehaviour
 	public List<Vertice> movemementLookup;
 
 	[SerializeField]
-    public int[] trinagles;
+    public int[] triangles;
 
 	[SerializeField]
 	public Mesh mesh;
@@ -53,13 +53,14 @@ public class VertexNavigation : MonoBehaviour
     }
 	
 	/// <summary>
-	/// 	Map 3d sphere to 2d coordiante system
-    /// 	Not finished
+	/// Map 3d sphere to 2d coordiante system
+	/// Not finished
 	/// </summary>
 	public void buildTable() 
 	{
 		// Initiailize look up list
-		this.movemementLookup = new List<Vertice>();
+		if(this.movemementLookup == null)
+			this.movemementLookup = new List<Vertice>();
 
 		// Get Radius
 		this._radius = GetComponent<SphereCollider>().radius * transform.localScale.x;
@@ -71,7 +72,7 @@ public class VertexNavigation : MonoBehaviour
 		this.vertices = mesh.vertices;
 		
 		// Get copy of triangles
-		this.trinagles = mesh.triangles;
+		this.triangles = mesh.triangles;
 		
 		// Convert vertices to global coordiantes
 		float scale = transform.localScale.x;
@@ -121,11 +122,16 @@ public class VertexNavigation : MonoBehaviour
 		}
 	}
 
+	public void killTable()
+	{
+		this.movemementLookup = null;
+	}
+
 	void Start()
 	{
 		print (this.movemementLookup);
-		print ("Dictionary: " + this.movemementLookup.Count);
-		print ("Triangles: " + this.trinagles.Length);
+//		print ("Size: " + this.movemementLookup.Count);
+		print ("Triangles: " + this.triangles.Length);
 	}
 
     // TODO: make this array instead of list for optimization (term 2)
@@ -135,9 +141,9 @@ public class VertexNavigation : MonoBehaviour
         List<int> indices = new List<int>();
 
         // add indices to arraylist
-        indices.Add(this.trinagles[triangleIndex]);
-        indices.Add(this.trinagles[triangleIndex + 1]);
-        indices.Add(this.trinagles[triangleIndex + 2]);
+		indices.Add(this.triangles[triangleIndex]);
+		indices.Add(this.triangles[triangleIndex + 1]);
+		indices.Add(this.triangles[triangleIndex + 2]);
 
         // return arraylist
         return indices;
