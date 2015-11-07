@@ -39,7 +39,15 @@ public class Shooting : MonoBehaviour {
                         )
                     ).normalized * bullet.GetComponent<Weapon>().Speed);
             }
-            --bullet.GetComponent<Weapon>().Ammo;
+
+            if (bullet.GetComponent<Weapon>().Ammo > 0)
+            {
+                --bullet.GetComponent<Weapon>().Ammo;
+                if (bullet.GetComponent<Weapon>().Ammo == 0)
+                {
+                    this.bullet = GetComponent<PickupCache>().Laser;
+                }
+            }
         }
     }
 }

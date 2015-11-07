@@ -46,7 +46,7 @@ public class ForceMover : MonoBehaviour {
 		bool grounded = m_planetOrientation.Grounded;
 
         Vector3 direction = (Vector3.forward.normalized/* - new Vector3(0, 1, -2).normalized*/).normalized;
-        Debug.Log(direction);
+        //Debug.Log(direction);
 
 	    if (InputManager.Player1VerticalInput > float.Epsilon && grounded) {
 			Vector3 force = direction * m_Rigidbody.mass * acceleration * InputManager.Player1VerticalInput;
