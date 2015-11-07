@@ -23,7 +23,7 @@ public class VertexNavigation : MonoBehaviour
 
     // TODO: document this stuff
 	[SerializeField]
-	private List<Vertice> movemementLookup;
+	public List<Vertice> movemementLookup;
 
 	[SerializeField]
     public int[] trinagles;
@@ -90,7 +90,7 @@ public class VertexNavigation : MonoBehaviour
 				int key = mesh.triangles[globalTriangleIndex];
 				
 				// If first time seeing this key, add to dictionary
-				if (key < this.movemementLookup.Count && this.movemementLookup[key] == null)
+				if (key < this.movemementLookup.Count && this.movemementLookup[key] != null)
 				{
 					// Create new Vertice
 					Vertice vert = new Vertice();
@@ -104,18 +104,18 @@ public class VertexNavigation : MonoBehaviour
 				// Add other two vertices
 				switch (verticeIndex) 
 				{ 
-				case 0:
-					this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex + 1]);
-					this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex + 2]);
-					break;
-				case 1:
-					this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex - 1]);
-					this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex + 1]);
-					break;
-				case 2:
-					this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex - 1]);
-					this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex - 2]);
-					break;
+					case 0:
+						this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex + 1]);
+						this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex + 2]);
+						break;
+					case 1:
+						this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex - 1]);
+						this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex + 1]);
+						break;
+					case 2:
+						this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex - 1]);
+						this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex - 2]);
+						break;
 				}
 			}
 		}
