@@ -23,13 +23,13 @@ public class ForceMover : MonoBehaviour {
 		m_ipObject = GetComponent<InterplanetaryObject>();
     }
 	void Update() {
-		if (Input.GetKey(KeyCode.A)) {
-			transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
+		if (InputManager.Player1HorizontalInput < -1 * float.Epsilon) {
+			transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * InputManager.Player1HorizontalInput);
 			MotionBaseMover.Instance.InduceArtificialRoll(-0.6f);
 		}
 
-		if (Input.GetKey(KeyCode.D)) {
-			transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
+		if (InputManager.Player1HorizontalInput > float.Epsilon) {
+			transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * InputManager.Player1HorizontalInput);
 			MotionBaseMover.Instance.InduceArtificialRoll(0.6f);
 		}
 
@@ -48,15 +48,15 @@ public class ForceMover : MonoBehaviour {
         Vector3 direction = (Vector3.forward.normalized/* - new Vector3(0, 1, -2).normalized*/).normalized;
         Debug.Log(direction);
 
-	    if (Input.GetKey(KeyCode.W) && grounded) {
-			Vector3 force = direction * m_Rigidbody.mass * acceleration;
+	    if (InputManager.Player1VerticalInput > float.Epsilon && grounded) {
+			Vector3 force = direction * m_Rigidbody.mass * acceleration * InputManager.Player1VerticalInput;
 			if (m_Rigidbody.velocity.magnitude < topSpeed) {
 				m_Rigidbody.AddRelativeForce(force, ForceMode.Acceleration);
 			}
 		}
 
-		if (Input.GetKey(KeyCode.S) && grounded) {
-			Vector3 force = -1 * Vector3.forward * m_Rigidbody.mass * acceleration;
+		if (InputManager.Player1VerticalInput < -1 * float.Epsilon && grounded) {
+			Vector3 force = Vector3.forward * m_Rigidbody.mass * acceleration * InputManager.Player1VerticalInput;
 			if (m_Rigidbody.velocity.magnitude < topSpeed) {
 				m_Rigidbody.AddRelativeForce(force, ForceMode.Force);
 			}
