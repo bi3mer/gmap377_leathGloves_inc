@@ -7,12 +7,12 @@ public class ScoreMulti : MonoBehaviour {
     public int multiplier = 2;
     float TimeS = 10;
 
-    Text text;
+    string text;
     void Start()
     {
         ScoreManager.Instance.SetMultiplier(multiplier);
         text = ScoreManager.Instance.multiplierText;
-        text.text = "x" + multiplier;
+        text = "x" + multiplier;
     }
     
 	
@@ -21,7 +21,7 @@ public class ScoreMulti : MonoBehaviour {
     {
         if (TimeS > 0)
         {
-            text.text = "x" + multiplier;
+            text = "x" + multiplier;
             Countdown();
         }
 
@@ -35,7 +35,7 @@ public class ScoreMulti : MonoBehaviour {
     {
         multiplier = 1;
         ScoreManager.Instance.SetMultiplier(multiplier);
-        text.text = "x" + multiplier;
+        text = "x" + multiplier;
     }
 
     void Countdown()

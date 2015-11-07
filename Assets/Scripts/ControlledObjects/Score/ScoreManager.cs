@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance = null;
     public int multi = 1;
     public int score;        // The player's score.
-    public Text multiplierText;
+    public string multiplierText;
 
     Text text;                      // Reference to the Text component.
 
@@ -30,6 +30,7 @@ public class ScoreManager : MonoBehaviour
             text = GetComponent<Text>();
         }
 
+        multiplierText = "x" + multi.ToString();
         // Reset the score.
         score = 0;
         DontDestroyOnLoad(ScoreManager.Instance);
@@ -38,17 +39,7 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-        if (text != null)
-        {
-            Debug.Log("Score is not null");
-            text.text = "Score: " + ScoreManager.Instance.score; // Set the displayed text to be the word "Score" followed by the score value.
-        }
-        else
-        {
-            Debug.Log("Score is NULL OH FUCK THAT SHIT IS FUCKED ");
-            text = GetComponent<Text>();
-        }
-        
+        this.multiplierText = "x" + multi.ToString();
     }
     public void SetMultiplier(int mult)
     {
