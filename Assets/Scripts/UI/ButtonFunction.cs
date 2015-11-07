@@ -8,8 +8,8 @@ public class ButtonFunction : MonoBehaviour {
     /// </summary>
     void Update()
     {
-        // If any button is pressed, load the game.
-        if (Input.anyKeyDown)
+        // If xbox start button (Windows/Linux) or the M key is pressed, start the game
+        if (Input.GetButtonDown("Submit") || Input.GetKeyDown(KeyCode.M))
         {
             Application.LoadLevel("OriginalScene");
         }
