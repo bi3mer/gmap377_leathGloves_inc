@@ -13,16 +13,17 @@ public class Shooting : MonoBehaviour {
     /// </summary>
     void Update()
     {
+        float ammo = bullet.GetComponent<Weapon>().Ammo;
         // only do anything when the button is pressed
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && (ammo > 0 || ammo < 0))
         { 
             // Bullet being created      
             GameObject newBullet= Instantiate(bullet, spwnPt.transform.position, Quaternion.Euler(Vector3.forward)) as GameObject;
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10000f);
             Vector3 lookPos = Camera.main.ScreenToWorldPoint(mousePos);
             lookPos = lookPos - transform.position;
-            float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
             newBullet.transform.LookAt(lookPos);
+
             // Make its velocity go towards the mouse
             // NOTE: The vector being created uses the z field as the depth from the camera
             // to the mouse point. I just made this 10000f so it knows where to go more
@@ -38,6 +39,7 @@ public class Shooting : MonoBehaviour {
                         )
                     ).normalized * bullet.GetComponent<Weapon>().Speed);
             }
+            --bullet.GetComponent<Weapon>().Ammo;
         }
     }
 }

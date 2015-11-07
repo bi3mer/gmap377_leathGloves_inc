@@ -15,5 +15,9 @@ public class InputManager : MonoBehaviour {
     public static float Player2VerticalInput {
         get { return Input.GetAxisRaw("Vertical2"); }
     }
+    public static float PlayerStartInput
+    {
+        get { return Input.GetAxisRaw("Submit"); }
+    }
     
 }

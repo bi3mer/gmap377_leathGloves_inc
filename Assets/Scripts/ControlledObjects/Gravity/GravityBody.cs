@@ -5,7 +5,7 @@ using System.Collections;
 public class GravityBody : MonoBehaviour {
 	
 	private GravityAttractor planet;
-	private Rigidbody rigidbody; 
+	private Rigidbody rigidbody;     
 	
 	void Awake () {
 		planet = GameObject.FindGameObjectWithTag("Planet").GetComponent<GravityAttractor>();
@@ -20,7 +20,7 @@ public class GravityBody : MonoBehaviour {
 		// Allow this body to be influenced by planet's gravity
         if (planet == null)
         {
-            Debug.Log("HOLY FUCKING SHIT");
+            Debug.Log("HOLY FUCKING SHIT"); 
         }
 		planet.Attract(rigidbody);
 	}

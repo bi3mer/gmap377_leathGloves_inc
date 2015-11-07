@@ -49,6 +49,7 @@ public class Pickup : MonoBehaviour
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
                 obj.gameObject.GetComponent<Shooting>().bullet = GetComponent<PickupCache>().Weapon2;
+                GetComponent<PickupCache>().Weapon2.GetComponent<Weapon>().Ammo += 10;
             }
         };
 
@@ -58,6 +59,7 @@ public class Pickup : MonoBehaviour
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
                 obj.gameObject.GetComponent<Shooting>().bullet = GetComponent<PickupCache>().LaserBeam;
+                GetComponent<PickupCache>().LaserBeam.GetComponent<Weapon>().Ammo += 3;
             }
         };
         // Example pickup type 3

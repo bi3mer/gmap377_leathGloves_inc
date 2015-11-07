@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Weapon: MonoBehaviour
 {
-    public float Damage, Speed;
+    public float Damage, Speed, Ammo;
 
     /// <summary>
     /// Triggered when the bullet collides with anything
