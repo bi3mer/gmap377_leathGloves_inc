@@ -3,6 +3,8 @@ using System.Collections;
 
 public class InputManager : MonoBehaviour {
 
+    public static InputManager Instance = null;
+
     public static float Player1HorizontalInput {
         get { return Input.GetAxisRaw("Horizontal"); }
     }
@@ -19,5 +21,13 @@ public class InputManager : MonoBehaviour {
     {
         get { return Input.GetAxisRaw("Submit"); }
     }
-    
+
+    void Awake() {
+        if (Instance) {
+            Destroy(this);
+        }
+        else {
+            Instance = this;
+        }
+    }
 }
