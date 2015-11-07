@@ -1,43 +1,15 @@
 fileFormatVersion: 2
-guid: 147b56f52f54f4871a6c63a6c13c7add
-timeCreated: 1446734304
+guid: 1781e4255297a4699b0195b18930b1d0
+timeCreated: 1446924914
 licenseType: Pro
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: body
-    100002: //RootNode
-    100004: tracks1
-    100006: tracks2
-    100008: tracks3
-    100010: tracks4
-    100012: turret
-    400000: body
-    400002: //RootNode
-    400004: tracks1
-    400006: tracks2
-    400008: tracks3
-    400010: tracks4
-    400012: turret
-    2300000: body
-    2300002: tracks1
-    2300004: tracks2
-    2300006: tracks3
-    2300008: tracks4
-    2300010: turret
-    3300000: body
-    3300002: tracks1
-    3300004: tracks2
-    3300006: tracks3
-    3300008: tracks4
-    3300010: turret
-    4300000: body
-    4300002: turret
-    4300004: tracks1
-    4300006: tracks2
-    4300008: tracks3
-    4300010: tracks4
-    9500000: //RootNode
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: playerTank3
   materials:
     importMaterials: 1
     materialName: 0
@@ -96,7 +68,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
