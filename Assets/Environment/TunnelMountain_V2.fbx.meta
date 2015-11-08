@@ -1,7 +1,19 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: d8b0f35f1e2da4b25ba8db4d20ef348d
+timeCreated: 1446934980
+licenseType: Free
+=======
+<<<<<<< HEAD
+guid: 50b779bfe08d840eebde1547a4468ba2
+timeCreated: 1446935278
+licenseType: Pro
+=======
 guid: 9457959ea05154a8e8c8477f6cf5a1d7
 timeCreated: 1446936326
 licenseType: Free
+>>>>>>> origin/master
+>>>>>>> origin/master
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
