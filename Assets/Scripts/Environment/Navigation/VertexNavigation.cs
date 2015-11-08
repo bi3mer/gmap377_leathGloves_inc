@@ -131,13 +131,6 @@ public class VertexNavigation : MonoBehaviour
 		this.movemementLookup = null;
 	}
 
-	void Start()
-	{
-		print (this.movemementLookup);
-//		print ("Size: " + this.movemementLookup.Count);
-		print ("Triangles: " + this.triangles.Length);
-	}
-
     // TODO: make this array instead of list for optimization (term 2)
     public List<int> getMovesTriangle(int triangleIndex)
     {
@@ -163,7 +156,12 @@ public class VertexNavigation : MonoBehaviour
 		return this.movemementLookup[vertexIndex];
     }
 
-	void OnDrawGizmosSelected() 
+//	void Start()
+//	{
+//		this.buildTable();
+//	}
+
+	void OnDrawGizmos() 
 	{
 		if(this.showNodes)
 		{

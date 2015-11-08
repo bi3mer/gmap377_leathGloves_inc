@@ -10,6 +10,7 @@ public class Vertice
     /// <summary>
     ///     Get and set for vector3 position where the node is
     /// </summary>
+	[SerializeField]
     private Vector3 _position;
     public Vector3 position 
     {
@@ -22,9 +23,10 @@ public class Vertice
             this._position = value;
         }
     }
-
+	
     private Dictionary<int, bool> foundVerts = new Dictionary<int, bool>();
 
+	[SerializeField]
     private List<int> _vertices = new List<int>();
 
     /// <summary>

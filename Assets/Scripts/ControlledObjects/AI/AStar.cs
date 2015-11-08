@@ -7,35 +7,26 @@ public class AStar: MonoBehaviour
 	public GameObject debugCube;
     public int distanceToGround = 10;
     public int stepCount = 1;
+
+	public bool drawRayCastDown = false;
     public bool drawPath = false;
 
     // Target
-    private Vector3 target;
-    public Vector3 Target
-    {
-        get
-        {
-            return this.target;
-        }
-        set
-        {
-            this.target = value;
-        }
-    }
+    public Vector3 target;
 
     // Minimum distance
-    private float minDistance;
-    public float MinDistance
-    {
-        get
-        {
-            return this.minDistance;
-        }
-        set 
-        {
-            this.minDistance = value;
-        }
-    }
+    public float minDistance;
+//    public float MinDistance
+//    {
+//        get
+//        {
+//            return this.minDistance;
+//        }
+//        set 
+//        {
+//            this.minDistance = value;
+//        }
+//    }
 
     // Plan for movement
     private List<int> plan;
@@ -68,7 +59,7 @@ public class AStar: MonoBehaviour
     /// <returns></returns>
     private float calculateHeuristicFromVertex(int vertex)
     {
-        return this.calculateHeuristcFromPos(VertexNavigationTemp.Instance.getVertex(vertex).position);
+        return this.calculateHeuristcFromPos(VertexNavigation.Instance.getVertex(vertex).position);
     }
 
     /// <summary>
@@ -90,8 +81,8 @@ public class AStar: MonoBehaviour
         // fill open list
         foreach (RaycastHit hit in hits)
         {
-            // Check if correct
-            if (hit.collider.tag == "Planet")
+            // Check if correct mesh was hit
+			if (hit.collider != null && hit.collider.tag == "Planet")
             {
 				print ("hit: " + hit.triangleIndex);
                 unFormattedMoves = VertexNavigation.Instance.getMovesTriangle(hit.triangleIndex * 3);
@@ -116,22 +107,26 @@ public class AStar: MonoBehaviour
             queue.addNode(node);
         }
 
+		// Run A*
         while (queue.Length() > 0)
         { 
             // Grab best node from priority queue
             AStarNode node = queue.popNode();
 
+			print (node.Index);
+			print (VertexNavigation.Instance.getMovesVertex(node.Index).Count);
+
             // Loop through the nodes available paths
-            foreach (int vertex in VertexNavigationTemp.Instance.getMovesVertex(node.Index))
+			foreach (int vertex in VertexNavigation.Instance.getMovesVertex(node.Index))
             {
                 // Only use vertex if we haven't already explored this node
                 if (!visitedNodes.ContainsKey(vertex))
                 {
                     // Are we close enough to the player
-					Instantiate(this.debugCube,VertexNavigationTemp.Instance.getVertex(vertex).position,Quaternion.identity);
+					Instantiate(this.debugCube,VertexNavigation.Instance.getVertex(vertex).position,Quaternion.identity);
 
-					Debug.Break();
-                    if (DistanceCalculator.euclidianDistance(VertexNavigationTemp.Instance.getVertex(vertex).position, target) < this.MinDistance)
+//					Debug.Break();
+					if (DistanceCalculator.euclidianDistance(VertexNavigation.Instance.getVertex(vertex).position, target) < this.minDistance)
                     {
                         // Yes we are, solved
                         this.plan = node.Moves;
@@ -159,6 +154,7 @@ public class AStar: MonoBehaviour
             }
         }
 
+		print ("finding path failed");
         return this.plan;
     }
 
@@ -176,12 +172,36 @@ public class AStar: MonoBehaviour
         return this.getThePath();
     }
 
+	void Start()
+	{
+		this.getNewPlan();
+	}
+
     void Update()
     {
-        this.target = new Vector3(-0.1528034f, 0.127f, 1.2991f);
-		this.MinDistance = 10f;
-        List<int> test = this.getNewPlan();
-		print("done");
-//        Debug.Break();
+		// TODO: Comment out this update for final builds
+		// Draw Raycast down
+		if(this.drawRayCastDown)
+		{
+			Debug.DrawRay(transform.position, transform.up * -1 * this.distanceToGround);
+		}
+
+		// Draw path
+		if(this.drawPath && this.plan != null)
+		{
+			int planCount = this.plan.Count;
+
+			Color color = new Color();
+			color.a = 1;
+			color.g = .6f;	
+			for(int i = 0; i < planCount; ++i)
+			{
+				if(i != planCount - 1)
+				{
+					color.r += .15f;
+					Debug.DrawLine(VertexNavigation.Instance.getVertex(this.plan[i]).position, VertexNavigation.Instance.getVertex(this.plan[i + 1]).position, color);
+				}
+			}
+		}
     }
 }
