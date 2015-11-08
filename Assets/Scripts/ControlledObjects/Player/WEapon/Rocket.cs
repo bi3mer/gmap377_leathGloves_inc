@@ -6,6 +6,11 @@ public class Rocket : MonoBehaviour
     public float ExplosionRadius, ExplosionForce;
     public GameObject Explosion;
 
+    void Start()
+    {
+
+    }
+
     /// <summary>
     /// Triggered when the bullet collides with anything
     /// </summary>

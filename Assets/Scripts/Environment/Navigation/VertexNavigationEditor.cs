@@ -21,8 +21,14 @@ public class VertexNavigationEditor : Editor
 			Debug.Log("beggining baking");
 			VertexNavigation.Instance.buildTable();
 			Debug.Log("modify properities");
-			serializedObject.ApplyModifiedProperties();
+//			serializedObject.ApplyModifiedProperties();
 			Debug.Log("done baking");
+		}
+		if(GUILayout.Button("Kill Bake"))
+		{
+			VertexNavigation.Instance.killTable();
+//			serializedObject.ApplyModifiedProperties();
+			Debug.Log("Killed table");
 		}
 	}
 

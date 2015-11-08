@@ -19,9 +19,9 @@ public class RayCastDownCheck : MonoBehaviour
 			if(hit.collider.tag == "Planet")
 			{
 				// Get positions
-				Vector3 p0 = VertexNavigation.Instance.vertices[VertexNavigation.Instance.trinagles[hit.triangleIndex * 3 + 0]];
-				Vector3 p1 = VertexNavigation.Instance.vertices[VertexNavigation.Instance.trinagles[hit.triangleIndex * 3 + 1]];
-				Vector3 p2 = VertexNavigation.Instance.vertices[VertexNavigation.Instance.trinagles[hit.triangleIndex * 3 + 2]];
+				Vector3 p0 = VertexNavigation.Instance.vertices[VertexNavigation.Instance.triangles[hit.triangleIndex * 3 + 0]];
+				Vector3 p1 = VertexNavigation.Instance.vertices[VertexNavigation.Instance.triangles[hit.triangleIndex * 3 + 1]];
+				Vector3 p2 = VertexNavigation.Instance.vertices[VertexNavigation.Instance.triangles[hit.triangleIndex * 3 + 2]];
 
 				// Draw triangles
 				Debug.DrawLine(p0, p1);
