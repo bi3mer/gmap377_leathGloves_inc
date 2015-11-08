@@ -6,7 +6,7 @@ public class SimpleTimer : MonoBehaviour {
 
     public float TimeS;
     Text text;                      // Reference to the Text component.
-
+	
 
     void Awake()
     {
@@ -33,6 +33,12 @@ public class SimpleTimer : MonoBehaviour {
     void timerEnded()
     {
         text.text = "Game Over";
+        //Turning on the high score list
+        HighScoreList.Instance.GetComponent<HighScoreList>().enabled = true;
+        //Pausing game
+		Time.timeScale =0;
+        
+        
     }
     /// <summary>
     ///Takes the amount of time we give in seconds and cleans it to display properly. 
