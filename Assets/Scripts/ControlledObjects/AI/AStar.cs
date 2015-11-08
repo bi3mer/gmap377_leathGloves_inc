@@ -93,6 +93,7 @@ public class AStar: MonoBehaviour
             // Check if correct
             if (hit.collider.tag == "Planet")
             {
+				print ("hit: " + hit.triangleIndex);
                 unFormattedMoves = VertexNavigation.Instance.getMovesTriangle(hit.triangleIndex * 3);
                 break;
             }
