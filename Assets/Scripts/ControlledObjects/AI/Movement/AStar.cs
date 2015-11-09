@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class AStar: MonoBehaviour
+public class AStar: MonoBehaviour, AiMovement
 {
 	public GameObject debugCube;
     public int distanceToGround = 10;
@@ -13,6 +13,11 @@ public class AStar: MonoBehaviour
 
     // Target
     public Vector3 target;
+
+	public void setTarget(Vector3 target)
+	{
+		this.target = target;
+	}
 
     // Minimum distance
     public float minDistance;
@@ -41,6 +46,11 @@ public class AStar: MonoBehaviour
             // pass
         }
     }
+
+	public List<int> getPlan()
+	{
+		return this.Plan;
+	}
 
     /// <summary>
     /// Caclulate heuristic from a vector#
@@ -107,7 +117,7 @@ public class AStar: MonoBehaviour
             queue.addNode(node);
         }
 
-		// Run A*
+		// Run A* while moves available
         while (queue.Length() > 0)
         { 
             // Grab best node from priority queue
@@ -122,17 +132,15 @@ public class AStar: MonoBehaviour
                 // Only use vertex if we haven't already explored this node
                 if (!visitedNodes.ContainsKey(vertex))
                 {
-                    // Are we close enough to the player
+                    // TODO: remove after debugging
 					Instantiate(this.debugCube,VertexNavigation.Instance.getVertex(vertex).position,Quaternion.identity);
 
-//					Debug.Break();
+					// Check if close enough to target
 					if (DistanceCalculator.euclidianDistance(VertexNavigation.Instance.getVertex(vertex).position, target) < this.minDistance)
                     {
                         // Yes we are, solved
                         this.plan = node.Moves;
                         this.plan.Add(vertex);
-
-						print("found Plan!");
 
                         // return plan
                         return this.plan;
@@ -154,7 +162,7 @@ public class AStar: MonoBehaviour
             }
         }
 
-		print ("finding path failed");
+//		print ("finding path failed");
         return this.plan;
     }
 
@@ -165,15 +173,19 @@ public class AStar: MonoBehaviour
     /// <returns></returns>
     public List<int> getNewPlan()
     {
+		// Check if target exists
         if (this.target == null)
         {
             return null;
         }
+
+		// Get plan
         return this.getThePath();
     }
 
 	void Start()
 	{
+		// TODO: remove, only for debugging
 		this.getNewPlan();
 	}
 
@@ -194,11 +206,13 @@ public class AStar: MonoBehaviour
 			Color color = new Color();
 			color.a = 1;
 			color.g = .6f;	
+			Debug.DrawLine(this.transform.position, VertexNavigation.Instance.getVertex(this.plan[0]).position, Color.green);
 			for(int i = 0; i < planCount; ++i)
 			{
 				if(i != planCount - 1)
 				{
-					color.r += .15f;
+					color.r += .05f;
+					color.b += .02f;
 					Debug.DrawLine(VertexNavigation.Instance.getVertex(this.plan[i]).position, VertexNavigation.Instance.getVertex(this.plan[i + 1]).position, color);
 				}
 			}
