@@ -35,7 +35,10 @@ public class WeaponSwitch : MonoBehaviour {
         }
         if (InputManager.Player2VerticalInput < 0 || Input.GetKeyDown(KeyCode.Alpha4))
         {
-            Debug.Log("Weapon Switch Mines");
+            if (cache.LaserBeam.GetComponent<Weapon>().Ammo > 0)
+            {
+                GetComponent<Shooting>().bullet = cache.Mine;
+            }
         }
     }
 }
