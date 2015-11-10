@@ -16,7 +16,7 @@ public class Pickup : MonoBehaviour
     void Start()
     {
         // When adding a new pickup type, don't forget to add 1 to the size of the array
-        this.Type = new template[3];
+        this.Type = new template[4];
 
         this.cahce = GetComponent<PickupCache>();
         // A function to initialize the array
@@ -69,9 +69,21 @@ public class Pickup : MonoBehaviour
             multi.AddComponent<ScoreMulti>();
         };
 
+        // Mine Pickup
+        template minePickup = (obj) =>
+        {
+            if (obj.gameObject.GetComponent<Shooting>() != null)
+            {
+                obj.gameObject.GetComponent<Shooting>().bullet = GetComponent<PickupCache>().Mine;
+                GetComponent<PickupCache>().Mine.GetComponent<Weapon>().Ammo += 3;
+            }
+        };
+
+
         // Add them to the array
         this.Type[0] = pickupOne;
         this.Type[1] = pickupTwo;
         this.Type[2] = pickupThree;
+        this.Type[3] = minePickup;
     }
 }
