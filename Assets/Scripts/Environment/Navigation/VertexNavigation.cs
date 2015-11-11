@@ -85,46 +85,47 @@ public class VertexNavigation : MonoBehaviour
 			vertices[i] *= scale;
 		}
 
-		// Create lookup list from triangles
-		for (int triangleIndex = 0; triangleIndex < this.mesh.triangles.Length; triangleIndex += 3)
-		{
-			// Loop through individiual triangle index
-			for (int verticeIndex = 0; verticeIndex < 3; ++verticeIndex)
-			{
-				// Calculate index and key
-				int globalTriangleIndex = triangleIndex + verticeIndex;
-				int key = mesh.triangles[globalTriangleIndex];
-				
-				// If first time seeing this key, add to dictionary
-				if (key <= this.movemementLookup.Count || this.movemementLookup[key] == null)
-				{
-					// Create new Vertice
-					Vertice vert = new Vertice();
-					vert.position = vertices[key];
-					
-					// add new vertice to dicitonary
-					this.movemementLookup.Insert(key, vert);
-				} 
-				
-				// TODO: better way? magic numbers?
-				// Add other two vertices
-				switch (verticeIndex) 
-				{ 
-					case 0:
-						this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex + 1]);
-						this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex + 2]);
-						break;
-					case 1:
-						this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex - 1]);
-						this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex + 1]);
-						break;
-					case 2:
-						this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex - 1]);
-						this.movemementLookup[key].Add(mesh.triangles[globalTriangleIndex - 2]);
-						break;
-				}
-			}
-		}
+        // Loop through triangles
+        for (int triangleIndex = 0; triangleIndex < this.triangles.Length; triangleIndex += 3)
+        {
+            // loop through vertexes
+            for (int vertexIndex = 0; vertexIndex < 3; ++vertexIndex)
+            {
+                // Index to triangle array
+                int globalIndex = triangleIndex + vertexIndex;
+
+                // Create vertice index relative to triangle index
+                int vertice = this.triangles[globalIndex];
+
+                // Check if key exists, if not add to dictionary
+                if (vertice <= this.movemementLookup.Count || this.movemementLookup[vertice] == null)
+                {
+                    // Create new vertices
+                    Vertice vert = new Vertice();
+                    vert.position = this.vertices[vertice];
+
+                    // Add new vertice to dictionary
+                    this.movemementLookup.Insert(vertice, vert);
+                }
+
+                // Add remaining
+                switch (vertexIndex)
+                {
+                    case 0:
+                        this.movemementLookup[vertice].Add(mesh.triangles[globalIndex + 1]);
+                        this.movemementLookup[vertice].Add(mesh.triangles[globalIndex + 2]);
+                        break;
+                    case 1:
+                        this.movemementLookup[vertice].Add(mesh.triangles[globalIndex - 1]);
+                        this.movemementLookup[vertice].Add(mesh.triangles[globalIndex + 1]);
+                        break;
+                    case 2:
+                        this.movemementLookup[vertice].Add(mesh.triangles[globalIndex - 1]);
+                        this.movemementLookup[vertice].Add(mesh.triangles[globalIndex - 2]);
+                        break;
+                }
+            }
+        }
 	}
 
 	/// <summary>
@@ -135,6 +136,35 @@ public class VertexNavigation : MonoBehaviour
 		this.movemementLookup = null;
 	}
 
+    /// <summary>
+    /// Print occurrences per number of moves in vertex
+    /// </summary>
+    public void printMoves()
+    {
+        // data structure
+        Dictionary<int, int> numMoves = new Dictionary<int, int>();
+
+        // store moves
+        for (int i = 0; i < this.movemementLookup.Count; ++i)
+        {
+            int key = this.movemementLookup[i].getMoves().Count;
+            if (!numMoves.ContainsKey(key))
+            {
+                numMoves.Add(key, 0);
+            }
+            ++numMoves[key];
+        }
+
+        // print key value paris
+        foreach (int key in numMoves.Keys)
+        {
+            print(key + ": " + numMoves[key]);
+        }
+
+        // Print total number of verts
+        print("total number of vertices: " + VertexNavigation.Instance.triangles.Length);
+    }
+
     // TODO: make this array instead of list for optimization (term 2)
 	/// <summary>
 	/// Gets the moves from a triangle index.
@@ -143,16 +173,8 @@ public class VertexNavigation : MonoBehaviour
 	/// <param name="triangleIndex">Triangle index.</param>
     public List<int> getMovesTriangle(int triangleIndex)
     {
-        // initialize
-        List<int> indices = new List<int>();
-
-        // add indices to arraylist
-		indices.Add(this.triangles[triangleIndex]);
-		indices.Add(this.triangles[triangleIndex + 1]);
-		indices.Add(this.triangles[triangleIndex + 2]);
-
         // return arraylist
-        return indices;
+        return new List<int>(new int[] {this.triangles[triangleIndex], this.triangles[triangleIndex + 1], this.triangles[triangleIndex + 2]});
     }
 
 	/// <summary>
@@ -174,11 +196,6 @@ public class VertexNavigation : MonoBehaviour
     {
 		return this.movemementLookup[vertexIndex];
     }
-
-//	void Start()
-//	{
-//		this.buildTable();
-//	}
 
 	/// <summary>
 	/// Raises the draw gizmos event to draw the available nodes.

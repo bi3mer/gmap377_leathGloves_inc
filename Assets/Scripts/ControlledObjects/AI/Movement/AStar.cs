@@ -21,17 +21,6 @@ public class AStar: MonoBehaviour, AiMovement
 
     // Minimum distance
     public float minDistance;
-//    public float MinDistance
-//    {
-//        get
-//        {
-//            return this.minDistance;
-//        }
-//        set 
-//        {
-//            this.minDistance = value;
-//        }
-//    }
 
     // Plan for movement
     private List<int> plan;

@@ -4,15 +4,14 @@ using System.Collections.Generic;
 
 public class RayCastDownCheck : MonoBehaviour 
 {
-    public int distanceToGround = 20;
-	public GameObject debugCube;
+    public bool printLength;
 	
 	// Update is called once per frame
 	void Update () 
     {
 		// Raycast downwards
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, transform.up * -1 * this.distanceToGround);
+        hits = Physics.RaycastAll(transform.position, Vector3.down);
 
 		foreach(RaycastHit hit in hits)
 		{
@@ -30,14 +29,25 @@ public class RayCastDownCheck : MonoBehaviour
 				Debug.DrawLine(p2, p0, Color.red);
 
 				// Get positions from vertices
-				int index = VertexNavigation.Instance.triangles[hit.triangleIndex * 3];
+				int vertex = VertexNavigation.Instance.triangles[hit.triangleIndex * 3];
 
-				List<int> moves = VertexNavigation.Instance.getMovesVertex(index);
+                // Get avilable moves for first vertex
+                List<int> moves = VertexNavigation.Instance.getMovesVertex(vertex);
 
-				foreach(int move in moves)
-				{
-					Debug.DrawLine(this.transform.position, VertexNavigation.Instance.vertices[move]);
-				}
+                // Print length
+                if (this.printLength)
+                {
+                    print("length of moves available: " + moves.Count);
+                }
+                
+                // Draw line to indicate node
+                Debug.DrawRay(VertexNavigation.Instance.getVertex(vertex).position, Vector3.up * 100f, Color.yellow);
+
+                // Draw lines
+                for (int i = 0; i < moves.Count; ++i )
+                {
+                    Debug.DrawLine(VertexNavigation.Instance.getVertex(vertex).position, VertexNavigation.Instance.vertices[moves[i]]);
+                }
 
 				// Break out of for
 				break;
