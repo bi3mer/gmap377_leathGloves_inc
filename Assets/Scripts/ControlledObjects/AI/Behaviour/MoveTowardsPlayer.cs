@@ -16,7 +16,7 @@ public class MoveTowardsPlayer : Enemy
 	private int targetIndex = 0;
 
 	// Min change distances
-	public float minPlayerChangeDistnace = 5f;
+	public float minPlayerChangeDistance = 2f;
 	public float minReachDistance = .05f;
 
 	// Use this for initialization
@@ -43,38 +43,45 @@ public class MoveTowardsPlayer : Enemy
 		// If no plan is found, do nothing
 		if(this.movement != null)
 		{
-			// Check if we've reached the target in the plan
-			if(DistanceCalculator.euclidianDistance(this.transform.position, VertexNavigation.Instance.getVertex(this.plan[this.targetIndex]).position) < this.minReachDistance)
+			if(this.targetIndex < this.plan.Count)
 			{
-				// Increment to go to next target
-				++this.targetIndex;
-				
-				// Check if we've reached the last node in the path
-				if(this.targetIndex >= this.plan.Count)
+				// Check if we've reached the target in the plan
+				if(DistanceCalculator.euclidianDistance(this.transform.position, VertexNavigation.Instance.getVertex(this.plan[this.targetIndex]).position) < this.minReachDistance)
 				{
-					// If we've reached the last node, add the player so we now move towards him or her
-					this.move(Player.Instance.transform.position);
+					// Increment to go to next target
+					++this.targetIndex;
+				}
 
-					// break out of function
-					return;
+				if(this.targetIndex < this.plan.Count)
+				{
+					// move towards target in plan
+					this.move(VertexNavigation.Instance.getVertex(this.plan[targetIndex]).position);
+				}
+				else
+				{
+					// Move towards the player
+					this.move (Player.Instance.transform.position);
 				}
 			}
-			
-			// move towards target in plan
-			this.move(VertexNavigation.Instance.getVertex(this.plan[targetIndex]).position);
+			else
+			{
+				// Move towards the player
+				this.move(Player.Instance.transform.position);
+			}
 		}
 	}
 
 	// Update is called once per frame
 	void Update () 
 	{
-		// Check if new plan needs to be calculated
-		if(DistanceCalculator.euclidianDistance(this.target, Player.Instance.transform.position) >= this.minReachDistance)
+		// Check if new plan needs to be calculated // minPlayerChangeDistnace
+//		print ("distance: " + DistanceCalculator.euclidianDistance(this.target, Player.Instance.transform.position));
+		if(DistanceCalculator.euclidianDistance(this.target, Player.Instance.transform.position) >= this.minPlayerChangeDistance)
 		{
 			this.targetIndex = 0;
 			this.target = Player.Instance.transform.position;
-			this.movement.setTarget(this.target);
-			this.movement.getNewPlan();
+			this.movement.setTarget(Player.Instance.transform.position);
+			this.plan = this.movement.getNewPlan();
 		}
 
 		// Execute movement

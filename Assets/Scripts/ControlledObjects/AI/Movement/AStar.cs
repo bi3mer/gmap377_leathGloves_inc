@@ -79,11 +79,8 @@ public class AStar: MonoBehaviour, AiMovement
     {
         // http://docs.unity3d.com/ScriptReference/RaycastHit-triangleIndex.html
         // Raycast downward
-        RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, transform.up * -1 * this.distanceToGround);
-
-        // Visited nodes
-        Dictionary<int, bool> visitedNodes = new Dictionary<int, bool>();
+		// Raycast towards center of planet
+		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, Vector3.down, 200f);
 
         // Create list to hold unformatted moves
         List<int> unFormattedMoves = new List<int>();
@@ -94,12 +91,14 @@ public class AStar: MonoBehaviour, AiMovement
             // Check if correct mesh was hit
 			if (hit.collider != null && hit.collider.tag == "Planet")
             {
-				print ("hit: " + hit.triangleIndex);
                 unFormattedMoves = VertexNavigation.Instance.getMovesTriangle(hit.triangleIndex * 3);
                 break;
             }
         }
-	
+
+		// Visited nodes
+		Dictionary<int, bool> visitedNodes = new Dictionary<int, bool>();
+
         // Instantiate priority queue
         PriorityQueue queue = new PriorityQueue();
 
@@ -117,14 +116,14 @@ public class AStar: MonoBehaviour, AiMovement
             queue.addNode(node);
         }
 
+		// reset plan
+//		this.plan = null;
+
 		// Run A* while moves available
         while (queue.Length() > 0)
         { 
             // Grab best node from priority queue
             AStarNode node = queue.popNode();
-
-			print (node.Index);
-			print (VertexNavigation.Instance.getMovesVertex(node.Index).Count);
 
             // Loop through the nodes available paths
 			foreach (int vertex in VertexNavigation.Instance.getMovesVertex(node.Index))
@@ -133,7 +132,7 @@ public class AStar: MonoBehaviour, AiMovement
                 if (!visitedNodes.ContainsKey(vertex))
                 {
                     // TODO: remove after debugging
-					Instantiate(this.debugCube,VertexNavigation.Instance.getVertex(vertex).position,Quaternion.identity);
+					Instantiate(this.debugCube, VertexNavigation.Instance.getVertex(vertex).position, Quaternion.identity);
 
 					// Check if close enough to target
 					if (DistanceCalculator.euclidianDistance(VertexNavigation.Instance.getVertex(vertex).position, target) < this.minDistance)
@@ -162,7 +161,7 @@ public class AStar: MonoBehaviour, AiMovement
             }
         }
 
-//		print ("finding path failed");
+		// returned failed plan
         return this.plan;
     }
 
@@ -178,7 +177,7 @@ public class AStar: MonoBehaviour, AiMovement
         {
             return null;
         }
-
+		print ("getting new plan!");
 		// Get plan
         return this.getThePath();
     }
@@ -195,7 +194,7 @@ public class AStar: MonoBehaviour, AiMovement
 		// Draw Raycast down
 		if(this.drawRayCastDown)
 		{
-			Debug.DrawRay(transform.position, transform.up * -1 * this.distanceToGround);
+			Debug.DrawLine(this.transform.position, Vector3.zero, Color.red);
 		}
 
 		// Draw path

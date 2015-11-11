@@ -85,6 +85,7 @@ public class VertexNavigation : MonoBehaviour
 			vertices[i] *= scale;
 		}
 
+		// Create lookup list from triangles
 		for (int triangleIndex = 0; triangleIndex < this.mesh.triangles.Length; triangleIndex += 3)
 		{
 			// Loop through individiual triangle index
@@ -126,12 +127,20 @@ public class VertexNavigation : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Kills the baked movement table.
+	/// </summary>
 	public void killTable()
 	{
 		this.movemementLookup = null;
 	}
 
     // TODO: make this array instead of list for optimization (term 2)
+	/// <summary>
+	/// Gets the moves from a triangle index.
+	/// </summary>
+	/// <returns>The moves triangle.</returns>
+	/// <param name="triangleIndex">Triangle index.</param>
     public List<int> getMovesTriangle(int triangleIndex)
     {
         // initialize
@@ -146,11 +155,21 @@ public class VertexNavigation : MonoBehaviour
         return indices;
     }
 
+	/// <summary>
+	/// Gets the moves for a given vertex index.
+	/// </summary>
+	/// <returns>The moves vertex.</returns>
+	/// <param name="vertexIndex">Vertex index.</param>
     public List<int> getMovesVertex(int vertexIndex)
     {
         return this.movemementLookup[vertexIndex].getMoves();
     }
 
+	/// <summary>
+	/// get a vertex from the index of an vertex
+	/// </summary>
+	/// <returns>The vertex.</returns>
+	/// <param name="vertexIndex">Vertex index.</param>
     public Vertice getVertex(int vertexIndex)
     {
 		return this.movemementLookup[vertexIndex];
@@ -161,6 +180,9 @@ public class VertexNavigation : MonoBehaviour
 //		this.buildTable();
 //	}
 
+	/// <summary>
+	/// Raises the draw gizmos event to draw the available nodes.
+	/// </summary>
 	void OnDrawGizmos() 
 	{
 		if(this.showNodes)
