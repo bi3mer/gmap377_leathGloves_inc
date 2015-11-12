@@ -35,9 +35,9 @@ public class WeaponSwitch : MonoBehaviour {
         }
         if (InputManager.Player2VerticalInput < 0 || Input.GetKeyDown(KeyCode.Alpha4))
         {
-            if (cache.LaserBeam.GetComponent<Weapon>().Ammo > 0)
+            if (cache.Mine.GetComponent<Weapon>().Ammo > 0)
             {
-                GetComponent<Shooting>().bullet = cache.Mine;
+                GetComponent<Shooting>().bullet = cache.Mine; 
             }
         }
     }

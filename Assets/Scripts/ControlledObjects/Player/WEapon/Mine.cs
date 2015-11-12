@@ -4,7 +4,7 @@ using System.Collections;
 public class Mine : MonoBehaviour
 {
     public float ExplosionRadius, ExplosionForce, SetTime;
-
+    public GameObject Explosion;
     void Start()
     {
         if (this.SetTime == 0f)
@@ -28,7 +28,7 @@ public class Mine : MonoBehaviour
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
 
             // Create Explosion object
-            //   Instantiate(Explosion, new Vector3(transform.position.x, transform.position.y +1f, transform.position.z), transform.rotation);
+            Instantiate(Explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
 
             // For every object in the explosion
             for (int i = 0; i < hitColliders.Length; i++)
