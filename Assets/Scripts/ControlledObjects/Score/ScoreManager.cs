@@ -49,8 +49,12 @@ public class ScoreManager : MonoBehaviour
     {
         score += increaseAmount * multi;
     }
+    public void DecreaseScore(int decreaseAmount)
+    {
+        score += decreaseAmount;
+    }
 
-   public void SetName(string PlayerName)
+    public void SetName(string PlayerName)
    {
        ScoreManager.Instance.PlayerName = PlayerName;
    }
