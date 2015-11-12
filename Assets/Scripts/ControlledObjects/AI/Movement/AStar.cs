@@ -69,7 +69,7 @@ public class AStar: MonoBehaviour, AiMovement
         // http://docs.unity3d.com/ScriptReference/RaycastHit-triangleIndex.html
         // Raycast downward
 		// Raycast towards center of planet
-		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, Vector3.down, 200f);
+		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, VertexNavigation.Instance.transform.position, 200f);
 
         // Create list to hold unformatted moves
         List<int> unFormattedMoves = new List<int>();
@@ -125,7 +125,7 @@ public class AStar: MonoBehaviour, AiMovement
                     //Instantiate(this.debugCube, VertexNavigation.Instance.getVertex(vertex).position, Quaternion.identity);
 
 					// Check if close enough to target
-					if (DistanceCalculator.euclidianDistance(VertexNavigation.Instance.getVertex(vertex).position, target) < this.minDistance)
+					if (DistanceCalculator.euclidianDistance(VertexNavigation.Instance.getVertex(vertex).position, this.target) < this.minDistance)
                     {
                         // Yes we are, solved
                         this.plan = node.Moves;
@@ -185,7 +185,7 @@ public class AStar: MonoBehaviour, AiMovement
 		// Draw Raycast down
 		if(this.drawRayCastDown)
 		{
-			Debug.DrawLine(this.transform.position, Vector3.zero, Color.red);
+			Debug.DrawLine(this.transform.position, VertexNavigation.Instance.transform.position, Color.red);
 		}
 
 		// Draw path
