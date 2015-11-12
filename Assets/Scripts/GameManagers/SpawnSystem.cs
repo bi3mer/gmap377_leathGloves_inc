@@ -49,7 +49,7 @@ public class SpawnSystem : MonoBehaviour {
 
         int verticesSize = VertexNavigation.Instance.vertices.Length;
         while (!foundVertex) {
-            position = VertexNavigation.Instance.vertices[Random.Range(0, verticesSize - 1)];
+            position = VertexNavigation.Instance.vertices[Random.Range(0, verticesSize)];
 
             if (Player.Instance == null) {
                 break;
@@ -59,7 +59,7 @@ public class SpawnSystem : MonoBehaviour {
             }
         }
         
-        GameObject e = GameObject.Instantiate(EnemyPrefabs[Random.Range(0, EnemyPrefabs.Count - 1)], position, new Quaternion()) as GameObject;
+        GameObject e = GameObject.Instantiate(EnemyPrefabs[Random.Range(0, EnemyPrefabs.Count)], position, new Quaternion()) as GameObject;
         Gravity nearestPlanet = InterplanetaryObject.GetNearestPlanet(position);
         Vector3 angleToPlanet = position - nearestPlanet.transform.position;
         Vector3 oldpos = e.transform.position;
