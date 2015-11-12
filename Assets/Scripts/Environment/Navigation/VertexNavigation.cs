@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 [System.Serializable]
 public class VertexNavigation : MonoBehaviour 
@@ -24,7 +25,7 @@ public class VertexNavigation : MonoBehaviour
     // TODO: document this stuff
 	[HideInInspector]
 	[SerializeField]
-	public List<Vertice> movemementLookup;
+	public List<KeyValuePair<int, Vertice>> movemementLookup;
 
 	[HideInInspector]
 	[SerializeField]
@@ -63,8 +64,10 @@ public class VertexNavigation : MonoBehaviour
 	public void buildTable() 
 	{
 		// Initiailize look up list
-		if(this.movemementLookup == null)
-			this.movemementLookup = new List<Vertice>();
+		this.movemementLookup = new List<KeyValuePair<int, Vertice>>();
+
+		// temp holder dictionary
+		Dictionary<int, Vertice> movementDictionary = new Dictionary<int, Vertice>();
 
 		// Get Radius
 		this._radius = GetComponent<SphereCollider>().radius * transform.localScale.x;
@@ -98,34 +101,37 @@ public class VertexNavigation : MonoBehaviour
                 int vertice = this.triangles[globalIndex];
 
                 // Check if key exists, if not add to dictionary
-                if (vertice <= this.movemementLookup.Count || this.movemementLookup[vertice] == null)
+                if (!movementDictionary.ContainsKey(vertice))
                 {
                     // Create new vertices
                     Vertice vert = new Vertice();
                     vert.position = this.vertices[vertice];
 
                     // Add new vertice to dictionary
-                    this.movemementLookup.Insert(vertice, vert);
+					movementDictionary[vertice] = vert;
                 }
 
                 // Add remaining
                 switch (vertexIndex)
                 {
                     case 0:
-                        this.movemementLookup[vertice].Add(mesh.triangles[globalIndex + 1]);
-                        this.movemementLookup[vertice].Add(mesh.triangles[globalIndex + 2]);
+                        movementDictionary[vertice].Add(mesh.triangles[globalIndex + 1]);
+                        movementDictionary[vertice].Add(mesh.triangles[globalIndex + 2]);
                         break;
                     case 1:
-                        this.movemementLookup[vertice].Add(mesh.triangles[globalIndex - 1]);
-                        this.movemementLookup[vertice].Add(mesh.triangles[globalIndex + 1]);
+                        movementDictionary[vertice].Add(mesh.triangles[globalIndex - 1]);
+                        movementDictionary[vertice].Add(mesh.triangles[globalIndex + 1]);
                         break;
                     case 2:
-                        this.movemementLookup[vertice].Add(mesh.triangles[globalIndex - 1]);
-                        this.movemementLookup[vertice].Add(mesh.triangles[globalIndex - 2]);
+                        movementDictionary[vertice].Add(mesh.triangles[globalIndex - 1]);
+                        movementDictionary[vertice].Add(mesh.triangles[globalIndex - 2]);
                         break;
                 }
             }
         }
+
+		// Convert dictionary to list
+		this.movemementLookup = movementDictionary.ToList();
 	}
 
 	/// <summary>
@@ -147,7 +153,7 @@ public class VertexNavigation : MonoBehaviour
         // store moves
         for (int i = 0; i < this.movemementLookup.Count; ++i)
         {
-            int key = this.movemementLookup[i].getMoves().Count;
+            int key = this.movemementLookup[i].Value.getMoves().Count;
             if (!numMoves.ContainsKey(key))
             {
                 numMoves.Add(key, 0);
@@ -160,6 +166,9 @@ public class VertexNavigation : MonoBehaviour
         {
             print(key + ": " + numMoves[key]);
         }
+
+		// Print size of movement Lookup
+		print ("size of dictionary: " + this.movemementLookup.Count);
 
         // Print total number of verts
         print("total number of vertices: " + VertexNavigation.Instance.triangles.Length);
@@ -184,7 +193,7 @@ public class VertexNavigation : MonoBehaviour
 	/// <param name="vertexIndex">Vertex index.</param>
     public List<int> getMovesVertex(int vertexIndex)
     {
-        return this.movemementLookup[vertexIndex].getMoves();
+        return this.movemementLookup[vertexIndex].Value.getMoves();
     }
 
 	/// <summary>
@@ -194,7 +203,7 @@ public class VertexNavigation : MonoBehaviour
 	/// <param name="vertexIndex">Vertex index.</param>
     public Vertice getVertex(int vertexIndex)
     {
-		return this.movemementLookup[vertexIndex];
+		return this.movemementLookup[vertexIndex].Value;
     }
 
 	/// <summary>
