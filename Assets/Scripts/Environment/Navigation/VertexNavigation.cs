@@ -25,7 +25,7 @@ public class VertexNavigation : MonoBehaviour
     // TODO: document this stuff
 	[HideInInspector]
 	[SerializeField]
-	public List<KeyValuePair<int, Vertice>> movemementLookup;
+	public List<Vertice> movementLookup;
 
 	[HideInInspector]
 	[SerializeField]
@@ -64,10 +64,7 @@ public class VertexNavigation : MonoBehaviour
 	public void buildTable() 
 	{
 		// Initiailize look up list
-		this.movemementLookup = new List<KeyValuePair<int, Vertice>>();
-
-		// temp holder dictionary
-		Dictionary<int, Vertice> movementDictionary = new Dictionary<int, Vertice>();
+        this.movementLookup = new List<Vertice>();
 
 		// Get Radius
 		this._radius = GetComponent<SphereCollider>().radius * transform.localScale.x;
@@ -82,10 +79,9 @@ public class VertexNavigation : MonoBehaviour
 		this.triangles = mesh.triangles;
 		
 		// Convert vertices to global coordiantes
-		float scale = transform.localScale.x;
 		for (int i = 0; i < mesh.vertexCount; ++i)
 		{
-			vertices[i] *= scale;
+            vertices[i] = this.transform.TransformPoint(vertices[i]);
 		}
 
         // Loop through triangles
@@ -100,38 +96,41 @@ public class VertexNavigation : MonoBehaviour
                 // Create vertice index relative to triangle index
                 int vertice = this.triangles[globalIndex];
 
+                // Increase size of array til proper size
+                while (vertice >= this.movementLookup.Count)
+                {
+                    this.movementLookup.Add(null);
+                }
+
                 // Check if key exists, if not add to dictionary
-                if (!movementDictionary.ContainsKey(vertice))
+                if (this.movementLookup[vertice] == null)
                 {
                     // Create new vertices
                     Vertice vert = new Vertice();
                     vert.position = this.vertices[vertice];
 
                     // Add new vertice to dictionary
-					movementDictionary[vertice] = vert;
+					this.movementLookup[vertice] = vert;
                 }
 
                 // Add remaining
                 switch (vertexIndex)
                 {
                     case 0:
-                        movementDictionary[vertice].Add(mesh.triangles[globalIndex + 1]);
-                        movementDictionary[vertice].Add(mesh.triangles[globalIndex + 2]);
+                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 1]);
+                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 2]);
                         break;
                     case 1:
-                        movementDictionary[vertice].Add(mesh.triangles[globalIndex - 1]);
-                        movementDictionary[vertice].Add(mesh.triangles[globalIndex + 1]);
+                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 1]);
+                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 1]);
                         break;
                     case 2:
-                        movementDictionary[vertice].Add(mesh.triangles[globalIndex - 1]);
-                        movementDictionary[vertice].Add(mesh.triangles[globalIndex - 2]);
+                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 1]);
+                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 2]);
                         break;
                 }
             }
         }
-
-		// Convert dictionary to list
-		this.movemementLookup = movementDictionary.ToList();
 	}
 
 	/// <summary>
@@ -139,7 +138,7 @@ public class VertexNavigation : MonoBehaviour
 	/// </summary>
 	public void killTable()
 	{
-		this.movemementLookup = null;
+		this.movementLookup = null;
 	}
 
     /// <summary>
@@ -151,13 +150,19 @@ public class VertexNavigation : MonoBehaviour
         Dictionary<int, int> numMoves = new Dictionary<int, int>();
 
         // store moves
-        for (int i = 0; i < this.movemementLookup.Count; ++i)
+        for (int i = 0; i < this.movementLookup.Count; ++i)
         {
-            int key = this.movemementLookup[i].Value.getMoves().Count;
+            // get key
+            int key = this.movementLookup[i].getMoves().Count;
+            
+            // Check if dictionary has key
             if (!numMoves.ContainsKey(key))
             {
+                // add key to dicitonary
                 numMoves.Add(key, 0);
             }
+
+            // Increment
             ++numMoves[key];
         }
 
@@ -168,7 +173,7 @@ public class VertexNavigation : MonoBehaviour
         }
 
 		// Print size of movement Lookup
-		print ("size of dictionary: " + this.movemementLookup.Count);
+		print ("size of dictionary: " + this.movementLookup.Count);
 
         // Print total number of verts
         print("total number of vertices: " + VertexNavigation.Instance.triangles.Length);
@@ -193,7 +198,7 @@ public class VertexNavigation : MonoBehaviour
 	/// <param name="vertexIndex">Vertex index.</param>
     public List<int> getMovesVertex(int vertexIndex)
     {
-        return this.movemementLookup[vertexIndex].Value.getMoves();
+        return this.movementLookup[vertexIndex].getMoves();
     }
 
 	/// <summary>
@@ -203,7 +208,7 @@ public class VertexNavigation : MonoBehaviour
 	/// <param name="vertexIndex">Vertex index.</param>
     public Vertice getVertex(int vertexIndex)
     {
-		return this.movemementLookup[vertexIndex].Value;
+		return this.movementLookup[vertexIndex];
     }
 
 	/// <summary>

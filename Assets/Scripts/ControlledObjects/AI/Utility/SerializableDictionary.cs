@@ -5,6 +5,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class SerializableDictionary<Key, Value>
 {
+    // DON'T USE
 	[SerializeField]
 	private List<Key> keys = new List<Key>();
 
