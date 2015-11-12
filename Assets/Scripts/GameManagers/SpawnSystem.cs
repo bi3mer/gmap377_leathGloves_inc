@@ -64,7 +64,7 @@ public class SpawnSystem : MonoBehaviour {
         Vector3 angleToPlanet = position - nearestPlanet.transform.position;
         Vector3 oldpos = e.transform.position;
         e.transform.position = e.transform.position + angleToPlanet.normalized * 10;
-        Debug.Log(oldpos + " -> " + e.transform.position + " (" + Vector3.Distance(nearestPlanet.transform.position, oldpos) + " -> " + Vector3.Distance(nearestPlanet.transform.position, e.transform.position) + ")");
+        //Debug.Log(oldpos + " -> " + e.transform.position + " (" + Vector3.Distance(nearestPlanet.transform.position, oldpos) + " -> " + Vector3.Distance(nearestPlanet.transform.position, e.transform.position) + ")");
         
     }
 

@@ -196,15 +196,25 @@ public class PlanetOrientation : MonoBehaviour {
 		}
 	}
 
-	void UpdateGrounded() {
-		int layermask = LayerMask.GetMask("Environment");
-		GroundedCenter = (Physics.OverlapSphere(_gcCenter.transform.position, GroundedCheckDistance, layermask).Length > 0);
-		GroundedTopRight = (Physics.OverlapSphere(_gcTopRight.transform.position, GroundedCheckDistance, layermask).Length > 0);
-		GroundedTopLeft = (Physics.OverlapSphere(_gcTopLeft.transform.position, GroundedCheckDistance, layermask).Length > 0);
-		GroundedBottomRight = (Physics.OverlapSphere(_gcBottomRight.transform.position, GroundedCheckDistance, layermask).Length > 0);
-		GroundedBottomLeft = (Physics.OverlapSphere(_gcBottomLeft.transform.position, GroundedCheckDistance, layermask).Length > 0);
+    public void OnDrawGizmos() {
+        /*Gizmos.DrawSphere(_gcCenter.transform.position, GroundedCheckDistance);
+        Gizmos.DrawSphere(_gcTopRight.transform.position, GroundedCheckDistance);
+        Gizmos.DrawSphere(_gcTopLeft.transform.position, GroundedCheckDistance);
+        Gizmos.DrawSphere(_gcBottomRight.transform.position, GroundedCheckDistance);
+        Gizmos.DrawSphere(_gcBottomLeft.transform.position, GroundedCheckDistance);*/
 
-		Grounded = (GroundedCenter || GroundedTopRight || GroundedTopLeft || GroundedBottomRight || GroundedBottomLeft);
+    }
+
+    void UpdateGrounded() {
+		int layermask = LayerMask.GetMask("Environment");
+        Collider[] cols = Physics.OverlapSphere(_gcCenter.transform.position, GroundedCheckDistance, layermask);
+        GroundedCenter = (Physics.OverlapSphere(_gcCenter.transform.position, GroundedCheckDistance, layermask).Length > 0);
+		GroundedTopRight = (Physics.OverlapSphere(_gcTopRight.transform.position, GroundedCheckDistance, layermask).Length > 0);
+        GroundedTopLeft = (Physics.OverlapSphere(_gcTopLeft.transform.position, GroundedCheckDistance, layermask).Length > 0);
+        GroundedBottomRight = (Physics.OverlapSphere(_gcBottomRight.transform.position, GroundedCheckDistance, layermask).Length > 0);
+        GroundedBottomLeft = (Physics.OverlapSphere(_gcBottomLeft.transform.position, GroundedCheckDistance, layermask).Length > 0);
+
+        Grounded = (GroundedCenter || GroundedTopRight || GroundedTopLeft || GroundedBottomRight || GroundedBottomLeft);
 	}
 
 	public void UpdateTiltAxes() {
