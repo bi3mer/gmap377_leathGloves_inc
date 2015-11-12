@@ -62,7 +62,7 @@ public class AStar: MonoBehaviour, AiMovement
     }
 
     /// <summary>
-    ///     get path plan
+    /// get path plan
     /// </summary>
     private List<int> getThePath()
     {
@@ -99,7 +99,8 @@ public class AStar: MonoBehaviour, AiMovement
             moves.Add(vertex);
 
             // Create new node
-            AStarNode node = new AStarNode(1, this.calculateHeuristicFromVertex(vertex), vertex, moves);
+            //AStarNode node = new AStarNode(1, this.calculateHeuristicFromVertex(vertex), vertex, moves);
+            AStarNode node = new AStarNode(1, 1, vertex, moves);
 
             // add node to queue
             queue.addNode(node);
@@ -121,7 +122,7 @@ public class AStar: MonoBehaviour, AiMovement
                 if (!visitedNodes.ContainsKey(vertex))
                 {
                     // TODO: remove after debugging
-					Instantiate(this.debugCube, VertexNavigation.Instance.getVertex(vertex).position, Quaternion.identity);
+                    //Instantiate(this.debugCube, VertexNavigation.Instance.getVertex(vertex).position, Quaternion.identity);
 
 					// Check if close enough to target
 					if (DistanceCalculator.euclidianDistance(VertexNavigation.Instance.getVertex(vertex).position, target) < this.minDistance)
@@ -141,7 +142,8 @@ public class AStar: MonoBehaviour, AiMovement
                         // Create node
                         List<int> newMoves = node.Moves;
                         newMoves.Add(vertex);
-                        AStarNode newNode = new AStarNode(node.G + this.stepCount, this.calculateHeuristicFromVertex(vertex), vertex, newMoves);
+                        //AStarNode newNode = new AStarNode(node.G + this.stepCount, this.calculateHeuristicFromVertex(vertex), vertex, newMoves);
+                        AStarNode newNode = new AStarNode(node.G + this.stepCount, 1, vertex, newMoves);
 
                         // add ndoe to queue
                         queue.addNode(newNode);

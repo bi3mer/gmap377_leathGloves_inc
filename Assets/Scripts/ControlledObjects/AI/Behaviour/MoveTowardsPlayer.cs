@@ -87,4 +87,6 @@ public class MoveTowardsPlayer : Enemy
 		// Execute movement
 		this.executeCurrentPlan();
 	}
+
+   
 }
