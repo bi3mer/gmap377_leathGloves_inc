@@ -11,6 +11,7 @@ public class ForceMover : MonoBehaviour {
 	public float moveSpeed = 10f;
 	public float turnSpeed = 50f;
 	public float movePower = 500;
+    public float movementAdjust = 0f;
 
 	private Rigidbody m_Rigidbody;
 	private PlanetOrientation m_planetOrientation;
@@ -49,14 +50,14 @@ public class ForceMover : MonoBehaviour {
         //Debug.Log(direction);
 
 	    if (InputManager.Player1VerticalInput > float.Epsilon && grounded) {
-			Vector3 force = direction * m_Rigidbody.mass * acceleration * InputManager.Player1VerticalInput;
+            Vector3 force = direction * (m_Rigidbody.mass * acceleration * InputManager.Player1VerticalInput + (1 - InputManager.Player1VerticalInput) * movementAdjust);
 			if (m_Rigidbody.velocity.magnitude < topSpeed) {
 				m_Rigidbody.AddRelativeForce(force, ForceMode.Acceleration);
 			}
 		}
 
 		if (InputManager.Player1VerticalInput < -1 * float.Epsilon && grounded) {
-			Vector3 force = Vector3.forward * m_Rigidbody.mass * acceleration * InputManager.Player1VerticalInput;
+			Vector3 force = direction * (m_Rigidbody.mass * acceleration * InputManager.Player1VerticalInput - (-1 + InputManager.Player1VerticalInput) * movementAdjust);
 			if (m_Rigidbody.velocity.magnitude < topSpeed) {
 				m_Rigidbody.AddRelativeForce(force, ForceMode.Force);
 			}

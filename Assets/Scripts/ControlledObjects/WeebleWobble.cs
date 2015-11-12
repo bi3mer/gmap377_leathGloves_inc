@@ -38,8 +38,7 @@ public class WeebleWobble : MonoBehaviour {
 				m_rigidbody.rotation = Quaternion.AngleAxis(rollRotationCorrection, transform.forward) * m_rigidbody.rotation;
 				m_planetOrientation.UpdateTiltAxes();
 			}
-
-			Debug.Log("Weeble Wobble: Pitch Correction = " + pitchRotationCorrection + ", Roll Correction = " + rollRotationCorrection);
+            
 		}
 	}
 }
