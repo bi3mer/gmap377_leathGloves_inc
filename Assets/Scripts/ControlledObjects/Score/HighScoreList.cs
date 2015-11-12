@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class HighScoreList : MonoBehaviour {
 	public Text HighScoreTitle;
 	Text HighScoreListGUI;
 	public static HighScoreList Instance = null;
-	//int[] highScoresArray = new int[5];
-	void Awake()
+
+    public static List<PlayerScore> scoreIndex = new List<PlayerScore>(5);
+
+    void Awake()
 	{
 		if (Instance)
 		{
@@ -33,24 +36,39 @@ public class HighScoreList : MonoBehaviour {
 		DisplayHighScore();
 	}
 	
-	// Update is called once per frame
-	void Update () 
-	{
 	
-	}
-	
-	void StoreHighScore(int newHighscore)
+	void StoreHighScore(int newHighScore)
 	{
-		int oldHighscore = PlayerPrefs.GetInt("highscore", 0);    
-		if(newHighscore > oldHighscore)
+        
+
+		int oldHighScore = PlayerPrefs.GetInt("highScore", 0);    
+       
+		if(newHighScore > oldHighScore)
 		{
-			PlayerPrefs.SetInt("highscore", newHighscore);
+			PlayerPrefs.SetInt("highScore", newHighScore);
 		}
 		
 		PlayerPrefs.Save();
 	}
+
+    void StoreNewHighScore(int newHighScore, string playerName)
+    {
+        PlayerScore a = new PlayerScore();
+        a.name = playerName;
+        a.score = newHighScore;
+
+        scoreIndex.Add(a);
+        scoreIndex.Sort();
+        scoreIndex.Reverse();
+
+        PlayerPrefs.SetString("name0", scoreIndex[0].name);
+        PlayerPrefs.SetInt("score0", scoreIndex[0].score);
+        PlayerPrefs.SetString("name1", scoreIndex[1].name);
+        PlayerPrefs.SetInt("score1", scoreIndex[1].score);
+    }
 	void DisplayHighScore()
 	{
-		HighScoreListGUI.text = ((ScoreManager.Instance.GetName()) + " " +  PlayerPrefs.GetInt("highscore",0).ToString());
+       
+		HighScoreListGUI.text = ((ScoreManager.Instance.GetName()) + " " +  PlayerPrefs.GetInt("highScore").ToString());
 	}
 }
