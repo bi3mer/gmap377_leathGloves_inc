@@ -11,7 +11,8 @@ public class RayCastDownCheck : MonoBehaviour
     {
 		// Raycast downwards
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, Vector3.down);
+        hits = Physics.RaycastAll(transform.position, VertexNavigation.Instance.transform.position - transform.position);
+		Debug.DrawLine(transform.position, VertexNavigation.Instance.transform.position);
 
 		foreach(RaycastHit hit in hits)
 		{

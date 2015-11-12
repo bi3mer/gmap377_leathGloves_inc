@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class AStarNode
 {
     // Constructor
-    public AStarNode(int _g, float _h, int _index, List<int> _moves)
+    public AStarNode(float _g, float _h, int _index, List<int> _moves)
     {
         this.G = _g;
         this.H = _h;
@@ -14,8 +14,8 @@ public class AStarNode
     }
 
     // Step Count
-    private int g;
-    public int G
+    private float g;
+    public float G
     {
         get
         {

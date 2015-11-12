@@ -73,7 +73,7 @@ public class VertexNavigation : MonoBehaviour
 		this.mesh = GetComponent<MeshFilter>().sharedMesh;
 		
 		// Get copy of vertices
-		this.vertices = mesh.vertices;
+		System.Array.Copy(mesh.vertices, this.vertices, mesh.vertices.Length);
 		
 		// Get copy of triangles
 		this.triangles = mesh.triangles;
@@ -81,7 +81,21 @@ public class VertexNavigation : MonoBehaviour
 		// Convert vertices to global coordiantes
 		for (int i = 0; i < mesh.vertexCount; ++i)
 		{
-            vertices[i] = this.transform.TransformPoint(vertices[i]);
+			/*
+			GameObject e = GameObject.Instantiate(EnemyPrefabs[Random.Range(0, EnemyPrefabs.Count)], position, new Quaternion()) as GameObject;
+			Gravity nearestPlanet = InterplanetaryObject.GetNearestPlanet(position);
+	        Vector3 angleToPlanet = position - nearestPlanet.transform.position;
+	        Vector3 oldpos = e.transform.position;
+	        e.transform.position = e.transform.position + angleToPlanet.normalized * 10;
+			*/
+			// get global position
+			vertices[i] = this.transform.TransformPoint(vertices[i]);
+
+			// Get angle to planet
+			Vector3 angleToPlanet = vertices[i] - this.transform.position;
+
+			// Adjust vertice a tiny bit up
+			vertices[i] += (angleToPlanet.normalized * .5f);
 		}
 
         // Loop through triangles

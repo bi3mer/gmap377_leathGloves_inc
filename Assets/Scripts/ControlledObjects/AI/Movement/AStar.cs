@@ -6,7 +6,7 @@ public class AStar: MonoBehaviour, AiMovement
 {
 	public GameObject debugCube;
     public int distanceToGround = 10;
-    public int stepCount = 1;
+//    public int stepCount = 1;
 
 	public bool drawRayCastDown = false;
     public bool drawPath = false;
@@ -46,7 +46,7 @@ public class AStar: MonoBehaviour, AiMovement
     /// </summary>
     /// <param name="pos"></param>
     /// <returns></returns>
-    private float calculateHeuristcFromPos(Vector3 pos)
+    private float calculateDistanceFromPos(Vector3 pos)
     {
         return DistanceCalculator.euclidianDistance(pos, this.target);
     }
@@ -56,9 +56,9 @@ public class AStar: MonoBehaviour, AiMovement
     /// </summary>
     /// <param name="vertex"></param>
     /// <returns></returns>
-    private float calculateHeuristicFromVertex(int vertex)
+    private float calculateDistanceFromVertex(int vertex)
     {
-        return this.calculateHeuristcFromPos(VertexNavigation.Instance.getVertex(vertex).position);
+		return this.calculateDistanceFromPos(VertexNavigation.Instance.getVertex(vertex).position);
     }
 
     /// <summary>
@@ -66,10 +66,12 @@ public class AStar: MonoBehaviour, AiMovement
     /// </summary>
     private List<int> getThePath()
     {
+		this.plan  = new List<int>();
+
         // http://docs.unity3d.com/ScriptReference/RaycastHit-triangleIndex.html
         // Raycast downward
 		// Raycast towards center of planet
-		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, VertexNavigation.Instance.transform.position, 200f);
+		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, VertexNavigation.Instance.transform.position - this.transform.position, 200f);
 
         // Create list to hold unformatted moves
         List<int> unFormattedMoves = new List<int>();
@@ -121,11 +123,11 @@ public class AStar: MonoBehaviour, AiMovement
                 // Only use vertex if we haven't already explored this node
                 if (!visitedNodes.ContainsKey(vertex))
                 {
-                    // TODO: remove after debugging
-                    //Instantiate(this.debugCube, VertexNavigation.Instance.getVertex(vertex).position, Quaternion.identity);
+					// Calculate distance between vertex and target
+					float vertexHeuristic = DistanceCalculator.euclidianDistance(VertexNavigation.Instance.getVertex(vertex).position, this.target);
 
 					// Check if close enough to target
-					if (DistanceCalculator.euclidianDistance(VertexNavigation.Instance.getVertex(vertex).position, this.target) < this.minDistance)
+					if (vertexHeuristic < this.minDistance)
                     {
                         // Yes we are, solved
                         this.plan = node.Moves;
@@ -139,13 +141,14 @@ public class AStar: MonoBehaviour, AiMovement
                         // add to visited
                         visitedNodes.Add(vertex, true);
 
-                        // Create node
-                        List<int> newMoves = node.Moves;
+                        // Create cropy of moves
+						List<int> newMoves = new List<int>(node.Moves);
                         newMoves.Add(vertex);
-                        //AStarNode newNode = new AStarNode(node.G + this.stepCount, this.calculateHeuristicFromVertex(vertex), vertex, newMoves);
-                        AStarNode newNode = new AStarNode(node.G + this.stepCount, 1, vertex, newMoves);
 
-                        // add ndoe to queue
+						// Create new nodes with heuristic and step cost
+						AStarNode newNode = new AStarNode(node.G + this.calculateDistanceFromVertex(vertex), vertexHeuristic, vertex, newMoves);
+
+                        // add node to queue
                         queue.addNode(newNode);
                     }
                 }
