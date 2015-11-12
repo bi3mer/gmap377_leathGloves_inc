@@ -51,7 +51,7 @@ public class ScoreManager : MonoBehaviour
     }
     public void DecreaseScore(int decreaseAmount)
     {
-        score += decreaseAmount;
+        score -= decreaseAmount;
     }
 
     public void SetName(string PlayerName)
