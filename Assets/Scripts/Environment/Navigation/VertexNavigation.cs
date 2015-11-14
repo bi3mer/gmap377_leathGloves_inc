@@ -22,6 +22,9 @@ public class VertexNavigation : MonoBehaviour
 		}
 	}
 
+    // height of vertices off ground
+    public float verticeHeight = .5f;
+
     // TODO: document this stuff
 	[HideInInspector]
 	[SerializeField]
@@ -56,6 +59,31 @@ public class VertexNavigation : MonoBehaviour
             // pass
         }
     }
+
+    public void modifyVerticeHeights()
+    {
+        // Get mesh of planet
+        this.mesh = GetComponent<MeshFilter>().sharedMesh;
+
+        // Get copy of vertices
+        System.Array.Copy(this.mesh.vertices, this.vertices, this.mesh.vertices.Length);
+
+        // Get copy of triangles
+        this.triangles = mesh.triangles;
+
+        // Convert vertices to global coordiantes
+        for (int i = 0; i < mesh.vertexCount; ++i)
+        {
+            // get global position
+            vertices[i] = this.transform.TransformPoint(vertices[i]);
+
+            // Get angle to planet
+            Vector3 angleToPlanet = vertices[i] - this.transform.position;
+
+            // Adjust vertice a tiny bit up
+            vertices[i] += (angleToPlanet.normalized * this.verticeHeight);
+        }
+    }
 	
 	/// <summary>
 	/// Map 3d sphere to 2d coordiante system
@@ -68,35 +96,9 @@ public class VertexNavigation : MonoBehaviour
 
 		// Get Radius
 		this._radius = GetComponent<SphereCollider>().radius * transform.localScale.x;
-		
-		// Get mesh of planet
-		this.mesh = GetComponent<MeshFilter>().sharedMesh;
-		
-		// Get copy of vertices
-		System.Array.Copy(mesh.vertices, this.vertices, mesh.vertices.Length);
-		
-		// Get copy of triangles
-		this.triangles = mesh.triangles;
-		
-		// Convert vertices to global coordiantes
-		for (int i = 0; i < mesh.vertexCount; ++i)
-		{
-			/*
-			GameObject e = GameObject.Instantiate(EnemyPrefabs[Random.Range(0, EnemyPrefabs.Count)], position, new Quaternion()) as GameObject;
-			Gravity nearestPlanet = InterplanetaryObject.GetNearestPlanet(position);
-	        Vector3 angleToPlanet = position - nearestPlanet.transform.position;
-	        Vector3 oldpos = e.transform.position;
-	        e.transform.position = e.transform.position + angleToPlanet.normalized * 10;
-			*/
-			// get global position
-			vertices[i] = this.transform.TransformPoint(vertices[i]);
 
-			// Get angle to planet
-			Vector3 angleToPlanet = vertices[i] - this.transform.position;
-
-			// Adjust vertice a tiny bit up
-			vertices[i] += (angleToPlanet.normalized * .5f);
-		}
+        // Modify vertice heights and set paramaters
+        this.modifyVerticeHeights();
 
         // Loop through triangles
         for (int triangleIndex = 0; triangleIndex < this.triangles.Length; triangleIndex += 3)

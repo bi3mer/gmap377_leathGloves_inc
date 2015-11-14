@@ -29,9 +29,11 @@ public class VertexNavigationEditor : Editor
 			Debug.Log("Killed table");
 		}
 
-        if (GUILayout.Button("Print Occurrences"))
+        if (GUILayout.Button("Modify Vertice Height"))
         {
-            VertexNavigation.Instance.printMoves();
+            Debug.Log("Modifying height of vertices");
+            VertexNavigation.Instance.modifyVerticeHeights();
+            Debug.Log("finished modifying height of vertices");
         }
 	}
 
