@@ -14,8 +14,9 @@ public class Shooting : MonoBehaviour {
     void Update()
     {
         float ammo = bullet.GetComponent<Weapon>().Ammo;
+        GameObject LaserExists = GameObject.Find("LaserBeam(Clone)"); 
         // only do anything when the button is pressed
-        if (Input.GetMouseButtonDown(0) && (ammo > 0 || ammo < 0))
+        if (Input.GetMouseButtonDown(0) && (ammo > 0 || ammo < 0) && LaserExists == null)
         { 
             // Bullet being created      
             GameObject newBullet= Instantiate(bullet, spwnPt.transform.position, Quaternion.Euler(Vector3.forward)) as GameObject;

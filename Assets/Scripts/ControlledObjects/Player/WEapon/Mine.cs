@@ -3,14 +3,21 @@ using System.Collections;
 
 public class Mine : MonoBehaviour
 {
-    public float ExplosionRadius, ExplosionForce, SetTime;
+    public float LightOnIntensity, LightOffIntensity;
+    public float ExplosionRadius, ExplosionForce, SetTime, OnTime, ResetTime;
     public GameObject Explosion;
+
+    private Light mineLight;
+    private bool isOn;
     void Start()
     {
         if (this.SetTime == 0f)
         {
             this.SetTime = 10f;
         }
+        this.mineLight = GetComponentInChildren<Light>();
+        this.isOn = false;
+        this.mineLight.intensity = this.LightOffIntensity;
     }
 
     void Update()
@@ -18,6 +25,28 @@ public class Mine : MonoBehaviour
         if (this.SetTime > float.Epsilon)
         {
             this.SetTime -= Time.deltaTime;
+            
+        }
+        else
+        {
+            if (OnTime < float.Epsilon)
+            {
+                if (this.isOn)
+                {
+                    this.mineLight.intensity = this.LightOffIntensity;
+                    this.isOn = false;
+                }
+                else
+                {
+                    this.mineLight.intensity = this.LightOnIntensity;
+                    this.isOn = true;
+                }
+                this.OnTime = this.ResetTime;
+            }
+            else
+            {
+                this.OnTime -= Time.deltaTime;
+            }
         }
     }
 

@@ -3,8 +3,9 @@ using System.Collections;
 
 public class LaserBeam : MonoBehaviour
 {
+    public float GrowRate;
     private LineRenderer line;
-    float length;
+    private float length;
     Vector3 position;
 
     void Start()
@@ -12,6 +13,10 @@ public class LaserBeam : MonoBehaviour
         length = 1f;
         line = GetComponent<LineRenderer>();
         line.SetPosition(0, transform.position);
+        if (this.GrowRate == 0)
+        {
+            this.GrowRate = 7f;
+        }
         
         line.SetPosition(1, Camera.main.ScreenToWorldPoint(
                     new Vector3(
@@ -30,7 +35,7 @@ public class LaserBeam : MonoBehaviour
 
     void Update()
     {
-        length = length + 10f * Time.deltaTime;
+        length = length + this.GrowRate * Time.deltaTime;
         line.SetPosition(0, GameObject.Find("Player").transform.position);
         line.SetPosition(1, Camera.main.ScreenToWorldPoint(
                     new Vector3(
