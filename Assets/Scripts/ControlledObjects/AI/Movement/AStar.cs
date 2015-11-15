@@ -12,6 +12,7 @@ public class AStar: MonoBehaviour, AiMovement
     public bool drawPath = false;
 
     // Target
+	[HideInInspector]
     public Vector3 target;
 
 	public void setTarget(Vector3 target)

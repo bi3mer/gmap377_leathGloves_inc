@@ -24,6 +24,7 @@ public class VertexNavigation : MonoBehaviour
 
     // height of vertices off ground
     public float verticeHeight = .5f;
+	public float flyingVerticeHeight = 5f;
 
     // TODO: document this stuff
 	[HideInInspector]
@@ -42,8 +43,13 @@ public class VertexNavigation : MonoBehaviour
 	[SerializeField]
 	public Vector3[] vertices;
 
+	[HideInInspector]
+	[SerializeField]
+	public Vector3[] flyingVertices;
+
 	// Show nodes in gizmo draw
-	public bool showNodes;
+	public bool showGroundNodes;
+	public bool showFlyingNodes;
 
     // Radius of planet
 	[SerializeField]
@@ -65,8 +71,10 @@ public class VertexNavigation : MonoBehaviour
         // Get mesh of planet
         this.mesh = GetComponent<MeshFilter>().sharedMesh;
 
-        // Get copy of vertices
-        System.Array.Copy(this.mesh.vertices, this.vertices, this.mesh.vertices.Length);
+		// Get copy of vertices
+//		System.Array.Copy(this.mesh.vertices, this.vertices, this.mesh.vertices.Length);
+		this.vertices = (Vector3[]) this.mesh.vertices.Clone();
+		this.flyingVertices = (Vector3[]) this.mesh.vertices.Clone();
 
         // Get copy of triangles
         this.triangles = mesh.triangles;
@@ -75,13 +83,15 @@ public class VertexNavigation : MonoBehaviour
         for (int i = 0; i < mesh.vertexCount; ++i)
         {
             // get global position
-            vertices[i] = this.transform.TransformPoint(vertices[i]);
+            this.vertices[i] = this.transform.TransformPoint(vertices[i]);
+			this.flyingVertices[i] = this.vertices[i];
 
             // Get angle to planet
             Vector3 angleToPlanet = vertices[i] - this.transform.position;
 
             // Adjust vertice a tiny bit up
-            vertices[i] += (angleToPlanet.normalized * this.verticeHeight);
+            this.vertices[i] += (angleToPlanet.normalized * this.verticeHeight);
+			this.flyingVertices[i] += (angleToPlanet * this.flyingVerticeHeight);
         }
     }
 	
@@ -232,10 +242,19 @@ public class VertexNavigation : MonoBehaviour
 	/// </summary>
 	void OnDrawGizmos() 
 	{
-		if(this.showNodes)
+		if(this.showGroundNodes)
 		{
 			Gizmos.color = Color.red;
 			foreach(Vector3 vert in this.vertices)
+			{
+				Gizmos.DrawCube(vert, new Vector3(.2f, .2f, .2f));
+			}
+		}
+
+		if(this.showFlyingNodes)
+		{
+			Gizmos.color = Color.green;
+			foreach(Vector3 vert in this.flyingVertices)
 			{
 				Gizmos.DrawCube(vert, new Vector3(.2f, .2f, .2f));
 			}
