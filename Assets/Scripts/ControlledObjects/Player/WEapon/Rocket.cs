@@ -3,12 +3,17 @@ using System.Collections;
 
 public class Rocket : MonoBehaviour
 {
-    public float ExplosionRadius, ExplosionForce;
+    public float ExplosionRadius, ExplosionForce, ShootVolume;
     public GameObject Explosion;
+    public AudioClip ShootSound;
+    
+
+    private AudioSource source;
 
     void Start()
     {
-
+        this.source = GetComponent<AudioSource>();
+        source.PlayOneShot(this.ShootSound, this.ShootVolume);
     }
 
     /// <summary>
@@ -22,7 +27,7 @@ public class Rocket : MonoBehaviour
 
         // Create Explosion object
         Instantiate(Explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-
+        
             // For every object in the explosion
             for (int i = 0; i < hitColliders.Length; i++ )
             {

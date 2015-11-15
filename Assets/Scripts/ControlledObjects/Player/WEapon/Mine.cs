@@ -4,20 +4,24 @@ using System.Collections;
 public class Mine : MonoBehaviour
 {
     public float LightOnIntensity, LightOffIntensity;
-    public float ExplosionRadius, ExplosionForce, SetTime, OnTime, ResetTime;
+    public float ExplosionRadius, ExplosionForce, SetTime, OnTime, ResetTime, ArmedVolume;
     public GameObject Explosion;
+    public AudioClip MineArmed;
 
+    private AudioSource audioSource;
     private Light mineLight;
-    private bool isOn;
+    private bool isOn, playSound;
     void Start()
     {
         if (this.SetTime == 0f)
         {
             this.SetTime = 10f;
         }
+        this.audioSource = GetComponent<AudioSource>();
         this.mineLight = GetComponentInChildren<Light>();
         this.isOn = false;
         this.mineLight.intensity = this.LightOffIntensity;
+        playSound = false;
     }
 
     void Update()
@@ -29,6 +33,13 @@ public class Mine : MonoBehaviour
         }
         else
         {
+            if (!playSound)
+            {
+                this.audioSource.Stop();
+
+                this.audioSource.PlayOneShot(this.MineArmed, this.ArmedVolume);
+                playSound = true;
+            }
             if (OnTime < float.Epsilon)
             {
                 if (this.isOn)

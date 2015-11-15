@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     public int multi = 1;
     public int score;        // The player's score.
     public string multiplierText;
+    public float hitActive, hitTime;
 
     Text text;                      // Reference to the Text component.
 
@@ -33,6 +34,7 @@ public class ScoreManager : MonoBehaviour
         multiplierText = "x" + multi.ToString();
         // Reset the score.
         score = 0;
+        this.hitActive = 0f;
         DontDestroyOnLoad(ScoreManager.Instance);
     }
 
@@ -52,6 +54,7 @@ public class ScoreManager : MonoBehaviour
     public void DecreaseScore(int decreaseAmount)
     {
         score -= decreaseAmount;
+        hitActive = hitTime;
     }
 
     public void SetName(string PlayerName)
