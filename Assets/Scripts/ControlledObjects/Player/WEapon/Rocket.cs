@@ -3,18 +3,14 @@ using System.Collections;
 
 public class Rocket : MonoBehaviour
 {
-    public float ExplosionRadius, ExplosionForce, ShootVolume;
+    /**
+     * ExplosionRadius - The radius of the sphere the the explosion effects
+     * ExplosionForce - How strong the explosion effects the enemies
+     * Explosion - The explosion that's created when the rocket hits something.
+     */
+    public float ExplosionRadius, ExplosionForce;
     public GameObject Explosion;
-    public AudioClip ShootSound;
-    
-
-    private AudioSource source;
-
-    void Start()
-    {
-        this.source = GetComponent<AudioSource>();
-        source.PlayOneShot(this.ShootSound, this.ShootVolume);
-    }
+    public string Target;
 
     /// <summary>
     /// Triggered when the bullet collides with anything
@@ -29,10 +25,10 @@ public class Rocket : MonoBehaviour
         Instantiate(Explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
         
             // For every object in the explosion
-            for (int i = 0; i < hitColliders.Length; i++ )
+            for (int i = 0; i < hitColliders.Length; ++i )
             {
                 // If they're an enemy
-                if (hitColliders[i].gameObject.tag == "Enemy")
+                if (hitColliders[i].gameObject.tag == this.Target)
                 {
                     // Add an explosion force of <ExplosionForce> to them
                     hitColliders[i].gameObject.GetComponent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, this.ExplosionRadius);
@@ -44,7 +40,7 @@ public class Rocket : MonoBehaviour
                     if (enemyHealth != null)
                     {
                         // ... the enemy should take damage.
-                        enemyHealth.TakeDamage((int) this.GetComponent<Weapon>().Damage);
+                        enemyHealth.TakeDamage((int) this.GetComponent<Weapon>().damage);
                     }
 
             }
@@ -53,6 +49,4 @@ public class Rocket : MonoBehaviour
         // Destroy the rocket
         Destroy(this.gameObject);
     }
-
-	
 }

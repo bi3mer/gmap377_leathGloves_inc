@@ -65,7 +65,7 @@ public class LaserBeam : MonoBehaviour
                 if (enemyHealth != null)
                 {
                     // ... the enemy should take damage.
-                    enemyHealth.TakeDamage((int)this.GetComponent<Weapon>().Damage);
+                    enemyHealth.TakeDamage((int)this.GetComponent<Weapon>().damage);
                 }
             }
         }

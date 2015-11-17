@@ -10,7 +10,7 @@ public class FireForward : MonoBehaviour
 
 	void Start()
 	{
-		this.speed = this.GetComponent<Weapon>().Speed;
+		this.speed = this.GetComponent<Weapon>().speed;
 	}
 
 	// Update is called once per frame
