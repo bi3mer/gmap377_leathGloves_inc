@@ -16,6 +16,8 @@ public class WeaponSwitch : MonoBehaviour {
         {
             Debug.Log("Weapon Switch Default Laser");
             GetComponent<Shooting>().bullet = cache.Laser;
+            WeaponDisplayController.Instance.AllOff();
+            WeaponDisplayController.Instance.dLaserOn.enabled = true;
         }
         if (InputManager.Player2HorizontalInput > 0 || Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -23,6 +25,8 @@ public class WeaponSwitch : MonoBehaviour {
             if (cache.Rocket.GetComponent<Weapon>().ammo > 0)
             {
                 GetComponent<Shooting>().bullet = cache.Rocket;
+                WeaponDisplayController.Instance.AllOff();
+                WeaponDisplayController.Instance.rocketsOn.enabled = true;
             }
         }
         if (InputManager.Player2VerticalInput > 0 || Input.GetKeyDown(KeyCode.Alpha3))
@@ -31,13 +35,17 @@ public class WeaponSwitch : MonoBehaviour {
             if (cache.LaserBeam.GetComponent<Weapon>().ammo > 0)
             {
                 GetComponent<Shooting>().bullet = cache.LaserBeam;
+                WeaponDisplayController.Instance.AllOff();
+                WeaponDisplayController.Instance.beamOn.enabled = true;
             }
         }
         if (InputManager.Player2VerticalInput < 0 || Input.GetKeyDown(KeyCode.Alpha4))
         {
             if (cache.Mine.GetComponent<Weapon>().ammo > 0)
             {
-                GetComponent<Shooting>().bullet = cache.Mine; 
+                GetComponent<Shooting>().bullet = cache.Mine;
+                WeaponDisplayController.Instance.AllOff();
+                WeaponDisplayController.Instance.mineOn.enabled = true;
             }
         }
     }
