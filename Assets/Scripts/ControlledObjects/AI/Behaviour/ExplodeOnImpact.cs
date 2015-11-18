@@ -11,28 +11,43 @@ public class ExplodeOnImpact : MonoBehaviour
     public float explosionLift = 5.0f;
     public float explosionRadius = 3.0f;
 
+	// Ship category
+	public bool isShip = true;
+
     // damage done to score
     public int damage = 10;
+
+	private void deathAnimation()
+	{
+		// Collision explosion
+		Instantiate(explosion, this.transform.position, Quaternion.identity);
+		
+		// Deinstatiate self
+		Destroy(this.gameObject);
+	}
+
+	private void collisionPlayer(Collision col)
+	{
+		// Apply force
+		col.gameObject.GetComponent<Rigidbody>().AddExplosionForce(this.explosionForce, transform.position, this.explosionRadius, this.explosionLift);
+		
+		// Reduce score
+		ScoreManager.Instance.DecreaseScore(this.damage);
+
+		// Play death animation
+		this.deathAnimation();
+	}
 
     // Explosion!
     void OnCollisionEnter(Collision col)
     {
-        // If player
         if (col.gameObject.tag == "Player")
         {
-            Debug.Log("Exploded from " + gameObject.name);
-            // Apply force
-            col.gameObject.GetComponent<Rigidbody>().AddExplosionForce(this.explosionForce, transform.position, this.explosionRadius, this.explosionLift);
-
-            // Reduce score
-            ScoreManager.Instance.DecreaseScore(this.damage);
-
-
-            // Collision explosion
-            Instantiate(explosion, this.transform.position, Quaternion.identity);
-
-            // Deinstatiate self
-            Destroy(this.gameObject);
+			this.collisionPlayer(col);
         }
+		else if(!this.isShip)
+		{
+			this.deathAnimation();
+		}
     }
 }
