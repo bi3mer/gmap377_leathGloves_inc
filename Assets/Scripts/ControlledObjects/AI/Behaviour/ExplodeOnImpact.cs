@@ -20,17 +20,19 @@ public class ExplodeOnImpact : MonoBehaviour
         // If player
         if (col.gameObject.tag == "Player")
         {
+            Debug.Log("Exploded from " + gameObject.name);
             // Apply force
             col.gameObject.GetComponent<Rigidbody>().AddExplosionForce(this.explosionForce, transform.position, this.explosionRadius, this.explosionLift);
 
             // Reduce score
             ScoreManager.Instance.DecreaseScore(this.damage);
+
+
+            // Collision explosion
+            Instantiate(explosion, this.transform.position, Quaternion.identity);
+
+            // Deinstatiate self
+            Destroy(this.gameObject);
         }
-
-        // Collision explosion
-        Instantiate(explosion, this.transform.position, Quaternion.identity);
-
-        // Deinstatiate self
-        Destroy(this.gameObject);
     }
 }
