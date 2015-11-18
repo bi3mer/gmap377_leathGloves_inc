@@ -1,19 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyRocket : MonoBehaviour {
-	public float ExplosionRadius, ExplosionForce;
+public class ExplosiveDamage : MonoBehaviour 
+{
+	public float ExplosionForce;
+	public float ExplosionRadius;
 	public GameObject Explosion;
-	
-	void Start()
-	{
-		
-	}
-	
-	/// <summary>
-	/// Triggered when the bullet collides with anything
-	/// </summary>
-	/// <param name="obj"></param>
+
 	void OnCollisionEnter(Collision obj)
 	{
 		// Get all the objects in a <ExplosionRadius> radius from where the bullet collided
@@ -39,6 +32,4 @@ public class EnemyRocket : MonoBehaviour {
 		// Destroy the rocket
 		Destroy(this.gameObject);
 	}
-	
-
 }
