@@ -20,22 +20,22 @@ public class WeaponSwitch : MonoBehaviour {
         if (InputManager.Player2HorizontalInput > 0 || Input.GetKeyDown(KeyCode.Alpha2))
         {
             Debug.Log("Weapon Switch Rocket");
-            if (cache.Weapon2.GetComponent<Weapon>().Ammo > 0)
+            if (cache.Rocket.GetComponent<Weapon>().ammo > 0)
             {
-                GetComponent<Shooting>().bullet = cache.Weapon2;
+                GetComponent<Shooting>().bullet = cache.Rocket;
             }
         }
         if (InputManager.Player2VerticalInput > 0 || Input.GetKeyDown(KeyCode.Alpha3))
         {
             Debug.Log("Weapon Switch Laser Beam");
-            if (cache.LaserBeam.GetComponent<Weapon>().Ammo > 0)
+            if (cache.LaserBeam.GetComponent<Weapon>().ammo > 0)
             {
                 GetComponent<Shooting>().bullet = cache.LaserBeam;
             }
         }
         if (InputManager.Player2VerticalInput < 0 || Input.GetKeyDown(KeyCode.Alpha4))
         {
-            if (cache.Mine.GetComponent<Weapon>().Ammo > 0)
+            if (cache.Mine.GetComponent<Weapon>().ammo > 0)
             {
                 GetComponent<Shooting>().bullet = cache.Mine; 
             }

@@ -25,7 +25,7 @@ public class ExplosiveDamage : MonoBehaviour
 				hitColliders[i].gameObject.GetComponent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, this.ExplosionRadius);
 				
 				// Decrease score
-				ScoreManager.Instance.DecreaseScore((int) this.GetComponent<Weapon>().Damage);
+				ScoreManager.Instance.DecreaseScore((int) this.GetComponent<Weapon>().damage);
 			}
 		}
 		

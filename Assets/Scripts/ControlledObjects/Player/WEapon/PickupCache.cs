@@ -3,6 +3,6 @@ using System.Collections;
 
 public class PickupCache : MonoBehaviour {
 
-    public GameObject Laser, Weapon2, LaserBeam, Multipler, Mine;
-
+    // Holds the weapons to be used in the Pickup.cs script
+    public GameObject Laser, Rocket, LaserBeam, Multipler, Mine;
 }
