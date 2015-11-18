@@ -17,7 +17,7 @@ public class ExplodeOnImpact : MonoBehaviour
     // Explosion!
     void OnCollisionEnter(Collision col)
     {
-        //print("here: " + col.gameObject.t);
+        // If player
         if (col.gameObject.tag == "Player")
         {
             // Apply force
@@ -25,12 +25,12 @@ public class ExplodeOnImpact : MonoBehaviour
 
             // Reduce score
             ScoreManager.Instance.DecreaseScore(this.damage);
-
-            // Collision
-            Instantiate(explosion, this.transform.position, Quaternion.identity);
-
-            // Deinstatiate self
-            Destroy(this.gameObject);
         }
+
+        // Collision explosion
+        Instantiate(explosion, this.transform.position, Quaternion.identity);
+
+        // Deinstatiate self
+        Destroy(this.gameObject);
     }
 }
