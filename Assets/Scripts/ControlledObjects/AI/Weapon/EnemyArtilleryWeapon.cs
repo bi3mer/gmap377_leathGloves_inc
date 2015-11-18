@@ -19,7 +19,7 @@ public class EnemyArtilleryWeapon : MonoBehaviour
 	{
 		// set constants
 		this.target = Player.Instance.transform.position;
-		this.speed  = this.GetComponent<Weapon>().Speed;
+		this.speed  = this.GetComponent<Weapon>().speed;
 		this.state  = States.rise;;
 		this.originalPosition = transform.position;
 	}
