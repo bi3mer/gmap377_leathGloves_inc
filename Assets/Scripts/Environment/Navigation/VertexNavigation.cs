@@ -111,84 +111,106 @@ public class VertexNavigation : MonoBehaviour
         this.modifyVerticeHeights();
 
         // Loop through triangles
-        for (int triangle = 0; triangle < this.triangles.Length; ++triangle)
+//        for (int triangle = 0; triangle < this.triangles.Length; ++triangle)
+//        {
+//            // Get connecting vertices
+//            Vector3 v1 = this.vertices[this.triangles[triangle]];
+//            ++triangle;
+//
+//            Vector3 v2 = this.vertices[this.triangles[triangle]];
+//            ++triangle;
+//
+//            Vector3 v3 = this.vertices[this.triangles[triangle]];
+//
+//            // Loop through to find similar neighboring triangles
+//            for (int newTriangle = 0; newTriangle < this.triangles.Length; ++newTriangle)
+//            {
+//                // Get vertice
+//                Vector3 currentVertice = this.vertices[this.triangles[newTriangle]];
+//
+//                // Check if any matching vertice is found
+//                if (Vector3.Equals(v1, currentVertice) || Vector3.Equals(v2, currentVertice) || Vector3.Equals(v3, currentVertice))
+//                {
+//                    // Get triangle for this vertice
+//                    int triNum = newTriangle / 3;
+//
+//                    // Make sure we don't have the same triangle
+//                    if (triangle - 2 != triNum)
+//                    { 
+//                        
+//                    }
+//                }
+//            }
+//        }
+
+		// Dicitonary of vertices in use
+		Dictionary<Vector3, int> knownPositions = new Dictionary<Vector3, int>();
+
+        for (int triangleIndex = 0; triangleIndex < this.triangles.Length; triangleIndex += 3)
         {
-            // Get connecting vertices
-            Vector3 v1 = this.vertices[this.triangles[triangle]];
-            ++triangle;
-
-            Vector3 v2 = this.vertices[this.triangles[triangle]];
-            ++triangle;
-
-            Vector3 v3 = this.vertices[this.triangles[triangle]];
-
-            // Loop through to find similar neighboring triangles
-            for (int newTriangle = 0; newTriangle < this.triangles.Length; ++newTriangle)
+            // loop through vertexes
+            for (int vertexIndex = 0; vertexIndex < 3; ++vertexIndex)
             {
-                // Get vertice
-                var currentVertice = this.vertices[this.triangles[newTriangle]];
+                // Index to triangle array
+                int globalIndex = triangleIndex + vertexIndex;
 
-                // Check if any matching vertice is found
-                if (Vector3.Equals(v1, currentVertice) || Vector3.Equals(v2, currentVertice) || Vector3.Equals(v3, currentVertice))
+                // Create vertice index relative to triangle index
+                int vertice = this.triangles[globalIndex];
+
+				// check if vertice has been visited
+				bool verticeChanged = false;
+				foreach(Vector3 key in knownPositions.Keys)
+				{
+					if(key.Equals(this.vertices[vertice]))
+					{
+						vertice = knownPositions[this.vertices[vertice]];
+						verticeChanged = true;
+						break;
+					}
+				}
+
+				if(!verticeChanged)
+				{
+					knownPositions.Add(this.vertices[vertice], vertice);
+				}
+
+                // Increase size of array til proper size
+                while (vertice >= this.movementLookup.Count)
                 {
-                    // Get triangle for this vertice
-                    var triNum = newTriangle / 3;
+                    this.movementLookup.Add(null);
+                }
 
-                    // Make sure we don't have the same triangle
-                    if (triangle - 2 != triNum)
-                    { 
-                        
-                    }
+                // Check if key exists, if not add to dictionary
+                if (this.movementLookup[vertice] == null)
+                {
+                    // Create new vertices
+                    Vertice vert = new Vertice();
+                    vert.position = this.vertices[vertice];
+
+                    // Add new vertice to dictionary
+                    this.movementLookup[vertice] = vert;
+                }
+
+                // Add remaining
+                switch (vertexIndex)
+                {
+                    case 0:
+                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 1]);
+                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 2]);
+                        break;
+
+                    case 1:
+                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 1]);
+                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 1]);
+                        break;
+
+                    case 2:
+                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 1]);
+                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 2]);
+                        break;
                 }
             }
         }
-
-        //for (int triangleIndex = 0; triangleIndex < this.triangles.Length; triangleIndex += 3)
-        //{
-        //    // loop through vertexes
-        //    for (int vertexIndex = 0; vertexIndex < 3; ++vertexIndex)
-        //    {
-        //        // Index to triangle array
-        //        int globalIndex = triangleIndex + vertexIndex;
-
-        //        // Create vertice index relative to triangle index
-        //        int vertice = this.triangles[globalIndex];
-
-        //        // Increase size of array til proper size
-        //        while (vertice >= this.movementLookup.Count)
-        //        {
-        //            this.movementLookup.Add(null);
-        //        }
-
-        //        // Check if key exists, if not add to dictionary
-        //        if (this.movementLookup[vertice] == null)
-        //        {
-        //            // Create new vertices
-        //            Vertice vert = new Vertice();
-        //            vert.position = this.vertices[vertice];
-
-        //            // Add new vertice to dictionary
-        //            this.movementLookup[vertice] = vert;
-        //        }
-
-        //        // Add remaining
-        //        switch (vertexIndex)
-        //        {
-        //            case 0:
-        //                this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 1]);
-        //                this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 2]);
-        //                break;
-        //            case 1:
-        //                this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 1]);
-        //                this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 1]);
-        //                break;
-        //            case 2:
-        //                this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 1]);
-        //                this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 2]);
-        //                break;
-        //        }
-        //    }
-        //}
 	}
 
 	/// <summary>
