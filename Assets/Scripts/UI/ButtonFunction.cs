@@ -12,8 +12,6 @@ public class ButtonFunction : MonoBehaviour {
         if (InputManager.PlayerStartInput > float.Epsilon || Input.GetKeyDown(KeyCode.Alpha1))
         {
             Application.LoadLevel("OriginalScene");
-            WeaponDisplayController.Instance.ZeroOutAmmo();
-
         }
     }
 }

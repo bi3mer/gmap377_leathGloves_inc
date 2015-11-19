@@ -10,10 +10,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-//        PickupCache pc = GetComponent<PickupCache>();
-//        pc.Rocket.GetComponent<Weapon>().ammo = 0;
-//        pc.LaserBeam.GetComponent<Weapon>().ammo = 0;
-//        pc.Mine.GetComponent<Weapon>().ammo = 0;
+        WeaponDisplayController.Instance.ZeroOutAmmo();
     }
 	
 	public static Player Instance
