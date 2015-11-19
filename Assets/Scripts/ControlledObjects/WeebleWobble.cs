@@ -5,7 +5,8 @@ using System.Collections;
 public class WeebleWobble : MonoBehaviour {
 
 	public float WeebleWobbleFactor = 0.1f;
-	public float Tolerance = 5; 
+	public float PitchTolerance = 5;
+    public float RollTolerance = 5;
 
 	private PlanetOrientation m_planetOrientation;
 	private Rigidbody m_rigidbody;
@@ -24,14 +25,14 @@ public class WeebleWobble : MonoBehaviour {
 		float rollRotationCorrection = 0;
 		
 		if (!grounded) {
-			if (Mathf.Abs(pitch) > Tolerance) {
+			if (Mathf.Abs(pitch) > PitchTolerance) {
 				Vector3 lrAxis = m_planetOrientation.LeftRightAxis;
 				pitchRotationCorrection = -1 * pitch * WeebleWobbleFactor;
 				//transform.Rotate(transform.right, pitchRotationCorrection);
 				m_rigidbody.rotation = Quaternion.AngleAxis(pitchRotationCorrection, transform.right) * m_rigidbody.rotation;
 				m_planetOrientation.UpdateTiltAxes();
 			}
-			if (Mathf.Abs(roll) > Tolerance) {
+			if (Mathf.Abs(roll) > RollTolerance) {
 				Vector3 fbAxis = m_planetOrientation.ForwardBackAxis;
 				rollRotationCorrection = roll * WeebleWobbleFactor;
 				//transform.Rotate(transform.forward, rollRotationCorrection);

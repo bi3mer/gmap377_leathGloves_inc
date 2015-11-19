@@ -8,6 +8,7 @@ public class SpawnSystem : MonoBehaviour {
     public int CurrentDifficulty = 5;
     public int DifficultyIncreaseTime = 20;
     public int MinSpawnDistance = 100;
+    public int MaxSpawnDistance = 200;
     public List<GameObject> EnemyPrefabs;
 
     private int _timer = 0;
@@ -54,7 +55,8 @@ public class SpawnSystem : MonoBehaviour {
             if (Player.Instance == null) {
                 break;
             }
-            if (DistanceCalculator.euclidianDistance(position, Player.Instance.transform.position) > MinSpawnDistance) {
+            float dist = DistanceCalculator.euclidianDistance(position, Player.Instance.transform.position);
+            if (dist > MinSpawnDistance && dist < MaxSpawnDistance) {
                 break;
             }
         }
