@@ -7,6 +7,14 @@ public class Player : MonoBehaviour
 	/// 	Create Singleton
 	/// </summary>
 	public static Player instance;
+
+    void Start()
+    {
+        PickupCache pc = GetComponent<PickupCache>();
+        pc.Rocket.GetComponent<Weapon>().ammo = 0;
+        pc.LaserBeam.GetComponent<Weapon>().ammo = 0;
+        pc.Mine.GetComponent<Weapon>().ammo = 0;
+    }
 	
 	public static Player Instance
 	{

@@ -49,7 +49,7 @@ public class Pickup : MonoBehaviour
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
                 obj.gameObject.GetComponent<Shooting>().bullet = GetComponent<PickupCache>().Rocket;
-                GetComponent<PickupCache>().Rocket.GetComponent<Weapon>().ammo += 10;
+                GetComponent<PickupCache>().Rocket.GetComponent<Weapon>().ammo += 5;
 
                 //Set Gui to current weapon
                 WeaponDisplayController.Instance.AllOff();
