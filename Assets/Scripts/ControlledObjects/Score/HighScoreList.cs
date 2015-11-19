@@ -121,11 +121,18 @@ public class HighScoreList : MonoBehaviour {
     }
     void DisplayHighScore()
 	{
-        HighScoreListGUI.text =                          "1. " + scoreIndex[0].name + "    " + scoreIndex[0].score + "\n";
-        HighScoreListGUI.text = HighScoreListGUI.text  + "2. " + scoreIndex[1].name + "    " + scoreIndex[1].score + "\n";
-        HighScoreListGUI.text = HighScoreListGUI.text +  "3. " + scoreIndex[2].name + "    " + scoreIndex[2].score + "\n";
-        HighScoreListGUI.text = HighScoreListGUI.text +  "4. " + scoreIndex[3].name + "    " + scoreIndex[3].score + "\n";
-        HighScoreListGUI.text = HighScoreListGUI.text +  "5. " + scoreIndex[4].name + "    " + scoreIndex[4].score;
+
+
+        HighScoreListGUI.text = string.Format("1.  {0,-11} {1,-5:N0}\n", scoreIndex[0].name, scoreIndex[0].score);
+        HighScoreListGUI.text = HighScoreListGUI.text + string.Format("2. {0,-12} {1,5:N0}\n", scoreIndex[1].name, scoreIndex[1].score);
+        HighScoreListGUI.text = HighScoreListGUI.text + string.Format("3. {0,-12} {1,5:N0}\n", scoreIndex[2].name, scoreIndex[2].score);
+        HighScoreListGUI.text = HighScoreListGUI.text + string.Format("4. {0,-12} {1,5:N0}\n", scoreIndex[3].name, scoreIndex[3].score);
+        HighScoreListGUI.text = HighScoreListGUI.text + string.Format("5. {0,-12} {1,5:N0}", scoreIndex[4].name, scoreIndex[4].score);
+        //HighScoreListGUI.text =                          "1.  " + scoreIndex[0].name + "    " + scoreIndex[0].score + "\n";
+        //HighScoreListGUI.text = HighScoreListGUI.text  + "2. " + scoreIndex[1].name + "    " + scoreIndex[1].score + "\n";
+        //HighScoreListGUI.text = HighScoreListGUI.text +  "3. " + scoreIndex[2].name + "    " + scoreIndex[2].score + "\n";
+        //HighScoreListGUI.text = HighScoreListGUI.text +  "4. " + scoreIndex[3].name + "    " + scoreIndex[3].score + "\n";
+        //HighScoreListGUI.text = HighScoreListGUI.text +  "5. " + scoreIndex[4].name + "    " + scoreIndex[4].score;
 
         //HighScoreListGUI.text = ((ScoreManager.Instance.GetName()) + " " +  PlayerPrefs.GetInt("highScore").ToString());
     }
