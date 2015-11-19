@@ -30,13 +30,6 @@ public class WeaponDisplayController : MonoBehaviour {
             Instance = this;
         }
     }
-    
-
-    void Start()
-    {
-        
-    }
-
 
     // Update is called once per frame
     void Update ()
@@ -46,7 +39,6 @@ public class WeaponDisplayController : MonoBehaviour {
 
     public void ChangeAmmo()
     {
-        Debug.Log("Change Ammo");
         beamAmmo.text = GetComponent<PickupCache>().LaserBeam.GetComponent<Weapon>().ammo.ToString();
         rocketAmmo.text = GetComponent<PickupCache>().Rocket.GetComponent<Weapon>().ammo.ToString();
         mineAmmo.text = GetComponent<PickupCache>().Mine.GetComponent<Weapon>().ammo.ToString();
