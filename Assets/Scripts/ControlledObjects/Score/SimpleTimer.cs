@@ -6,6 +6,7 @@ public class SimpleTimer : MonoBehaviour {
 
     public float TimeS;
     Text text;                      // Reference to the Text component.
+    public Text RestartText;
 	
 
     void Awake()
@@ -26,13 +27,19 @@ public class SimpleTimer : MonoBehaviour {
         if (TimeS <= 0)
         {
             timerEnded();
-        }
 
+            if (InputManager.PlayerStartInput > float.Epsilon) {
+                RestartText.enabled = false;
+                Application.LoadLevel(0);
+                Time.timeScale = 1;
+            } 
+        }
     }
 
     void timerEnded()
     {
         text.text = "Game Over";
+        RestartText.enabled = true;
         //Turning on the high score list
         HighScoreList.Instance.GetComponent<HighScoreList>().enabled = true;
         //Pausing game

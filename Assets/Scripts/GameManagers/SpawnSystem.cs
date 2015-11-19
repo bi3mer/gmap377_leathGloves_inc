@@ -65,6 +65,7 @@ public class SpawnSystem : MonoBehaviour {
         Gravity nearestPlanet = InterplanetaryObject.GetNearestPlanet(position);
         Vector3 angleToPlanet = position - nearestPlanet.transform.position;
         Vector3 oldpos = e.transform.position;
+        e.transform.position = e.transform.position + angleToPlanet.normalized * 10;
         InterplanetaryObject io = e.AddComponent<InterplanetaryObject>();
         io.NearestPlanet = nearestPlanet;
         PlanetOrientation po = e.AddComponent<PlanetOrientation>();
