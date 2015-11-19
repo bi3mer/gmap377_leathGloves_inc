@@ -5,6 +5,49 @@ using System.Collections.Generic;
 public class RayCastDownCheck : MonoBehaviour 
 {
     public bool printLength;
+	public bool drawConnectingCubes;
+
+	private bool drawnCubes = false;
+
+	// Draw all vertices connecting
+	private void drawAllVerts(RaycastHit hit)
+	{
+		// List of known verts
+		Dictionary<int, bool> vistedVerts = new Dictionary<int, bool>();
+
+		// Get verts
+		List<int> verts = VertexNavigation.Instance.getMovesTriangle(hit.triangleIndex * 3);
+
+		// Go through verts
+		while(verts.Count > 0)
+		{
+			// Get index
+			int index = verts[0];
+
+			// Remove from list
+			verts.RemoveAt(0);
+
+			// Instantiate cube
+			GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+			cube.transform.position = VertexNavigation.Instance.getVertex(index).position;
+			cube.transform.localScale = new Vector3(.2f, .2f, .2f);
+
+			// get moves from index
+			List<int> newVerts = VertexNavigation.Instance.getMovesVertex(index);
+
+			// for
+			for(int i = 0; i < newVerts.Count; ++i)
+			{
+				if(!vistedVerts.ContainsKey(newVerts[i]))
+				{
+					vistedVerts.Add(newVerts[i], true);
+					verts.Add(newVerts[i]);
+				}
+			}
+		}
+
+		this.drawnCubes = true;
+	}
 	
 	// Update is called once per frame
 	void Update () 
@@ -50,13 +93,14 @@ public class RayCastDownCheck : MonoBehaviour
                     Debug.DrawLine(VertexNavigation.Instance.getVertex(vertex).position, VertexNavigation.Instance.vertices[moves[i]]);
                 }
 
+				if(this.drawConnectingCubes && !this.drawnCubes)
+				{
+					this.drawAllVerts(hit);
+				}
+
 				// Break out of for
 				break;
 			}
-			else
-			{
-				print ("not the tag we are looking for: " + hit.collider.tag);
-			}
 		}
-    }
+    }	
 }
