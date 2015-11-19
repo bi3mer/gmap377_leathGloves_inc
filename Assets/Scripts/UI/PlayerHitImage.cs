@@ -5,14 +5,14 @@ using System.Collections;
 public class PlayerHitImage : MonoBehaviour {
 
     private ScoreManager scoreManager;
-    private Image hitMarker;
+    public Image hitMarker;
 
 
 	// Use this for initialization
 	void Start () {
         this.scoreManager = ScoreManager.Instance;
         this.hitMarker = GetComponent<Image>();
-        this.hitMarker.enabled = false;
+        
 	}
 	
 	// Update is called once per frame
