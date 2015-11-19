@@ -4,11 +4,12 @@ using UnityEngine.UI;
 
 public class WeaponDisplayController : MonoBehaviour {
     public static WeaponDisplayController Instance = null;
-
+    PickupCache cache;
     public Image dLaserOn;
 
     public Image beamOn;
     public Text beamAmmo;
+    
 
     public Image mineOn;
     public Text mineAmmo;
@@ -19,6 +20,7 @@ public class WeaponDisplayController : MonoBehaviour {
 
     void Awake()
     {
+        cache = GetComponent<PickupCache>();
         if (Instance)
         {
             Destroy(this);
@@ -28,16 +30,26 @@ public class WeaponDisplayController : MonoBehaviour {
             Instance = this;
         }
     }
+    
+
+    void Start()
+    {
+        
+    }
 
 
     // Update is called once per frame
     void Update ()
     {
-	
+        ChangeAmmo();
 	}
 
     public void ChangeAmmo()
     {
+        Debug.Log("Change Ammo");
+        beamAmmo.text = GetComponent<PickupCache>().LaserBeam.GetComponent<Weapon>().ammo.ToString();
+        rocketAmmo.text = GetComponent<PickupCache>().Rocket.GetComponent<Weapon>().ammo.ToString();
+        mineAmmo.text = GetComponent<PickupCache>().Mine.GetComponent<Weapon>().ammo.ToString();
 
     }
 
