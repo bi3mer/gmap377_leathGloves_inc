@@ -65,9 +65,23 @@ public class SpawnSystem : MonoBehaviour {
         Gravity nearestPlanet = InterplanetaryObject.GetNearestPlanet(position);
         Vector3 angleToPlanet = position - nearestPlanet.transform.position;
         Vector3 oldpos = e.transform.position;
-        e.transform.position = e.transform.position + angleToPlanet.normalized * 10;
-        //Debug.Log(oldpos + " -> " + e.transform.position + " (" + Vector3.Distance(nearestPlanet.transform.position, oldpos) + " -> " + Vector3.Distance(nearestPlanet.transform.position, e.transform.position) + ")");
+        InterplanetaryObject io = e.AddComponent<InterplanetaryObject>();
+        io.NearestPlanet = nearestPlanet;
+        PlanetOrientation po = e.AddComponent<PlanetOrientation>();
+        po.Initialize();
+        po.UpdateOrientation();
+
+        //e.GetComponent<Rigidbody>().rotation = Quaternion.AngleAxis(-1 * po.Pitch, transform.right) * e.GetComponent<Rigidbody>().rotation;
+        //e.GetComponent<Rigidbody>().rotation = Quaternion.AngleAxis(-1 * po.Roll, transform.forward) * e.GetComponent<Rigidbody>().rotation;
+
+        Vector3 euler = e.transform.rotation.eulerAngles;
+        e.transform.rotation = Quaternion.Euler(euler.x - po.Pitch, euler.y, euler.z - po.Roll);
+
+        po.UpdateOrientation();
+
         
+        //Debug.Log(oldpos + " -> " + e.transform.position + " (" + Vector3.Distance(nearestPlanet.transform.position, oldpos) + " -> " + Vector3.Distance(nearestPlanet.transform.position, e.transform.position) + ")");
+
     }
 
     public void RegisterEnemyDeath() {
