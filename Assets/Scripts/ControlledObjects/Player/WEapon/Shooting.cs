@@ -26,7 +26,8 @@ public class Shooting : MonoBehaviour
         // hence the || ammo < ZERO. 
         // LaserExists checks to make sure a laserbeam is not currently active.
         if (Input.GetMouseButtonDown(0) && (ammo > ZERO || ammo < ZERO) && LaserExists == null)
-        { 
+        {
+            
             // Bullet being created      
             GameObject newBullet= Instantiate(bullet, spwnPt.transform.position, Quaternion.Euler(Vector3.forward)) as GameObject;
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10000f);
@@ -56,6 +57,9 @@ public class Shooting : MonoBehaviour
                 if (bullet.GetComponent<Weapon>().ammo == ZERO)
                 {
                     this.bullet = GetComponent<PickupCache>().Laser;
+                    //Set Gui to current weapon
+                    WeaponDisplayController.Instance.AllOff();
+                    WeaponDisplayController.Instance.dLaserOn.enabled = true;
                 }
             }
         }

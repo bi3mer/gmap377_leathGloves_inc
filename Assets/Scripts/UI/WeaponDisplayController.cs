@@ -4,11 +4,15 @@ using UnityEngine.UI;
 
 public class WeaponDisplayController : MonoBehaviour {
     public static WeaponDisplayController Instance = null;
+
     public Image dLaserOn;
+
     public Image beamOn;
     public Text beamAmmo;
+
     public Image mineOn;
     public Text mineAmmo;
+
     public Image rocketsOn;
     public Text rocketAmmo;
 
