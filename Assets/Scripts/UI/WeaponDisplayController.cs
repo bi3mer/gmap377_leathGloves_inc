@@ -44,6 +44,12 @@ public class WeaponDisplayController : MonoBehaviour {
         mineAmmo.text = GetComponent<PickupCache>().Mine.GetComponent<Weapon>().ammo.ToString();
 
     }
+    public void ZeroOutAmmo()
+    {
+        GetComponent<PickupCache>().LaserBeam.GetComponent<Weapon>().ammo =0;
+        GetComponent<PickupCache>().Rocket.GetComponent<Weapon>().ammo = 0;
+        GetComponent<PickupCache>().Mine.GetComponent<Weapon>().ammo = 0;
+    }
 
     public void AllOff()
     {

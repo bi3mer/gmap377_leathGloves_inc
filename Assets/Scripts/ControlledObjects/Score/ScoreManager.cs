@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
     public string PlayerName;
     public static ScoreManager Instance = null;
     public int multi = 1;
-    public int score;        // The player's score.
+    public int score = 0;        // The player's score.
     public string multiplierText;
     public float hitActive, hitTime;
 

@@ -30,6 +30,9 @@ public class SimpleTimer : MonoBehaviour {
 
             if (InputManager.PlayerStartInput > float.Epsilon) {
                 RestartText.enabled = false;
+                Destroy(ScoreManager.Instance);
+                WeaponDisplayController.Instance.ZeroOutAmmo();
+
                 Application.LoadLevel(0);
                 Time.timeScale = 1;
             } 
