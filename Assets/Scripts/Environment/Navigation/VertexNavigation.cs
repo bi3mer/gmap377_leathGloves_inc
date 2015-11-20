@@ -147,33 +147,50 @@ public class VertexNavigation : MonoBehaviour
 
 				// check if vertice has been visited
 				bool verticeChanged = false;
+				bool connectingVerticeOneChanged = false;
+				bool connectingVerticeTwoChanged = false;
+				
+				// Loop through keys to check vertices
 				foreach(Vector3 key in knownPositions.Keys)
 				{
-					if(key.Equals(this.vertices[vertice]))
+					if(verticeChanged && connectingVerticeOneChanged && connectingVerticeTwoChanged)
+					{
+						break;
+					}
+					if(!verticeChanged && key.Equals(this.vertices[vertice]))
 					{ 
 						vertice = knownPositions[key];
 						verticeChanged = true;
-						break;
 					}
 
-					if(key.Equals(this.vertices[connectingVerticeOne]))
+					if(!connectingVerticeOneChanged && key.Equals(this.vertices[connectingVerticeOne]))
 					{
 						connectingVerticeOne = knownPositions[key];
+						connectingVerticeOneChanged = true
 					}
 
-					if(key.Equals(this.vertices[connectingVerticeTwo]))
+					if(!connectingVerticeTwoChanged && key.Equals(this.vertices[connectingVerticeTwo]))
 					{
 						connectingVerticeTwo = knownPositions[key];
+						connectingVerticeTwoChanged = true;
 					}
 				}
-
-				// if vertice wasn't changed
-				if(!verticeChanged)
-				{
-					// add to dictionary now that we've used it for future look ups
-					knownPositions.Add(this.vertices[vertice], vertice);
-				}
-
+		// TODO: look into array variant of this implementation to avoid the code duplication
+		if(!verticeChanged)
+		{
+			knownPositions.Add(this.vertices[vertice], vertice);
+		}
+		
+		if(!connectingVerticeOneChanged)
+		{
+			knownPositions.Add(this.vertices[connectingVerticeOneChanged], connectingVerticeOneChanged);
+		}
+		
+		if(!connectingVerticeTwoChanged)
+		{
+			knownPositions.Add(this.vertices[connectingVerticeTwoChanged], connectingVerticeTwoChanged);
+		}
+		
                 // Increase size of array til proper size
                 while (vertice >= this.movementLookup.Count)
                 {
