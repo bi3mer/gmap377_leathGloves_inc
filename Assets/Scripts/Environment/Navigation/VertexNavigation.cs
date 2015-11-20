@@ -123,17 +123,47 @@ public class VertexNavigation : MonoBehaviour
                 int globalIndex = triangleIndex + vertexIndex;
 
                 // Create vertice index relative to triangle index
-                int vertice = this.triangles[globalIndex];
+				int vertice, connectingVerticeOne, connectingVerticeTwo;
+                vertice = this.triangles[globalIndex];
+
+				// Get connectinv vertices based on vertex index
+				switch (vertexIndex)
+                {
+                    case 0:
+                        connectingVerticeOne = mesh.triangles[globalIndex + 1];
+                        connectingVerticeTwo = mesh.triangles[globalIndex + 2];
+                        break;
+
+                    case 1:
+						connectingVerticeOne = mesh.triangles[globalIndex + 1];
+                        connectingVerticeTwo = mesh.triangles[globalIndex - 1];
+                        break;
+
+                    default:
+						connectingVerticeOne = mesh.triangles[globalIndex - 1];
+                        connectingVerticeTwo = mesh.triangles[globalIndex - 2];
+                        break;
+                }
 
 				// check if vertice has been visited
 				bool verticeChanged = false;
 				foreach(Vector3 key in knownPositions.Keys)
 				{
 					if(key.Equals(this.vertices[vertice]))
-					{
+					{ 
 						vertice = knownPositions[key];
 						verticeChanged = true;
 						break;
+					}
+
+					if(key.Equals(this.vertices[connectingVerticeOne]))
+					{
+						connectingVerticeOne = knownPositions[key];
+					}
+
+					if(key.Equals(this.vertices[connectingVerticeTwo]))
+					{
+						connectingVerticeTwo = knownPositions[key];
 					}
 				}
 
@@ -162,23 +192,8 @@ public class VertexNavigation : MonoBehaviour
                 }
 
                 // Add remaining
-                switch (vertexIndex)
-                {
-                    case 0:
-                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 1]);
-                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 2]);
-                        break;
-
-                    case 1:
-                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 1]);
-                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 1]);
-                        break;
-
-                    case 2:
-                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 1]);
-                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 2]);
-                        break;
-                }
+				this.movementLookup[vertice].Add(connectingVerticeOne);
+				this.movementLookup[vertice].Add(connectingVerticeTwo);
             }
         }
 	}
