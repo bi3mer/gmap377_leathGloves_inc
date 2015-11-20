@@ -110,42 +110,10 @@ public class VertexNavigation : MonoBehaviour
         // Modify vertice heights and set paramaters
         this.modifyVerticeHeights();
 
-        // Loop through triangles
-//        for (int triangle = 0; triangle < this.triangles.Length; ++triangle)
-//        {
-//            // Get connecting vertices
-//            Vector3 v1 = this.vertices[this.triangles[triangle]];
-//            ++triangle;
-//
-//            Vector3 v2 = this.vertices[this.triangles[triangle]];
-//            ++triangle;
-//
-//            Vector3 v3 = this.vertices[this.triangles[triangle]];
-//
-//            // Loop through to find similar neighboring triangles
-//            for (int newTriangle = 0; newTriangle < this.triangles.Length; ++newTriangle)
-//            {
-//                // Get vertice
-//                Vector3 currentVertice = this.vertices[this.triangles[newTriangle]];
-//
-//                // Check if any matching vertice is found
-//                if (Vector3.Equals(v1, currentVertice) || Vector3.Equals(v2, currentVertice) || Vector3.Equals(v3, currentVertice))
-//                {
-//                    // Get triangle for this vertice
-//                    int triNum = newTriangle / 3;
-//
-//                    // Make sure we don't have the same triangle
-//                    if (triangle - 2 != triNum)
-//                    { 
-//                        
-//                    }
-//                }
-//            }
-//        }
-
 		// Dicitonary of vertices in use
 		Dictionary<Vector3, int> knownPositions = new Dictionary<Vector3, int>();
 
+		// Loop through triangles
         for (int triangleIndex = 0; triangleIndex < this.triangles.Length; triangleIndex += 3)
         {
             // loop through vertexes
@@ -163,14 +131,16 @@ public class VertexNavigation : MonoBehaviour
 				{
 					if(key.Equals(this.vertices[vertice]))
 					{
-						vertice = knownPositions[this.vertices[vertice]];
+						vertice = knownPositions[key];
 						verticeChanged = true;
 						break;
 					}
 				}
 
+				// if vertice wasn't changed
 				if(!verticeChanged)
 				{
+					// add to dictionary now that we've used it for future look ups
 					knownPositions.Add(this.vertices[vertice], vertice);
 				}
 
