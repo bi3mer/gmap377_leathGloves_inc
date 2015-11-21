@@ -8,6 +8,7 @@ public class ScoreMulti : MonoBehaviour {
     float TimeS = 10;
 
     string text;
+    
     void Start()
     {
         ScoreManager.Instance.SetMultiplier(multiplier);
@@ -30,14 +31,20 @@ public class ScoreMulti : MonoBehaviour {
             timerEnded();
         }
     }
-
+	
+	/// <summary>
+	/// Multiplier time has ended. Reset multiplier
+	/// </summary>
     void timerEnded()
     {
         multiplier = 1;
         ScoreManager.Instance.SetMultiplier(multiplier);
         text = "x" + multiplier;
     }
-
+	
+	/// <summary>
+	/// Countdown this instance.
+	/// </summary>
     void Countdown()
     {
         TimeS -= Time.deltaTime;
