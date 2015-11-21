@@ -166,7 +166,7 @@ public class VertexNavigation : MonoBehaviour
 					if(!connectingVerticeOneChanged && key.Equals(this.vertices[connectingVerticeOne]))
 					{
 						connectingVerticeOne = knownPositions[key];
-						connectingVerticeOneChanged = true
+						connectingVerticeOneChanged = true;
 					}
 
 					if(!connectingVerticeTwoChanged && key.Equals(this.vertices[connectingVerticeTwo]))
@@ -175,21 +175,22 @@ public class VertexNavigation : MonoBehaviour
 						connectingVerticeTwoChanged = true;
 					}
 				}
-		// TODO: look into array variant of this implementation to avoid the code duplication
-		if(!verticeChanged)
-		{
-			knownPositions.Add(this.vertices[vertice], vertice);
-		}
-		
-		if(!connectingVerticeOneChanged)
-		{
-			knownPositions.Add(this.vertices[connectingVerticeOneChanged], connectingVerticeOneChanged);
-		}
-		
-		if(!connectingVerticeTwoChanged)
-		{
-			knownPositions.Add(this.vertices[connectingVerticeTwoChanged], connectingVerticeTwoChanged);
-		}
+
+				// TODO: look into array variant of this implementation to avoid the code duplication
+				if(!verticeChanged)
+				{
+					knownPositions.Add(this.vertices[vertice], vertice);
+				}
+				
+				if(!connectingVerticeOneChanged)
+				{
+					knownPositions.Add(this.vertices[connectingVerticeOne], connectingVerticeOne);
+				}
+				
+				if(!connectingVerticeTwoChanged)
+				{
+					knownPositions.Add(this.vertices[connectingVerticeTwo], connectingVerticeTwo);
+				}
 		
                 // Increase size of array til proper size
                 while (vertice >= this.movementLookup.Count)
