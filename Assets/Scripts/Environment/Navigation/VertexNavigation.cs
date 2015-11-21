@@ -110,7 +110,10 @@ public class VertexNavigation : MonoBehaviour
         // Modify vertice heights and set paramaters
         this.modifyVerticeHeights();
 
-        // Loop through triangles
+		// Dicitonary of vertices in use
+		Dictionary<Vector3, int> knownPositions = new Dictionary<Vector3, int>();
+
+		// Loop through triangles
         for (int triangleIndex = 0; triangleIndex < this.triangles.Length; triangleIndex += 3)
         {
             // loop through vertexes
@@ -120,8 +123,75 @@ public class VertexNavigation : MonoBehaviour
                 int globalIndex = triangleIndex + vertexIndex;
 
                 // Create vertice index relative to triangle index
-                int vertice = this.triangles[globalIndex];
+				int vertice, connectingVerticeOne, connectingVerticeTwo;
+                vertice = this.triangles[globalIndex];
 
+				// Get connectinv vertices based on vertex index
+				switch (vertexIndex)
+                {
+                    case 0:
+                        connectingVerticeOne = mesh.triangles[globalIndex + 1];
+                        connectingVerticeTwo = mesh.triangles[globalIndex + 2];
+                        break;
+
+                    case 1:
+						connectingVerticeOne = mesh.triangles[globalIndex + 1];
+                        connectingVerticeTwo = mesh.triangles[globalIndex - 1];
+                        break;
+
+                    default:
+						connectingVerticeOne = mesh.triangles[globalIndex - 1];
+                        connectingVerticeTwo = mesh.triangles[globalIndex - 2];
+                        break;
+                }
+
+				// check if vertice has been visited
+				bool verticeChanged = false;
+				bool connectingVerticeOneChanged = false;
+				bool connectingVerticeTwoChanged = false;
+				
+				// Loop through keys to check vertices
+				foreach(Vector3 key in knownPositions.Keys)
+				{
+					if(verticeChanged && connectingVerticeOneChanged && connectingVerticeTwoChanged)
+					{
+						break;
+					}
+					if(!verticeChanged && key.Equals(this.vertices[vertice]))
+					{ 
+						vertice = knownPositions[key];
+						verticeChanged = true;
+					}
+
+					if(!connectingVerticeOneChanged && key.Equals(this.vertices[connectingVerticeOne]))
+					{
+						connectingVerticeOne = knownPositions[key];
+						connectingVerticeOneChanged = true;
+					}
+
+					if(!connectingVerticeTwoChanged && key.Equals(this.vertices[connectingVerticeTwo]))
+					{
+						connectingVerticeTwo = knownPositions[key];
+						connectingVerticeTwoChanged = true;
+					}
+				}
+
+				// TODO: look into array variant of this implementation to avoid the code duplication
+				if(!verticeChanged)
+				{
+					knownPositions.Add(this.vertices[vertice], vertice);
+				}
+				
+				if(!connectingVerticeOneChanged)
+				{
+					knownPositions.Add(this.vertices[connectingVerticeOne], connectingVerticeOne);
+				}
+				
+				if(!connectingVerticeTwoChanged)
+				{
+					knownPositions.Add(this.vertices[connectingVerticeTwo], connectingVerticeTwo);
+				}
+		
                 // Increase size of array til proper size
                 while (vertice >= this.movementLookup.Count)
                 {
@@ -136,25 +206,12 @@ public class VertexNavigation : MonoBehaviour
                     vert.position = this.vertices[vertice];
 
                     // Add new vertice to dictionary
-					this.movementLookup[vertice] = vert;
+                    this.movementLookup[vertice] = vert;
                 }
 
                 // Add remaining
-                switch (vertexIndex)
-                {
-                    case 0:
-                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 1]);
-                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 2]);
-                        break;
-                    case 1:
-                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 1]);
-                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex + 1]);
-                        break;
-                    case 2:
-                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 1]);
-                        this.movementLookup[vertice].Add(mesh.triangles[globalIndex - 2]);
-                        break;
-                }
+				this.movementLookup[vertice].Add(connectingVerticeOne);
+				this.movementLookup[vertice].Add(connectingVerticeTwo);
             }
         }
 	}
