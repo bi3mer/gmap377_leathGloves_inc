@@ -20,7 +20,6 @@ public class HighScoreList : MonoBehaviour {
 		{
 			Instance = this;
 		}
-		
 	}
 		
 	// Use this for initialization
@@ -38,26 +37,16 @@ public class HighScoreList : MonoBehaviour {
 
         int newHighScore = ScoreManager.Instance.score;
         string playerName = ScoreManager.Instance.GetName();
-        //StoreHighScore(ScoreManager.Instance.score);
+        
         StoreNewHighScore(newHighScore, playerName);
 		DisplayHighScore();
 	}
 	
-	
-	//void StoreHighScore(int newHighScore)
-	//{
-        
-
-	//	int oldHighScore = PlayerPrefs.GetInt("highScore", 0);    
-       
-	//	if(newHighScore > oldHighScore)
-	//	{
-	//		PlayerPrefs.SetInt("highScore", newHighScore);
-	//	}
-		
-	//	PlayerPrefs.Save();
-	//}
-
+	/// <summary>
+	/// Takes the players current name and current score and sets a new High score if the got one.
+	/// </summary>
+	/// <param name="newHighScore">New high score.</param>
+	/// <param name="playerName">Player name.</param>
     void StoreNewHighScore(int newHighScore, string playerName)
     {
         PlayerScore a = new PlayerScore();
@@ -67,7 +56,6 @@ public class HighScoreList : MonoBehaviour {
         scoreIndex.Add(a);
         scoreIndex.Sort();
         scoreIndex.Reverse();
-
 
         PlayerPrefs.SetString("name0", scoreIndex[0].name);
         PlayerPrefs.SetInt("score0", scoreIndex[0].score);
@@ -84,11 +72,12 @@ public class HighScoreList : MonoBehaviour {
         PlayerPrefs.SetString("name4", scoreIndex[4].name);
         PlayerPrefs.SetInt("score4", scoreIndex[4].score);
 
-       
         PlayerPrefs.Save();
-
     }
-	
+
+	/// <summary>
+	/// Loads the high scores and names stored locally and adds them into the l 
+	/// </summary>
     void LoadList()
     {
         PlayerScore a = new PlayerScore();
@@ -115,25 +104,28 @@ public class HighScoreList : MonoBehaviour {
         e.name = PlayerPrefs.GetString("name4");
         e.score = PlayerPrefs.GetInt("score4");
         scoreIndex.Add(e);
-
-
-       
     }
+    
+   /// <summary>
+   /// Displays and formats the high score.
+   /// </summary>
     void DisplayHighScore()
 	{
-
 
         HighScoreListGUI.text =                         string.Format("1. {0,-12} {1,7:N0}\n", scoreIndex[0].name, scoreIndex[0].score);
         HighScoreListGUI.text = HighScoreListGUI.text + string.Format("2. {0,-12} {1,7:N0}\n", scoreIndex[1].name, scoreIndex[1].score);
         HighScoreListGUI.text = HighScoreListGUI.text + string.Format("3. {0,-12} {1,7:N0}\n", scoreIndex[2].name, scoreIndex[2].score);
         HighScoreListGUI.text = HighScoreListGUI.text + string.Format("4. {0,-12} {1,7:N0}\n", scoreIndex[3].name, scoreIndex[3].score);
-        HighScoreListGUI.text = HighScoreListGUI.text + string.Format("5. {0,-12} {1,7:N0}", scoreIndex[4].name, scoreIndex[4].score);
-        //HighScoreListGUI.text =                          "1.  " + scoreIndex[0].name + "    " + scoreIndex[0].score + "\n";
-        
+        HighScoreListGUI.text = HighScoreListGUI.text + string.Format("5. {0,-12} {1,7:N0}",   scoreIndex[4].name, scoreIndex[4].score);
+   
     }
+    
+    /// <summary>
+	/// Clearing out the current list of high scores and current score.
+    /// </summary>
     public void ClearAll()
     {
         scoreIndex.Clear();
-
+		ScoreManager.Instance.score = 0;
     }
 }

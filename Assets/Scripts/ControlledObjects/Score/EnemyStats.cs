@@ -5,9 +5,9 @@ public class EnemyStats : MonoBehaviour
     public int startingHealth = 100;        // The amount of health the enemy starts the game with.
     public int currentHealth;               // The current health the enemy has.
    
-    public int scoreValue = 100;             // The amount added to the player's score when the enemy dies.
+    public int scoreValue = 100;           // The amount added to the player's score when the enemy dies.
 
-    Collider eCollider;                    // Reference to the collider.
+    private Collider eCollider;                    // Reference to the collider.
     bool isDead;                           // Whether the enemy is dead.
    
 

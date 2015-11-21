@@ -7,15 +7,18 @@ public class Score : MonoBehaviour {
     private Text score;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
         score = GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
         if (this.score != null)
         {
-            this.score.text = "Score: " + ScoreManager.Instance.score; // Set the displayed text to be the word "Score" followed by the score value.
+			// Set the displayed text to be the word "Score" followed by the score value.
+            this.score.text = "Score: " + ScoreManager.Instance.score; 
         }
         else
         {
