@@ -32,26 +32,6 @@ public class PlayerHitImage : MonoBehaviour {
 	public void playerHit()
 	{
 		tempTime = 0f;
-		bool playHit = true;
-		
-		/*while (playHit) 
-		{
-		
-			if(hitTime <= 0)
-			{
-				hitMarker.enabled = false;
-				playHit = false;
-				break;
-				
-			}
-			
-				Debug.Log("here " + tempTime + " " + Time.deltaTime);
-				this.hitMarker.enabled = true;
-				
-				tempTime -= Time.deltaTime;
-			
-		}*/
-		
 		StartCoroutine(HitThing());
 		
 		
