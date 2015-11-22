@@ -76,7 +76,7 @@ public class MoveTowardsPlayer : Enemy
 	{
 		// Check if new plan needs to be calculated // minPlayerChangeDistnace
 //		print ("distance: " + DistanceCalculator.euclidianDistance(this.target, Player.Instance.transform.position));
-		if(DistanceCalculator.euclidianDistance(this.target, Player.Instance.transform.position) >= this.minPlayerChangeDistance)
+		if(this.plan == null || DistanceCalculator.euclidianDistance(this.target, Player.Instance.transform.position) >= this.minPlayerChangeDistance)
 		{
 			this.targetIndex = 0;
 			this.target = Player.Instance.transform.position;

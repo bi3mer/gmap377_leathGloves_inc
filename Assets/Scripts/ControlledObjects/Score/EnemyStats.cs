@@ -5,15 +5,20 @@ public class EnemyStats : MonoBehaviour
     public int startingHealth = 100;        // The amount of health the enemy starts the game with.
     public int currentHealth;               // The current health the enemy has.
    
-    public int scoreValue = 100;             // The amount added to the player's score when the enemy dies.
+    public int scoreValue = 100;           // The amount added to the player's score when the enemy dies.
+    public GameObject Drop1, Drop2, Drop3, Drop4;
+    public int DropChance = 25;
+    public float offset = 1;
 
-    Collider eCollider;                    // Reference to the collider.
+    private System.Random drop;
+    private Collider eCollider;                    // Reference to the collider.
     bool isDead;                           // Whether the enemy is dead.
    
 
     void Awake()
     {
-       
+
+        this.drop = new System.Random();
         eCollider = GetComponent<Collider>();
 
         // Setting the current health when the enemy first spawns.
@@ -56,7 +61,26 @@ public class EnemyStats : MonoBehaviour
     {
         // The enemy is dead.
         isDead = true;
-        
+        int chance = drop.Next(100);
+        if (this.DropChance > chance)
+        {
+            int type = drop.Next(4);
+            switch (type)
+            {
+                case 0:
+                    Instantiate(Drop1, new Vector3(transform.position.x, transform.position.y + offset, transform.position.z), transform.rotation);
+                    break;
+                case 1:
+                    Instantiate(Drop2, new Vector3(transform.position.x, transform.position.y + offset, transform.position.z), transform.rotation);
+                    break;
+                case 2:
+                    Instantiate(Drop3, new Vector3(transform.position.x, transform.position.y + offset, transform.position.z), transform.rotation);
+                    break;
+                case 3:
+                    Instantiate(Drop4, new Vector3(transform.position.x, transform.position.y + offset, transform.position.z), transform.rotation);
+                    break;
+            }
+        }
     }
     public virtual void MakeExplosion()
     {
