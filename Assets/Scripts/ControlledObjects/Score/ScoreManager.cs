@@ -14,8 +14,9 @@ public class ScoreManager : MonoBehaviour
     public int score = 0;   
          
     public string multiplierText;
-    public float hitActive, hitTime;
+    
 
+	
 	// Reference to the Text component.
     Text text;                     
 
@@ -42,7 +43,7 @@ public class ScoreManager : MonoBehaviour
         multiplierText = "x" + multi.ToString();
         // Reset the score.
         score = 0;
-        this.hitActive = 0f;
+        
         DontDestroyOnLoad(ScoreManager.Instance);
     }
 
@@ -77,7 +78,8 @@ public class ScoreManager : MonoBehaviour
     public void DecreaseScore(int decreaseAmount)
     {
         score -= decreaseAmount;
-        hitActive = hitTime;
+		PlayerHitImage.Instance.playerHit();
+		
     }
 
 	/// <summary>

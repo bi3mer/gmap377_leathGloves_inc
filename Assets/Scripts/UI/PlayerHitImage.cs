@@ -5,18 +5,70 @@ using System.Collections;
 public class PlayerHitImage : MonoBehaviour {
 
     private ScoreManager scoreManager;
-    public Image hitMarker;
+    RawImage hitMarker;
+	public static PlayerHitImage Instance = null;
+	float hitTime = 2.0f;
+	float tempTime = 0;
 
-
-	// Use this for initialization
-	void Start () {
-        this.scoreManager = ScoreManager.Instance;
-        this.hitMarker = GetComponent<Image>();
-        
+	void Awake()
+	{
+		if (Instance)
+		{
+			Destroy(this);
+		}
+		else
+		{
+			Instance = this;
+		}
+		this.hitMarker = GetComponent<RawImage>();
+		this.hitMarker.enabled = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
+	
+	}
+	public void playerHit()
+	{
+		tempTime = 0f;
+		bool playHit = true;
+		
+		/*while (playHit) 
+		{
+		
+			if(hitTime <= 0)
+			{
+				hitMarker.enabled = false;
+				playHit = false;
+				break;
+				
+			}
+			
+				Debug.Log("here " + tempTime + " " + Time.deltaTime);
+				this.hitMarker.enabled = true;
+				
+				tempTime -= Time.deltaTime;
+			
+		}*/
+		
+		StartCoroutine(HitThing());
+		
+		
+	}
+	
+	IEnumerator HitThing() {
+		this.hitMarker.enabled = true;
+		while (tempTime <= hitTime) {
+			tempTime += Time.deltaTime;
+			yield return 0;
+		}
+		tempTime = 0;
+		this.hitMarker.enabled = false;
+	}
+	
+	/*
+		Debug.Log("asdf");
         if (this.scoreManager.hitActive > float.Epsilon)
         {
             this.hitMarker.enabled = true;
@@ -27,5 +79,6 @@ public class PlayerHitImage : MonoBehaviour {
             this.hitMarker.enabled = false;
         }
 	
-	}
+	*/
+	
 }
