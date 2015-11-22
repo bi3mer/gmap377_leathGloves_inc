@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,19 +32,15 @@ public class VertexNavigation : MonoBehaviour
 	public List<Vertice> movementLookup;
 
 	[HideInInspector]
-	[SerializeField]
     public int[] triangles;
 
 	[HideInInspector]
-	[SerializeField]
 	public Mesh mesh;
 
 	[HideInInspector]
-	[SerializeField]
 	public Vector3[] vertices;
 
 	[HideInInspector]
-	[SerializeField]
 	public Vector3[] flyingVertices;
 
 	// Show nodes in gizmo draw
@@ -145,6 +141,14 @@ public class VertexNavigation : MonoBehaviour
                         break;
                 }
 
+				// Increase size of array till proper size
+				int[] vertices = {vertice, connectingVerticeOne, connectingVerticeTwo};
+				int maxIndex = Mathf.Max(vertices);
+				while (maxIndex >= this.movementLookup.Count)
+				{
+					this.movementLookup.Add(null);
+				}
+
 				// check if vertice has been visited
 				bool verticeChanged = false;
 				bool connectingVerticeOneChanged = false;
@@ -158,19 +162,22 @@ public class VertexNavigation : MonoBehaviour
 						break;
 					}
 					if(!verticeChanged && key.Equals(this.vertices[vertice]))
-					{ 
+					{
+						this.movementLookup[vertice] = new Vertice(knownPositions[key], true);
 						vertice = knownPositions[key];
 						verticeChanged = true;
 					}
 
 					if(!connectingVerticeOneChanged && key.Equals(this.vertices[connectingVerticeOne]))
 					{
+						this.movementLookup[connectingVerticeOne] = new Vertice(knownPositions[key], true);
 						connectingVerticeOne = knownPositions[key];
 						connectingVerticeOneChanged = true;
 					}
 
 					if(!connectingVerticeTwoChanged && key.Equals(this.vertices[connectingVerticeTwo]))
 					{
+						this.movementLookup[connectingVerticeTwo] = new Vertice(knownPositions[key], true);
 						connectingVerticeTwo = knownPositions[key];
 						connectingVerticeTwoChanged = true;
 					}
@@ -191,22 +198,12 @@ public class VertexNavigation : MonoBehaviour
 				{
 					knownPositions.Add(this.vertices[connectingVerticeTwo], connectingVerticeTwo);
 				}
-		
-                // Increase size of array til proper size
-                while (vertice >= this.movementLookup.Count)
-                {
-                    this.movementLookup.Add(null);
-                }
 
                 // Check if key exists, if not add to dictionary
                 if (this.movementLookup[vertice] == null)
                 {
-                    // Create new vertices
-                    Vertice vert = new Vertice();
-                    vert.position = this.vertices[vertice];
-
                     // Add new vertice to dictionary
-                    this.movementLookup[vertice] = vert;
+					this.movementLookup[vertice] = new Vertice(vertice, false);
                 }
 
                 // Add remaining
@@ -316,5 +313,10 @@ public class VertexNavigation : MonoBehaviour
 				Gizmos.DrawCube(vert, new Vector3(.2f, .2f, .2f));
 			}
 		}
+	}
+
+	void Start()
+	{
+		this.modifyVerticeHeights();
 	}
 }
