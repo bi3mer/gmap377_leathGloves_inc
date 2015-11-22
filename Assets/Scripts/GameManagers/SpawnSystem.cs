@@ -65,7 +65,7 @@ public class SpawnSystem : MonoBehaviour {
         Gravity nearestPlanet = InterplanetaryObject.GetNearestPlanet(position);
         Vector3 angleToPlanet = position - nearestPlanet.transform.position;
         Vector3 oldpos = e.transform.position;
-        e.transform.position = e.transform.position + angleToPlanet.normalized * 10;
+        e.transform.position = e.transform.position + angleToPlanet.normalized * 2;
         InterplanetaryObject io = e.AddComponent<InterplanetaryObject>();
         io.NearestPlanet = nearestPlanet;
         PlanetOrientation po = e.AddComponent<PlanetOrientation>();
@@ -76,7 +76,7 @@ public class SpawnSystem : MonoBehaviour {
         //e.GetComponent<Rigidbody>().rotation = Quaternion.AngleAxis(-1 * po.Roll, transform.forward) * e.GetComponent<Rigidbody>().rotation;
 
         Vector3 euler = e.transform.rotation.eulerAngles;
-        e.transform.rotation = Quaternion.Euler(euler.x - po.Pitch, euler.y, euler.z - po.Roll);
+        e.transform.rotation = Quaternion.Euler(po.Pitch - euler.x, -1 * euler.y, po.Roll - euler.z);
 
         po.UpdateOrientation();
 
