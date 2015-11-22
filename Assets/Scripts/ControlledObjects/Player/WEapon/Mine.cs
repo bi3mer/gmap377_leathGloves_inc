@@ -4,19 +4,16 @@ using System.Collections;
 public class Mine : MonoBehaviour
 {
     public float LightOnIntensity, LightOffIntensity;
-    public float ExplosionRadius, ExplosionForce, SetTime, OnTime, ResetTime, ArmedVolume;
+    public float CheckRadius, ExplosionRadius, ExplosionForce, SetTime = 10f, OnTime, ResetTime, ArmedVolume;
     public GameObject Explosion;
     public AudioClip MineArmed;
+    public LayerMask LayerCheck;
 
     private AudioSource audioSource;
     private Light mineLight;
     private bool isOn, playSound;
     void Start()
     {
-        if (this.SetTime == 0f)
-        {
-            this.SetTime = 10f;
-        }
         this.audioSource = GetComponent<AudioSource>();
         this.mineLight = GetComponentInChildren<Light>();
         this.isOn = false;
@@ -26,10 +23,11 @@ public class Mine : MonoBehaviour
 
     void Update()
     {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, this.CheckRadius, this.LayerCheck);
         if (this.SetTime > float.Epsilon)
         {
             this.SetTime -= Time.deltaTime;
-            
+
         }
         else
         {
@@ -58,29 +56,20 @@ public class Mine : MonoBehaviour
             {
                 this.OnTime -= Time.deltaTime;
             }
-        }
-    }
-
-    void OnTriggerEnter(Collider enemy)
-    {
-        if (enemy.gameObject.tag == "Enemy" && this.SetTime < float.Epsilon)
-        {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
-
-            // Create Explosion object
-            Instantiate(Explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-
-            // For every object in the explosion
-            for (int i = 0; i < hitColliders.Length; i++)
+            if (hitColliders.Length > 0)
             {
-                // If they're an enemy
-                if (hitColliders[i].gameObject.tag == "Enemy")
+                Instantiate(Explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+
+                // For every object in the explosion
+                for (int i = 0; i < hitColliders.Length; i++)
                 {
+                    GameObject hitTarget = hitColliders[i].gameObject;
+
                     // Add an explosion force of <ExplosionForce> to them
-                    hitColliders[i].gameObject.GetComponent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, this.ExplosionRadius);
+                    hitColliders[i].gameObject.GetComponentInParent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, this.ExplosionRadius);
 
                     // Try and find an EnemyHealth script on the gameobject hit.
-                    EnemyStats enemyHealth = hitColliders[i].gameObject.GetComponent<EnemyStats>();
+                    EnemyStats enemyHealth = hitColliders[i].gameObject.GetComponentInParent<EnemyStats>();
 
                     // If the EnemyHealth component exist...
                     if (enemyHealth != null)
@@ -89,8 +78,9 @@ public class Mine : MonoBehaviour
                         enemyHealth.TakeDamage((int)this.GetComponent<Weapon>().damage);
                     }
                 }
+                Destroy(this.gameObject);
             }
-            Destroy(this.gameObject);
+
         }
     }
 }

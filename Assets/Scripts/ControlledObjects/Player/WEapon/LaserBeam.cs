@@ -3,21 +3,16 @@ using System.Collections;
 
 public class LaserBeam : MonoBehaviour
 {
-    public float GrowRate;
+    public float GrowRate = 7f;
+    public string Target = "Enemy";
     private LineRenderer line;
-    private float length;
+    private float length = 1f;
     Vector3 position;
 
     void Start()
     {
-        length = 1f;
         line = GetComponent<LineRenderer>();
         line.SetPosition(0, transform.position);
-        if (this.GrowRate == 0)
-        {
-            this.GrowRate = 7f;
-        }
-        
         line.SetPosition(1, Camera.main.ScreenToWorldPoint(
                     new Vector3(
                         Input.mousePosition.x,
@@ -59,7 +54,7 @@ public class LaserBeam : MonoBehaviour
             );
         foreach (RaycastHit x in hit)
         {
-            if (x.transform.gameObject.tag == "Enemy")
+            if (x.transform.gameObject.tag == this.Target)
             {
                 EnemyStats enemyHealth = x.transform.gameObject.GetComponent<EnemyStats>();
                 if (enemyHealth != null)

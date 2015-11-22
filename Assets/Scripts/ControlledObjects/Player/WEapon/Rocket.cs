@@ -11,6 +11,7 @@ public class Rocket : MonoBehaviour
     public float ExplosionRadius, ExplosionForce;
     public GameObject Explosion;
     public string Target;
+    public LayerMask TargetLayer;
 
     /// <summary>
     /// Triggered when the bullet collides with anything
@@ -19,7 +20,7 @@ public class Rocket : MonoBehaviour
     void OnCollisionEnter(Collision obj)
     {
         // Get all the objects in a <ExplosionRadius> radius from where the bullet collided
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, ExplosionRadius, TargetLayer);
 
         // Create Explosion object
         Instantiate(Explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
@@ -27,14 +28,11 @@ public class Rocket : MonoBehaviour
         // For every object in the explosion
         for (int i = 0; i < hitColliders.Length; ++i )
         {
-            // If they're an enemy
-            if (hitColliders[i].gameObject.tag == this.Target)
-            {
                 // Add an explosion force of <ExplosionForce> to them
-                hitColliders[i].gameObject.GetComponent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, this.ExplosionRadius);
+                hitColliders[i].gameObject.GetComponentInParent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, this.ExplosionRadius);
               
                 // Try and find an EnemyHealth script on the gameobject hit.
-                EnemyStats enemyHealth = hitColliders[i].gameObject.GetComponent<EnemyStats>();
+                EnemyStats enemyHealth = hitColliders[i].gameObject.GetComponentInParent<EnemyStats>();
 
                 // If the EnemyHealth component exist...
                 if (enemyHealth != null)
@@ -42,7 +40,6 @@ public class Rocket : MonoBehaviour
                     // ... the enemy should take damage.
                     enemyHealth.TakeDamage((int) this.GetComponent<Weapon>().damage);
                 }
-            }
         }
 
         // Destroy the rocket

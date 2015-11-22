@@ -5,24 +5,30 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Vertice  
 {
-    // TODO: constructor with postion
+	public Vertice(int _key, bool _duplicatePoint)
+	{
+		this.key = _key;
+		this.duplicatePoint = _duplicatePoint;
+	}
+
 
     /// <summary>
     ///     Get and set for vector3 position where the node is
     /// </summary>
-	[SerializeField]
-    private Vector3 _position;
     public Vector3 position 
     {
         get
         {
-            return this._position;
+			return this.duplicatePoint ? VertexNavigation.Instance.vertices[this.key] : VertexNavigation.Instance.movementLookup[this.key].position;
         }
-        set
-        {
-            this._position = value;
-        }
+        set {}
     }
+
+	[SerializeField]
+	public int key;
+
+	[SerializeField]
+	public bool duplicatePoint = false;
 	
     private Dictionary<int, bool> foundVerts = new Dictionary<int, bool>();
 
