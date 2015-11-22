@@ -69,7 +69,7 @@ public class Mine : MonoBehaviour
                     hitColliders[i].gameObject.GetComponentInParent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, this.ExplosionRadius);
 
                     // Try and find an EnemyHealth script on the gameobject hit.
-                    EnemyStats enemyHealth = hitColliders[i].gameObject.GetComponent<EnemyStats>();
+                    EnemyStats enemyHealth = hitColliders[i].gameObject.GetComponentInParent<EnemyStats>();
 
                     // If the EnemyHealth component exist...
                     if (enemyHealth != null)
