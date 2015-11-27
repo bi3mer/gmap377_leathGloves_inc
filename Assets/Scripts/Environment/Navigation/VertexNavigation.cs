@@ -68,7 +68,6 @@ public class VertexNavigation : MonoBehaviour
         this.mesh = GetComponent<MeshFilter>().sharedMesh;
 
 		// Get copy of vertices
-//		System.Array.Copy(this.mesh.vertices, this.vertices, this.mesh.vertices.Length);
 		this.vertices = (Vector3[]) this.mesh.vertices.Clone();
 		this.flyingVertices = (Vector3[]) this.mesh.vertices.Clone();
 
@@ -78,22 +77,112 @@ public class VertexNavigation : MonoBehaviour
         // Convert vertices to global coordiantes
         for (int i = 0; i < mesh.vertexCount; ++i)
         {
-            // get global position
-            this.vertices[i] = this.transform.TransformPoint(vertices[i]);
+			// get global position
+			this.vertices[i] = this.transform.TransformPoint(vertices[i]);
 			this.flyingVertices[i] = this.vertices[i];
 
-            // Get angle to planet
-            Vector3 angleToPlanet = vertices[i] - this.transform.position;
+			// Get angle to planet
+			Vector3 angleToPlanet = vertices[i] - this.transform.position; 
 
-            // Adjust vertice a tiny bit up
-            this.vertices[i] += (angleToPlanet.normalized * this.verticeHeight);
-			this.flyingVertices[i] += (angleToPlanet * this.flyingVerticeHeight);
+			// Adjust vertice a tiny bit up
+			this.vertices[i] += (angleToPlanet.normalized * this.verticeHeight);
+			this.flyingVertices[i] += (angleToPlanet.normalized * this.flyingVerticeHeight);
         }
     }
-	
+
+	private void increaseArraySize(int[] indices)
+	{
+		int maxIndex = Mathf.Max(indices);
+		while (maxIndex >= this.movementLookup.Count)
+		{
+			this.movementLookup.Add(null);
+		}
+	}
+
+	private void connectVerts(Dictionary<Vector3, int> knownPositions, int[] verts)
+	{
+		// Array mapped to changed vertices
+		bool[] changed = {false, false, false};
+
+		// Loop through keys to check vertices
+		foreach(Vector3 key in knownPositions.Keys)
+		{
+			// All vertices changed
+			if(changed[0] && changed[1] && changed[2])
+			{
+				break;
+			}
+
+			// indices always size 3
+			for(int i = 0; i < 3; ++i)
+			{
+				if(!changed[i] && key.Equals(this.vertices[verts[i]]))
+				{
+					if(this.movementLookup[verts[i]] == null)
+					{
+						this.movementLookup[verts[i]] = new Vertice(knownPositions[key], true);
+					}
+
+					verts[i] = knownPositions[key];
+					changed[i] = true;
+				}
+			}
+		}
+
+		// Array size always 3
+		for(int i = 0; i < 3; ++i)
+		{
+			// Check if not changed
+			if(!changed[i])
+			{
+				// Add to vistied vertice
+				knownPositions.Add (this.vertices[verts[i]], verts[i]);
+			}
+
+			// check if movmeent lookup has vert
+			if(this.movementLookup[verts[i]] == null) 
+			{
+				// add new vertice
+				this.movementLookup[verts[i]] = new Vertice(verts[i], false);
+			}
+		}
+	}
+
+	private int[] addConnectingVerts(int triangleIndex, int vertexIndex)
+	{
+		// Index to triangle array
+		int globalIndex = triangleIndex + vertexIndex;
+
+		// Create vertice index relative to triangle index
+		int vertice, connectingVerticeOne, connectingVerticeTwo;
+		vertice = this.triangles[globalIndex];
+		
+		// Get connectinv vertices based on vertex index
+		switch (vertexIndex)
+		{
+		case 0:
+			connectingVerticeOne = mesh.triangles[globalIndex + 1];
+			connectingVerticeTwo = mesh.triangles[globalIndex + 2];
+			break;
+			
+		case 1:
+			connectingVerticeOne = mesh.triangles[globalIndex + 1];
+			connectingVerticeTwo = mesh.triangles[globalIndex - 1];
+			break;
+			
+		default:
+			connectingVerticeOne = mesh.triangles[globalIndex - 1];
+			connectingVerticeTwo = mesh.triangles[globalIndex - 2];
+			break;
+		}
+		
+		// Increase size of array till proper size
+		return new int[]{vertice, connectingVerticeOne, connectingVerticeTwo};
+	}
+
 	/// <summary>
 	/// Map 3d sphere to 2d coordiante system
-	/// Not finished
+	/// NOT FINISHED
 	/// </summary>
 	public void buildTable() 
 	{
@@ -101,7 +190,7 @@ public class VertexNavigation : MonoBehaviour
         this.movementLookup = new List<Vertice>();
 
 		// Get Radius
-		this._radius = GetComponent<SphereCollider>().radius * transform.localScale.x;
+		this._radius = GetComponent<SphereCollider>().radius * this.transform.localScale.x;
 
         // Modify vertice heights and set paramaters
         this.modifyVerticeHeights();
@@ -115,100 +204,18 @@ public class VertexNavigation : MonoBehaviour
             // loop through vertexes
             for (int vertexIndex = 0; vertexIndex < 3; ++vertexIndex)
             {
-                // Index to triangle array
-                int globalIndex = triangleIndex + vertexIndex;
+				// get array of vertice
+				int[] verts = this.addConnectingVerts(triangleIndex, vertexIndex);
 
-                // Create vertice index relative to triangle index
-				int vertice, connectingVerticeOne, connectingVerticeTwo;
-                vertice = this.triangles[globalIndex];
+				// Incrase max array size to accomodate new verts
+				this.increaseArraySize(verts);
 
-				// Get connectinv vertices based on vertex index
-				switch (vertexIndex)
-                {
-                    case 0:
-                        connectingVerticeOne = mesh.triangles[globalIndex + 1];
-                        connectingVerticeTwo = mesh.triangles[globalIndex + 2];
-                        break;
+				// connect the verts together
+				this.connectVerts(knownPositions, verts);
 
-                    case 1:
-						connectingVerticeOne = mesh.triangles[globalIndex + 1];
-                        connectingVerticeTwo = mesh.triangles[globalIndex - 1];
-                        break;
-
-                    default:
-						connectingVerticeOne = mesh.triangles[globalIndex - 1];
-                        connectingVerticeTwo = mesh.triangles[globalIndex - 2];
-                        break;
-                }
-
-				// Increase size of array till proper size
-				int[] vertices = {vertice, connectingVerticeOne, connectingVerticeTwo};
-				int maxIndex = Mathf.Max(vertices);
-				while (maxIndex >= this.movementLookup.Count)
-				{
-					this.movementLookup.Add(null);
-				}
-
-				// check if vertice has been visited
-				bool verticeChanged = false;
-				bool connectingVerticeOneChanged = false;
-				bool connectingVerticeTwoChanged = false;
-				
-				// Loop through keys to check vertices
-				foreach(Vector3 key in knownPositions.Keys)
-				{
-					if(verticeChanged && connectingVerticeOneChanged && connectingVerticeTwoChanged)
-					{
-						break;
-					}
-					if(!verticeChanged && key.Equals(this.vertices[vertice]))
-					{
-						this.movementLookup[vertice] = new Vertice(knownPositions[key], true);
-						vertice = knownPositions[key];
-						verticeChanged = true;
-					}
-
-					if(!connectingVerticeOneChanged && key.Equals(this.vertices[connectingVerticeOne]))
-					{
-						this.movementLookup[connectingVerticeOne] = new Vertice(knownPositions[key], true);
-						connectingVerticeOne = knownPositions[key];
-						connectingVerticeOneChanged = true;
-					}
-
-					if(!connectingVerticeTwoChanged && key.Equals(this.vertices[connectingVerticeTwo]))
-					{
-						this.movementLookup[connectingVerticeTwo] = new Vertice(knownPositions[key], true);
-						connectingVerticeTwo = knownPositions[key];
-						connectingVerticeTwoChanged = true;
-					}
-				}
-
-				// TODO: look into array variant of this implementation to avoid the code duplication
-				if(!verticeChanged)
-				{
-					knownPositions.Add(this.vertices[vertice], vertice);
-				}
-				
-				if(!connectingVerticeOneChanged)
-				{
-					knownPositions.Add(this.vertices[connectingVerticeOne], connectingVerticeOne);
-				}
-				
-				if(!connectingVerticeTwoChanged)
-				{
-					knownPositions.Add(this.vertices[connectingVerticeTwo], connectingVerticeTwo);
-				}
-
-                // Check if key exists, if not add to dictionary
-                if (this.movementLookup[vertice] == null)
-                {
-                    // Add new vertice to dictionary
-					this.movementLookup[vertice] = new Vertice(vertice, false);
-                }
-
-                // Add remaining
-				this.movementLookup[vertice].Add(connectingVerticeOne);
-				this.movementLookup[vertice].Add(connectingVerticeTwo);
+                // Add connecting verts
+				this.movementLookup[verts[0]].Add(verts[1]);
+				this.movementLookup[verts[0]].Add(verts[2]);
             }
         }
 	}

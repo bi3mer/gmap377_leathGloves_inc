@@ -11,7 +11,6 @@ public class Vertice
 		this.duplicatePoint = _duplicatePoint;
 	}
 
-
     /// <summary>
     ///     Get and set for vector3 position where the node is
     /// </summary>
@@ -19,9 +18,14 @@ public class Vertice
     {
         get
         {
-			return this.duplicatePoint ? VertexNavigation.Instance.vertices[this.key] : VertexNavigation.Instance.movementLookup[this.key].position;
+			return VertexNavigation.Instance.vertices[this.key];
+//			return this.duplicatePoint ? VertexNavigation.Instance.vertices[this.key] : VertexNavigation.Instance.movementLookup[this.key].position;
         }
-        set {}
+
+        set 
+		{
+			// pass
+		}
     }
 
 	[SerializeField]
@@ -55,6 +59,11 @@ public class Vertice
     /// <returns>Return arraylist of moves</returns>
     public List<int> getMoves()
     {
+		Debug.Log(this.duplicatePoint + ": " + this._vertices.Count);
+		if(this.duplicatePoint)
+		{
+			return VertexNavigation.Instance.movementLookup[this.key].getMoves();
+		}
         return this._vertices;
     }
 }
