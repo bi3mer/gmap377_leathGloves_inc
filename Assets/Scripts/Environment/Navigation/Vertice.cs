@@ -59,7 +59,6 @@ public class Vertice
     /// <returns>Return arraylist of moves</returns>
     public List<int> getMoves()
     {
-		Debug.Log(this.duplicatePoint + ": " + this._vertices.Count);
 		if(this.duplicatePoint)
 		{
 			return VertexNavigation.Instance.movementLookup[this.key].getMoves();

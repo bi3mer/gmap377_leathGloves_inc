@@ -200,7 +200,7 @@ public class AStar: MonoBehaviour, AiMovement
 			Color color = new Color();
 			color.a = 1;
 			color.g = .6f;	
-			Debug.DrawLine(this.transform.position, VertexNavigation.Instance.getVertex(this.plan[0]).position, Color.green);
+//			Debug.DrawLine(this.transform.position, VertexNavigation.Instance.getVertex(this.plan[0]).position, Color.green);
 			for(int i = 0; i < planCount; ++i)
 			{
 				if(i != planCount - 1)
