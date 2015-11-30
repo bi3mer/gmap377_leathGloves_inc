@@ -32,7 +32,18 @@ public class VertexNavigation : MonoBehaviour
 	public List<Vertice> movementLookup;
 
 	[HideInInspector]
-    public int[] triangles;
+    public int[] triangles
+	{
+		get
+		{
+			return this.mesh.triangles;
+		}
+
+		set
+		{
+			// pass
+		}
+	}
 
 	[HideInInspector]
 	public Mesh mesh;
@@ -70,9 +81,6 @@ public class VertexNavigation : MonoBehaviour
 		// Get copy of vertices
 		this.vertices = (Vector3[]) this.mesh.vertices.Clone();
 		this.flyingVertices = (Vector3[]) this.mesh.vertices.Clone();
-
-        // Get copy of triangles
-        this.triangles = mesh.triangles;
 
         // Convert vertices to global coordiantes
         for (int i = 0; i < mesh.vertexCount; ++i)

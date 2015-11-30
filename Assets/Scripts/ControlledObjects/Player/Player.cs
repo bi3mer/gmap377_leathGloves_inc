@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        //WeaponDisplayController.Instance.ZeroOutAmmo();
+        WeaponDisplayController.Instance.ZeroOutAmmo();
     }
 	
 	public static Player Instance
