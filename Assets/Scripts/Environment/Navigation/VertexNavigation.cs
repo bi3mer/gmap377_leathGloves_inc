@@ -59,7 +59,7 @@ public class VertexNavigation : MonoBehaviour
 	public bool showFlyingNodes;
 
     // Radius of planet
-	[SerializeField]
+	[HideInInspector]
     private float _radius;
     public float radius 
     {
@@ -332,6 +332,10 @@ public class VertexNavigation : MonoBehaviour
 
 	void Start()
 	{
+		// Get Radius
+		this._radius = GetComponent<SphereCollider>().radius * this.transform.localScale.x;
+
+		// modify heights of vertices
 		this.modifyVerticeHeights();
 	}
 }
