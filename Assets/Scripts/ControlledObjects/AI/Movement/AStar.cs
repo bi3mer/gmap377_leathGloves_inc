@@ -172,7 +172,7 @@ public class AStar: MonoBehaviour, AiMovement
         {
             return null;
         }
-		print ("getting new plan!");
+		//print ("getting new plan!");
 		// Get plan
         return this.getThePath();
     }

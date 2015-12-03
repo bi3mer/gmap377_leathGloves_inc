@@ -62,7 +62,7 @@ public class SpawnSystem : MonoBehaviour {
             }
         }
         GameObject prefab = null;
-        float r = Random.Range(0, 100) / 100;
+        float r = Random.Range(0, 100) / 100.0f;
         float sum = 0;
         for (int i=0; i<EnemyPrefabs.Count; i++) {
             if (r < sum + EnemyProbabilities[i]) {
@@ -72,6 +72,8 @@ public class SpawnSystem : MonoBehaviour {
             sum += EnemyProbabilities[i];
         }
         GameObject e = GameObject.Instantiate(EnemyPrefabs[Random.Range(0, EnemyPrefabs.Count)], position, new Quaternion()) as GameObject;
+        e.GetComponent<EnemyStats>().Spawner = this;
+        e.transform.parent = transform;
         Gravity nearestPlanet = InterplanetaryObject.GetNearestPlanet(position);
         Vector3 angleToPlanet = position - nearestPlanet.transform.position;
         Vector3 oldpos = e.transform.position;

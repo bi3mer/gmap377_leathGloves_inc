@@ -13,7 +13,8 @@ public class EnemyStats : MonoBehaviour
     private System.Random drop;
     private Collider eCollider;                    // Reference to the collider.
     bool isDead;                           // Whether the enemy is dead.
-   
+
+    public SpawnSystem Spawner = null;
 
     void Awake()
     {
@@ -80,6 +81,10 @@ public class EnemyStats : MonoBehaviour
                     Instantiate(Drop4, new Vector3(transform.position.x, transform.position.y + offset, transform.position.z), transform.rotation);
                     break;
             }
+        }
+
+        if (Spawner) {
+            Spawner.RegisterEnemyDeath();
         }
     }
     public virtual void MakeExplosion()
