@@ -10,6 +10,7 @@ public class SpawnSystem : MonoBehaviour {
     public int MinSpawnDistance = 100;
     public int MaxSpawnDistance = 200;
     public List<GameObject> EnemyPrefabs;
+    public List<float> EnemyProbabilities;
 
     private int _timer = 0;
     private int _currentEnemyNumber = 0;
@@ -60,7 +61,16 @@ public class SpawnSystem : MonoBehaviour {
                 break;
             }
         }
-        
+        GameObject prefab = null;
+        float r = Random.Range(0, 100) / 100;
+        float sum = 0;
+        for (int i=0; i<EnemyPrefabs.Count; i++) {
+            if (r < sum + EnemyProbabilities[i]) {
+                prefab = EnemyPrefabs[i];
+                break;
+            }
+            sum += EnemyProbabilities[i];
+        }
         GameObject e = GameObject.Instantiate(EnemyPrefabs[Random.Range(0, EnemyPrefabs.Count)], position, new Quaternion()) as GameObject;
         Gravity nearestPlanet = InterplanetaryObject.GetNearestPlanet(position);
         Vector3 angleToPlanet = position - nearestPlanet.transform.position;
@@ -76,6 +86,7 @@ public class SpawnSystem : MonoBehaviour {
     }
 
     public void RegisterEnemyDeath() {
+        CurrentDifficulty++;
         _currentEnemyNumber -= 1;
     }
 }
