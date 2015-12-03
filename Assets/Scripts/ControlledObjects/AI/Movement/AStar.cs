@@ -81,7 +81,7 @@ public class AStar: MonoBehaviour, AiMovement
         foreach (RaycastHit hit in hits)
         {
             // Check if correct mesh was hit
-			if (hit.collider != null && hit.collider.tag == "Planet")
+			if (hit.collider != null && hit.collider.tag == "Planet" && hit.triangleIndex != -1)
             {
                 unFormattedMoves = VertexNavigation.Instance.getMovesTriangle(hit.triangleIndex * 3);
                 break;
@@ -200,7 +200,7 @@ public class AStar: MonoBehaviour, AiMovement
 			Color color = new Color();
 			color.a = 1;
 			color.g = .6f;	
-//			Debug.DrawLine(this.transform.position, VertexNavigation.Instance.getVertex(this.plan[0]).position, Color.green);
+
 			for(int i = 0; i < planCount; ++i)
 			{
 				if(i != planCount - 1)

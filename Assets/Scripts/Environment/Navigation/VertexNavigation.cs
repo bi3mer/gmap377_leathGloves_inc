@@ -168,20 +168,20 @@ public class VertexNavigation : MonoBehaviour
 		// Get connectinv vertices based on vertex index
 		switch (vertexIndex)
 		{
-		case 0:
-			connectingVerticeOne = mesh.triangles[globalIndex + 1];
-			connectingVerticeTwo = mesh.triangles[globalIndex + 2];
-			break;
+		    case 0:
+			    connectingVerticeOne = this.mesh.triangles[globalIndex + 1];
+                connectingVerticeTwo = this.mesh.triangles[globalIndex + 2];
+			    break;
 			
-		case 1:
-			connectingVerticeOne = mesh.triangles[globalIndex + 1];
-			connectingVerticeTwo = mesh.triangles[globalIndex - 1];
-			break;
+		    case 1:
+                connectingVerticeOne = this.mesh.triangles[globalIndex + 1];
+                connectingVerticeTwo = this.mesh.triangles[globalIndex - 1];
+			    break;
 			
-		default:
-			connectingVerticeOne = mesh.triangles[globalIndex - 1];
-			connectingVerticeTwo = mesh.triangles[globalIndex - 2];
-			break;
+		    default:
+                connectingVerticeOne = this.mesh.triangles[globalIndex - 1];
+                connectingVerticeTwo = this.mesh.triangles[globalIndex - 2];
+			    break;
 		}
 		
 		// Increase size of array till proper size

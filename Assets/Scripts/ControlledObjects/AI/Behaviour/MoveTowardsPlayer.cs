@@ -22,7 +22,7 @@ public class MoveTowardsPlayer : Enemy
 	// Use this for initialization
 	void Start () 
 	{
-		this.target = Player.Instance.transform.position;
+		this.target = Player.Instance.getClosestVertice();
 		this.movement = GetComponent<AStar>();
 		this.movement.setTarget(target);
 		this.plan = this.movement.getNewPlan();
@@ -74,13 +74,12 @@ public class MoveTowardsPlayer : Enemy
 	// Update is called once per frame
 	void Update () 
 	{
-		// Check if new plan needs to be calculated // minPlayerChangeDistnace
-//		print ("distance: " + DistanceCalculator.euclidianDistance(this.target, Player.Instance.transform.position));
-		if(this.plan == null || DistanceCalculator.euclidianDistance(this.target, Player.Instance.transform.position) >= this.minPlayerChangeDistance)
+		// Check if new plan needs to be calculated
+		if(this.plan == null || DistanceCalculator.euclidianDistance(this.target, Player.Instance.getClosestVertice()) >= this.minPlayerChangeDistance)
 		{
 			this.targetIndex = 0;
-			this.target = Player.Instance.transform.position;
-			this.movement.setTarget(Player.Instance.transform.position);
+			this.target = Player.Instance.getClosestVertice();
+			this.movement.setTarget(this.target);
 			this.plan = this.movement.getNewPlan();
 		}
 
