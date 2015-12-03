@@ -7,13 +7,17 @@ public class SpawnSystem : MonoBehaviour {
 
     public int CurrentDifficulty = 5;
     public int DifficultyIncreaseTime = 20;
-    public int MinSpawnDistance = 100;
-    public int MaxSpawnDistance = 200;
+    public float ChanceDifficultyIncreaseDeath = 0.4f;
+    public float MinSpawnDistanceEmpty = 50;
+    public float MinSpawnDistancePopulated = 100;
+    public float MinSpawnDistanceActual = 50;
+    public float MaxSpawnDistance = 200;
+    public float MaxSpawnDistanceActual = 200;
     public List<GameObject> EnemyPrefabs;
     public List<float> EnemyProbabilities;
+    public int CurrentEnemyNumber = 0;
 
     private int _timer = 0;
-    private int _currentEnemyNumber = 0;
 
     void Start () {
         _timer = DifficultyIncreaseTime;
@@ -27,9 +31,9 @@ public class SpawnSystem : MonoBehaviour {
             _timer = (int)(DifficultyIncreaseTime / Time.deltaTime);
         }
 
-	    if (_currentEnemyNumber < CurrentDifficulty) {
+	    if (CurrentEnemyNumber < CurrentDifficulty) {
             SpawnEnemy();
-            _currentEnemyNumber++;
+            CurrentEnemyNumber++;
         }
 	}
 
@@ -57,7 +61,9 @@ public class SpawnSystem : MonoBehaviour {
                 break;
             }
             float dist = DistanceCalculator.euclidianDistance(position, Player.Instance.transform.position);
-            if (dist > MinSpawnDistance && dist < MaxSpawnDistance) {
+            MinSpawnDistanceActual = MinSpawnDistanceEmpty + (MinSpawnDistancePopulated - MinSpawnDistanceEmpty) * (CurrentEnemyNumber / CurrentDifficulty);
+            MaxSpawnDistanceActual = MinSpawnDistancePopulated + (MaxSpawnDistanceActual - MinSpawnDistancePopulated) * (CurrentEnemyNumber / CurrentDifficulty);
+            if (dist > MinSpawnDistanceActual && dist < MaxSpawnDistance) {
                 break;
             }
         }
@@ -71,7 +77,7 @@ public class SpawnSystem : MonoBehaviour {
             }
             sum += EnemyProbabilities[i];
         }
-        GameObject e = GameObject.Instantiate(EnemyPrefabs[Random.Range(0, EnemyPrefabs.Count)], position, new Quaternion()) as GameObject;
+        GameObject e = GameObject.Instantiate(prefab, position, new Quaternion()) as GameObject;
         e.GetComponent<EnemyStats>().Spawner = this;
         e.transform.parent = transform;
         Gravity nearestPlanet = InterplanetaryObject.GetNearestPlanet(position);
@@ -88,7 +94,9 @@ public class SpawnSystem : MonoBehaviour {
     }
 
     public void RegisterEnemyDeath() {
-        CurrentDifficulty++;
-        _currentEnemyNumber -= 1;
+        if (ChanceDifficultyIncreaseDeath > Random.Range(0, 100) / 100.0f) {
+            CurrentDifficulty++;
+        }
+        CurrentEnemyNumber -= 1;
     }
 }
