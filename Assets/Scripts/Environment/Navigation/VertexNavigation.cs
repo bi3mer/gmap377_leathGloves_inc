@@ -293,7 +293,6 @@ public class VertexNavigation : MonoBehaviour
 	/// <param name="vertexIndex">Vertex index.</param>
     public List<int> getMovesVertex(int vertexIndex)
     {
-        Debug.Log("Index : " + vertexIndex + ", length: " + this.movementLookup.Count);
         return this.movementLookup[vertexIndex].getMoves();
     }
         
