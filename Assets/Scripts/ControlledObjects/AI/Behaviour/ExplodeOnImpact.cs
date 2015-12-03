@@ -20,7 +20,11 @@ public class ExplodeOnImpact : MonoBehaviour
 	private void deathAnimation()
 	{
 		// Collision explosion
-		Instantiate(explosion, this.transform.position, Quaternion.identity);
+		GameObject exp = GameObject.Instantiate(explosion);
+        if (SoundManager.Instance) {
+            AudioClip expSound = Random.Range(0, 1) > 0.5 ? SoundManager.Instance.Explosion1 : SoundManager.Instance.Explosion1;
+            SoundManager.Instance.PlayAudioSourceVaried(exp.GetComponent<AudioSource>(), null, 1f, 1.0f, 0.9f, 1.1f);
+        }
 		
 		// Deinstatiate self
 		Destroy(this.gameObject);
