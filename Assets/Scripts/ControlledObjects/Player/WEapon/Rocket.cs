@@ -35,7 +35,6 @@ public class Rocket : MonoBehaviour
 
 				if(hitColliders[i].tag == "Player")
 				{
-					Debug.Log("herehewhrqwerhqwehr");
 					ScoreManager.Instance.DecreaseScore((int) this.GetComponent<Weapon>().damage);
 				}
 
