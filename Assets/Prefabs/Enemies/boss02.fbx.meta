@@ -1,0 +1,138 @@
+fileFormatVersion: 2
+guid: e1ab2d594466e44c0926c5c53f7d0c71
+timeCreated: 1449353013
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: BossArtillery
+    100004: bossBody
+    100006: bossExhaust
+    100008: BossGuns
+    100010: BossMissileLauncherLeft
+    100012: BossMissileLauncherRight
+    100014: BossMissilesLeft
+    100016: BossMissilesRight
+    100018: BossSponsonLeft
+    100020: BossSponsonRight
+    100022: bossTrackLeft
+    100024: bossTrackLeft1
+    100026: BossTurret
+    400000: //RootNode
+    400002: BossArtillery
+    400004: bossBody
+    400006: bossExhaust
+    400008: BossGuns
+    400010: BossMissileLauncherLeft
+    400012: BossMissileLauncherRight
+    400014: BossMissilesLeft
+    400016: BossMissilesRight
+    400018: BossSponsonLeft
+    400020: BossSponsonRight
+    400022: bossTrackLeft
+    400024: bossTrackLeft1
+    400026: BossTurret
+    2300000: BossArtillery
+    2300002: bossBody
+    2300004: bossExhaust
+    2300006: BossGuns
+    2300008: BossMissileLauncherLeft
+    2300010: BossMissileLauncherRight
+    2300012: BossMissilesLeft
+    2300014: BossMissilesRight
+    2300016: BossSponsonLeft
+    2300018: BossSponsonRight
+    2300020: bossTrackLeft
+    2300022: bossTrackLeft1
+    2300024: BossTurret
+    3300000: BossArtillery
+    3300002: bossBody
+    3300004: bossExhaust
+    3300006: BossGuns
+    3300008: BossMissileLauncherLeft
+    3300010: BossMissileLauncherRight
+    3300012: BossMissilesLeft
+    3300014: BossMissilesRight
+    3300016: BossSponsonLeft
+    3300018: BossSponsonRight
+    3300020: bossTrackLeft
+    3300022: bossTrackLeft1
+    3300024: BossTurret
+    4300000: bossBody
+    4300002: bossTrackLeft
+    4300004: BossSponsonLeft
+    4300006: BossMissileLauncherLeft
+    4300008: BossMissilesLeft
+    4300010: BossSponsonRight
+    4300012: BossMissileLauncherRight
+    4300014: BossMissilesRight
+    4300016: BossTurret
+    4300018: BossGuns
+    4300020: BossArtillery
+    4300022: bossTrackLeft1
+    4300024: bossExhaust
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 0
+    splitTangentsAcrossUV: 1
+    normalImportMode: 1
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
