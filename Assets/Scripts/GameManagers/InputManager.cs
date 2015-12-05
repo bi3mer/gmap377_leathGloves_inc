@@ -21,6 +21,11 @@ public class InputManager : MonoBehaviour {
     {
         get { return Input.GetAxisRaw("Submit"); }
     }
+    public static float Player2Shoot 
+    {
+        get { return Input.GetAxisRaw("Player2Shoot"); }
+    }
+
 
     void Awake() {
         if (Instance) {

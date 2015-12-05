@@ -25,7 +25,7 @@ public class Shooting : MonoBehaviour
         // If ammo is available, allow it to fire. The default laser starts at -1
         // hence the || ammo < ZERO. 
         // LaserExists checks to make sure a laserbeam is not currently active.
-        if (Input.GetMouseButtonDown(0) && (ammo > ZERO || ammo < ZERO) && LaserExists == null)
+        if ((Input.GetMouseButtonDown(0) || InputManager.Player2Shoot > float.Epsilon) && (ammo > ZERO || ammo < ZERO) && LaserExists == null)
         {
             
             // Bullet being created      
