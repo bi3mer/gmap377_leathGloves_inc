@@ -33,6 +33,12 @@ public class Rocket : MonoBehaviour
                 // Try and find an EnemyHealth script on the gameobject hit.
                 EnemyStats enemyHealth = hitColliders[i].gameObject.GetComponentInParent<EnemyStats>();
 
+				if(hitColliders[i].tag == "Player")
+				{
+					Debug.Log("herehewhrqwerhqwehr");
+					ScoreManager.Instance.DecreaseScore((int) this.GetComponent<Weapon>().damage);
+				}
+
                 // If the EnemyHealth component exist...
                 if (enemyHealth != null)
                 {
