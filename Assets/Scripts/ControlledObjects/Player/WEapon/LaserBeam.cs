@@ -25,6 +25,10 @@ public class LaserBeam : MonoBehaviour
                         Input.mousePosition.y,
                         length
                     );
+
+        if (SoundManager.Instance) {
+            SoundManager.Instance.PlayAudioSourceVaried(GetComponent<AudioSource>(), SoundManager.Instance.LaserBeamShot);
+        }
     
     }
 
