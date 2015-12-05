@@ -25,6 +25,15 @@ public class InputManager : MonoBehaviour {
     {
         get { return Input.GetAxisRaw("Player2Shoot"); }
     }
+    public static float Player2AimHorizontal 
+    {
+        get { return Input.GetAxisRaw("Player2AimHorizontal"); }
+    }
+    public static float Player2AimVertical 
+    {
+        get { return Input.GetAxisRaw("Player2AimVertical"); }
+    }
+
 
 
     void Awake() {
@@ -34,5 +43,9 @@ public class InputManager : MonoBehaviour {
         else {
             Instance = this;
         }
+    }
+
+    void Update() {
+        
     }
 }
