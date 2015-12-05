@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 public class AStar: MonoBehaviour, AiMovement
 {
-	public GameObject debugCube;
     public int distanceToGround = 10;
+	public LayerMask layer;
+	private float radius;
+	public GameObject body;
 //    public int stepCount = 1;
 
 	public bool drawRayCastDown = false;
@@ -61,6 +63,21 @@ public class AStar: MonoBehaviour, AiMovement
     {
 		return this.calculateDistanceFromPos(VertexNavigation.Instance.getVertex(vertex).position);
     }
+
+	// Check for collision at point
+	private bool collisionAtPoint(Vector3 pos)
+	{
+		bool found = false;
+		
+		// Get collisions
+		Collider[] hitColliders = Physics.OverlapSphere(pos, this.radius, this.layer);
+		if (hitColliders.Length > 0)
+		{
+			found = true;
+		}
+		
+		return found;
+	}
 
     /// <summary>
     /// get path plan
@@ -179,7 +196,7 @@ public class AStar: MonoBehaviour, AiMovement
 
 	void Start()
 	{
-		// TODO: remove, only for debugging
+		this.radius = this.body.GetComponent<Collider>().bounds.size.magnitude / 2;
 		this.getNewPlan();
 	}
 
