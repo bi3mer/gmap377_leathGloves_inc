@@ -8,6 +8,7 @@ public class SpawnSystem : MonoBehaviour {
     public int CurrentDifficulty = 5;
     public int DifficultyIncreaseTime = 20;
     public float ChanceDifficultyIncreaseDeath = 0.4f;
+    public float CollisionCheckRadius = 2;
     public float MinSpawnDistanceEmpty = 50;
     public float MinSpawnDistancePopulated = 100;
     public float MinSpawnDistanceActual = 50;
@@ -64,7 +65,10 @@ public class SpawnSystem : MonoBehaviour {
             MinSpawnDistanceActual = MinSpawnDistanceEmpty + (MinSpawnDistancePopulated - MinSpawnDistanceEmpty) * (CurrentEnemyNumber / CurrentDifficulty);
             MaxSpawnDistanceActual = MinSpawnDistancePopulated + (MaxSpawnDistanceActual - MinSpawnDistancePopulated) * (CurrentEnemyNumber / CurrentDifficulty);
             if (dist > MinSpawnDistanceActual && dist < MaxSpawnDistance) {
-                break;
+                Collider[] hits = Physics.OverlapSphere(position, CollisionCheckRadius);
+                if (hits.Length <= 1) {
+                    break;
+                }
             }
         }
         GameObject prefab = null;
