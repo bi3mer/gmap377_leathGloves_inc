@@ -10,7 +10,6 @@ public class Rocket : MonoBehaviour
      */
     public float ExplosionRadius, ExplosionForce;
     public GameObject Explosion;
-    public string Target;
     public LayerMask TargetLayer;
 
     /// <summary>

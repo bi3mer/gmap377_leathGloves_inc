@@ -16,6 +16,7 @@ public class FireForward : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		Debug.Log ("here");
 		this.transform.position = Vector3.MoveTowards(this.transform.position, this.target, this.speed * Time.deltaTime);
 	}
 }

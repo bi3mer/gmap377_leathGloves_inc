@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Weapon: MonoBehaviour
 {
     public float damage, speed, ammo;
+	public string targetTag = "Enemy";
 
     /// <summary>
     /// Triggered when the bullet collides with anything
@@ -15,7 +16,7 @@ public class Weapon: MonoBehaviour
         EnemyStats enemyHealth = null;
 
         // If it's an enemy
-        if (col.gameObject.tag == "Enemy")
+        if (col.gameObject.tag == this.targetTag)
         {
             // Try and find an EnemyHealth script on the gameobject hit.
             enemyHealth = col.gameObject.GetComponent<EnemyStats>();
@@ -26,8 +27,6 @@ public class Weapon: MonoBehaviour
                 // ... the enemy should take damage.
                 enemyHealth.TakeDamage((int)this.damage);
             }
-
         }
-
     }
 }
