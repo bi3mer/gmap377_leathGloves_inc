@@ -27,7 +27,7 @@ public class SimpleTimer : MonoBehaviour
         {
             timerEnded();
 
-            if (InputManager.PlayerStartInput > float.Epsilon) {
+            if (InputManager.PlayerStartInput > float.Epsilon || Input.GetKeyDown(KeyCode.Alpha1)) {
                 restartText.enabled = false;
    
                 HighScoreList.Instance.ClearAll();
