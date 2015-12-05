@@ -19,8 +19,6 @@ public class EnemyArtillery : MonoBehaviour
 		this.previousAngle = Vector3.Angle(this.transform.forward, Player.Instance.transform.position - this.transform.position);
 		this.fireCurrentTime = this.fireResetTime;
 		this.halfRotateTime = this.fireResetTime / 2;
-
-		// TODO: Destroy self after time
 	}
 	
 	// Update is called once per frame
@@ -48,7 +46,8 @@ public class EnemyArtillery : MonoBehaviour
 		{
 			if(this.fireCurrentTime == this.halfRotateTime)
 			{
-				Instantiate(this.projectile, this.attackSpawnPoint.position, this.attackSpawnPoint.rotation);
+				GameObject clone = (GameObject) Instantiate(this.projectile, this.attackSpawnPoint.position, this.attackSpawnPoint.rotation);
+				clone.GetComponent<Rigidbody>().AddForce(clone.transform.forward * Vector3.Distance(this.transform.position, Player.Instance.transform.position) * 10);
 			}
 
 			++this.fireCurrentTime;
