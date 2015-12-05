@@ -46,7 +46,8 @@ public class EnemyArtillery : MonoBehaviour
 		{
 			if(this.fireCurrentTime == this.halfRotateTime)
 			{
-				Instantiate(this.projectile, this.attackSpawnPoint.position, this.attackSpawnPoint.rotation);
+				GameObject clone = (GameObject) Instantiate(this.projectile, this.attackSpawnPoint.position, this.attackSpawnPoint.rotation);
+				clone.GetComponent<Rigidbody>().AddForce(clone.transform.forward * Vector3.Distance(this.transform.position, Player.Instance.transform.position) * 10);
 			}
 
 			++this.fireCurrentTime;
