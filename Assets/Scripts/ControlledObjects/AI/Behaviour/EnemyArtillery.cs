@@ -19,8 +19,6 @@ public class EnemyArtillery : MonoBehaviour
 		this.previousAngle = Vector3.Angle(this.transform.forward, Player.Instance.transform.position - this.transform.position);
 		this.fireCurrentTime = this.fireResetTime;
 		this.halfRotateTime = this.fireResetTime / 2;
-
-		// TODO: Destroy self after time
 	}
 	
 	// Update is called once per frame

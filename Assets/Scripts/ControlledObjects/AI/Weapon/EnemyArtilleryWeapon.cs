@@ -75,7 +75,7 @@ public class EnemyArtilleryWeapon : MonoBehaviour
                         }
                         else
                         {
-                            transform.RotateAround(VertexNavigation.Instance.transform.position, Vector3.right, this.rotationSpeed * Time.deltaTime);
+                            transform.RotateAround(VertexNavigation.Instance.transform.position, this.transform.forward, this.rotationSpeed * Time.deltaTime);
                             this.curTime += Time.deltaTime;
                         }
                         break;
