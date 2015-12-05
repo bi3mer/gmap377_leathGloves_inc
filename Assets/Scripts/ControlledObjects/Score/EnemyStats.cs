@@ -82,10 +82,6 @@ public class EnemyStats : MonoBehaviour
                     break;
             }
         }
-
-        if (Spawner) {
-            Spawner.RegisterEnemyDeath();
-        }
     }
     public virtual void MakeExplosion()
     {
@@ -98,5 +94,11 @@ public class EnemyStats : MonoBehaviour
         MakeExplosion();
         
         Destroy(this.gameObject);            // delete self
+    }
+
+    public void OnDestroy() {
+        if (Spawner) {
+            Spawner.RegisterEnemyDeath();
+        }
     }
 }
