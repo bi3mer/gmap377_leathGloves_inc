@@ -26,7 +26,7 @@ public class SoundManager : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-
+    
     public void PlayAudioSource(AudioSource source) {
         source.Play();
     }
@@ -42,6 +42,7 @@ public class SoundManager : MonoBehaviour {
         float reverbZoneMix = source.reverbZoneMix;
 
         GameObject obj = new GameObject();
+        obj.transform.parent = transform;
         obj.transform.position = source.gameObject.transform.position;
         obj.AddComponent<AudioSource>();
         obj.GetComponent<AudioSource>().volume = Random.Range(minVolume, maxVolume) * volume;
