@@ -9,7 +9,7 @@ public class ButtonFunction : MonoBehaviour {
     void Update()
     {
         // If xbox start button (Windows/Linux) or the 1 key is pressed, start the game
-        if (InputManager.PlayerStartInput > float.Epsilon || Input.GetKeyDown(KeyCode.Alpha1))
+        if (InputManager.PlayerStartInput > float.Epsilon || Input.GetKeyDown(KeyCode.Return))
         {
             Application.LoadLevel("OriginalScene");
         }

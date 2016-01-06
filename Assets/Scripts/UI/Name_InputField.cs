@@ -9,6 +9,7 @@ public class Name_InputField : MonoBehaviour {
 	void Start () {
         this.nameInput = GetComponent<InputField>();
         nameInput.onEndEdit.AddListener(setPlayerName);
+        nameInput.Select();
 
 	}
 
