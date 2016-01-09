@@ -15,21 +15,23 @@ public class ForceMover : MonoBehaviour {
 
 	private Rigidbody m_Rigidbody;
 	private PlanetOrientation m_planetOrientation;
-	private InterplanetaryObject m_ipObject;
 
 	void Start()
 	{
 	    m_Rigidbody = GetComponent<Rigidbody>();
 		m_planetOrientation = GetComponent<PlanetOrientation>();
-		m_ipObject = GetComponent<InterplanetaryObject>();
     }
-	void Update() {
-		if (InputManager.Player1HorizontalInput < -1 * float.Epsilon) {
+
+	void Update() 
+	{
+		if (InputManager.Player1HorizontalInput < -1 * float.Epsilon) 
+		{
 			transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * InputManager.Player1HorizontalInput);
 			MotionBaseMover.Instance.InduceArtificialRoll(-0.6f);
 		}
 
-		if (InputManager.Player1HorizontalInput > float.Epsilon) {
+		if (InputManager.Player1HorizontalInput > float.Epsilon) 
+		{
 			transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * InputManager.Player1HorizontalInput);
 			MotionBaseMover.Instance.InduceArtificialRoll(0.6f);
 		}

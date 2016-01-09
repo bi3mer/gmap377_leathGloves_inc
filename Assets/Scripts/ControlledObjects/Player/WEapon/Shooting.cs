@@ -56,7 +56,7 @@ public class Shooting : MonoBehaviour
                 --bullet.GetComponent<Weapon>().ammo;
                 if (bullet.GetComponent<Weapon>().ammo == ZERO)
                 {
-                    this.bullet = GetComponent<PickupCache>().Laser;
+					this.bullet = GetComponent<PickupCache>().Laser;
                     //Set Gui to current weapon
                     WeaponDisplayController.Instance.AllOff();
                     WeaponDisplayController.Instance.dLaserOn.enabled = true;

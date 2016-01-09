@@ -2,8 +2,8 @@
 using System.Collections;
 
 [RequireComponent(typeof (PlanetOrientation))]
-public class WeebleWobble : MonoBehaviour {
-
+public class WeebleWobble : MonoBehaviour 
+{
 	public float WeebleWobbleFactor = 0.1f;
 	public float PitchTolerance = 5;
     public float RollTolerance = 5;
@@ -11,12 +11,14 @@ public class WeebleWobble : MonoBehaviour {
 	private PlanetOrientation m_planetOrientation;
 	private Rigidbody m_rigidbody;
 
-	void Start () {
+	void Start () 
+	{
 		m_planetOrientation = GetComponent<PlanetOrientation>();
 		m_rigidbody = GetComponent<Rigidbody>();
 	}
 	
-	void Update () {
+	void Update () 
+	{
 		bool grounded = m_planetOrientation.Grounded;
 		float pitch = m_planetOrientation.Pitch;
 		float roll = m_planetOrientation.Roll;
@@ -24,18 +26,18 @@ public class WeebleWobble : MonoBehaviour {
 		float pitchRotationCorrection = 0;
 		float rollRotationCorrection = 0;
 		
-		if (!grounded) {
-			if (Mathf.Abs(pitch) > PitchTolerance) {
-				Vector3 lrAxis = m_planetOrientation.LeftRightAxis;
+		if (!grounded) 
+		{
+			if (Mathf.Abs(pitch) > PitchTolerance) 
+			{
 				pitchRotationCorrection = -1 * pitch * WeebleWobbleFactor;
-				//transform.Rotate(transform.right, pitchRotationCorrection);
 				m_rigidbody.rotation = Quaternion.AngleAxis(pitchRotationCorrection, transform.right) * m_rigidbody.rotation;
 				m_planetOrientation.UpdateTiltAxes();
 			}
-			if (Mathf.Abs(roll) > RollTolerance) {
-				Vector3 fbAxis = m_planetOrientation.ForwardBackAxis;
+
+			if (Mathf.Abs(roll) > RollTolerance) 
+			{
 				rollRotationCorrection = roll * WeebleWobbleFactor;
-				//transform.Rotate(transform.forward, rollRotationCorrection);
 				m_rigidbody.rotation = Quaternion.AngleAxis(rollRotationCorrection, transform.forward) * m_rigidbody.rotation;
 				m_planetOrientation.UpdateTiltAxes();
 			}

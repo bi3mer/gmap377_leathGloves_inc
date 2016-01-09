@@ -3,11 +3,11 @@ using System.Collections;
 
 public class WeaponSwitch : MonoBehaviour {
 
-    PickupCache cache;
+	PickupCache cache;
 
     void Start()
     {
-        cache = GetComponent<PickupCache>();
+		cache = this.GetComponent<PickupCache>();
     }
 
     void Update()

@@ -11,7 +11,6 @@ public class EnemyStats : MonoBehaviour
     public float offset = 1;
 
     private System.Random drop;
-    private Collider eCollider;                    // Reference to the collider.
     bool isDead;                           // Whether the enemy is dead.
 
     public SpawnSystem Spawner = null;
@@ -20,7 +19,6 @@ public class EnemyStats : MonoBehaviour
     {
 
         this.drop = new System.Random();
-        eCollider = GetComponent<Collider>();
 
         // Setting the current health when the enemy first spawns.
         currentHealth = startingHealth;

@@ -86,14 +86,13 @@ public class SpawnSystem : MonoBehaviour {
         e.transform.parent = transform;
         Gravity nearestPlanet = InterplanetaryObject.GetNearestPlanet(position);
         Vector3 angleToPlanet = position - nearestPlanet.transform.position;
-        Vector3 oldpos = e.transform.position;
         e.transform.position = e.transform.position + angleToPlanet.normalized * 1f;
         InterplanetaryObject io = e.AddComponent<InterplanetaryObject>();
         io.NearestPlanet = nearestPlanet;
         PlanetOrientation po = e.AddComponent<PlanetOrientation>();
         po.Initialize();
         po.UpdateOrientation();
-        WeebleWobble ww = e.AddComponent<WeebleWobble>();
+        e.AddComponent<WeebleWobble>();
 
     }
 

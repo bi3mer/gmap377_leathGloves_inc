@@ -218,7 +218,6 @@ public class PlanetOrientation : MonoBehaviour {
     public void UpdateGrounded() {
         if (_collider) {
             int layermask = LayerMask.GetMask("Environment");
-            Collider[] cols = Physics.OverlapSphere(_gcCenter.transform.position, GroundedCheckDistance, layermask);
             GroundedCenter = (Physics.OverlapSphere(_gcCenter.transform.position, GroundedCheckDistance, layermask).Length > 0);
             GroundedTopRight = (Physics.OverlapSphere(_gcTopRight.transform.position, GroundedCheckDistance, layermask).Length > 0);
             GroundedTopLeft = (Physics.OverlapSphere(_gcTopLeft.transform.position, GroundedCheckDistance, layermask).Length > 0);

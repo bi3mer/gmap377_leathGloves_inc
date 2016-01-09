@@ -31,8 +31,6 @@ public class EnemyArtilleryWeapon : MonoBehaviour
 
     private void addNewRigidBody()
     {
-        Rigidbody rb = new Rigidbody();
-
         this.gameObject.AddComponent<Rigidbody>();
         this.addedRigidBody = true;
         this.state = States.drop;

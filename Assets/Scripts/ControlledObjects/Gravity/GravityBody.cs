@@ -5,23 +5,23 @@ using System.Collections;
 public class GravityBody : MonoBehaviour {
 	
 	private GravityAttractor planet;
-	private Rigidbody rigidbody;     
+	Rigidbody rb;
 	
-	void Awake () {
-		planet = GameObject.FindGameObjectWithTag("Planet").GetComponent<GravityAttractor>();
-		rigidbody = GetComponent<Rigidbody> ();
-
+	void Awake () 
+	{
+		this.planet = GameObject.FindGameObjectWithTag("Planet").GetComponent<GravityAttractor>();
+		this.rb = this.GetComponent<Rigidbody>();
 		
-		rigidbody.useGravity = false;
-		//rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+		this.rb.useGravity = false;
 	}
 	
-	void FixedUpdate () {
+	void FixedUpdate () 
+	{
 		// Allow this body to be influenced by planet's gravity
         if (planet == null)
         {
-            Debug.Log("HOLY FUCKING SHIT"); 
+            Debug.Log("Planet is null"); 
         }
-		planet.Attract(rigidbody);
+		planet.Attract(this.rb);
 	}
 }

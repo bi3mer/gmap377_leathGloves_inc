@@ -3,11 +3,12 @@ using System.Collections;
 using UnityEngine.UI;
 
 
-public class ScoreMulti : MonoBehaviour {
+public class ScoreMulti : MonoBehaviour 
+{
     public int multiplier = 2;
     float TimeS = 10;
 
-    string text;
+    public string text;
     
     void Start()
     {

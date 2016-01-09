@@ -91,9 +91,7 @@ public class AStar: MonoBehaviour, AiMovement
 	/// get path plan
 	/// </summary>
 	private List<int> getThePath()
-	{
-		this.plan  = new List<int>();
-		
+	{	
 		// http://docs.unity3d.com/ScriptReference/RaycastHit-triangleIndex.html
 		// Raycast downward
 		// Raycast towards center of planet
@@ -186,15 +184,17 @@ public class AStar: MonoBehaviour, AiMovement
 	/// Create new plan if a target is in place
 	/// </summary>
 	/// <param name="pos"></param>
-	/// <returns></returns>
+	/// <returns>The Plan</returns>
 	public List<int> getNewPlan()
 	{
+		this.plan = new List<int>();
+
 		// Check if target exists
-		if (this.target == null)
+		if (this.target == Vector3.zero)
 		{
-			return null;
+			return this.plan;
 		}
-		//print ("getting new plan!");
+
 		// Get plan
 		return this.getThePath();
 	}

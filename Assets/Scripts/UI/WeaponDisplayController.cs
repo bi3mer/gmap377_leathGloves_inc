@@ -20,7 +20,7 @@ public class WeaponDisplayController : MonoBehaviour {
 
     void Awake()
     {
-        cache = GetComponent<PickupCache>();
+		cache = this.GetComponent<PickupCache>();
         if (Instance)
         {
             Destroy(this);
@@ -39,16 +39,16 @@ public class WeaponDisplayController : MonoBehaviour {
 
     public void ChangeAmmo()
     {
-        beamAmmo.text = GetComponent<PickupCache>().LaserBeam.GetComponent<Weapon>().ammo.ToString();
-        rocketAmmo.text = GetComponent<PickupCache>().Rocket.GetComponent<Weapon>().ammo.ToString();
-        mineAmmo.text = GetComponent<PickupCache>().Mine.GetComponent<Weapon>().ammo.ToString();
+        beamAmmo.text = this.cache.LaserBeam.GetComponent<Weapon>().ammo.ToString();
+        rocketAmmo.text = this.cache.Rocket.GetComponent<Weapon>().ammo.ToString();
+        mineAmmo.text = this.cache.Mine.GetComponent<Weapon>().ammo.ToString();
 
     }
     public void ZeroOutAmmo()
     {
-        GetComponent<PickupCache>().LaserBeam.GetComponent<Weapon>().ammo =0;
-        GetComponent<PickupCache>().Rocket.GetComponent<Weapon>().ammo = 0;
-        GetComponent<PickupCache>().Mine.GetComponent<Weapon>().ammo = 0;
+        this.cache.LaserBeam.GetComponent<Weapon>().ammo = 0;
+        this.cache.Rocket.GetComponent<Weapon>().ammo = 0;
+        this.cache.Mine.GetComponent<Weapon>().ammo = 0;
     }
 
     public void AllOff()

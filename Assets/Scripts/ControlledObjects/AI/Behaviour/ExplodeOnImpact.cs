@@ -20,7 +20,7 @@ public class ExplodeOnImpact : MonoBehaviour
 	private void deathAnimation()
 	{
 		// Collision explosion
-		GameObject exp = (GameObject) GameObject.Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+		GameObject.Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
         
 		// Deinstatiate self
 		Destroy(this.gameObject);
