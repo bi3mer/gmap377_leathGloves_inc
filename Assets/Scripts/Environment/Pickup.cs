@@ -11,14 +11,12 @@ public class Pickup : MonoBehaviour
 
     // The array that holds the different actions
     private template[] Type;
-    private PickupCache cahce;
 
     void Start()
     {
         // When adding a new pickup type, don't forget to add 1 to the size of the array
         this.Type = new template[4];
-
-        this.cahce = GetComponent<PickupCache>();
+        
         // A function to initialize the array
         this.initializePickupTypes();
     }

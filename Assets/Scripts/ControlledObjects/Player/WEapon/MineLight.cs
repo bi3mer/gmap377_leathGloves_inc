@@ -4,13 +4,13 @@ using System.Collections;
 public class MineLight : MonoBehaviour
 {
     public float LightOnIntensity, LightOffIntensity;
-    private Light light;
+    private Light mineLight;
     public float onTime, resetTime;
     private bool on;
 
     void Start()
     {
-        this.light = GetComponent<Light>();
+        this.mineLight = GetComponent<Light>();
     }
 
     void Update()
@@ -19,12 +19,12 @@ public class MineLight : MonoBehaviour
         {
             if (on)
             {
-                this.light.intensity = this.LightOffIntensity;
+                this.mineLight.intensity = this.LightOffIntensity;
                 this.on = false;
             }
             else
             {
-                this.light.intensity = this.LightOnIntensity;
+                this.mineLight.intensity = this.LightOnIntensity;
                 this.on = true;
             }
             this.onTime = resetTime;
@@ -34,6 +34,4 @@ public class MineLight : MonoBehaviour
             this.onTime -= Time.deltaTime;
         }
     }
-   
-	
 }

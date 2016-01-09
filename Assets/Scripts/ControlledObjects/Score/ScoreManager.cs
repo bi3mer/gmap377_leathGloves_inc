@@ -14,11 +14,6 @@ public class ScoreManager : MonoBehaviour
     public int score = 0;   
          
     public string multiplierText;
-    
-
-	
-	// Reference to the Text component.
-    Text text;                     
 
     /// <summary>
     /// Awake this instance.
@@ -32,12 +27,6 @@ public class ScoreManager : MonoBehaviour
         else
         {
             Instance = this;
-        }
-
-        if (GetComponent<Text>() != null)
-        {
-            // Set up the reference.
-            text = GetComponent<Text>();
         }
 
         multiplierText = "x" + multi.ToString();
