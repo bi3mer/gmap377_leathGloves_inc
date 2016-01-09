@@ -6,10 +6,13 @@ public class LaserBeam : MonoBehaviour
     /**
     * Public Variable Description
     * GrowRate - How fast the Laser will grow
+    * ImageOffsetSpeed - How fast the image offset changes
     * Target - The target it does damage to
+    * SpawnPnt - Where the laser spawns
     */
-    public float GrowRate = 7f;
+    public float GrowRate = 7f, ImageOffsetSpeed = 2.5f;
     public string Target = "Enemy";
+    public Transform SpawnPnt;
 
     /**
     * Private Variable Description
@@ -27,7 +30,8 @@ public class LaserBeam : MonoBehaviour
     void Start()
     {
         line = GetComponent<LineRenderer>();
-        line.SetPosition(0, transform.position);
+        SpawnPnt = GameObject.Find("BulletSpawn").transform;
+        line.SetPosition(0, SpawnPnt.position);
         line.SetPosition(1, Camera.main.ScreenToWorldPoint(
                     new Vector3(
                         Input.mousePosition.x,
@@ -55,8 +59,10 @@ public class LaserBeam : MonoBehaviour
         // Update length
         length = length + this.GrowRate * Time.deltaTime;
 
+        line.material.mainTextureOffset = new Vector2(0, Time.time * ImageOffsetSpeed);
+
         // Set the initial position
-        line.SetPosition(0, GameObject.Find("Player").transform.position);
+        line.SetPosition(0, SpawnPnt.position);
 
         // Set the end position
         line.SetPosition(1, Camera.main.ScreenToWorldPoint(
