@@ -8,6 +8,9 @@ public class HoverTank : MonoBehaviour {
     // Tested with value of 0.5
     public float minHeight;
 
+    // Untested value -- preferred below 1.0
+    public float smoothingCoefficient;
+
 	private Rigidbody playerRigidbody;
 
 	void Start () {
@@ -28,7 +31,8 @@ public class HoverTank : MonoBehaviour {
             if (heightValue <= minHeight && !(heightValue > maxHeight))
             {
                 // If within bounds, adds impulse force upwards to simulate the "bounce" of a hover vehicle
-                playerRigidbody.AddRelativeForce(transform.up.normalized, ForceMode.Impulse);
+                // modified by smoothing coefficient
+                playerRigidbody.AddRelativeForce(transform.up.normalized * smoothingCoefficient, ForceMode.Impulse);
             }
 		}
 	}
