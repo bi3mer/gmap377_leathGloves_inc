@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [RequireComponent(typeof(InterplanetaryObject))]
 public class PlanetOrientation : MonoBehaviour {
 
 	[Header("Orientation")]
-	[Tooltip("Forward/backward tilt. Positive numbers indicate that the object is tilted downwards, while negative indicates the opposite.")]
+	[Tooltip("Forward/backward tilt. Positive numbers indicate that the object is tilted forward, while negative indicates the opposite.")]
 	public float Pitch;
 	[Tooltip("Right/Left tilt. Positive numbers indicate that the object is tilted right, while negative indicates the opposite.")]
 	public float Roll;
@@ -35,13 +38,12 @@ public class PlanetOrientation : MonoBehaviour {
 
 	private Vector3 _angleDown;
 	private Vector3 _angleToPlanet;
-	private float _angleFromSurface = 0;
-	private Vector3 _crossProduct;
 
 
 	private InterplanetaryObject _io;
 	public BoxCollider _collider;
 
+    private GameObject _orientationMarker;
 	private GameObject _groundCheckers;
 	private GameObject _gcCenter;
 	private GameObject _gcTopRight;
@@ -58,11 +60,11 @@ public class PlanetOrientation : MonoBehaviour {
         _io = GetComponent<InterplanetaryObject>();
         _collider = GetComponent<BoxCollider>();
 
-        GameObject orientationMarker = new GameObject("OrientationMarker");
-        orientationMarker.transform.SetParent(transform);
-        orientationMarker.transform.position = Vector3.zero;
-        orientationMarker.transform.localRotation = new Quaternion(0, 0, 0, 0);
-        orientationMarker.transform.localScale = new Vector3(1, 1, 1);
+        _orientationMarker = new GameObject("OrientationMarker");
+        _orientationMarker.transform.SetParent(transform);
+        _orientationMarker.transform.position = Vector3.zero;
+        _orientationMarker.transform.localRotation = new Quaternion(0, 0, 0, 0);
+        _orientationMarker.transform.localScale = new Vector3(1, 1, 1);
 
         PlanetMarker = new GameObject("PlanetMarker");
         PlanetMarker.transform.SetParent(transform);
@@ -130,6 +132,29 @@ public class PlanetOrientation : MonoBehaviour {
         }
     }
 
+    void Deinitialize() {
+        if (PlanetMarker) DestroyImmediate(PlanetMarker);
+        if (ForwardMarker) DestroyImmediate(ForwardMarker);
+        if (DownMarker) DestroyImmediate(DownMarker);
+        if (RightMarker) DestroyImmediate(RightMarker);
+
+        if (_groundCheckers) DestroyImmediate(_groundCheckers);
+        if (_orientationMarker) DestroyImmediate(_orientationMarker);
+
+        PlanetMarker = null;
+        ForwardMarker = null;
+        DownMarker = null;
+        RightMarker = null;
+
+        _groundCheckers = null;
+        _orientationMarker = null;
+        _gcCenter = null;
+        _gcTopLeft = null;
+        _gcTopRight = null;
+        _gcBottomLeft = null;
+        _gcBottomRight = null;
+}
+
 	void Update() {
         UpdateOrientation();
 
@@ -156,13 +181,11 @@ public class PlanetOrientation : MonoBehaviour {
 
             _angleDown = (transform.position - DownMarker.transform.position);
             _angleToPlanet = (transform.position - _io.NearestPlanet.transform.position);
-            _angleFromSurface = Vector3.Angle(_angleDown, _angleToPlanet);
-            _crossProduct = Vector3.Cross(_angleDown, _angleToPlanet).normalized;
 
             DistanceToGroundMarker = Vector3.Distance(transform.position, DownMarker.transform.position);
             DistanceToPlanet = Vector3.Distance(transform.position, _io.NearestPlanet.transform.position);
 
-            // Determine the maginitude of the object's pitch relative to the planet
+            // Determine the maginitude of the object's roll relative to the planet
             Vector3 vertexRoll = Vector3.zero;
             Vector3 pointDownRoll = new Vector3(DownMarker.transform.localPosition.x, DownMarker.transform.localPosition.y, 0); // Down marker's local position on x-y plane
             Vector3 pointPlanetRoll = new Vector3(PlanetMarker.transform.localPosition.x, PlanetMarker.transform.localPosition.y, 0); // Planet marker's local position on x-y plane
@@ -177,7 +200,7 @@ public class PlanetOrientation : MonoBehaviour {
                 angleRoll = Mathf.Rad2Deg * Mathf.Acos((float)(acosRollValue)); //arcos((P12^2 + P13^2 - P23^2) / (2 * P12 * P13))
             if (dvdRoll < float.Epsilon || dvpRoll < float.Epsilon) angleRoll = 0;
 
-            // Determine the magnitude of the object's roll relative to the planet
+            // Determine the magnitude of the object's pitch relative to the planet
             Vector3 vertexPitch = Vector3.zero;
             Vector3 pointDownPitch = new Vector3(0, DownMarker.transform.localPosition.y, DownMarker.transform.localPosition.z);    // Down marker's local position on z-y plane
             Vector3 pointPlanetPitch = new Vector3(0, PlanetMarker.transform.localPosition.y, PlanetMarker.transform.localPosition.z); // Planet marker's local position on z-y plane
@@ -210,9 +233,51 @@ public class PlanetOrientation : MonoBehaviour {
 
             UpdateTiltAxes();
         }
-        else {
-            _angleFromSurface = 0;
+  
+    }
+
+    public void CheckOrientation() {
+        _io = GetComponent<InterplanetaryObject>();
+        _io.NearestPlanet = InterplanetaryObject.GetNearestPlanet(transform.position);
+        Initialize();
+        UpdateOrientation();
+        Deinitialize();
+    }
+
+    public void OrientToPlanet(Gravity planet) {
+        _io = GetComponent<InterplanetaryObject>();
+        if (planet != null) _io.NearestPlanet = planet;
+        else _io.NearestPlanet = InterplanetaryObject.GetNearestPlanet(transform.position);
+        Initialize();
+        UpdateOrientation();
+
+        int MAX = 50;
+        int i = 0;
+        while ((Mathf.Abs(Pitch) > float.Epsilon || Mathf.Abs(Roll) > float.Epsilon) && i < MAX) {
+            //TODO: Having scale not (1, 1, 1) breaks it?
+
+            Vector3 pointPlanet = PlanetMarker.transform.position;
+            Vector3 pointCenter = transform.position;
+            Vector3 pointRight = RightMarker.transform.position;
+            Plane rightPlane = new Plane(pointPlanet, pointCenter, pointRight);
+            Vector3 vectorToPlanet = pointCenter - pointPlanet;
+            Vector3 rightAxis = Vector3.Cross(vectorToPlanet, rightPlane.normal);
+            transform.localRotation = Quaternion.AngleAxis(Pitch, rightAxis) * transform.localRotation;
+
+            Vector3 pointForward = ForwardMarker.transform.position;
+            Plane forwardPlane = new Plane(pointPlanet, pointCenter, pointForward);
+            Vector3 forwardAxis = -1 * Vector3.Cross(vectorToPlanet, forwardPlane.normal);
+            transform.localRotation = Quaternion.AngleAxis(Roll, forwardAxis) * transform.localRotation;
+
+            UpdateOrientation();
+            i++;
         }
+        if (i == MAX) {
+            Debug.Log("** Failed to orient " + gameObject.name);
+        }
+
+        Deinitialize();
+
     }
 
     public void UpdateGrounded() {
@@ -250,3 +315,32 @@ public class PlanetOrientation : MonoBehaviour {
 
     
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(PlanetOrientation))]
+[CanEditMultipleObjects]
+public class PlanetOrientationEditor : Editor {
+
+    public override void OnInspectorGUI() {
+        DrawDefaultInspector();
+        if (GUILayout.Button("Check Orientation")) {
+            foreach (Object t in targets) {
+                PlanetOrientation po = t as PlanetOrientation;
+                po.CheckOrientation();
+            }
+        }
+        if (GUILayout.Button("Orient to Planet")) {
+            foreach (Object t in targets) {
+                PlanetOrientation po = t as PlanetOrientation;
+                Debug.Log("Orienting " + po.gameObject.name + "...");
+                po.OrientToPlanet(null);
+            }
+            Debug.Log("Done orienting objects.");
+        }
+    }
+
+    void OnInspectorUpdate() {
+        Repaint();
+    }
+}
+#endif
