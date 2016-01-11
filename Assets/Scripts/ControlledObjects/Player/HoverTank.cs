@@ -2,10 +2,11 @@
 using System.Collections;
 
 public class HoverTank : MonoBehaviour {
+    // Tested with value of 1.0
 	public float maxHeight;
-	public float minHeight;
-	public float defaultHeight;
-	public float smoothingFactor;
+
+    // Tested with value of 0.5
+    public float minHeight;
 
 	private Rigidbody playerRigidbody;
 
@@ -15,16 +16,20 @@ public class HoverTank : MonoBehaviour {
 
 	void Update () {
 		RaycastHit hit;
+
+        // Checks for planet underneath player
+        // TODO: Fix LayerMask when planet layer is changed
 		if (Physics.Raycast (transform.position, -transform.up, out hit, LayerMask.NameToLayer("Environment")))
 		{
-			Debug.Log ("hit planet");
-			Vector3 heightVector = transform.position - hit.point;
-			Debug.DrawLine(Vector2.zero, heightVector, Color.red, 5f);
-			if(!(heightVector.magnitude >= maxHeight))
-			{
-				Vector3 desiredHeight = Vector3.ClampMagnitude(heightVector, defaultHeight);
-				playerRigidbody.MovePosition(Vector3.Lerp(transform.position, hit.point + desiredHeight, Time.deltaTime * smoothingFactor));
-			}
+            // Gets the distance from the point directly below the player on the planet surface
+            float heightValue = (transform.position - hit.point).magnitude;
+
+            // Tests if this value is within the thresholds
+            if (heightValue <= minHeight && !(heightValue > maxHeight))
+            {
+                // If within bounds, adds impulse force upwards to simulate the "bounce" of a hover vehicle
+                playerRigidbody.AddRelativeForce(transform.up.normalized, ForceMode.Impulse);
+            }
 		}
 	}
 }
