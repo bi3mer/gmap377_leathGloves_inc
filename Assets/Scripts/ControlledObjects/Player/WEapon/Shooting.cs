@@ -19,13 +19,12 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         float ammo = bullet.GetComponent<Weapon>().ammo;
-        GameObject LaserExists = GameObject.Find("LaserBeam(Clone)");
 
         // only do anything when the button is pressed
         // If ammo is available, allow it to fire. The default laser starts at -1
         // hence the || ammo < ZERO. 
         // LaserExists checks to make sure a laserbeam is not currently active.
-        if ((Input.GetMouseButtonDown(0) || InputManager.Player2Shoot > float.Epsilon) && (ammo > ZERO || ammo < ZERO) && LaserExists == null)
+        if ((Input.GetMouseButtonDown(0) || InputManager.Player2Shoot > float.Epsilon) && (ammo > ZERO || ammo < ZERO))
         {
             
             // Bullet being created      

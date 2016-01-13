@@ -10,6 +10,9 @@ public class LaserBeamCylinder2 : MonoBehaviour
     * and scaling work together in order to make it appear that the cylinder is growing in one direction
     */
     public float GrowthRate = 1.5f, MovementOffset = .1f;
+    public LayerMask CantPassThrough;
+
+    private bool stopGrowing = false;
 
 	/// <summary>
     /// Used to initialize GrowthRate to the appropriate value
@@ -24,6 +27,28 @@ public class LaserBeamCylinder2 : MonoBehaviour
     /// </summary>
 	void Update ()
     {
-        transform.localPosition = transform.localPosition + Vector3.forward * GrowthRate * MovementOffset * Time.deltaTime;
+        if (!this.stopGrowing)
+        {
+            transform.localPosition = transform.localPosition + Vector3.forward * GrowthRate * MovementOffset * Time.deltaTime;
+        }
 	}
+
+    void OnTriggerEnter(Collider col)
+    {
+
+        // If it's a layer you can't pass through, stop growing
+        if (CantPassThrough != (CantPassThrough | (1 << col.gameObject.layer)))
+        {
+            Debug.Log("Stop Growing, hit " + col.gameObject.name);
+            this.stopGrowing = true;
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (CantPassThrough != (CantPassThrough | (1 << col.gameObject.layer)))
+        {
+            this.stopGrowing = false;
+        }
+    }
 }

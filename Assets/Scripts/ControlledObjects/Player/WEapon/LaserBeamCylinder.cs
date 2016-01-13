@@ -10,19 +10,26 @@ public class LaserBeamCylinder : MonoBehaviour
     /**
     * Public Variable Description
     * GrowRate - How fast the cylinder will scale
-    * OffsetSpeed - How fast the texture will move on the mesh
+    * CantPassThrough - The layers the laser cannot pass through
     * Target - The tag of the target this weapon will effect
     */
     public float GrowRate = 1.5f, OffsetSpeed = 2f;
-    public MeshRenderer Mesh;
     public string Target = "Enemy";
-    
+    public LayerMask CantPassThrough;
+
+    /**
+    * Private Variable Description
+    * mesh - The mesh on the object
+    */
+    private MeshRenderer mesh;
+    private bool stopGrowing = false;
+
     /// <summary>
     /// Used to initialize the Mesh variable
     /// </summary>
 	void Start ()
     {
-        Mesh = GetComponent<MeshRenderer>();
+        mesh = GetComponent<MeshRenderer>();
 	}
 	
 	/// <summary>
@@ -30,8 +37,15 @@ public class LaserBeamCylinder : MonoBehaviour
     /// </summary>
 	void Update ()
     {
-        transform.localScale = new Vector3(1f, transform.localScale.y + GrowRate * Time.deltaTime, 1f);
-        Mesh.material.mainTextureOffset = new Vector3(Time.time * OffsetSpeed, 0f, 0f);
+        // If it hasn't hit an object in the layermask
+        if (!this.stopGrowing)
+        {
+            // Grow laser
+            transform.localScale = new Vector3(1f, transform.localScale.y + GrowRate * Time.deltaTime, 1f);
+        }
+
+        // Create spinning texture on the mesh
+        mesh.material.mainTextureOffset = new Vector3(Time.time * OffsetSpeed, 0f, 0f);
 	}
 
     /// <summary>
@@ -51,6 +65,27 @@ public class LaserBeamCylinder : MonoBehaviour
                 // ... the enemy should take damage.
                 enemyHealth.TakeDamage((int)this.GetComponentInParent<Weapon>().damage);
             }
+        }
+
+        // If it hits a layer that it can't pass through stop growing
+        if (CantPassThrough != (CantPassThrough | (1 << col.gameObject.layer)))
+        {
+            // Make the laser stop shooting
+            this.stopGrowing = true;
+        }
+    }
+
+    /// <summary>
+    /// When an object exits the collider, this is called
+    /// </summary>
+    /// <param name="col">The object it was colliding with</param>
+    void OnTriggerExit(Collider col)
+    {
+        // If the object was in one of the layers in the layer mask
+        if (CantPassThrough != (CantPassThrough | (1 << col.gameObject.layer)))
+        {
+            // Continue to grow
+            this.stopGrowing = false;
         }
     }
 }
