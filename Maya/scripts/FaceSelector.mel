@@ -1,0 +1,24 @@
+//Cody Rowlands
+//Change selectPercent to increase number of faces selected
+//10 percent works best
+//Have object selected to run script
+string $faces[] = {};
+float $selectPercent = 0.10;
+for($each in `ls -sl`)
+{	
+	int $nFaces[] = `polyEvaluate -f $each`;
+	int $sFaces = $nFaces[0] * $selectPercent;
+	
+	for($i=0;$i<$sFaces;$i++)
+	{
+		string $rFace = $each + ".f[" + int(`rand 0 $nFaces[0]`) + "]";
+	
+		while(stringArrayContains($rFace, $faces) == 1)
+		{
+			$rFace = $each + ".f[" + int(`rand 0 $nFaces[0]`) + "]";
+		}
+	
+	$faces[size($faces)] = $rFace;
+	}
+}
+select -r $faces;

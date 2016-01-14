@@ -1,0 +1,6 @@
+Import this as a script into maya script editor.
+Change selectPercent to increase number of faces selected
+10 percent works best(Set by default)
+Shelve the script
+Have object selected to run script
+Click on the icon you created on your shelf
