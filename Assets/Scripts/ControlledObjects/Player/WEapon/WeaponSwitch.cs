@@ -14,7 +14,6 @@ public class WeaponSwitch : MonoBehaviour {
     {
         if (InputManager.Player2HorizontalInput < 0 || Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log("Weapon Switch Default Laser");
             //Set Gui to current weapon
             WeaponDisplayController.Instance.AllOff();
             WeaponDisplayController.Instance.dLaserOn.enabled = true;
@@ -24,7 +23,6 @@ public class WeaponSwitch : MonoBehaviour {
         }
         if (InputManager.Player2HorizontalInput > 0 || Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Debug.Log("Weapon Switch Rocket");
             if (cache.Rocket.GetComponent<Weapon>().ammo > 0)
             {
                 //Set Gui to current weapon
@@ -37,7 +35,6 @@ public class WeaponSwitch : MonoBehaviour {
         }
         if (InputManager.Player2VerticalInput > 0 || Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Debug.Log("Weapon Switch Laser Beam");
             if (cache.LaserBeam.GetComponent<Weapon>().ammo > 0)
             {
                 //Set Gui to current weapon

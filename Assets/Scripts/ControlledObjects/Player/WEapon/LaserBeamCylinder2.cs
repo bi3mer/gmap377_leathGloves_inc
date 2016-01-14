@@ -27,27 +27,39 @@ public class LaserBeamCylinder2 : MonoBehaviour
     /// </summary>
 	void Update ()
     {
+        // If the laser is not hitting an object in the layer mask
         if (!this.stopGrowing)
         {
+            // Grow laser
             transform.localPosition = transform.localPosition + Vector3.forward * GrowthRate * MovementOffset * Time.deltaTime;
         }
 	}
 
+    /// <summary>
+    /// When an object enters a collider, check to see if it hits a layer in the layer mask
+    /// </summary>
+    /// <param name="col">The object collided with</param>
     void OnTriggerEnter(Collider col)
     {
 
         // If it's a layer you can't pass through, stop growing
         if (CantPassThrough != (CantPassThrough | (1 << col.gameObject.layer)))
         {
-            Debug.Log("Stop Growing, hit " + col.gameObject.name);
+            // Stop growing the laser
             this.stopGrowing = true;
         }
     }
 
+    /// <summary>
+    /// When the object exits the collider
+    /// </summary>
+    /// <param name="col">The object it collided with</param>
     void OnTriggerExit(Collider col)
     {
+        // If the object was in a layer in the layer mask
         if (CantPassThrough != (CantPassThrough | (1 << col.gameObject.layer)))
         {
+            // Continue growing lasers
             this.stopGrowing = false;
         }
     }
