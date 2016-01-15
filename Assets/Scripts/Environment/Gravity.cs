@@ -3,7 +3,12 @@ using System.Collections.Generic;
 
 public class Gravity : MonoBehaviour
 {
+    public static List<Gravity> PlanetList = new List<Gravity>();
     public static float range = 1000;
+
+    void Awake() {
+        PlanetList.Add(this);
+    }
 
     void FixedUpdate()
     {

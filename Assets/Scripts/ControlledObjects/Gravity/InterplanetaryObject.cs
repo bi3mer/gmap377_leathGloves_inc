@@ -10,8 +10,15 @@ public class InterplanetaryObject : MonoBehaviour {
         Gravity nearestPlanet = null;
         float nearestDistance = int.MaxValue;
 
-        Gravity[] planetlist = GameObject.FindObjectsOfType<Gravity>();
-        foreach (Gravity planet in planetlist) {
+        Gravity[] planetList;
+        if (Application.isPlaying) {
+            planetList = Gravity.PlanetList.ToArray();
+        }
+        else {
+            planetList = GameObject.FindObjectsOfType<Gravity>();
+        }
+
+        foreach (Gravity planet in planetList) {
             float dist = Vector3.Distance(planet.transform.position, pos);
             if (dist < nearestDistance) {
                 nearestPlanet = planet;
