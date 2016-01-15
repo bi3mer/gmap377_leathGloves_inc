@@ -51,6 +51,8 @@ public class PlanetOrientation : MonoBehaviour {
 	private GameObject _gcBottomRight;
 	private GameObject _gcBottomLeft;
 
+    private bool _initialized = false;
+
 
 	void Start() {
         Initialize();
@@ -130,9 +132,10 @@ public class PlanetOrientation : MonoBehaviour {
             _gcBottomLeft.transform.localRotation = new Quaternion(0, 0, 0, 0);
             _gcBottomLeft.transform.localScale = new Vector3(1, 1, 1);
         }
+        _initialized = true;
     }
 
-    void Deinitialize() {
+    public void Deinitialize() {
         if (PlanetMarker) DestroyImmediate(PlanetMarker);
         if (ForwardMarker) DestroyImmediate(ForwardMarker);
         if (DownMarker) DestroyImmediate(DownMarker);
@@ -248,7 +251,7 @@ public class PlanetOrientation : MonoBehaviour {
         _io = GetComponent<InterplanetaryObject>();
         if (planet != null) _io.NearestPlanet = planet;
         else _io.NearestPlanet = InterplanetaryObject.GetNearestPlanet(transform.position);
-        Initialize();
+        if (!_initialized) Initialize();
         UpdateOrientation();
 
         int MAX = 50;
@@ -272,12 +275,81 @@ public class PlanetOrientation : MonoBehaviour {
             UpdateOrientation();
             i++;
         }
-        if (i == MAX) {
+        if (Mathf.Abs(Pitch) > float.Epsilon || Mathf.Abs(Roll) > float.Epsilon) {
+            Vector3 dirToPlanet = (transform.position - PlanetMarker.transform.position).normalized;
+            Vector3 dirToDownMarker = (transform.position - DownMarker.transform.position).normalized;
+
+            if (Vector3.Dot(dirToPlanet, dirToDownMarker) < 0) {
+                InvertRotation();
+            }
+        }
+
+        if (Mathf.Abs(Pitch) > float.Epsilon || Mathf.Abs(Roll) > float.Epsilon) {
             Debug.Log("** Failed to orient " + gameObject.name);
         }
 
-        Deinitialize();
+    }
 
+    public void InvertRotation() {
+        bool initializedHere = false;
+        if (!_initialized) {
+            Initialize();
+            initializedHere = true;
+        }
+        UpdateOrientation();
+        //transform.Rotate(transform.right, 180);
+        transform.localRotation *= Quaternion.Euler(0, 0, 180);
+        UpdateOrientation();
+    }
+
+    public void DropToPlanet(Gravity planet, float extraDropDistance) {
+        Collider collider = GetComponent<Collider>();
+        if (!collider) {
+            Debug.Log(gameObject.name + " does not have a collider: cannot drop to planet surface");
+            return;
+        }
+
+        if (!_initialized) Initialize();
+
+        if (planet != null) _io.NearestPlanet = planet;
+        else _io.NearestPlanet = InterplanetaryObject.GetNearestPlanet(transform.position);
+
+        //OrientToPlanet(planet);
+
+        Collider planetCollider = _io.NearestPlanet.GetComponent<MeshCollider>();
+        RaycastHit hit = new RaycastHit();
+
+        Physics.Raycast(transform.position, _io.NearestPlanet.transform.position - transform.position, out hit, 10000);
+        if (hit.collider == null) {
+            Debug.Log(gameObject.name + ": no raycast hit");
+        }
+        else if (hit.collider != planetCollider) {
+            Debug.Log(gameObject.name + ": did not hit planet, hit " + hit.collider.gameObject.name);
+        }
+        else {
+            int i = 1;
+            Vector3 startPos = transform.position;
+            float move = hit.distance / 2;
+            Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+
+            while (i < 50) {
+                transform.position = startPos - transform.up * move;
+
+                Vector3 closestPoint = GetComponent<Rigidbody>().ClosestPointOnBounds(_io.NearestPlanet.transform.position);
+                if (Physics.Raycast(closestPoint, _io.NearestPlanet.transform.position - closestPoint, hit.distance * 2)) {
+                    move += hit.distance / ((float)Pow(2, i));
+                }
+                else {
+                    move -= hit.distance / ((float)Pow(2, i));
+                }
+
+                i++;
+            }
+
+            transform.position -= transform.up * extraDropDistance;
+
+            DestroyImmediate(rb);
+        }
     }
 
     public void UpdateGrounded() {
