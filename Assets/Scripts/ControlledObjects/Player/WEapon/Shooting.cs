@@ -9,7 +9,7 @@ public class Shooting : MonoBehaviour
      * spwnPt - holds the game object where the bullets will be spawned.
      **/
     public Transform character;
-    public GameObject bullet, spwnPt;
+    public GameObject bullet, spwnPt, leftSpwn, rightSpwn;
     public float DistanceFromCamera;
     public const float ZERO = 0f;
 
@@ -29,10 +29,62 @@ public class Shooting : MonoBehaviour
             
             // Bullet being created      
             GameObject newBullet= Instantiate(bullet, spwnPt.transform.position, Quaternion.Euler(Vector3.forward)) as GameObject;
+
+            // Parent the object to the spawn point if it's a laserbeam
+            if(bullet.gameObject.name == GetComponent<PickupCache>().LaserBeam.gameObject.name)
+            { 
+                newBullet.transform.parent = spwnPt.transform;
+            }
+
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10000f);
             Vector3 lookPos = Camera.main.ScreenToWorldPoint(mousePos);
             lookPos = lookPos - transform.position;
             newBullet.transform.LookAt(lookPos);
+            GameObject leftBullet, rightBullet;
+
+            // If multishot is active
+            // NOTE: Checked here because the laser beam doesn't have a rigidbody.
+            if (PowerUpManager.Instance.isMulti())
+            {
+                // Create the left and right bullets at the appropriate spawn locations
+                leftBullet = Instantiate(bullet, leftSpwn.transform.position, Quaternion.Euler(Vector3.forward)) as GameObject;
+                rightBullet = Instantiate(bullet, rightSpwn.transform.position, Quaternion.Euler(Vector3.forward)) as GameObject;
+
+                // Make the bullets face the right way
+                leftBullet.transform.LookAt(lookPos);
+                leftBullet.transform.Rotate(new Vector3(0f, -PowerUpManager.Instance.MultiShotAngle, 0f));
+                rightBullet.transform.LookAt(lookPos);
+                rightBullet.transform.Rotate(new Vector3(0f, PowerUpManager.Instance.MultiShotAngle, 0f));
+
+                // Parent left and right button
+                if (bullet.gameObject.name == GetComponent<PickupCache>().LaserBeam.gameObject.name)
+                {
+                    leftBullet.transform.parent = leftSpwn.transform;
+                    rightBullet.transform.parent = rightSpwn.transform;
+                }
+
+                // If they have a rigidbpdy, they're supposed to be shot
+                if (leftBullet.GetComponent<Rigidbody>() != null && rightBullet.GetComponent<Rigidbody>() != null)
+                {
+                    // Add velocity to the bullets
+                    leftBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenToWorldPoint(
+                    new Vector3(
+                        Input.mousePosition.x - PowerUpManager.Instance.MultiOffset,
+                        Input.mousePosition.y,
+                        this.DistanceFromCamera
+                        )
+                    ).normalized * bullet.GetComponent<Weapon>().speed);
+
+                    rightBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenToWorldPoint(
+                    new Vector3(
+                        Input.mousePosition.x + PowerUpManager.Instance.MultiOffset,
+                        Input.mousePosition.y,
+                        this.DistanceFromCamera
+                        )
+                    ).normalized * bullet.GetComponent<Weapon>().speed);
+                }
+            }
+
 
             // Make its velocity go towards the mouse
             // NOTE: The vector being created uses the z field as the depth from the camera

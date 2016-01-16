@@ -26,6 +26,10 @@ public class Weapon: MonoBehaviour
             {
                 // ... the enemy should take damage.
                 enemyHealth.TakeDamage((int)this.damage);
+                if(PowerUpManager.Instance.isDmgUp())
+                {
+                    enemyHealth.TakeDamage((int)PowerUpManager.Instance.PowerIncrease);
+                }
             }
         }
     }
