@@ -38,11 +38,6 @@ public class EnvironmentOrienter : MonoBehaviour {
         DestroyImmediate(io);
     }
 
-#if UNITY_EDITOR
-    public void OnDrawGizmos() {
-        Gizmos.DrawLine(transform.position, transform.position - 10 * transform.up);
-    }
-#endif
 }
 
 #if UNITY_EDITOR
