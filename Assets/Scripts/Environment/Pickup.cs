@@ -15,7 +15,7 @@ public class Pickup : MonoBehaviour
     void Start()
     {
         // When adding a new pickup type, don't forget to add 1 to the size of the array
-        this.Type = new template[4];
+        this.Type = new template[6];
         
         // A function to initialize the array
         this.initializePickupTypes();
@@ -89,11 +89,29 @@ public class Pickup : MonoBehaviour
             }
         };
 
+        template multiPickup = (obj) =>
+        {
+            if (obj.gameObject.GetComponent<Shooting>() != null)
+            {
+                PowerUpManager.Instance.activateMultishot();
+            }
+        };
+
+        template dmgPickup = (obj) =>
+        {
+            if (obj.gameObject.GetComponent<Shooting>() != null)
+            {
+                PowerUpManager.Instance.activateDmgUp();
+            }
+        };
+
 
         // Add them to the array
         this.Type[0] = pickupOne;
         this.Type[1] = pickupTwo;
         this.Type[2] = pickupThree;
         this.Type[3] = minePickup;
+        this.Type[4] = multiPickup;
+        this.Type[5] = dmgPickup;
     }
 }
