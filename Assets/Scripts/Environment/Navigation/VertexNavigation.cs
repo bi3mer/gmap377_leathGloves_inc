@@ -6,22 +6,6 @@ using System.Linq;
 [System.Serializable]
 public class VertexNavigation : MonoBehaviour 
 {
-	/// <summary>
-	/// 	Create Singleton
-	/// </summary>
-	public static VertexNavigation instance;
-	public static VertexNavigation Instance
-	{
-		get
-		{
-			if(instance == null)
-			{
-				instance = GameObject.FindObjectOfType<VertexNavigation>();
-			}
-			return instance;
-		}
-	}
-
     // height of vertices off ground
     public float verticeHeight = .5f;
 	public float flyingVerticeHeight = 5f;
@@ -128,7 +112,7 @@ public class VertexNavigation : MonoBehaviour
 				{
 					if(this.movementLookup[verts[i]] == null)
 					{
-						this.movementLookup[verts[i]] = new Vertice(knownPositions[key], true);
+						this.movementLookup[verts[i]] = new Vertice(knownPositions[key], true, this);
 					}
 
 					verts[i] = knownPositions[key];
@@ -151,7 +135,7 @@ public class VertexNavigation : MonoBehaviour
 			if(this.movementLookup[verts[i]] == null) 
 			{
 				// add new vertice
-				this.movementLookup[verts[i]] = new Vertice(verts[i], false);
+				this.movementLookup[verts[i]] = new Vertice(verts[i], false, this);
 			}
 		}
 	}
@@ -266,12 +250,6 @@ public class VertexNavigation : MonoBehaviour
         {
             print(key + ": " + numMoves[key]);
         }
-
-		// Print size of movement Lookup
-		print ("size of dictionary: " + this.movementLookup.Count);
-
-        // Print total number of verts
-        print("total number of vertices: " + VertexNavigation.Instance.triangles.Length);
     }
 
     // TODO: make this array instead of list for optimization (term 2)

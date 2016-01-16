@@ -1,17 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class InterplanetaryObject : MonoBehaviour {
+public class InterplanetaryObject : MonoBehaviour 
+{
+	private Gravity _nearestPlanet;
+	public Gravity NearestPlanet 
+	{
+		get 
+		{
+			if(this._nearestPlanet == null)
+			{
+				this._nearestPlanet = InterplanetaryObject.GetNearestPlanet(this.transform.position);
+			}
 
-	public Gravity NearestPlanet = null;
+			return this._nearestPlanet;
+//			return this._nearestPlanet == null ? this._nearestPlanet : InterplanetaryObject.GetNearestPlanet(this.transform.position);
+		}
+
+		set
+		{
+			this._nearestPlanet = value;
+		}
+	}
 	public float NearestPlanetForce = 0f;
+
+	void Awake()
+	{
+		this.NearestPlanet = InterplanetaryObject.GetNearestPlanet(this.transform.position);
+	}
 
     public static Gravity GetNearestPlanet(Vector3 pos) {
         Gravity nearestPlanet = null;
         float nearestDistance = int.MaxValue;
 
         Gravity[] planetList;
-        if (Application.isPlaying) {
+        if (Application.isPlaying) {	
             planetList = Gravity.PlanetList.ToArray();
         }
         else {
