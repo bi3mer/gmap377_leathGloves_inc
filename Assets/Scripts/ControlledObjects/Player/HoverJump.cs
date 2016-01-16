@@ -22,6 +22,8 @@ public class HoverJump : MonoBehaviour {
 			Vector3 jumpForce = transform.up * jumpForceMagnitude;
 			playerRigidbody.AddForce (jumpForce);
 
+            SystemLogger.Write("Jumped with force " + jumpForce);
+
 			// Resets timer to public delay value
 			jumpTimer = jumpDelay;
 		} 
