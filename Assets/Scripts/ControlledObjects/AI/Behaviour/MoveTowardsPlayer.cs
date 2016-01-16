@@ -20,11 +20,11 @@ public class MoveTowardsPlayer : Enemy
 	public float minReachDistance = .05f;
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
 		this.target = Player.Instance.getClosestVertice();
-		this.movement = GetComponent<AStar>();
-		this.movement.setTarget(target);
+		this.movement = this.GetComponent<AStar>();
+		this.movement.setTarget(this.target);
 		this.plan = this.movement.getNewPlan();
 	}
 
@@ -46,7 +46,7 @@ public class MoveTowardsPlayer : Enemy
 			if(this.targetIndex < this.plan.Count)
 			{
 				// Check if we've reached the target in the plan
-				if(DistanceCalculator.euclidianDistance(this.transform.position, VertexNavigation.Instance.getVertex(this.plan[this.targetIndex]).position) < this.minReachDistance)
+				if(DistanceCalculator.euclidianDistance(this.transform.position, Player.Instance.getPlanetNavigation().getVertex(this.plan[this.targetIndex]).position) < this.minReachDistance)
 				{
 					// Increment to go to next target
 					++this.targetIndex;
@@ -55,7 +55,7 @@ public class MoveTowardsPlayer : Enemy
 				if(this.targetIndex < this.plan.Count)
 				{
 					// move towards target in plan
-					this.move(VertexNavigation.Instance.getVertex(this.plan[targetIndex]).position);
+					this.move(Player.Instance.getPlanetNavigation().getVertex(this.plan[targetIndex]).position);
 				}
 				else
 				{

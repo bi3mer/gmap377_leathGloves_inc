@@ -6,6 +6,7 @@ public class RayCastDownCheck : MonoBehaviour
 {
     public bool printLength;
 	public bool drawConnectingCubes;
+	public GameObject planet;
 
 	private bool drawnCubes = false;
 
@@ -16,7 +17,7 @@ public class RayCastDownCheck : MonoBehaviour
 		Dictionary<int, bool> vistedVerts = new Dictionary<int, bool>();
 
 		// Get verts
-		List<int> verts = VertexNavigation.Instance.getMovesTriangle(hit.triangleIndex * 3);
+		List<int> verts = this.planet.GetComponent<VertexNavigation>().getMovesTriangle(hit.triangleIndex * 3);
 
 		// Go through verts
 		while(verts.Count > 0)
@@ -29,11 +30,11 @@ public class RayCastDownCheck : MonoBehaviour
 
 			// Instantiate cube
 			GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			cube.transform.position = VertexNavigation.Instance.getVertex(index).position;
+			cube.transform.position = this.planet.GetComponent<VertexNavigation>().getVertex(index).position;
 			cube.transform.localScale = new Vector3(.2f, .2f, .2f);
 
 			// get moves from index
-			List<int> newVerts = VertexNavigation.Instance.getMovesVertex(index);
+			List<int> newVerts = this.planet.GetComponent<VertexNavigation>().getMovesVertex(index);
 
 			// for
 			for(int i = 0; i < newVerts.Count; ++i)
@@ -54,8 +55,8 @@ public class RayCastDownCheck : MonoBehaviour
     {
 		// Raycast downwards
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, VertexNavigation.Instance.transform.position - transform.position);
-		Debug.DrawLine(transform.position, VertexNavigation.Instance.transform.position);
+		hits = Physics.RaycastAll(transform.position, this.planet.GetComponent<VertexNavigation>().transform.position - transform.position);
+		Debug.DrawLine(transform.position, this.planet.GetComponent<VertexNavigation>().transform.position);
 
 		foreach(RaycastHit hit in hits)
 		{
@@ -63,9 +64,9 @@ public class RayCastDownCheck : MonoBehaviour
 			if(hit.collider.tag == "Planet")
 			{
 				// Get positions from vertices
-				Vector3 p0 = VertexNavigation.Instance.vertices[VertexNavigation.Instance.triangles[hit.triangleIndex * 3 + 0]];
-				Vector3 p1 = VertexNavigation.Instance.vertices[VertexNavigation.Instance.triangles[hit.triangleIndex * 3 + 1]];
-				Vector3 p2 = VertexNavigation.Instance.vertices[VertexNavigation.Instance.triangles[hit.triangleIndex * 3 + 2]];
+				Vector3 p0 = this.planet.GetComponent<VertexNavigation>().vertices[this.planet.GetComponent<VertexNavigation>().triangles[hit.triangleIndex * 3 + 0]];
+				Vector3 p1 = this.planet.GetComponent<VertexNavigation>().vertices[this.planet.GetComponent<VertexNavigation>().triangles[hit.triangleIndex * 3 + 1]];
+				Vector3 p2 = this.planet.GetComponent<VertexNavigation>().vertices[this.planet.GetComponent<VertexNavigation>().triangles[hit.triangleIndex * 3 + 2]];
 
 				// Draw triangles from mesh
 				Debug.DrawLine(p0, p1, Color.red);
@@ -73,10 +74,10 @@ public class RayCastDownCheck : MonoBehaviour
 				Debug.DrawLine(p2, p0, Color.red);
 
 				// Get positions from vertices
-				int vertex = VertexNavigation.Instance.triangles[hit.triangleIndex * 3];
+				int vertex = this.planet.GetComponent<VertexNavigation>().triangles[hit.triangleIndex * 3];
 
                 // Get avilable moves for first vertex
-                List<int> moves = VertexNavigation.Instance.getMovesVertex(vertex);
+				List<int> moves = this.planet.GetComponent<VertexNavigation>().getMovesVertex(vertex);
 
                 // Print length
                 if (this.printLength)
@@ -85,12 +86,12 @@ public class RayCastDownCheck : MonoBehaviour
                 }
                 
                 // Draw line to indicate node
-                Debug.DrawRay(VertexNavigation.Instance.getVertex(vertex).position, Vector3.up * 100f, Color.yellow);
+				Debug.DrawRay(this.planet.GetComponent<VertexNavigation>().getVertex(vertex).position, Vector3.up * 100f, Color.yellow);
 
                 // Draw lines
                 for (int i = 0; i < moves.Count; ++i )
                 {
-                    Debug.DrawLine(VertexNavigation.Instance.getVertex(vertex).position, VertexNavigation.Instance.vertices[moves[i]]);
+					Debug.DrawLine(this.planet.GetComponent<VertexNavigation>().getVertex(vertex).position, this.planet.GetComponent<VertexNavigation>().vertices[moves[i]]);
                 }
 
 				if(this.drawConnectingCubes && !this.drawnCubes)

@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         if(Vector3.Distance(this.verticePosition, this.transform.position) > this.updatePositionDistance)
         {
             // Raycast towards center of planet
-            RaycastHit[] hits = Physics.RaycastAll(this.transform.position, VertexNavigation.Instance.transform.position - this.transform.position, 20f);
+			RaycastHit[] hits = Physics.RaycastAll(this.transform.position, Player.Instance.getPlanetNavigation().transform.position - this.transform.position, 20f);
 
             // fill open list
             foreach (RaycastHit hit in hits)
@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
                 // Check if correct mesh was hit
                 if (hit.collider != null && hit.collider.tag == "Planet" && hit.triangleIndex > -1)
                 {
-                    this.verticePosition = VertexNavigation.Instance.vertices[VertexNavigation.Instance.triangles[hit.triangleIndex * 3]];
+					this.verticePosition = Player.Instance.getPlanetNavigation().vertices[Player.Instance.getPlanetNavigation().triangles[hit.triangleIndex * 3]];
                     return this.verticePosition;
                 }
             }
@@ -72,4 +72,17 @@ public class Player : MonoBehaviour
 
         return this.verticePosition;
     }
+
+	/// <summary>
+	/// Gets the planet VertexNavigation instance.
+	/// </summary>
+	/// <returns>The planet navigation.</returns>
+	public VertexNavigation getPlanetNavigation()
+	{
+		InterplanetaryObject ipo = this.GetComponent<InterplanetaryObject>();
+		Gravity grav = ipo.NearestPlanet;
+		VertexNavigation vertNav = grav.GetComponent<VertexNavigation>();
+		return vertNav;
+//		return (VertexNavigation) this.GetComponent<InterplanetaryObject>().NearestPlanet.GetComponent<VertexNavigation>();
+	}
 }

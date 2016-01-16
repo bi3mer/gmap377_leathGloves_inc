@@ -54,9 +54,9 @@ public class SpawnSystem : MonoBehaviour {
 
         if (EnemyPrefabs.Count == 0) return;
 
-        int verticesSize = VertexNavigation.Instance.vertices.Length;
+		int verticesSize = Player.Instance.getPlanetNavigation().vertices.Length;
         while (!foundVertex) {
-            position = VertexNavigation.Instance.vertices[Random.Range(0, verticesSize)];
+			position = Player.Instance.getPlanetNavigation().vertices[Random.Range(0, verticesSize)];
 
             if (Player.Instance == null) {
                 break;

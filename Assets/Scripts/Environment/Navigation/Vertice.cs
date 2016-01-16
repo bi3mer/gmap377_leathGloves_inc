@@ -5,39 +5,47 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Vertice  
 {
-	public Vertice(int _key, bool _duplicatePoint)
+	[SerializeField]
+	public int key;
+	
+	[SerializeField]
+	public bool duplicatePoint = false;
+
+	[SerializeField]
+	public VertexNavigation vertexNavigation;
+
+	private Dictionary<int, bool> foundVerts = new Dictionary<int, bool>();
+
+	/// <summary>
+	/// Get and set for vector3 position where the node is
+	/// </summary>
+	public Vector3 position 
 	{
-		this.key = _key;
-		this.duplicatePoint = _duplicatePoint;
-	}
-
-    /// <summary>
-    ///     Get and set for vector3 position where the node is
-    /// </summary>
-    public Vector3 position 
-    {
-        get
-        {
-			return VertexNavigation.Instance.vertices[this.key];
-//			return this.duplicatePoint ? VertexNavigation.Instance.vertices[this.key] : VertexNavigation.Instance.movementLookup[this.key].position;
-        }
-
-        set 
+		get
+		{
+			return this.vertexNavigation.vertices[this.key];
+		}
+		
+		set 
 		{
 			// pass
 		}
-    }
+	}
 
 	[SerializeField]
-	public int key;
+	private List<int> _vertices = new List<int>();
 
-	[SerializeField]
-	public bool duplicatePoint = false;
-	
-    private Dictionary<int, bool> foundVerts = new Dictionary<int, bool>();
-
-	[SerializeField]
-    private List<int> _vertices = new List<int>();
+	/// <summary>
+	/// Initializes a new instance of the <see cref="Vertice"/> class.
+	/// </summary>
+	/// <param name="_key">_key.</param>
+	/// <param name="_duplicatePoint">If set to <c>true</c> duplicate point.</param>
+	public Vertice(int _key, bool _duplicatePoint, VertexNavigation _vertexNavigation)
+	{
+		this.key = _key;
+		this.duplicatePoint = _duplicatePoint;
+		this.vertexNavigation = _vertexNavigation;
+	}
 
     /// <summary>
     ///     Add vertice to array list of connecting vertices
@@ -61,7 +69,7 @@ public class Vertice
     {
 		if(this.duplicatePoint)
 		{
-			return VertexNavigation.Instance.movementLookup[this.key].getMoves();
+			return this.vertexNavigation.movementLookup[this.key].getMoves();
 		}
         return this._vertices;
     }

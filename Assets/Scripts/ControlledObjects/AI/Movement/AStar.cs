@@ -48,18 +48,7 @@ public class AStar: MonoBehaviour, AiMovement
 	{
 		this.target = target;
 	}
-	
-	
-	/// <summary>
-	/// Caclulate heuristic from a vector#
-	/// </summary>
-	/// <param name="pos"></param>
-	/// <returns></returns>
-	private float calculateDistanceFromPos(Vector3 pos)
-	{
-		return DistanceCalculator.euclidianDistance(pos, this.target);
-	}
-	
+
 	/// <summary>
 	/// Calculate the herustic using the given vertex
 	/// </summary>
@@ -67,7 +56,7 @@ public class AStar: MonoBehaviour, AiMovement
 	/// <returns></returns>
 	private float calculateDistanceFromVertex(int vertex)
 	{
-		return this.calculateDistanceFromPos(VertexNavigation.Instance.getVertex(vertex).position);
+		return Vector3.Distance(Player.Instance.getPlanetNavigation().getVertex(vertex).position, this.target);
 	}
 	
 	// Check for collision at point
@@ -95,7 +84,7 @@ public class AStar: MonoBehaviour, AiMovement
 		// http://docs.unity3d.com/ScriptReference/RaycastHit-triangleIndex.html
 		// Raycast downward
 		// Raycast towards center of planet
-		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, VertexNavigation.Instance.transform.position - this.transform.position, 200f);
+		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, Player.Instance.getPlanetNavigation().transform.position - this.transform.position, 200f);
 		
 		// Create list to hold unformatted moves
 		List<int> unFormattedMoves = new List<int>();
@@ -106,7 +95,7 @@ public class AStar: MonoBehaviour, AiMovement
 			// Check if correct mesh was hit
 			if (hit.collider != null && hit.collider.tag == "Planet" && hit.triangleIndex != -1)
 			{
-				unFormattedMoves = VertexNavigation.Instance.getMovesTriangle(hit.triangleIndex * 3);
+				unFormattedMoves = Player.Instance.getPlanetNavigation().getMovesTriangle(hit.triangleIndex * 3);
 				break;
 			}
 		}
@@ -139,13 +128,13 @@ public class AStar: MonoBehaviour, AiMovement
 			AStarNode node = queue.popNode();
 			
 			// Loop through the nodes available paths
-			foreach (int vertex in VertexNavigation.Instance.getMovesVertex(node.Index))
+			foreach (int vertex in Player.Instance.getPlanetNavigation().getMovesVertex(node.Index))
 			{
 				// Only use vertex if we haven't already explored this node
-				if (!visitedNodes.ContainsKey(vertex) && !this.collisionAtPoint(VertexNavigation.Instance.getVertex(vertex).position))
+				if (!visitedNodes.ContainsKey(vertex) && !this.collisionAtPoint(Player.Instance.getPlanetNavigation().getVertex(vertex).position))
 				{
 					// Calculate distance between vertex and target
-					float vertexHeuristic = DistanceCalculator.euclidianDistance(VertexNavigation.Instance.getVertex(vertex).position, this.target);
+					float vertexHeuristic = Vector3.Distance(Player.Instance.getPlanetNavigation().getVertex(vertex).position, this.target);
 					
 					// Check if close enough to target
 					if (vertexHeuristic < this.minDistance)
@@ -211,7 +200,7 @@ public class AStar: MonoBehaviour, AiMovement
 		// Draw Raycast down
 		if(this.drawRayCastDown)
 		{
-			Debug.DrawLine(this.transform.position, VertexNavigation.Instance.transform.position, Color.red);
+			Debug.DrawLine(this.transform.position, Player.Instance.getPlanetNavigation().transform.position, Color.red);
 		}
 		
 		// Draw path
@@ -229,7 +218,7 @@ public class AStar: MonoBehaviour, AiMovement
 				{
 					color.r += .05f;
 					color.b += .02f;
-					Debug.DrawLine(VertexNavigation.Instance.getVertex(this.plan[i]).position, VertexNavigation.Instance.getVertex(this.plan[i + 1]).position, color);
+					Debug.DrawLine(Player.Instance.getPlanetNavigation().getVertex(this.plan[i]).position, Player.Instance.getPlanetNavigation().getVertex(this.plan[i + 1]).position, color);
 				}
 			}
 		}

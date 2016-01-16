@@ -26,7 +26,7 @@ public class EnemyArtilleryWeapon : MonoBehaviour
 		this.speed  = this.GetComponent<Weapon>().speed;
 		this.state  = States.rise;;
 		this.originalPosition = transform.position;
-        this.rotationSpeed = 180 * this.speed / (Mathf.PI * VertexNavigation.Instance.radius);
+		this.rotationSpeed = 180 * this.speed / (Mathf.PI * Player.Instance.getPlanetNavigation().radius);
 	}
 
     private void addNewRigidBody()
@@ -39,12 +39,12 @@ public class EnemyArtilleryWeapon : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-        Debug.DrawLine(this.transform.position, VertexNavigation.Instance.transform.position, Color.green);
+		Debug.DrawLine(this.transform.position, Player.Instance.getPlanetNavigation().transform.position, Color.green);
         
         if (!this.addedRigidBody)
         {
             RaycastHit hit;
-            if (Physics.Raycast(this.transform.position, (VertexNavigation.Instance.transform.position - this.transform.position), out hit) && hit.collider.tag == "Player")
+			if (Physics.Raycast(this.transform.position, (Player.Instance.getPlanetNavigation().transform.position - this.transform.position), out hit) && hit.collider.tag == "Player")
             {
                 this.addNewRigidBody();
             }
@@ -60,7 +60,7 @@ public class EnemyArtilleryWeapon : MonoBehaviour
                         }
                         else
                         {
-                            transform.RotateAround(VertexNavigation.Instance.transform.position, Vector3.right, this.rotationSpeed * Time.deltaTime);
+                            transform.RotateAround(Player.Instance.getPlanetNavigation().transform.position, Vector3.right, this.rotationSpeed * Time.deltaTime);
                             this.transform.Translate(Vector3.forward * this.speed * Time.deltaTime);
                         }
                         break;
@@ -73,7 +73,7 @@ public class EnemyArtilleryWeapon : MonoBehaviour
                         }
                         else
                         {
-                            transform.RotateAround(VertexNavigation.Instance.transform.position, this.transform.right * -1, this.rotationSpeed * Time.deltaTime);
+                            transform.RotateAround(Player.Instance.getPlanetNavigation().transform.position, this.transform.right * -1, this.rotationSpeed * Time.deltaTime);
                             this.curTime += Time.deltaTime;
                         }
                         break;

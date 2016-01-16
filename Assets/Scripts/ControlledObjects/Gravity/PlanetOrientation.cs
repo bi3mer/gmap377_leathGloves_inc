@@ -290,11 +290,11 @@ public class PlanetOrientation : MonoBehaviour {
 
     }
 
-    public void InvertRotation() {
-        bool initializedHere = false;
-        if (!_initialized) {
+    public void InvertRotation() 
+	{
+        if (!_initialized) 
+		{
             Initialize();
-            initializedHere = true;
         }
         UpdateOrientation();
         //transform.Rotate(transform.right, 180);
