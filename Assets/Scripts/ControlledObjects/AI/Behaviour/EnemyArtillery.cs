@@ -6,33 +6,46 @@ public class EnemyArtillery : MonoBehaviour
 	public GameObject projectile;
 	public Transform attackSpawnPoint;
 	public float rotateSpeed = 20;
-	public int fireResetTime = 10;
-	public int deathTime = 10;
+	public float fireResetTime = 10;
 
-	private int halfRotateTime  = 0;
-	private int fireCurrentTime = 0;
+	float halfRotateTime  = 0;
+	private float fireCurrentTime = 0;
 	private float previousAngle = 0;
 	private float previousPreviousAngle = 0;
+	private bool readyToFire = true;
+	private bool inPositionToFire = true;
 
 	void Start()
 	{
 		this.previousAngle = Vector3.Angle(this.transform.forward, Player.Instance.transform.position - this.transform.position);
-		this.fireCurrentTime = this.fireResetTime;
-		this.halfRotateTime = this.fireResetTime / 2;
 	}
-	
+
+	private IEnumerator getReadyToFire()
+	{
+		yield return new WaitForSeconds(this.fireResetTime);
+		this.readyToFire = true;
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{
-		if(this.fireCurrentTime > this.fireResetTime)
+		if(this.readyToFire && this.inPositionToFire)
+		{
+			GameObject clone = (GameObject) Instantiate(this.projectile, this.attackSpawnPoint.position, this.attackSpawnPoint.rotation);
+			clone.GetComponent<Rigidbody>().AddForce(clone.transform.forward * Vector3.Distance(this.transform.position, Player.Instance.transform.position) * 10);
+			this.readyToFire = false;
+			this.inPositionToFire = false;
+			StartCoroutine(this.getReadyToFire());
+		}
+		else if(!this.inPositionToFire)
 		{
 			float angle = Vector3.Angle(this.transform.forward, Player.Instance.transform.position - this.transform.position);
-
+			
 			if(previousAngle < angle)
 			{
 				if(this.previousPreviousAngle > this.previousAngle)
 				{
-					this.fireCurrentTime = 0;
+					this.inPositionToFire = true;
 				}
 			} 
 			else
@@ -41,16 +54,6 @@ public class EnemyArtillery : MonoBehaviour
 			}
 			this.previousPreviousAngle = this.previousAngle;
 			this.previousAngle = angle;
-		}
-		else
-		{
-			if(this.fireCurrentTime == this.halfRotateTime)
-			{
-				GameObject clone = (GameObject) Instantiate(this.projectile, this.attackSpawnPoint.position, this.attackSpawnPoint.rotation);
-				clone.GetComponent<Rigidbody>().AddForce(clone.transform.forward * Vector3.Distance(this.transform.position, Player.Instance.transform.position) * 10);
-			}
-
-			++this.fireCurrentTime;
 		}	
 	}
 }

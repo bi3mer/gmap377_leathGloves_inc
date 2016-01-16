@@ -198,7 +198,6 @@ public class AStar: MonoBehaviour, AiMovement
 	
 	void Update()
 	{
-		// TODO: Comment out this update for final builds
 		// Draw Raycast down
 		if(this.drawRayCastDown)
 		{
