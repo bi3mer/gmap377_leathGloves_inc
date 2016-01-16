@@ -14,7 +14,8 @@ public class AStar: MonoBehaviour, AiMovement
 	public bool drawPath = false;
 	
 	private float radius;
-	
+
+	[HideInInspector]
 	public float minDistance;
 	
 	// Plan for movement
@@ -191,6 +192,7 @@ public class AStar: MonoBehaviour, AiMovement
 	void Start()
 	{
 		this.radius = this.body.GetComponent<Collider>().bounds.size.magnitude;
+		this.minDistance = Player.Instance.getPlanetNavigation().avgVertexlength;
 		this.getNewPlan();
 	}
 	
