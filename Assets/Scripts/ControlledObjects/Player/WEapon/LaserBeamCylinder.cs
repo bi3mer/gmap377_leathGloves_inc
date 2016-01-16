@@ -16,6 +16,7 @@ public class LaserBeamCylinder : MonoBehaviour
     public float GrowRate = 1.5f, OffsetSpeed = 2f;
     public string Target = "Enemy";
     public LayerMask CantPassThrough;
+    public GameObject CollisionParticle;
 
     /**
     * Private Variable Description
@@ -55,9 +56,12 @@ public class LaserBeamCylinder : MonoBehaviour
     /// <param name="col">The collider the cylinder interacted with</param>
     void OnTriggerEnter(Collider col)
     {
+
         // If it's the right tag
         if (col.transform.gameObject.tag == this.Target)
         {
+            GameObject.Instantiate(CollisionParticle, col.gameObject.transform.position, Quaternion.Euler(Vector3.zero));
+
             // Get the enemy info
             EnemyStats enemyHealth = col.transform.gameObject.GetComponentInParent<EnemyStats>();
             if (enemyHealth != null)
@@ -81,6 +85,7 @@ public class LaserBeamCylinder : MonoBehaviour
     /// <param name="col">The object it was colliding with</param>
     void OnTriggerExit(Collider col)
     {
+
         // If the object was in one of the layers in the layer mask
         if (CantPassThrough != (CantPassThrough | (1 << col.gameObject.layer)))
         {
