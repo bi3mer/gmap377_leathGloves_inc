@@ -84,10 +84,10 @@ public class SpawnSystem : MonoBehaviour {
         GameObject e = GameObject.Instantiate(prefab, position, new Quaternion()) as GameObject;
         e.GetComponent<EnemyStats>().Spawner = this;
         e.transform.parent = transform;
-        /*Gravity nearestPlanet = InterplanetaryObject.GetNearestPlanet(position);
+        Gravity nearestPlanet = InterplanetaryObject.GetNearestPlanet(position);
         Vector3 angleToPlanet = position - nearestPlanet.transform.position;
         e.transform.position = e.transform.position + angleToPlanet.normalized * 1f;
-        InterplanetaryObject io = e.AddComponent<InterplanetaryObject>();
+        /*InterplanetaryObject io = e.AddComponent<InterplanetaryObject>();
         io.NearestPlanet = nearestPlanet;
         PlanetOrientation po = e.AddComponent<PlanetOrientation>();
         po.Initialize();
