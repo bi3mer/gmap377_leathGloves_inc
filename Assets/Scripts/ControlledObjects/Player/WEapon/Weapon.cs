@@ -6,7 +6,7 @@ public class Weapon: MonoBehaviour
 {
     public float damage, speed, ammo;
 	public string targetTag = "Enemy";
-
+    
     /// <summary>
     /// Triggered when the bullet collides with anything
     /// </summary>
@@ -26,9 +26,10 @@ public class Weapon: MonoBehaviour
             {
                 // ... the enemy should take damage.
                 enemyHealth.TakeDamage((int)this.damage);
+
                 if(PowerUpManager.Instance.isDmgUp())
                 {
-                    enemyHealth.TakeDamage((int)PowerUpManager.Instance.PowerIncrease);
+                    enemyHealth.TakeDamage((int)this.damage);
                 }
             }
         }
