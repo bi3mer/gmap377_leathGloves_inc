@@ -15,7 +15,7 @@ public class Pickup : MonoBehaviour
     void Start()
     {
         // When adding a new pickup type, don't forget to add 1 to the size of the array
-        this.Type = new template[8];
+        this.Type = new template[9];
         
         // A function to initialize the array
         this.initializePickupTypes();
@@ -152,6 +152,11 @@ public class Pickup : MonoBehaviour
             
         };
 
+        template speedPickup = (obj) =>
+        {
+            PowerUpManager.Instance.activateSpeedBoost();
+        };
+
 
         // Add them to the array
         this.Type[0] = pickupOne;
@@ -162,5 +167,6 @@ public class Pickup : MonoBehaviour
         this.Type[5] = dmgPickup;
         this.Type[6] = bomb;
         this.Type[7] = shieldPickup;
+        this.Type[8] = speedPickup;
     }
 }

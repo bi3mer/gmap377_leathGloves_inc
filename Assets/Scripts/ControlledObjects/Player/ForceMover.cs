@@ -52,21 +52,21 @@ public class ForceMover : MonoBehaviour {
         //Debug.Log(direction);
 
 	    if (InputManager.Player1VerticalInput > float.Epsilon && grounded) {
-            Vector3 force = direction * (m_Rigidbody.mass * acceleration * InputManager.Player1VerticalInput + (1 - InputManager.Player1VerticalInput) * movementAdjust);
-			if (m_Rigidbody.velocity.magnitude < topSpeed) {
+            Vector3 force = direction * (m_Rigidbody.mass * acceleration * PowerUpManager.Instance.CurrentSpeedBoost * InputManager.Player1VerticalInput + (1 - InputManager.Player1VerticalInput) * movementAdjust);
+			if (m_Rigidbody.velocity.magnitude < topSpeed * PowerUpManager.Instance.CurrentSpeedBoost) {
 				m_Rigidbody.AddRelativeForce(force, ForceMode.Acceleration);
 			}
 		}
 
 		if (InputManager.Player1VerticalInput < -1 * float.Epsilon && grounded) {
-			Vector3 force = direction * (m_Rigidbody.mass * acceleration * InputManager.Player1VerticalInput - (-1 + InputManager.Player1VerticalInput) * movementAdjust);
-			if (m_Rigidbody.velocity.magnitude < topSpeed) {
+			Vector3 force = direction * (m_Rigidbody.mass * acceleration * PowerUpManager.Instance.CurrentSpeedBoost * InputManager.Player1VerticalInput - (-1 + InputManager.Player1VerticalInput) * movementAdjust);
+			if (m_Rigidbody.velocity.magnitude < topSpeed * PowerUpManager.Instance.CurrentSpeedBoost) {
 				m_Rigidbody.AddRelativeForce(force, ForceMode.Force);
 			}
 		}
 
-		if (m_Rigidbody.velocity.magnitude > topSpeed) {
-			m_Rigidbody.velocity = m_Rigidbody.velocity * (topSpeed / m_Rigidbody.velocity.magnitude);
+		if (m_Rigidbody.velocity.magnitude > topSpeed * PowerUpManager.Instance.CurrentSpeedBoost) {
+			m_Rigidbody.velocity = m_Rigidbody.velocity * ((topSpeed * PowerUpManager.Instance.CurrentSpeedBoost) / m_Rigidbody.velocity.magnitude);
 		}
 	}
 }
