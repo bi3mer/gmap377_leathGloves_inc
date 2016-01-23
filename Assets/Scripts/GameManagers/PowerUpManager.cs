@@ -20,8 +20,8 @@ public class PowerUpManager : MonoBehaviour {
     */
     public static PowerUpManager Instance;
     public GameObject ShieldModel;
-    public float MultiShotTime = 10f, DamageUpTime = 10f, ShieldTime = 10f, MultiOffset = 300f, MultiShotAngle = 45f, PowerIncrease = 10f,
-        BombRadius = 15f, BombDamage = 200f;
+    public float MultiShotTime = 10f, DamageUpTime = 10f, ShieldTime = 10f, SpeedBoostTime = 10f, MultiOffset = 300f, MultiShotAngle = 45f, PowerIncrease = 10f,
+        BombRadius = 15f, BombDamage = 200f, SpeedBoostAmount = 1.5f, CurrentSpeedBoost = 1f;
     public LayerMask BombLayer;
 
     /**
@@ -31,8 +31,8 @@ public class PowerUpManager : MonoBehaviour {
     * multiTimer - How much longer the multishot power up will be active
     * dmgTimer - How much longer the damage up power up will be active
     */
-    private bool multiShot = false, dmgUp = false, shield = false;
-    private float multiTimer = 0f, dmgTimer = 0f, shieldTimer = 0f;
+    private bool multiShot = false, dmgUp = false, shield = false, speedBoost = false;
+    private float multiTimer = 0f, dmgTimer = 0f, shieldTimer = 0f, speedTimer = 0f;
 
 
 	/// <summary>
@@ -72,6 +72,11 @@ public class PowerUpManager : MonoBehaviour {
     public bool isShield()
     {
         return this.shield;
+    }
+
+    public bool isSpeedBoost()
+    {
+        return this.speedBoost;
     }
 
     /// <summary>
@@ -129,6 +134,27 @@ public class PowerUpManager : MonoBehaviour {
     }
 
     /// <summary>
+    /// Used to activate speed boost, or add time to it if it's already active
+    /// </summary>
+    public void activateSpeedBoost()
+    {
+        // If speed boost is not active
+        if (!this.speedBoost)
+        {
+            // Activate it, add time, and start timer
+            this.speedBoost = true;
+            this.CurrentSpeedBoost = SpeedBoostAmount;
+            this.speedTimer = SpeedBoostTime;
+            StartCoroutine(SpeedTick());
+        }
+        else
+        {
+            // Add time to existing speed boost
+            this.speedTimer += SpeedBoostTime;
+        }
+    }
+
+    /// <summary>
     /// Basic timer tick function for the multishot
     /// </summary>
     IEnumerator MultiTick()
@@ -146,7 +172,7 @@ public class PowerUpManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Basic timer tick function for the multishot
+    /// Basic timer tick function for the dmgUp
     /// </summary>
     IEnumerator DmgUpTick()
     {
@@ -163,7 +189,7 @@ public class PowerUpManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Basic timer tick function for the multishot
+    /// Basic timer tick function for the shield
     /// </summary>
     IEnumerator ShieldTick()
     {
@@ -177,6 +203,24 @@ public class PowerUpManager : MonoBehaviour {
         {
             this.shield = false;
             Destroy(GameObject.Find("Shield(Clone)"));
+        }
+    }
+
+    /// <summary>
+    /// Basic timer tick function for the speed boost
+    /// </summary>
+    IEnumerator SpeedTick()
+    {
+        if (this.speedTimer > float.Epsilon)
+        {
+            --this.speedTimer;
+            yield return new WaitForSeconds(TICK);
+            StartCoroutine(SpeedTick());
+        }
+        else
+        {
+            this.speedBoost = false;
+            this.CurrentSpeedBoost = 1f;
         }
     }
 }
