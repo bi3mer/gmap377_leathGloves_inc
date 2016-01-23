@@ -34,7 +34,7 @@ public class MoveTowardsPlayer : Enemy
         // Set rotation
         Quaternion destRotation = Quaternion.LookRotation(targ - transform.position, transform.up);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, destRotation, rotationMaxDegrees * Time.deltaTime);
-        //transform.LookAt(lerpedRotation, transform.up);
+        //transform.LookAt(targ, transform.up);
 
 		// Move forward
 		this.transform.position = Vector3.MoveTowards(this.transform.position, targ, this.moveSpeed * Time.deltaTime);
