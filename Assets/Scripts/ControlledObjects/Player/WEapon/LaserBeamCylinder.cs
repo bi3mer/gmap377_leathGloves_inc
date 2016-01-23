@@ -68,6 +68,11 @@ public class LaserBeamCylinder : MonoBehaviour
             {
                 // ... the enemy should take damage.
                 enemyHealth.TakeDamage((int)this.GetComponentInParent<Weapon>().damage);
+
+                if (PowerUpManager.Instance.isDmgUp())
+                {
+                    enemyHealth.TakeDamage((int)this.GetComponentInParent<Weapon>().damage);
+                }
             }
         }
 

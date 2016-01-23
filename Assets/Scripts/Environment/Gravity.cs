@@ -10,6 +10,18 @@ public class Gravity : MonoBehaviour
         PlanetList.Add(this);
     }
 
+    void OnEnable() {
+        if (!PlanetList.Contains(this)) PlanetList.Add(this);
+    }
+
+    void OnDestroy() {
+        PlanetList.Remove(this);
+    }
+
+    void OnDisable() {
+        PlanetList.Remove(this);
+    }
+
     void FixedUpdate()
     {
         Collider[] cols = Physics.OverlapSphere(transform.position, range);

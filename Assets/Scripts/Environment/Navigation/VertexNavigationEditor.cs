@@ -34,12 +34,27 @@ public class VertexNavigationEditor : Editor
 			Debug.Log("Killed table");
 		}
 
-        if (GUILayout.Button("Modify Vertice Height"))
-        {
-            Debug.Log("Modifying height of vertices");
-			Player.Instance.getPlanetNavigation().modifyVerticeHeights();
-            Debug.Log("finished modifying height of vertices");
-        }
+		if (GUILayout.Button("Modify Vertice Height"))
+		{
+			Debug.Log("Modifying height of vertices");
+			foreach (Object targ in targets) 
+			{
+				VertexNavigation vertNav = targ as VertexNavigation;
+				vertNav.modifyVerticeHeights();
+			}
+			
+			Debug.Log("finished modifying height of vertices");
+		}
+
+		if (GUILayout.Button("Set Average Vertex Length"))
+		{
+			foreach (Object targ in targets) 
+			{
+				VertexNavigation vertNav = targ as VertexNavigation;
+				vertNav.setAverageVerticeLength();
+				Debug.Log("average vertex length: " + vertNav.avgVertexlength);
+			}
+		}
 	}
 
 	void OnInspectorUpdate()

@@ -36,9 +36,6 @@ public class PlanetOrientation : MonoBehaviour {
 	public GameObject ForwardMarker;
 	public GameObject RightMarker;
 
-	private Vector3 _angleDown;
-	private Vector3 _angleToPlanet;
-
 
 	private InterplanetaryObject _io;
 	public BoxCollider _collider;
@@ -181,9 +178,6 @@ public class PlanetOrientation : MonoBehaviour {
         Gravity planet = _io.NearestPlanet;
         if (planet) {
             PlanetMarker.transform.position = planet.transform.position;
-
-            _angleDown = (transform.position - DownMarker.transform.position);
-            _angleToPlanet = (transform.position - _io.NearestPlanet.transform.position);
 
             DistanceToGroundMarker = Vector3.Distance(transform.position, DownMarker.transform.position);
             DistanceToPlanet = Vector3.Distance(transform.position, _io.NearestPlanet.transform.position);
@@ -354,7 +348,7 @@ public class PlanetOrientation : MonoBehaviour {
 
     public void UpdateGrounded() {
         if (_collider) {
-            int layermask = LayerMask.GetMask("Environment");
+            int layermask = LayerMask.GetMask("Environment", "Planet");
             GroundedCenter = (Physics.OverlapSphere(_gcCenter.transform.position, GroundedCheckDistance, layermask).Length > 0);
             GroundedTopRight = (Physics.OverlapSphere(_gcTopRight.transform.position, GroundedCheckDistance, layermask).Length > 0);
             GroundedTopLeft = (Physics.OverlapSphere(_gcTopLeft.transform.position, GroundedCheckDistance, layermask).Length > 0);

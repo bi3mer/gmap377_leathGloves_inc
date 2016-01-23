@@ -42,6 +42,10 @@ public class VertexNavigation : MonoBehaviour
 	public bool showGroundNodes;
 	public bool showFlyingNodes;
 
+	// Average vertex Length
+	[HideInInspector]
+	public float avgVertexlength;
+
     // Radius of planet
 	[HideInInspector]
     private float _radius;
@@ -81,6 +85,35 @@ public class VertexNavigation : MonoBehaviour
 			this.flyingVertices[i] += (angleToPlanet.normalized * this.flyingVerticeHeight);
         }
     }
+
+	public void setAverageVerticeLength()
+	{
+		// Set to low value
+		float totalDistance = 0;
+		float verticesExplored = 0;
+
+//		Dictionary<int, bool> visitedNodes = new Dictionary<int, bool>();
+//		Queue<Vertice> unSearchedVerts = new Queue<Vertice>();
+
+		// Search through each vertex
+		for(int i = 0; i < this.vertices.Length; ++i)
+		{
+			// Check if vertice is null or not
+			if(this.vertices[i] != Vector3.zero)
+			{
+				// Get connecting verts
+				int[] connectingVerts = this.getMovesVertex(i).ToArray();
+				foreach(int vert in connectingVerts)
+				{
+					++verticesExplored;
+					totalDistance += Vector3.Distance(this.vertices[i], this.vertices[vert]);
+				}
+			}
+		}
+
+		// Calculate average and set
+		this.avgVertexlength = totalDistance / verticesExplored;
+	}
 
 	private void increaseArraySize(int[] indices)
 	{

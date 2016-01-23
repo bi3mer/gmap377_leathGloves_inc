@@ -2,16 +2,43 @@
 using System.Collections;
 
 public class PowerUpManager : MonoBehaviour {
+
+    /**
+    * Constants Description
+    * TICK - The constant 1. Used to tick the timer down.
+    */
     public const float TICK = 1f;
 
+    /**
+    * Public Variable Description
+    * PowerUpManager - Singleton pattern. The instance of this object.
+    * MultiShotTime - How long the multishot shall be active for
+    * DamageUpTime - How long the damage up power up shall be active for
+    * MultiOffset - The aim offset for the multishot.
+    * MultiShotAngle - The rotation the multishot shots should be shot at.
+    * PowerIncrease - How much extra damage the damage up power up will grant
+    */
     public static PowerUpManager Instance;
-    public float MultiShotTime = 10f, DamageUpTime = 10f, MultiOffset = 300f, MultiShotAngle = 45f, PowerIncrease = 10f;
+    public GameObject ShieldModel;
+    public float MultiShotTime = 10f, DamageUpTime = 10f, ShieldTime = 10f, MultiOffset = 300f, MultiShotAngle = 45f, PowerIncrease = 10f,
+        BombRadius = 15f, BombDamage = 200f;
+    public LayerMask BombLayer;
 
-    private bool multiShot = false, dmgUp = false;
-    private float multiTimer = 0f, dmgTimer = 0f;
+    /**
+    * Private Variable Description
+    * multiShot - True if the multishot powerup is active
+    * dmgUp - true if the damage up power up is active
+    * multiTimer - How much longer the multishot power up will be active
+    * dmgTimer - How much longer the damage up power up will be active
+    */
+    private bool multiShot = false, dmgUp = false, shield = false;
+    private float multiTimer = 0f, dmgTimer = 0f, shieldTimer = 0f;
 
 
-	// Use this for initialization
+	/// <summary>
+    /// Called when the object is created. Used to
+    /// initialize the singleton pattern.
+    /// </summary>
 	void Start ()
     {
         if (Instance == null)
@@ -40,6 +67,11 @@ public class PowerUpManager : MonoBehaviour {
     public bool isDmgUp()
     {
         return this.dmgUp;
+    }
+
+    public bool isShield()
+    {
+        return this.shield;
     }
 
     /// <summary>
@@ -82,11 +114,23 @@ public class PowerUpManager : MonoBehaviour {
         }
     }
 
+    public void activateShield()
+    {
+        if(!this.shield)
+        {
+            this.shield = true;
+            this.shieldTimer = ShieldTime;
+            StartCoroutine(ShieldTick());
+        }
+        else
+        {
+            this.shieldTimer += ShieldTime;
+        }
+    }
+
     /// <summary>
     /// Basic timer tick function for the multishot
     /// </summary>
-    /// <param name="exitRoutine">What routine to do when time runs out</param>
-    /// <returns></returns>
     IEnumerator MultiTick()
     {
         if (this.multiTimer > float.Epsilon)
@@ -104,8 +148,6 @@ public class PowerUpManager : MonoBehaviour {
     /// <summary>
     /// Basic timer tick function for the multishot
     /// </summary>
-    /// <param name="exitRoutine">What routine to do when time runs out</param>
-    /// <returns></returns>
     IEnumerator DmgUpTick()
     {
         if (this.dmgTimer > float.Epsilon)
@@ -117,6 +159,24 @@ public class PowerUpManager : MonoBehaviour {
         else
         {
             this.dmgUp = false;
+        }
+    }
+
+    /// <summary>
+    /// Basic timer tick function for the multishot
+    /// </summary>
+    IEnumerator ShieldTick()
+    {
+        if (this.shieldTimer > float.Epsilon)
+        {
+            --this.shieldTimer;
+            yield return new WaitForSeconds(TICK);
+            StartCoroutine(ShieldTick());
+        }
+        else
+        {
+            this.shield = false;
+            Destroy(GameObject.Find("Shield(Clone)"));
         }
     }
 }

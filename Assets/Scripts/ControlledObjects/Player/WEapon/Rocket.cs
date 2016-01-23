@@ -49,6 +49,11 @@ public class Rocket : MonoBehaviour
                 if (enemyHealth != null) {
                     // ... the enemy should take damage.
                     enemyHealth.TakeDamage((int)this.GetComponent<Weapon>().damage);
+
+                    if (PowerUpManager.Instance.isDmgUp())
+                    {
+                        enemyHealth.TakeDamage((int)this.GetComponent<Weapon>().damage);
+                    }
                 }
             }
         }
