@@ -139,21 +139,36 @@ public class Pickup : MonoBehaviour
             }
         };
 
+        // What will happen when the shield pick up is grabbed
         template shieldPickup = (obj) =>
         {
+            // If the shield isn't already active
             if (!PowerUpManager.Instance.isShield())
             {
+                // Make a shield around the player. This may change from my shitty particle effect
                 GameObject shield = Instantiate(PowerUpManager.Instance.ShieldModel, obj.transform.position, obj.transform.rotation) as GameObject;
+
+                // Parent the shield to the player
                 shield.transform.parent = obj.transform;
-                shield.transform.localScale = new Vector3(-23, -23, -23);
+
+                // Resize the shield to look like it's around the player. 
+                shield.transform.localScale = new Vector3(
+                    PowerUpManager.Instance.ShieldResizer,
+                    PowerUpManager.Instance.ShieldResizer,
+                    PowerUpManager.Instance.ShieldResizer);
+
+                // Start the particle system
                 shield.GetComponent<ParticleSystem>().Play();
             }
+
+            // Activate the shield power up
             PowerUpManager.Instance.activateShield();
             
         };
 
         template speedPickup = (obj) =>
         {
+            // Activate the speed boost power up
             PowerUpManager.Instance.activateSpeedBoost();
         };
 

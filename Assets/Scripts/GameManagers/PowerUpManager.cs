@@ -21,7 +21,7 @@ public class PowerUpManager : MonoBehaviour {
     public static PowerUpManager Instance;
     public GameObject ShieldModel;
     public float MultiShotTime = 10f, DamageUpTime = 10f, ShieldTime = 10f, SpeedBoostTime = 10f, MultiOffset = 300f, MultiShotAngle = 45f, PowerIncrease = 10f,
-        BombRadius = 15f, BombDamage = 200f, SpeedBoostAmount = 1.5f, CurrentSpeedBoost = 1f;
+        BombRadius = 15f, BombDamage = 200f, SpeedBoostAmount = 1.5f, CurrentSpeedBoost = 1f, ShieldResizer = -23f;
     public LayerMask BombLayer;
 
     /**
@@ -68,12 +68,20 @@ public class PowerUpManager : MonoBehaviour {
     {
         return this.dmgUp;
     }
-
+    
+    /// <summary>
+    /// Helper function to check if the shield is active.
+    /// </summary>
+    /// <returns>shield's value</returns>
     public bool isShield()
     {
         return this.shield;
     }
 
+    /// <summary>
+    /// Helper function to check if the speed boost is active.
+    /// </summary>
+    /// <returns>speedBoost's value</returns>
     public bool isSpeedBoost()
     {
         return this.speedBoost;

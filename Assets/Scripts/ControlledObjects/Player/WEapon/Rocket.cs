@@ -52,7 +52,7 @@ public class Rocket : MonoBehaviour
 
                     if (PowerUpManager.Instance.isDmgUp())
                     {
-                        enemyHealth.TakeDamage((int)this.GetComponent<Weapon>().damage);
+                        enemyHealth.TakeDamage((int)PowerUpManager.Instance.PowerIncrease);
                     }
                 }
             }

@@ -119,6 +119,11 @@ public class Mine : MonoBehaviour
                     {
                         // ... the enemy should take damage.
                         enemyHealth.TakeDamage((int)this.GetComponent<Weapon>().damage);
+
+                        if (PowerUpManager.Instance.isDmgUp())
+                        {
+                            enemyHealth.TakeDamage((int)PowerUpManager.Instance.PowerIncrease);
+                        }
                     }
                 }
                 Destroy(this.gameObject);
