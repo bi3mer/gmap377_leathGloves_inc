@@ -15,10 +15,15 @@ public class Pickup : MonoBehaviour
     void Start()
     {
         // When adding a new pickup type, don't forget to add 1 to the size of the array
-        this.Type = new template[6];
+        this.Type = new template[8];
         
         // A function to initialize the array
         this.initializePickupTypes();
+
+        EnvironmentOrienter orienter = GetComponent<EnvironmentOrienter>();
+        orienter.OrientToPlanet();
+        orienter.DropToPlanet();
+        
     }
 
     /// <summary>
@@ -105,6 +110,48 @@ public class Pickup : MonoBehaviour
             }
         };
 
+        template bomb = (obj) =>
+        {
+            if (obj.gameObject.GetComponent<Shooting>() != null)
+            {
+                // Get all the objects in a <ExplosionRadius> radius from where the bullet collided
+                Collider[] hitColliders = Physics.OverlapSphere(
+                    transform.position,
+                    PowerUpManager.Instance.BombRadius,
+                    PowerUpManager.Instance.BombLayer);
+
+                // For every object in the explosion
+                for (int i = 0; i < hitColliders.Length; ++i)
+                {
+                    if (hitColliders[i])
+                    {
+                        // Try and find an EnemyHealth script on the gameobject hit.
+                        EnemyStats enemyHealth = hitColliders[i].gameObject.GetComponentInParent<EnemyStats>();
+
+                        // If the EnemyHealth component exist...
+                        if (enemyHealth != null)
+                        {
+                            // ... the enemy should take damage.
+                            enemyHealth.TakeDamage((int)PowerUpManager.Instance.BombDamage);
+                        }
+                    }
+                }
+            }
+        };
+
+        template shieldPickup = (obj) =>
+        {
+            if (!PowerUpManager.Instance.isShield())
+            {
+                GameObject shield = Instantiate(PowerUpManager.Instance.ShieldModel, obj.transform.position, obj.transform.rotation) as GameObject;
+                shield.transform.parent = obj.transform;
+                shield.transform.localScale = new Vector3(-23, -23, -23);
+                shield.GetComponent<ParticleSystem>().Play();
+            }
+            PowerUpManager.Instance.activateShield();
+            
+        };
+
 
         // Add them to the array
         this.Type[0] = pickupOne;
@@ -113,5 +160,7 @@ public class Pickup : MonoBehaviour
         this.Type[3] = minePickup;
         this.Type[4] = multiPickup;
         this.Type[5] = dmgPickup;
+        this.Type[6] = bomb;
+        this.Type[7] = shieldPickup;
     }
 }

@@ -19,7 +19,10 @@ public class PowerUpManager : MonoBehaviour {
     * PowerIncrease - How much extra damage the damage up power up will grant
     */
     public static PowerUpManager Instance;
-    public float MultiShotTime = 10f, DamageUpTime = 10f, MultiOffset = 300f, MultiShotAngle = 45f, PowerIncrease = 10f;
+    public GameObject ShieldModel;
+    public float MultiShotTime = 10f, DamageUpTime = 10f, ShieldTime = 10f, MultiOffset = 300f, MultiShotAngle = 45f, PowerIncrease = 10f,
+        BombRadius = 15f, BombDamage = 200f;
+    public LayerMask BombLayer;
 
     /**
     * Private Variable Description
@@ -28,8 +31,8 @@ public class PowerUpManager : MonoBehaviour {
     * multiTimer - How much longer the multishot power up will be active
     * dmgTimer - How much longer the damage up power up will be active
     */
-    private bool multiShot = false, dmgUp = false;
-    private float multiTimer = 0f, dmgTimer = 0f;
+    private bool multiShot = false, dmgUp = false, shield = false;
+    private float multiTimer = 0f, dmgTimer = 0f, shieldTimer = 0f;
 
 
 	/// <summary>
@@ -64,6 +67,11 @@ public class PowerUpManager : MonoBehaviour {
     public bool isDmgUp()
     {
         return this.dmgUp;
+    }
+
+    public bool isShield()
+    {
+        return this.shield;
     }
 
     /// <summary>
@@ -106,11 +114,23 @@ public class PowerUpManager : MonoBehaviour {
         }
     }
 
+    public void activateShield()
+    {
+        if(!this.shield)
+        {
+            this.shield = true;
+            this.shieldTimer = ShieldTime;
+            StartCoroutine(ShieldTick());
+        }
+        else
+        {
+            this.shieldTimer += ShieldTime;
+        }
+    }
+
     /// <summary>
     /// Basic timer tick function for the multishot
     /// </summary>
-    /// <param name="exitRoutine">What routine to do when time runs out</param>
-    /// <returns></returns>
     IEnumerator MultiTick()
     {
         if (this.multiTimer > float.Epsilon)
@@ -128,8 +148,6 @@ public class PowerUpManager : MonoBehaviour {
     /// <summary>
     /// Basic timer tick function for the multishot
     /// </summary>
-    /// <param name="exitRoutine">What routine to do when time runs out</param>
-    /// <returns></returns>
     IEnumerator DmgUpTick()
     {
         if (this.dmgTimer > float.Epsilon)
@@ -141,6 +159,24 @@ public class PowerUpManager : MonoBehaviour {
         else
         {
             this.dmgUp = false;
+        }
+    }
+
+    /// <summary>
+    /// Basic timer tick function for the multishot
+    /// </summary>
+    IEnumerator ShieldTick()
+    {
+        if (this.shieldTimer > float.Epsilon)
+        {
+            --this.shieldTimer;
+            yield return new WaitForSeconds(TICK);
+            StartCoroutine(ShieldTick());
+        }
+        else
+        {
+            this.shield = false;
+            Destroy(GameObject.Find("Shield(Clone)"));
         }
     }
 }

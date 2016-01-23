@@ -66,8 +66,11 @@ public class ScoreManager : MonoBehaviour
     /// <param name="decreaseAmount">Decrease amount.</param>
     public void DecreaseScore(int decreaseAmount)
     {
-        score -= decreaseAmount;
-		PlayerHitImage.Instance.playerHit();
+        if (!PowerUpManager.Instance.isShield())
+        {
+            score -= decreaseAmount;
+            PlayerHitImage.Instance.playerHit();
+        }
 		
     }
 
