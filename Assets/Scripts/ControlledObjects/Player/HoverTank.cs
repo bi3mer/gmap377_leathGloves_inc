@@ -28,7 +28,7 @@ public class HoverTank : MonoBehaviour {
             float heightValue = (transform.position - hit.point).magnitude;
 
             // Tests if this value is within the thresholds
-            if (heightValue <= minHeight && !(heightValue > maxHeight))
+            if (heightValue >= minHeight && heightValue < maxHeight)
             {
                 // If within bounds, adds impulse force upwards to simulate the "bounce" of a hover vehicle
                 // modified by smoothing coefficient
