@@ -40,7 +40,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		currentObjects = startingSeeds;
 		meshArea = GetComponent<MeshRenderer> ().bounds.size.x;
 		heatmapColors = GetComponent<MeshRenderer> ().material.mainTexture as Texture2D;
-		makeGrid ();
+		//makeGrid ();
 		//List<ProceduralGenerationPoint> samplePoints = generatePoisson (minDistance, newPointsCount);
 		//generateObjects (samplePoints);
 
