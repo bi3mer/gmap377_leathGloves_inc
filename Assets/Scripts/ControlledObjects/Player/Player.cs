@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     /// </summary>
     void Start()
     {
-        WeaponDisplayController.Instance.ZeroOutAmmo();
+//        WeaponDisplayController.Instance.ZeroOutAmmo();
     }
 	
     /// <summary>

@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 ﻿00:02.546 :: "Shooting" (Line: 29) :: weapon fired
 00:03.523 :: "Shooting" (Line: 29) :: weapon fired
 00:04.386 :: "Shooting" (Line: 29) :: weapon fired
 00:05.164 :: "Shooting" (Line: 29) :: weapon fired
+=======
+﻿00:02.881 :: Jumped with force (-2.3, 298.1, -33.5)
+>>>>>>> Stashed changes
