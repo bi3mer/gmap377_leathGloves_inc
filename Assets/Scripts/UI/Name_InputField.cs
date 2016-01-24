@@ -17,5 +17,7 @@ public class Name_InputField : MonoBehaviour {
     {
         Debug.Log("Player Name is " + playerName);
         ScoreManager.Instance.SetName(playerName);
+
+        if (SaveSystem.Instance) SaveSystem.Instance.Initialize(playerName);
     }
 }
