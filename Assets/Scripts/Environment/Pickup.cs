@@ -35,7 +35,7 @@ public class Pickup : MonoBehaviour
         if (obj.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
-
+            
             // Activate the pickup type
             this.Type[this.PickupType](obj.gameObject);
         }

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour {
 
@@ -20,6 +20,7 @@ public class PowerUpManager : MonoBehaviour {
     */
     public static PowerUpManager Instance;
     public GameObject ShieldModel;
+    public GameObject MultiBar, DamageUpBar, ShieldBar, SpeedBar;
     public float MultiShotTime = 10f, DamageUpTime = 10f, ShieldTime = 10f, SpeedBoostTime = 10f, MultiOffset = 300f, MultiShotAngle = 45f, PowerIncrease = 10f,
         BombRadius = 15f, BombDamage = 200f, SpeedBoostAmount = 1.5f, CurrentSpeedBoost = 1f, ShieldResizer = -23f;
     public LayerMask BombLayer;
@@ -98,12 +99,21 @@ public class PowerUpManager : MonoBehaviour {
             // Activate it, add time, and start timer
             this.multiShot = true;
             this.multiTimer = MultiShotTime;
+
+            //Starts powerup bar countdown
+            PowerUpManager.Instance.MultiBar.GetComponent<PowerUpBar>().activeTime = MultiShotTime;
+            PowerUpManager.Instance.MultiBar.GetComponent<PowerUpBar>().activate();
+  
             StartCoroutine(MultiTick());
         }
         else
         {
             // Add time to existing multishot
             this.multiTimer += MultiShotTime;
+
+            //Starts powerup bar countdown
+            PowerUpManager.Instance.MultiBar.GetComponent<PowerUpBar>().activeTime += MultiShotTime;
+            PowerUpManager.Instance.MultiBar.GetComponent<PowerUpBar>().activate();
         }
     }
 
@@ -118,12 +128,21 @@ public class PowerUpManager : MonoBehaviour {
             // Activate it, add time, and start timer
             this.dmgUp = true;
             this.dmgTimer = DamageUpTime;
+
+            //Starts powerup bar countdown
+            PowerUpManager.Instance.DamageUpBar.GetComponent<PowerUpBar>().activeTime = MultiShotTime;
+            PowerUpManager.Instance.DamageUpBar.GetComponent<PowerUpBar>().activate();
+
             StartCoroutine(DmgUpTick());
         }
         else
         {
             // Add time to existing damage up
             this.dmgTimer += DamageUpTime;
+
+            //Starts powerup bar countdown
+            PowerUpManager.Instance.DamageUpBar.GetComponent<PowerUpBar>().activeTime += MultiShotTime;
+            PowerUpManager.Instance.DamageUpBar.GetComponent<PowerUpBar>().activate();
         }
     }
 
@@ -133,11 +152,20 @@ public class PowerUpManager : MonoBehaviour {
         {
             this.shield = true;
             this.shieldTimer = ShieldTime;
+
+            //Starts powerup bar countdown
+            PowerUpManager.Instance.ShieldBar.GetComponent<PowerUpBar>().activeTime = MultiShotTime;
+            PowerUpManager.Instance.ShieldBar.GetComponent<PowerUpBar>().activate();
+
             StartCoroutine(ShieldTick());
         }
         else
         {
             this.shieldTimer += ShieldTime;
+
+            //Starts powerup bar countdown
+            PowerUpManager.Instance.ShieldBar.GetComponent<PowerUpBar>().activeTime += MultiShotTime;
+            PowerUpManager.Instance.ShieldBar.GetComponent<PowerUpBar>().activate();
         }
     }
 
@@ -153,12 +181,21 @@ public class PowerUpManager : MonoBehaviour {
             this.speedBoost = true;
             this.CurrentSpeedBoost = SpeedBoostAmount;
             this.speedTimer = SpeedBoostTime;
+
+            //Starts powerup bar countdown
+            PowerUpManager.Instance.SpeedBar.GetComponent<PowerUpBar>().activeTime = MultiShotTime;
+            PowerUpManager.Instance.SpeedBar.GetComponent<PowerUpBar>().activate();
+
             StartCoroutine(SpeedTick());
         }
         else
         {
             // Add time to existing speed boost
             this.speedTimer += SpeedBoostTime;
+
+            //Starts powerup bar countdown
+            PowerUpManager.Instance.SpeedBar.GetComponent<PowerUpBar>().activeTime += MultiShotTime;
+            PowerUpManager.Instance.SpeedBar.GetComponent<PowerUpBar>().activate();
         }
     }
 
