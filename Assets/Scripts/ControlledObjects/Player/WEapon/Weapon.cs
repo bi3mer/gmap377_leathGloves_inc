@@ -29,7 +29,7 @@ public class Weapon: MonoBehaviour
 
                 if(PowerUpManager.Instance.isDmgUp())
                 {
-                    enemyHealth.TakeDamage((int)this.damage);
+                    enemyHealth.TakeDamage((int)PowerUpManager.Instance.PowerIncrease);
                 }
             }
         }

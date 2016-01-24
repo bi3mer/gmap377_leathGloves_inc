@@ -10,6 +10,7 @@ public class MoveTowardsPlayer : Enemy
 	// Movement Variables
 	public float moveSpeed = 2;
 	public float lookSpeed = 2;
+    public float rotationMaxDegrees = 40f;
 
 	// Moving through movement plan
 	private List<int> plan;
@@ -30,8 +31,10 @@ public class MoveTowardsPlayer : Enemy
 
 	public void move(Vector3 targ)
 	{
-		// Set rotation
-		transform.LookAt(targ);
+        // Set rotation
+        Quaternion destRotation = Quaternion.LookRotation(targ - transform.position, transform.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, destRotation, rotationMaxDegrees * Time.deltaTime);
+        //transform.LookAt(targ, transform.up);
 
 		// Move forward
 		this.transform.position = Vector3.MoveTowards(this.transform.position, targ, this.moveSpeed * Time.deltaTime);
