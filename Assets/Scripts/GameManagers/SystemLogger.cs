@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using System.Diagnostics;
 
 public static class SystemLogger {
 
@@ -16,8 +17,10 @@ public static class SystemLogger {
     /// <param name="output"></param>
     public static void Write(string output)
     {
+        StackTrace st = new StackTrace(true);
+        int lineNumber = st.GetFrame(1).GetFileLineNumber();
         // Output format:  "(Time delta from program start in format m:ss.sss) :: (Log message)"
-        writer.WriteLine(string.Format("{0:00}:{1:00.000}", Time.realtimeSinceStartup / 60, Time.realtimeSinceStartup % 60f) + " :: " + output);
+        writer.WriteLine(string.Format("{0:00}:{1:00.000}", Time.realtimeSinceStartup / 60, Time.realtimeSinceStartup % 60f) + " :: \"" + st.GetFrame(1).GetMethod().ReflectedType.Name + "\" (Line: " + lineNumber + ") :: " + output);
 
         // Flushes buffer to force a write
         writer.Flush();
