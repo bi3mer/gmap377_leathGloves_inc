@@ -17,10 +17,11 @@ public class WeaponSwitch : MonoBehaviour {
             //Set Gui to current weapon
             WeaponDisplayController.Instance.AllOff();
             WeaponDisplayController.Instance.dLaserOn.enabled = true;
-
+            WeaponDisplayController.Instance.ChangeCursor("laser");
             GetComponent<Shooting>().bullet = cache.Laser;
             
         }
+
         if (InputManager.Player2HorizontalInput > 0 || Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (cache.Rocket.GetComponent<Weapon>().ammo > 0)
@@ -28,7 +29,7 @@ public class WeaponSwitch : MonoBehaviour {
                 //Set Gui to current weapon
                 WeaponDisplayController.Instance.AllOff();
                 WeaponDisplayController.Instance.rocketsOn.enabled = true;
-
+                WeaponDisplayController.Instance.ChangeCursor("rocket");
                 GetComponent<Shooting>().bullet = cache.Rocket;
                 
             }
@@ -40,7 +41,7 @@ public class WeaponSwitch : MonoBehaviour {
                 //Set Gui to current weapon
                 WeaponDisplayController.Instance.AllOff();
                 WeaponDisplayController.Instance.beamOn.enabled = true;
-
+                WeaponDisplayController.Instance.ChangeCursor("beam");
                 GetComponent<Shooting>().bullet = cache.LaserBeam;
                
             }
@@ -52,10 +53,11 @@ public class WeaponSwitch : MonoBehaviour {
                 //Set Gui to current weapon
                 WeaponDisplayController.Instance.AllOff();
                 WeaponDisplayController.Instance.mineOn.enabled = true;
-
+                WeaponDisplayController.Instance.ChangeCursor("mine");
                 GetComponent<Shooting>().bullet = cache.Mine;
                 
             }
         }
+
     }
 }

@@ -2,10 +2,11 @@
 using System.Collections;
 
 public class WarpTransport : MonoBehaviour {
-
+    //to do
+    //take out shit cody added (week 4)
     public Transform destinationWarpPad;
     public float transportDelaySeconds;
-
+    public GameObject spawner; //added this week 4 take out 
     // REMOVE WHEN BOLTS ARE IN
     public bool canTransport;
 
@@ -16,7 +17,7 @@ public class WarpTransport : MonoBehaviour {
         {
             // Disable player movement while transport is happening
             Player.Instance.GetComponent<ForceMover>().enabled = false;
-
+            spawner.SetActive(false); //added for week 4 take out
             StartCoroutine(TransportAfterTime());
         }
     }
