@@ -24,6 +24,7 @@ public class PowerUpManager : MonoBehaviour {
     public float MultiShotTime = 10f, DamageUpTime = 10f, ShieldTime = 10f, SpeedBoostTime = 10f, MultiOffset = 300f, MultiShotAngle = 45f, PowerIncrease = 10f,
         BombRadius = 15f, BombDamage = 200f, SpeedBoostAmount = 1.5f, CurrentSpeedBoost = 1f, ShieldResizer = -23f;
     public LayerMask BombLayer;
+    public float CurrentLaserCount =  0f;
 
     /**
     * Private Variable Description
@@ -34,6 +35,7 @@ public class PowerUpManager : MonoBehaviour {
     */
     private bool multiShot = false, dmgUp = false, shield = false, speedBoost = false;
     private float multiTimer = 0f, dmgTimer = 0f, shieldTimer = 0f, speedTimer = 0f;
+    private float maxLaserCount = 1f;
 
 
 	/// <summary>
@@ -88,6 +90,11 @@ public class PowerUpManager : MonoBehaviour {
         return this.speedBoost;
     }
 
+    public float getMaxLaserCount()
+    {
+        return this.maxLaserCount;
+    }
+
     /// <summary>
     /// Used to activate multishot, or add time to it if it's already active
     /// </summary>
@@ -99,7 +106,7 @@ public class PowerUpManager : MonoBehaviour {
             // Activate it, add time, and start timer
             this.multiShot = true;
             this.multiTimer = MultiShotTime;
-
+            this.maxLaserCount = 3f;
             //Starts powerup bar countdown
             PowerUpManager.Instance.MultiBar.GetComponent<PowerUpBar>().activeTime = MultiShotTime;
             PowerUpManager.Instance.MultiBar.GetComponent<PowerUpBar>().activate();
@@ -213,6 +220,7 @@ public class PowerUpManager : MonoBehaviour {
         else
         {
             this.multiShot = false;
+            this.maxLaserCount = 1f;
         }
     }
 

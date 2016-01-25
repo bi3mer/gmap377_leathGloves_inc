@@ -98,4 +98,9 @@ public class LaserBeamCylinder : MonoBehaviour
             this.stopGrowing = false;
         }
     }
+
+    void OnDestroy()
+    {
+        --PowerUpManager.Instance.CurrentLaserCount;
+    }
 }
