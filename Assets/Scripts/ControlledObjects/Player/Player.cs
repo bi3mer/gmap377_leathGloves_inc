@@ -85,4 +85,20 @@ public class Player : MonoBehaviour
 		return vertNav;
 //		return (VertexNavigation) this.GetComponent<InterplanetaryObject>().NearestPlanet.GetComponent<VertexNavigation>();
 	}
+
+	public Vector2 getUVLocation(int layerMask)
+	{
+		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, Player.Instance.getPlanetNavigation().transform.position - this.transform.position, 
+		                                       20f);
+
+		foreach(RaycastHit hit in hits)
+		{
+			if (hit.collider != null && hit.collider.tag == "Planet") 
+			{
+				return hit.textureCoord;
+			}
+		}
+		
+		return Vector2.zero;
+	}
 }
