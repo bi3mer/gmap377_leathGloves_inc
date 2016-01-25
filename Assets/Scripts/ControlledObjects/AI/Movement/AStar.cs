@@ -8,7 +8,7 @@ public class AStar: MonoBehaviour, AiMovement
 	public Vector3 target;
 	
 	public int distanceToGround = 10;
-	public LayerMask layer;
+	public LayerMask layersToAvoid;
 	public GameObject body;
 	public bool drawRayCastDown = false;
 	public bool drawPath = false;
@@ -66,7 +66,7 @@ public class AStar: MonoBehaviour, AiMovement
 		bool found = false;
 		
 		// Get collisions
-		Collider[] hitColliders = Physics.OverlapSphere(pos, this.radius, this.layer);
+		Collider[] hitColliders = Physics.OverlapSphere(pos, this.radius, this.layersToAvoid);
 		
 		// Check if colliders found
 		if (hitColliders.Length > 0)
