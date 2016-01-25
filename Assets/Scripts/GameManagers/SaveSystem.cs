@@ -9,6 +9,7 @@ public class SaveSystem : MonoBehaviour {
 
     public static SaveSystem Instance = null;
     public static int SaveVersion = 1;
+    public bool LoadOnGameStart = false;
 
     public class SaveFile {
         public int SaveVersion = SaveSystem.SaveVersion;
@@ -49,18 +50,33 @@ public class SaveSystem : MonoBehaviour {
     }
 
 	void Start () {
-	    
+        SimpleTimer.OnGameOver += SaveOnGameOver;
 	}
-	
-	void Update () {
-	
+
+    void OnLevelWasLoaded(int level) {
+        if (Application.loadedLevelName == "StartScreen") {
+            CanLoad = false;
+            CanSave = false;
+        }
+        else if (Application.loadedLevelName == "OriginalScene") {
+            CanLoad = true;
+            CanSave = true;
+            if (LoadOnGameStart) LoadGame();
+            LoadOnGameStart = false;
+        }
+
+    }
+
+    void Update () {
+	    
+
 	}
 
     public void Initialize(string ID) {
-        PlayerID = ID;
+        /*PlayerID = ID;
         CanSave = true;
         CanLoad = true;
-        Debug.Log("Save system ready");
+        Debug.Log("Save system ready");*/
     }
 
     public void SaveGame() {
@@ -93,6 +109,24 @@ public class SaveSystem : MonoBehaviour {
         SaveFile save = (SaveFile)reader.Deserialize(file);
         save.Load();
         file.Close();
+    }
+
+    public void SetLoadAtGameStart() {
+        StartCoroutine(LoadAtGameStart());
+    }
+
+    IEnumerator LoadAtGameStart() {
+        while (!CanLoad) {
+            yield return null;
+        }
+
+        LoadGame();
+    }
+
+    void SaveOnGameOver() {
+        SaveGame();
+        CanSave = false;
+        CanLoad = false;
     }
 }
 

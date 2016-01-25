@@ -4,11 +4,18 @@ using System.Collections;
 
 public class SimpleTimer : MonoBehaviour 
 {
-	//Time in seconds.
+
+    public delegate void dOnGameStart();
+    public delegate void dOnGameOver();
+    public static event dOnGameStart OnGameStart;
+    public static event dOnGameOver OnGameOver;
+
+    //Time in seconds.
     public float timeS;
 	// Reference to the Text component.				
     Text text;
     public Text restartText;
+    public bool GameOver = false;
     
     void Awake()
     {
@@ -25,6 +32,10 @@ public class SimpleTimer : MonoBehaviour
        
         else if (this.timeS <= 0)
         {
+            if (!GameOver) {
+                OnGameOver();
+                GameOver = true;
+            }
             timerEnded();
 
             if (InputManager.PlayerStartInput > float.Epsilon || Input.GetKeyDown(KeyCode.Alpha1)) {
