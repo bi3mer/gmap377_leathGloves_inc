@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class Planet1BossMover : MonoBehaviour {
+public class Planet1BossMover : AbstractMover {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public override void AcquireTarget()
+    {
+        
+    }
+
+    void Update()
+    {
+        AcquireTarget();
+    }
 }
