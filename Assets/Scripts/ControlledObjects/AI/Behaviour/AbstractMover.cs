@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public abstract class AbstractMover : Enemy {
-    private Vector3 targetLocation;
+    public Vector3 targetLocation;
 
     private AiMovement aiMovement;
 
@@ -15,7 +15,7 @@ public abstract class AbstractMover : Enemy {
     public float minReachDistance = .05f;
 
     // Moving through movement plan
-    private List<int> plan;
+    public List<int> plan;
     private int targetIndex = 0;
 
     // Assigner methods
@@ -38,9 +38,19 @@ public abstract class AbstractMover : Enemy {
         return aiMovement;
     }
 
+    public void ResetTargetIndex()
+    {
+        this.targetIndex = 0;
+    }
+
     public Vector3 GetTarget()
     {
         return targetLocation;
+    }
+
+    public bool DistanceCheck(Vector3 target, Vector3 currentPoint, float minChange)
+    {
+        return DistanceCalculator.euclidianDistance(target, currentPoint) >= minChange;
     }
 
     // Run through plan to execute moves
