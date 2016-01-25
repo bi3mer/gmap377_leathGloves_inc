@@ -53,8 +53,12 @@ public class Shooting : MonoBehaviour
                     // Create the left and right bullets at the appropriate spawn locations
                     leftBullet = Instantiate(bullet, leftSpwn.transform.position, Quaternion.Euler(Vector3.forward)) as GameObject;
                     rightBullet = Instantiate(bullet, rightSpwn.transform.position, Quaternion.Euler(Vector3.forward)) as GameObject;
-                    ++PowerUpManager.Instance.CurrentLaserCount;
-                    ++PowerUpManager.Instance.CurrentLaserCount;
+
+                    if (bullet.gameObject.name == GetComponent<PickupCache>().LaserBeam.gameObject.name)
+                    {
+                        ++PowerUpManager.Instance.CurrentLaserCount;
+                        ++PowerUpManager.Instance.CurrentLaserCount;
+                    }
                     
                     // Make the bullets face the right way
                     leftBullet.transform.LookAt(lookPos);

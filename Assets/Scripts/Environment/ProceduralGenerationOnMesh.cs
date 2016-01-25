@@ -36,71 +36,296 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 	[Tooltip("Folder where the objects that should be used in the environment are found. Should have Large, Medium, and Small subfolders.")]
 	public string folder;
 
+	public int planetSections;
+	public int initialObjects;
+	public bool generateAllAtOnce;
+
 	Dictionary<string, ProceduralGenerationPoint> grid;
-	List<ProceduralGenerationPoint> samplePoints;
+	Dictionary<string, List<EnvironmentOrienter>> chunkGrid;
+	Dictionary<string, bool> chunkStatus;
+	Dictionary<string, List<ProceduralGenerationPoint>> samplePoints;
 	List<Color> colors;
 	float triangleArea;
 	int currentObjects;
 
 	//Dictionary<string, string> locationToObject;
-	Dictionary<string, List<GameObject>> objectPoolBySize;
+	Dictionary<string, List<EnvironmentOrienter>> objectPoolByName;
+	Dictionary<string, List<GameObject>> objectBySize;
 
 	Mesh mesh;
 	float cellSize;
+	float chunkCellSize;
 	float uvToMeshRatio;
+
+	int layerMask;
+	List<Vector3[]> triangles;
+	List<Vector2[]> uvsToTriangles;
 
 	// Use this for initialization
 	void Start () {
 		mesh = GetComponent<MeshFilter> ().mesh;
 		grid = new Dictionary<string, ProceduralGenerationPoint>();
+		chunkGrid = new Dictionary<string, List<EnvironmentOrienter>> ();
+		chunkStatus = new Dictionary<string, bool> ();
 
+		objectPoolByName = new Dictionary<string, List<EnvironmentOrienter>> ();
+		objectBySize = new Dictionary<string, List<GameObject>>();
+
+		triangles = new List<Vector3[]> ();
+		uvsToTriangles = new List<Vector2[]> ();
+
+		
+		chunkCellSize = 1f / planetSections;
+		layerMask = gameObject.layer;
+
+		LoadPlanet ();
+	}
+
+	public void LoadPlanet()
+	{
 		samplePoints = generatePoisson (minDistance, newPointsCount);
-		generateInitialObjects ();
+		
+		if (generateAllAtOnce) {
+			generateAll();
+		}
+		else
+		{
+			generateInitialObjects ();
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+		if(!generateAllAtOnce)
+		{
+			InstantiateBasedOnPlayerLocation ();
+		}
 	}
 
+	public void generateAll()
+	{
+		Object[] largeObjects = Resources.LoadAll (folder + "/Large");
+		Object[] mediumObjects = Resources.LoadAll (folder + "/Medium");
+		Object[] smallObjects = Resources.LoadAll (folder + "/Small");
+
+		int choice;
+		string size;
+
+
+		foreach(string key in samplePoints.Keys)
+		{
+			for(int i = 0; i < samplePoints[key].Count; i++)
+			{
+				GameObject ob;
+				if(samplePoints[key][i].size == small)
+				{
+					ob = GameObject.Instantiate((GameObject) smallObjects[Random.Range(0, smallObjects.Length)]);
+				}
+				else if(samplePoints[key][i].size == medium)
+				{
+					ob = GameObject.Instantiate((GameObject) mediumObjects[Random.Range(0, mediumObjects.Length)]);
+				}
+				else
+				{
+					ob = GameObject.Instantiate((GameObject) largeObjects[Random.Range(0, largeObjects.Length)]);
+				}
+
+				
+				ob.transform.parent = transform;
+				ob.transform.localPosition = samplePoints[key][i].position;
+				ob.GetComponent<EnvironmentOrienter>().DropToPlanet();
+			}
+
+		}
+	}
 	public void generateInitialObjects()
 	{
 		Object[] largeObjects = Resources.LoadAll (folder + "/Large");
 		Object[] mediumObjects = Resources.LoadAll (folder + "/Medium");
 		Object[] smallObjects = Resources.LoadAll (folder + "/Small");
 
-		for(int i = 0; i < samplePoints.Count; i++)
-		{
-			GameObject ob;
-			if(samplePoints[i].size == small)
-			{
-				ob = GameObject.Instantiate((GameObject) smallObjects[Random.Range(0, smallObjects.Length)]);
-			}
-			else if(samplePoints[i].size == medium)
-			{
-				ob = GameObject.Instantiate((GameObject) mediumObjects[Random.Range(0, mediumObjects.Length)]);
-			}
-			else
-			{
-				ob = GameObject.Instantiate((GameObject) largeObjects[Random.Range(0, largeObjects.Length)]);
-			}
+		int i, j;
 
-			ob.transform.parent = transform;
-			ob.transform.localPosition = samplePoints[i].position;
-			ob.GetComponent<EnvironmentOrienter>().OrientToPlanet();
+		objectBySize.Add ("Small", new List<GameObject> ());
+
+		for(i = 0; i < smallObjects.Length; i++)
+		{
+			objectBySize["Small"].Add((GameObject) smallObjects[i]);
+			objectPoolByName.Add(smallObjects[i].name, new List<EnvironmentOrienter>());
+
+			for(j = 0; j < initialObjects; j++)
+			{
+				GameObject ob = GameObject.Instantiate((GameObject) smallObjects[i]);
+
+				ob.name = smallObjects[i].name;
+				ob.transform.parent = transform;
+				ob.SetActive(false);
+				objectPoolByName[ob.name].Add(ob.GetComponent<EnvironmentOrienter>());
+			}
+		}
+
+		objectBySize.Add ("Medium", new List<GameObject> ());
+
+		for(i = 0; i < mediumObjects.Length; i++)
+		{
+			objectBySize["Medium"].Add((GameObject) mediumObjects[i]);
+			objectPoolByName.Add(mediumObjects[i].name, new List<EnvironmentOrienter>());
+			
+			for(j = 0; j < initialObjects; j++)
+			{
+				GameObject ob = GameObject.Instantiate((GameObject) mediumObjects[i]);
+
+				ob.name = mediumObjects[i].name;
+				ob.transform.parent = transform;
+				ob.SetActive(false);
+				objectPoolByName[ob.name].Add(ob.GetComponent<EnvironmentOrienter>());
+			}
+		}
+
+		objectBySize.Add ("Large", new List<GameObject> ());
+		for(i = 0; i < largeObjects.Length; i++)
+		{
+			objectBySize["Large"].Add((GameObject) largeObjects[i]);
+			objectPoolByName.Add(largeObjects[i].name, new List<EnvironmentOrienter>());
+			
+			for(j = 0; j < initialObjects; j++)
+			{
+				GameObject ob = GameObject.Instantiate((GameObject) largeObjects[i]);
+				
+				ob.name = largeObjects[i].name;
+				ob.transform.parent = transform;
+				ob.SetActive(false);
+				objectPoolByName[ob.name].Add(ob.GetComponent<EnvironmentOrienter>());
+			}
+		}
+	
+	}
+
+	public void InstantiateBasedOnPlayerLocation()
+	{
+		Vector2 playerUVLoc = Player.Instance.getUVLocation (layerMask);
+		string gridKey = toGrid (playerUVLoc, chunkCellSize);
+
+		string[] nums = gridKey.Split (':');
+		
+		int x = int.Parse (nums [0]);
+		int y = int.Parse (nums [1]);
+
+		string key;
+
+		for(int i = x - 3; i < x + 3; i++)
+		{
+			for(int j = y - 3; j < y + 3; j++)
+			{ 
+				key = i + ":" + j;
+
+				if(chunkStatus.ContainsKey(key))
+				{
+					if(Mathf.Abs(x - i) < 3 && Mathf.Abs(y - j) < 3)
+					{
+						if(!chunkStatus[key])
+						{
+							activateChunk(key);
+						}
+
+					}
+					else
+					{
+						if(chunkStatus[key])
+						{
+							disableChunk(key);
+						}
+
+					}
+				}
+			}
 		}
 	}
 
-	public List<ProceduralGenerationPoint> generatePoisson(float minDistance, int newPointsCount)
+	public void activateChunk(string key)
+	{
+		List<ProceduralGenerationPoint> points = samplePoints [key];
+		int choice;
+		string name;
+		EnvironmentOrienter ob;
+
+		for(int i = 0; i < points.Count; i++)
+		{
+			if(points[i].objectName == null)
+			{
+				if(points[i].size == small)
+				{
+					choice = Random.Range(0, objectBySize["Small"].Count);
+					name = objectBySize["Small"][choice].name;
+
+				}
+				else if(points[i].size == medium)
+				{
+					choice = Random.Range(0, objectBySize["Medium"].Count);
+					name = objectBySize["Medium"][choice].name;
+				}
+				else
+				{
+					choice = Random.Range(0, objectBySize["Large"].Count);
+					name = objectBySize["Large"][choice].name;
+				}
+
+				ob = objectPoolByName[name][0];
+				objectPoolByName[name].RemoveAt(0);
+
+				samplePoints[key][i].objectName = name;
+			}
+			else
+			{
+				name = points[i].objectName;
+
+				ob = objectPoolByName[name][0];
+				objectPoolByName[name].RemoveAt(0);
+			}
+			
+			if(objectPoolByName[name].Count <= 1)
+			{
+				GameObject o = GameObject.Instantiate(objectPoolByName[name][0].gameObject);
+				o.name = name;
+				o.transform.parent = transform;
+				objectPoolByName[name].Add(o.GetComponent<EnvironmentOrienter>());
+			}
+
+			ob.transform.localPosition = points[i].position;
+			ob.gameObject.SetActive(true);
+			ob.DropToPlanet();
+			chunkGrid[key].Add(ob);
+		}
+
+		chunkStatus [key] = true;
+	}
+
+
+	public void disableChunk(string key)
+	{
+		List<EnvironmentOrienter> objects = chunkGrid [key];
+		string name;
+
+		for (int i = 0; i < objects.Count; i++) 
+		{
+			name = objects[i].gameObject.name;
+			objectPoolByName[name].Add(objects[i]);
+			objects[i].gameObject.SetActive(false);
+		}
+
+		chunkGrid [key].Clear ();
+		chunkStatus [key] = false;
+	}
+
+	public Dictionary<string, List<ProceduralGenerationPoint>> generatePoisson(float minDistance, int newPointsCount)
 	{
 		int[] triangleIndices = mesh.GetTriangles (0);
-		List<Vector3[]> triangles = new List<Vector3[]> ();
-		List<Vector2[]> uvsToTriangles = new List<Vector2[]> ();
 
 		Vector3[] vertices = mesh.vertices;
 		Vector2[] uvs = mesh.uv;
 
-		List<ProceduralGenerationPoint> samplePoints = new List<ProceduralGenerationPoint> ();
+		Dictionary<string, List<ProceduralGenerationPoint>> samplePoints = new Dictionary<string, List<ProceduralGenerationPoint>> ();
 		colors = new List<Color> ();
 		List<ProceduralGenerationPoint> processList = new List<ProceduralGenerationPoint> ();
 
@@ -185,7 +410,23 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 
 			if (tries < maxAttempts && !grid.ContainsKey(gridPoint) && !overlappingPoint(grid, firstPoint, minDis, cellSize, firstPoint.triangleIndex)) 
 			{
-				samplePoints.Add (firstPoint);
+				string key = toGrid(firstPoint.uvPosition, chunkCellSize);
+				if(!samplePoints.ContainsKey(key))
+				{
+					samplePoints.Add(key, new List<ProceduralGenerationPoint>());
+				}
+
+				if(!chunkStatus.ContainsKey(key))
+				{
+					chunkStatus.Add(key, false);
+				}
+
+				if(!chunkGrid.ContainsKey(key))
+				{
+					chunkGrid.Add(key, new List<EnvironmentOrienter>());
+				}
+
+				samplePoints[key].Add (firstPoint);
 				processList.Add (firstPoint);
 				
 				colors.Add(getColorAtTriangle(firstPoint));
@@ -230,8 +471,24 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 
 				if (tries < maxAttempts && !grid.ContainsKey(gridPoint) && !overlappingPoint(grid, newPoint, minDis, cellSize, newPoint.triangleIndex)) 
 				{
-					samplePoints.Add (newPoint);
+					string key = toGrid(newPoint.uvPosition, chunkCellSize);
+					if(!samplePoints.ContainsKey(key))
+					{
+						samplePoints.Add(key, new List<ProceduralGenerationPoint>());
+					}
+					
+					samplePoints[key].Add (newPoint);
 					processList.Add(newPoint);
+
+					if(!chunkStatus.ContainsKey(key))
+					{
+						chunkStatus.Add(key, false);
+					}
+
+					if(!chunkGrid.ContainsKey(key))
+					{
+						chunkGrid.Add(key, new List<EnvironmentOrienter>());
+					}
 
 					colors.Add(getColorAtTriangle(newPoint));
 					currentObjects++;
