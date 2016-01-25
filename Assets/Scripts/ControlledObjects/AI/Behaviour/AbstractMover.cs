@@ -18,6 +18,8 @@ public abstract class AbstractMover : Enemy {
     public List<int> plan;
     private int targetIndex = 0;
 
+	// TODO: Chose vertice type, flying or ground etc.
+
     // Assigner methods
     public void SetTarget(Vector3 tar)
     {

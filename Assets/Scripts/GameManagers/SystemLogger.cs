@@ -1,12 +1,13 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.IO;
+﻿using System.IO;
 using System.Diagnostics;
 
-public static class SystemLogger {
+public static class SystemLogger 
+{
 
     // TODO: Decide on file path of log file
     private static string outputFilePath = "logfile.txt";
+
+	public static bool logToFile = true;
 
     // Initializes FileStream for output into specified log file
     private static StreamWriter writer = new StreamWriter(outputFilePath, false, System.Text.Encoding.UTF8);
@@ -15,14 +16,16 @@ public static class SystemLogger {
     ///     Writes event to log file specified above.
     /// </summary>
     /// <param name="output"></param>
-    public static void Write(string output)
+    public static void write(string output)
     {
-        StackTrace st = new StackTrace(true);
-        int lineNumber = st.GetFrame(1).GetFileLineNumber();
-        // Output format:  "(Time delta from program start in format m:ss.sss) :: (Log message)"
-        writer.WriteLine(string.Format("{0:00}:{1:00.000}", Time.realtimeSinceStartup / 60, Time.realtimeSinceStartup % 60f) + " :: \"" + st.GetFrame(1).GetMethod().ReflectedType.Name + "\" (Line: " + lineNumber + ") :: " + output);
+		if (logToFile) {
+			StackTrace st = new StackTrace (true);
+			int lineNumber = st.GetFrame (1).GetFileLineNumber ();
+			// Output format:  "(Time delta from program start in format m:ss.sss) :: (Log message)"
+			writer.WriteLine (string.Format ("{0:00}:{1:00.000}", Time.realtimeSinceStartup / 60, Time.realtimeSinceStartup % 60f) + " :: \"" + st.GetFrame (1).GetMethod ().ReflectedType.Name + "\" (Line: " + lineNumber + ") :: " + output);
 
-        // Flushes buffer to force a write
-        writer.Flush();
+			// Flushes buffer to force a write
+			writer.Flush ();
+		}
     }    
 }
