@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class ButtonFunction : MonoBehaviour {
+public class ButtonFunction : MonoBehaviour
+{
 
     /// <summary>
     /// Called every frame

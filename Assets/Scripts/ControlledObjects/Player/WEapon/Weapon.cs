@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class Weapon: MonoBehaviour
 {
@@ -13,13 +11,11 @@ public class Weapon: MonoBehaviour
     /// <param name="col">The object it collides with</param>
     void OnCollisionEnter(Collision col)
     {
-        EnemyStats enemyHealth = null;
-
         // If it's an enemy
         if (col.gameObject.tag == this.targetTag)
         {
             // Try and find an EnemyHealth script on the gameobject hit.
-            enemyHealth = col.gameObject.GetComponent<EnemyStats>();
+            EnemyStats enemyHealth = col.gameObject.GetComponent<EnemyStats>();
 
             // If the EnemyHealth component exists...
             if (enemyHealth != null)

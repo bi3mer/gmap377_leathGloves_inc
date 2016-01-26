@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Pickup : MonoBehaviour
 {
@@ -20,6 +19,7 @@ public class Pickup : MonoBehaviour
         // A function to initialize the array
         this.initializePickupTypes();
 
+        // Orient to the planet
         EnvironmentOrienter orienter = GetComponent<EnvironmentOrienter>();
         orienter.OrientToPlanet();
         orienter.DropToPlanet();
@@ -46,13 +46,28 @@ public class Pickup : MonoBehaviour
     /// </summary>
     private void initializePickupTypes()
     {
-        // Example pickup type one
+        AddRocketPickup();
+        AddLaserBeamPickup();
+        AddScoreMultiplierPickup();
+        AddMinePickup();
+        AddMultishotPickup();
+        AddDamageMultiplierPickup();
+        AddBombPickup();
+        AddShieldPickup();
+        AddSpeedBoostPickup();
+    }
+
+    /// <summary>
+    /// Add the rocket pickup to the pickup array
+    /// </summary>
+    public void AddRocketPickup()
+    {
         template pickupOne = (obj) =>
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
                 obj.gameObject.GetComponent<Shooting>().bullet = this.GetComponent<PickupCache>().Rocket;
-				this.GetComponent<PickupCache>().Rocket.GetComponent<Weapon>().ammo += 5;
+                this.GetComponent<PickupCache>().Rocket.GetComponent<Weapon>().ammo += 5;
 
                 //Set Gui to current weapon
                 WeaponDisplayController.Instance.AllOff();
@@ -60,33 +75,56 @@ public class Pickup : MonoBehaviour
             }
         };
 
-        // Example pickup type 2
+        this.Type[0] = pickupOne;
+    }
+
+    /// <summary>
+    /// Add the laser beam pickup to the pickup array
+    /// </summary>
+    public void AddLaserBeamPickup()
+    {
         template pickupTwo = (obj) =>
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
-				obj.gameObject.GetComponent<Shooting>().bullet = this.GetComponent<PickupCache>().LaserBeam;
-				this.GetComponent<PickupCache>().LaserBeam.GetComponent<Weapon>().ammo += 3;
+                obj.gameObject.GetComponent<Shooting>().bullet = this.GetComponent<PickupCache>().LaserBeam;
+                this.GetComponent<PickupCache>().LaserBeam.GetComponent<Weapon>().ammo += 3;
 
                 //Set Gui to current weapon
                 WeaponDisplayController.Instance.AllOff();
                 WeaponDisplayController.Instance.beamOn.enabled = true;
             }
         };
-        // Example pickup type 3
+        
+        this.Type[1] = pickupTwo;
+    }
+
+    /// <summary>
+    /// Add the score multiplier to the pickup array
+    /// </summary>
+    public void AddScoreMultiplierPickup()
+    {
+
         template pickupThree = (obj) =>
         {
             GameObject multi = new GameObject();
             multi.AddComponent<ScoreMulti>();
         };
 
-        // Mine Pickup
+        this.Type[2] = pickupThree;
+    }
+
+    /// <summary>
+    /// Add the mine pickup to the pickup array
+    /// </summary>
+    public void AddMinePickup()
+    {
         template minePickup = (obj) =>
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
-				obj.gameObject.GetComponent<Shooting>().bullet = this.GetComponent<PickupCache>().Mine;
-				this.GetComponent<PickupCache>().Mine.GetComponent<Weapon>().ammo += 3;
+                obj.gameObject.GetComponent<Shooting>().bullet = this.GetComponent<PickupCache>().Mine;
+                this.GetComponent<PickupCache>().Mine.GetComponent<Weapon>().ammo += 3;
 
                 //Set Gui to current weapon
                 WeaponDisplayController.Instance.AllOff();
@@ -94,6 +132,14 @@ public class Pickup : MonoBehaviour
             }
         };
 
+        this.Type[3] = minePickup;
+    }
+
+    /// <summary>
+    /// Add the multishot pickup to the pickup array
+    /// </summary>
+    public void AddMultishotPickup()
+    {
         template multiPickup = (obj) =>
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
@@ -101,7 +147,15 @@ public class Pickup : MonoBehaviour
                 PowerUpManager.Instance.activateMultishot();
             }
         };
+        
+        this.Type[4] = multiPickup;
+    }
 
+    /// <summary>
+    /// Add the damage multiplier pickup to the pickup array
+    /// </summary>
+    public void AddDamageMultiplierPickup()
+    {
         template dmgPickup = (obj) =>
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
@@ -109,7 +163,15 @@ public class Pickup : MonoBehaviour
                 PowerUpManager.Instance.activateDmgUp();
             }
         };
+        
+        this.Type[5] = dmgPickup;
+    }
 
+    /// <summary>
+    /// Add the bomb pickup to the pickup array
+    /// </summary>
+    public void AddBombPickup()
+    {
         template bomb = (obj) =>
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
@@ -138,8 +200,15 @@ public class Pickup : MonoBehaviour
                 }
             }
         };
+        
+        this.Type[6] = bomb;
+    }
 
-        // What will happen when the shield pick up is grabbed
+    /// <summary>
+    /// Add the shield pickup to the pickup array
+    /// </summary>
+    public void AddShieldPickup()
+    {
         template shieldPickup = (obj) =>
         {
             // If the shield isn't already active
@@ -163,25 +232,24 @@ public class Pickup : MonoBehaviour
 
             // Activate the shield power up
             PowerUpManager.Instance.activateShield();
-            
         };
 
+
+        this.Type[7] = shieldPickup;
+    }
+
+    /// <summary>
+    /// Add the speed boost pickup to the pickup array
+    /// </summary>
+    public void AddSpeedBoostPickup()
+    {
         template speedPickup = (obj) =>
         {
             // Activate the speed boost power up
             PowerUpManager.Instance.activateSpeedBoost();
         };
-
-
+        
         // Add them to the array
-        this.Type[0] = pickupOne;
-        this.Type[1] = pickupTwo;
-        this.Type[2] = pickupThree;
-        this.Type[3] = minePickup;
-        this.Type[4] = multiPickup;
-        this.Type[5] = dmgPickup;
-        this.Type[6] = bomb;
-        this.Type[7] = shieldPickup;
         this.Type[8] = speedPickup;
     }
 }

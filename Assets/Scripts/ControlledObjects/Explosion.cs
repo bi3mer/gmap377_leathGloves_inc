@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class Explosion : MonoBehaviour {
+public class Explosion : MonoBehaviour
+{
 
     public float MinVolume = 1.0f;
     public float MaxVolume = 1.0f;
     public float MinPitch = 1.0f;
     public float MaxPitch = 1.0f;
 
-    private AudioSource _audioSource;
+    private AudioSource audioSource;
 
-	void Start () {
-        _audioSource = GetComponent<AudioSource>();
+	void Start ()
+    {
+        audioSource = GetComponent<AudioSource>();
 	    if (SoundManager.Instance) {
-            SoundManager.Instance.PlayAudioSourceVaried(_audioSource, SoundManager.Instance.Explosion1, MinVolume, MaxVolume, MinPitch, MaxPitch);
+            SoundManager.Instance.PlayAudioSourceVaried(audioSource, SoundManager.Instance.Explosion1, MinVolume, MaxVolume, MinPitch, MaxPitch);
         }
 	}
 }

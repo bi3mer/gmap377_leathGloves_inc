@@ -60,47 +60,33 @@ public class LaserBeamCylinder : MonoBehaviour
         // If it's the right tag
         if (col.transform.gameObject.tag == this.Target)
         {
+            // Create the "Got hit by laser" particle effect.
             GameObject.Instantiate(CollisionParticle, col.gameObject.transform.position, Quaternion.Euler(Vector3.zero));
 
             // Get the enemy info
             EnemyStats enemyHealth = col.transform.gameObject.GetComponentInParent<EnemyStats>();
+
+            // If the EnemyStats component was found on the game object
             if (enemyHealth != null)
             {
                 // ... the enemy should take damage.
                 enemyHealth.TakeDamage((int)this.GetComponentInParent<Weapon>().damage);
 
+                // If the damage increase power up is active, do additional damage
                 if (PowerUpManager.Instance.isDmgUp())
                 {
                     enemyHealth.TakeDamage((int)PowerUpManager.Instance.PowerIncrease);
                 }
             }
         }
-
-        // If it hits a layer that it can't pass through stop growing
-        if (CantPassThrough != (CantPassThrough | (1 << col.gameObject.layer)))
-        {
-            // Make the laser stop shooting
-            this.stopGrowing = true;
-        }
     }
 
     /// <summary>
-    /// When an object exits the collider, this is called
+    /// Called when the laser is destroyed to decrease the laser count by 1
     /// </summary>
-    /// <param name="col">The object it was colliding with</param>
-    void OnTriggerExit(Collider col)
-    {
-
-        // If the object was in one of the layers in the layer mask
-        if (CantPassThrough != (CantPassThrough | (1 << col.gameObject.layer)))
-        {
-            // Continue to grow
-            this.stopGrowing = false;
-        }
-    }
-
     void OnDestroy()
     {
+        // Decrease the laser count by 1
         --PowerUpManager.Instance.CurrentLaserCount;
     }
 }
