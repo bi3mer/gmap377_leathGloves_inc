@@ -120,7 +120,7 @@ public class Mine : MonoBehaviour
                         // ... the enemy should take damage.
                         enemyHealth.TakeDamage((int)this.GetComponent<Weapon>().damage);
 
-                        if (PowerUpManager.Instance.isDmgUp())
+                        if (PowerUpManager.Instance.IsDmgUp)
                         {
                             enemyHealth.TakeDamage((int)PowerUpManager.Instance.PowerIncrease);
                         }

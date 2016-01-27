@@ -27,7 +27,7 @@ public class Shooting : MonoBehaviour
         if ((Input.GetMouseButtonDown(0) || InputManager.Player2Shoot > float.Epsilon) && (ammo > ZERO || ammo < ZERO))
         {
 
-            if (PowerUpManager.Instance.CurrentLaserCount < PowerUpManager.Instance.getMaxLaserCount())
+            if (PowerUpManager.Instance.CurrentLaserCount < PowerUpManager.Instance.MaxLaserCount)
             {
                 // Bullet being created
                 GameObject newBullet = Instantiate(bullet, spwnPt.transform.position, Quaternion.Euler(Vector3.forward)) as GameObject;
@@ -48,7 +48,7 @@ public class Shooting : MonoBehaviour
 
                 // If multishot is active
                 // NOTE: Checked here because the laser beam doesn't have a rigidbody.
-                if (PowerUpManager.Instance.isMulti())
+                if (PowerUpManager.Instance.IsMulti)
                 {
                     // Create the left and right bullets at the appropriate spawn locations
                     leftBullet = Instantiate(bullet, leftSpwn.transform.position, Quaternion.Euler(Vector3.forward)) as GameObject;

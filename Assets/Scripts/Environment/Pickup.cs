@@ -212,7 +212,7 @@ public class Pickup : MonoBehaviour
         template shieldPickup = (obj) =>
         {
             // If the shield isn't already active
-            if (!PowerUpManager.Instance.isShield())
+            if (!PowerUpManager.Instance.IsShield)
             {
                 // Make a shield around the player. This may change from my shitty particle effect
                 GameObject shield = Instantiate(PowerUpManager.Instance.ShieldModel, obj.transform.position, obj.transform.rotation) as GameObject;

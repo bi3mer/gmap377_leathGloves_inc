@@ -8,7 +8,7 @@ public class PowerUpManager : MonoBehaviour
      * Constants Description
      * TICK - The constant 1. Used to tick the timer down.
      */
-    public const float TICK = 1f;
+    const float TICK = 1f;
 
     /**
      * Public Variable Description
@@ -19,7 +19,6 @@ public class PowerUpManager : MonoBehaviour
      * MultiShotAngle - The rotation the multishot shots should be shot at.
      * PowerIncrease - How much extra damage the damage up power up will grant
      */
-    public static PowerUpManager Instance;
     public GameObject ShieldModel;
     public GameObject MultiBar, DamageUpBar, ShieldBar, SpeedBar;
     public float MultiShotTime = 10f, DamageUpTime = 10f, ShieldTime = 10f, SpeedBoostTime = 10f, MultiOffset = 300f, MultiShotAngle = 45f, PowerIncrease = 10f,
@@ -38,12 +37,13 @@ public class PowerUpManager : MonoBehaviour
     private float multiTimer = 0f, dmgTimer = 0f, shieldTimer = 0f, speedTimer = 0f;
     private float maxLaserCount = 1f;
 
+    public static PowerUpManager Instance;
 
-	/// <summary>
+    /// <summary>
     /// Called when the object is created. Used to
     /// initialize the singleton pattern.
     /// </summary>
-	void Start ()
+    void Start ()
     {
         if (Instance == null)
         {
@@ -55,45 +55,49 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Helper function to check if the multishot powerup is active
-    /// </summary>
-    /// <returns>multiShot's value</returns>
-    public bool isMulti()
+    // Property for Multishot
+    public bool IsMulti
     {
-        return this.multiShot;
+        get
+        {
+            return this.multiShot;
+        }
     }
 
-    /// <summary>
-    /// Helper function to check if the dmgUp powerup is active
-    /// </summary>
-    /// <returns>dmgUp's value</returns>
-    public bool isDmgUp()
+    // Property for Damge Up
+    public bool IsDmgUp
     {
-        return this.dmgUp;
+        get
+        {
+            return this.dmgUp;
+        }
+    }
+
+    // Property for shield
+    public bool IsShield
+    {
+        get
+        {
+            return this.shield;
+        }
+    }
+
+    // Property for Speed Boost
+    public bool IsSpeedBoost
+    {
+        get
+        {
+            return this.speedBoost;
+        }
     }
     
-    /// <summary>
-    /// Helper function to check if the shield is active.
-    /// </summary>
-    /// <returns>shield's value</returns>
-    public bool isShield()
+    // Property for Max Laser Count
+    public float MaxLaserCount
     {
-        return this.shield;
-    }
-
-    /// <summary>
-    /// Helper function to check if the speed boost is active.
-    /// </summary>
-    /// <returns>speedBoost's value</returns>
-    public bool isSpeedBoost()
-    {
-        return this.speedBoost;
-    }
-
-    public float getMaxLaserCount()
-    {
-        return this.maxLaserCount;
+        get
+        {
+            return this.maxLaserCount;
+        }
     }
 
     /// <summary>
