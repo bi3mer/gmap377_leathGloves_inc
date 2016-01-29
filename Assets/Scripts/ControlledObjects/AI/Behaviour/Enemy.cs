@@ -8,5 +8,4 @@ public abstract class Enemy: MonoBehaviour
 
 	// Enemy movement
 	AiMovement movement;
-	
 }

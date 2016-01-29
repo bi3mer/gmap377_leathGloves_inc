@@ -6,7 +6,10 @@ public class AStar: MonoBehaviour, AiMovement
 {
 	[HideInInspector]
 	public Vector3 target;
-	
+
+    [HideInInspector]
+    public VertexNavigation planetVertexNavigation;
+
 	public int distanceToGround = 10;
 	public LayerMask layersToAvoid;
 	public GameObject body;
@@ -57,7 +60,7 @@ public class AStar: MonoBehaviour, AiMovement
 	/// <returns></returns>
 	private float calculateDistanceFromVertex(int vertex)
 	{
-		return Vector3.Distance(Player.Instance.getPlanetNavigation().getVertex(vertex).position, this.target);
+		return Vector3.Distance(this.planetVertexNavigation.getVertex(vertex).position, this.target);
 	}
 	
 	// Check for collision at point
@@ -83,23 +86,22 @@ public class AStar: MonoBehaviour, AiMovement
 	private List<int> getThePath()
 	{	
 		// http://docs.unity3d.com/ScriptReference/RaycastHit-triangleIndex.html
-		// Raycast downward
 		// Raycast towards center of planet
-		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, Player.Instance.getPlanetNavigation().transform.position - this.transform.position, 200f);
+		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, this.planetVertexNavigation.transform.position - this.transform.position, 200f);
 		
 		// Create list to hold unformatted moves
 		List<int> unFormattedMoves = new List<int>();
 		
 		// fill open list
-		foreach (RaycastHit hit in hits)
-		{
-			// Check if correct mesh was hit
-			if (hit.collider != null && hit.collider.tag == "Planet" && hit.triangleIndex != -1)
-			{
-				unFormattedMoves = Player.Instance.getPlanetNavigation().getMovesTriangle(hit.triangleIndex * 3);
-				break;
-			}
-		}
+        for (int i = 0; i < hits.Length; ++i) //RaycastHit hit in hits
+        {
+            // Check if correct mesh was hit
+            if (hits[i].collider != null && hits[i].collider.CompareTag("Planet") && hits[i].triangleIndex != -1)
+            {
+                unFormattedMoves = this.planetVertexNavigation.getMovesTriangle(hits[i].triangleIndex * 3);
+                break;
+            }
+        }
 		
 		// Visited nodes
 		Dictionary<int, bool> visitedNodes = new Dictionary<int, bool>();
@@ -108,62 +110,64 @@ public class AStar: MonoBehaviour, AiMovement
 		PriorityQueue queue = new PriorityQueue();
 		
 		// Add nodes to priority queue
-		foreach (int vertex in unFormattedMoves)
-		{
-			// Create list of moves
-			List<int> moves = new List<int>();
-			moves.Add(vertex);
-			
-			// Create new node
-			//AStarNode node = new AStarNode(1, this.calculateHeuristicFromVertex(vertex), vertex, moves);
-			AStarNode node = new AStarNode(1, 1, vertex, moves);
-			
-			// add node to queue
-			queue.addNode(node);
-		}
+        for (int i = 0; i < unFormattedMoves.Count; ++i)
+        {
+            // Create list of moves
+            List<int> moves = new List<int>();
+            moves.Add(unFormattedMoves[i]);
+
+            // Create new node
+            AStarNode node = new AStarNode(1, 1, unFormattedMoves[i], moves);
+
+            // add node to queue
+            queue.addNode(node);
+        }
 		
 		// Run A* while moves available
 		while (queue.Length() > 0)
 		{ 
 			// Grab best node from priority queue
 			AStarNode node = queue.popNode();
-			
+			  
+            // Get moves for a vertex
+            List<int> availableMoves = this.planetVertexNavigation.getMovesVertex(node.Index);
+
 			// Loop through the nodes available paths
-			foreach (int vertex in Player.Instance.getPlanetNavigation().getMovesVertex(node.Index))
-			{
-				// Only use vertex if we haven't already explored this node
-				if (!visitedNodes.ContainsKey(vertex) && !this.collisionAtPoint(Player.Instance.getPlanetNavigation().getVertex(vertex).position))
-				{
-					// Calculate distance between vertex and target
-					float vertexHeuristic = Vector3.Distance(Player.Instance.getPlanetNavigation().getVertex(vertex).position, this.target);
-					
-					// Check if close enough to target
-					if (vertexHeuristic < this.minDistance)
-					{
-						// Yes we are, solved
-						this.plan = node.Moves;
-						this.plan.Add(vertex);
-						
-						// return plan
-						return this.plan;
-					}
-					else
-					{
-						// add to visited
-						visitedNodes.Add(vertex, true);
-						
-						// Create cropy of moves
-						List<int> newMoves = new List<int>(node.Moves);
-						newMoves.Add(vertex);
-						
-						// Create new nodes with heuristic and step cost
-						AStarNode newNode = new AStarNode(node.G + this.calculateDistanceFromVertex(vertex), vertexHeuristic, vertex, newMoves);
-						
-						// add node to queue
-						queue.addNode(newNode);
-					}
-				}
-			}
+            for (int i = 0; i < availableMoves.Count; ++i)
+            {
+                // Only use vertex if we haven't already explored this node
+                if (!visitedNodes.ContainsKey(availableMoves[i]) && !this.collisionAtPoint(this.planetVertexNavigation.getVertex(availableMoves[i]).position))
+                {
+                    // Calculate distance between vertex and target
+                    float vertexHeuristic = Vector3.Distance(this.planetVertexNavigation.getVertex(availableMoves[i]).position, this.target);
+
+                    // Check if close enough to target
+                    if (vertexHeuristic < this.minDistance)
+                    {
+                        // Yes we are, solved
+                        this.plan = node.Moves;
+                        this.plan.Add(availableMoves[i]);
+
+                        // return plan
+                        return this.plan;
+                    }
+                    else
+                    {
+                        // add to visited
+                        visitedNodes.Add(availableMoves[i], true);
+
+                        // Create cropy of moves
+                        List<int> newMoves = new List<int>(node.Moves);
+                        newMoves.Add(availableMoves[i]);
+
+                        // Create new nodes with heuristic and step cost
+                        AStarNode newNode = new AStarNode(node.G + this.calculateDistanceFromVertex(availableMoves[i]), vertexHeuristic, availableMoves[i], newMoves);
+
+                        // add node to queue
+                        queue.addNode(newNode);
+                    }
+                }
+            }
 		}
 		
 		// returned failed plan
@@ -180,7 +184,7 @@ public class AStar: MonoBehaviour, AiMovement
 		this.plan = new List<int>();
 
 		// Check if target exists
-		if (this.target == Vector3.zero)
+		if (this.target.Equals(Vector3.zero))
 		{
 			return this.plan;
 		}
@@ -189,19 +193,25 @@ public class AStar: MonoBehaviour, AiMovement
 		return this.getThePath();
 	}
 	
+    /// <summary>
+    /// Initialize components
+    /// </summary>
 	void Start()
 	{
-		this.radius = this.body.GetComponent<Collider>().bounds.size.magnitude;
-		this.minDistance = Player.Instance.getPlanetNavigation().avgVertexlength;
-		this.getNewPlan();
+		this.radius = this.body.GetComponent<Collider>().bounds.size.magnitude / 2;
+        this.planetVertexNavigation = Player.Instance.getPlanetNavigation();
+        this.minDistance = this.planetVertexNavigation.avgVertexlength;
 	}
 	
+    /// <summary>
+    /// Debugging Updates
+    /// </summary>
 	void Update()
 	{
 		// Draw Raycast down
 		if(this.drawRayCastDown)
 		{
-			Debug.DrawLine(this.transform.position, Player.Instance.getPlanetNavigation().transform.position, Color.red);
+			Debug.DrawLine(this.transform.position, this.planetVertexNavigation.transform.position, Color.red);
 		}
 		
 		// Draw path
@@ -219,7 +229,7 @@ public class AStar: MonoBehaviour, AiMovement
 				{
 					color.r += .05f;
 					color.b += .02f;
-					Debug.DrawLine(Player.Instance.getPlanetNavigation().getVertex(this.plan[i]).position, Player.Instance.getPlanetNavigation().getVertex(this.plan[i + 1]).position, color);
+					Debug.DrawLine(this.planetVertexNavigation.getVertex(this.plan[i]).position, this.planetVertexNavigation.getVertex(this.plan[i + 1]).position, color);
 				}
 			}
 		}

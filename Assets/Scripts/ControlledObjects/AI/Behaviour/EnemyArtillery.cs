@@ -8,8 +8,6 @@ public class EnemyArtillery : MonoBehaviour
 	public float rotateSpeed = 20;
 	public float fireResetTime = 10;
 
-	float halfRotateTime  = 0;
-	private float fireCurrentTime = 0;
 	private float previousAngle = 0;
 	private float previousPreviousAngle = 0;
 	private bool readyToFire = true;

@@ -22,7 +22,6 @@ public class VertexNavigation : MonoBehaviour
 		{
 			return this.mesh.triangles;
 		}
-
 		set
 		{
 			// pass
@@ -206,8 +205,7 @@ public class VertexNavigation : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Map 3d sphere to 2d coordiante system
-	/// NOT FINISHED
+	/// Map 3d sphere to 2d coordinated system
 	/// </summary>
 	public void buildTable() 
 	{

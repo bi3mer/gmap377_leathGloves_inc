@@ -12,9 +12,9 @@ public class Planet1BossMover : AbstractMover {
     public float minDistanceMagnitude = 50f;
     public float maxDistanceMagnitude = 150f;
 
-    void Awake()
+    void Start()
     {
-        base.SetMovementScript(this.GetComponent<AStar>());
+        base.setMovementScript(this.GetComponent<AStar>());
         initialBossPosition = this.transform.position;
     }
 
@@ -39,10 +39,10 @@ public class Planet1BossMover : AbstractMover {
         // TODO:  Extract this functionality to another script for re-use in the tank and any future enemies
         playerInRange = (Vector3.Distance(Player.Instance.transform.position, this.transform.position) <= maxDistanceMagnitude);
         AcquireTarget();
-        if (base.plan == null || base.DistanceCheck(bossTarget, Player.Instance.getClosestVertice(), 2f))
+        if (base.plan == null || base.distanceCheck(bossTarget, Player.Instance.getClosestVertice(), 2f))
         {
-            base.ResetTargetIndex();
-            base.SetTarget(bossTarget);
+            base.resetTargetIndex();
+            base.setTarget(bossTarget);
         }
         base.executeCurrentPlan();
     }

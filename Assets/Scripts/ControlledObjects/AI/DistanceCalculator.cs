@@ -61,6 +61,17 @@ public class DistanceCalculator
 		return Mathf.Sqrt(Mathf.Pow(pos1.x - pos2.x, 2) + Mathf.Pow(pos1.y - pos2.y, 2) + Mathf.Pow(pos1.z - pos2.z, 2));
 	}
 
+    /// <summary>
+    /// Euclidian distance without square root
+    /// </summary>
+    /// <param name="pos1"></param>
+    /// <param name="pos2"></param>
+    /// <returns></returns>
+    public static float squareEuclidianDistance(Vector3 pos1, Vector3 pos2)
+    {
+        return Mathf.Pow(pos1.x - pos2.x, 2) + Mathf.Pow(pos1.y - pos2.y, 2) + Mathf.Pow(pos1.z - pos2.z, 2);
+    }
+
 	/// <summary>
 	/// Manhattans distance between pos1 and pos2.
 	/// </summary>
