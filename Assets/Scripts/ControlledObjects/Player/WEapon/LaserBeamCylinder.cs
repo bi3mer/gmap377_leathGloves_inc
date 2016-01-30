@@ -73,7 +73,7 @@ public class LaserBeamCylinder : MonoBehaviour
                 enemyHealth.TakeDamage((int)this.GetComponentInParent<Weapon>().damage);
 
                 // If the damage increase power up is active, do additional damage
-                if (PowerUpManager.Instance.IsDmgUp)
+                if (PowerUpManager.Instance.Powerups["DamageUp"].IsActive)
                 {
                     enemyHealth.TakeDamage((int)PowerUpManager.Instance.PowerIncrease);
                 }

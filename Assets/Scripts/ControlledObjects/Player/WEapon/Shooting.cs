@@ -48,7 +48,7 @@ public class Shooting : MonoBehaviour
 
                 // If multishot is active
                 // NOTE: Checked here because the laser beam doesn't have a rigidbody.
-                if (PowerUpManager.Instance.IsMulti)
+                if (PowerUpManager.Instance.Powerups["Multishot"].IsActive)
                 {
                     // Create the left and right bullets at the appropriate spawn locations
                     leftBullet = Instantiate(bullet, leftSpwn.transform.position, Quaternion.Euler(Vector3.forward)) as GameObject;

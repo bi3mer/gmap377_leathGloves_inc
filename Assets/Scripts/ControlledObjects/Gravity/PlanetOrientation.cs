@@ -165,15 +165,6 @@ public class PlanetOrientation : MonoBehaviour {
 		}
 	}
 
-    public void OnDrawGizmos() {
-        /*Gizmos.DrawSphere(_gcCenter.transform.position, GroundedCheckDistance);
-        Gizmos.DrawSphere(_gcTopRight.transform.position, GroundedCheckDistance);
-        Gizmos.DrawSphere(_gcTopLeft.transform.position, GroundedCheckDistance);
-        Gizmos.DrawSphere(_gcBottomRight.transform.position, GroundedCheckDistance);
-        Gizmos.DrawSphere(_gcBottomLeft.transform.position, GroundedCheckDistance);*/
-
-    }
-
     public void UpdateOrientation() {
         Gravity planet = _io.NearestPlanet;
         if (planet) {
@@ -390,14 +381,16 @@ public class PlanetOrientationEditor : Editor {
     public override void OnInspectorGUI() {
         DrawDefaultInspector();
         if (GUILayout.Button("Check Orientation")) {
-            foreach (Object t in targets) {
-                PlanetOrientation po = t as PlanetOrientation;
+            int length = targets.Length;
+            for (int i=0; i< length; i++) {
+                PlanetOrientation po = targets[i] as PlanetOrientation;
                 po.CheckOrientation();
             }
         }
         if (GUILayout.Button("Orient to Planet")) {
-            foreach (Object t in targets) {
-                PlanetOrientation po = t as PlanetOrientation;
+            int length = targets.Length;
+            for (int i=0; i< length; i++) {
+                PlanetOrientation po = targets[i] as PlanetOrientation;
                 Debug.Log("Orienting " + po.gameObject.name + "...");
                 po.OrientToPlanet(null);
             }

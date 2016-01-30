@@ -13,8 +13,9 @@ public class AISight : MonoBehaviour {
     public Transform LookForPlayer() 
 	{
         Transform t = null;
-        foreach (Eye eye in Eyes) {
-            RaycastHit hit = eye.LookForPlayer();
+        int count = Eyes.Length;
+        for (int i=0; i<count; i++) {
+            RaycastHit hit = Eyes[i].LookForPlayer();
             if (hit.collider != null && hit.collider.tag == Player.Instance.tag) {
                 return hit.collider.transform;
             }

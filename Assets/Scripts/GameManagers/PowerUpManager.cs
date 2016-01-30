@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour
@@ -25,16 +26,12 @@ public class PowerUpManager : MonoBehaviour
         BombRadius = 15f, BombDamage = 200f, SpeedBoostAmount = 1.5f, CurrentSpeedBoost = 1f, ShieldResizer = -23f;
     public LayerMask BombLayer;
     public float CurrentLaserCount =  0f;
+    public Powerup Multishot, DamageUp, Shield, SpeedBoost, Bomb;
+    public Dictionary<string, Powerup> Powerups;
 
     /**
      * Private Variable Description
-     * multiShot - True if the multishot powerup is active
-     * dmgUp - true if the damage up power up is active
-     * multiTimer - How much longer the multishot power up will be active
-     * dmgTimer - How much longer the damage up power up will be active
      */
-    private bool multiShot = false, dmgUp = false, shield = false, speedBoost = false;
-    private float multiTimer = 0f, dmgTimer = 0f, shieldTimer = 0f, speedTimer = 0f;
     private float maxLaserCount = 1f;
 
     public static PowerUpManager Instance;
@@ -48,6 +45,18 @@ public class PowerUpManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            this.Powerups = new Dictionary<string, Powerup>();
+            this.Multishot = new Powerup(MultiShotTime, MultiBar);
+            this.DamageUp = new Powerup(DamageUpTime, DamageUpBar);
+            this.Shield = new Powerup(ShieldTime, ShieldBar);
+            this.SpeedBoost = new Powerup(SpeedBoostTime, SpeedBar);
+            this.Bomb = new Powerup(0f, null);
+
+            Powerups.Add("Multishot", this.Multishot);
+            Powerups.Add("DamageUp", this.DamageUp);
+            Powerups.Add("Shield", this.Shield);
+            Powerups.Add("SpeedBoost", this.SpeedBoost);
+            Powerups.Add("Bomb", this.Bomb);
         }
         else
         {
@@ -55,41 +64,6 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
-    // Property for Multishot
-    public bool IsMulti
-    {
-        get
-        {
-            return this.multiShot;
-        }
-    }
-
-    // Property for Damge Up
-    public bool IsDmgUp
-    {
-        get
-        {
-            return this.dmgUp;
-        }
-    }
-
-    // Property for shield
-    public bool IsShield
-    {
-        get
-        {
-            return this.shield;
-        }
-    }
-
-    // Property for Speed Boost
-    public bool IsSpeedBoost
-    {
-        get
-        {
-            return this.speedBoost;
-        }
-    }
     
     // Property for Max Laser Count
     public float MaxLaserCount
@@ -100,185 +74,61 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Used to activate multishot, or add time to it if it's already active
-    /// </summary>
-    public void activateMultishot()
+    public void Activate(string Key)
     {
-        // If mutishot is not active
-        if (!this.multiShot)
+        if (!Powerups[Key].IsActive)
         {
-            // Activate it, add time, and start timer
-            this.multiShot = true;
-            this.multiTimer = MultiShotTime;
-            this.maxLaserCount = 3f;
-            //Starts powerup bar countdown
-            PowerUpManager.Instance.MultiBar.GetComponent<PowerUpBar>().activeTime = MultiShotTime;
-            PowerUpManager.Instance.MultiBar.GetComponent<PowerUpBar>().activate();
-  
-            StartCoroutine(MultiTick());
+            Powerups[Key].IsActive = true;
+            Powerups[Key].Timer += Powerups[Key].SetTime;
+            Powerups[Key].GuiBar.GetComponent<PowerUpBar>().activeTime = Powerups[Key].SetTime;
+            Powerups[Key].GuiBar.GetComponent<PowerUpBar>().activate();
+
+            if (Key.Equals("Multishot"))
+            {
+                this.maxLaserCount = 3;
+            }
+
+            if(Key.Equals("SpeedBoost"))
+            {
+                this.CurrentSpeedBoost = SpeedBoostAmount;
+            }
+
+            StartCoroutine(Timer(Key));
         }
         else
         {
-            // Add time to existing multishot
-            this.multiTimer += MultiShotTime;
-
-            //Starts powerup bar countdown
-            PowerUpManager.Instance.MultiBar.GetComponent<PowerUpBar>().activeTime += MultiShotTime;
-            PowerUpManager.Instance.MultiBar.GetComponent<PowerUpBar>().activate();
+            Powerups[Key].Timer += Powerups[Key].SetTime;
+            Powerups[Key].GuiBar.GetComponent<PowerUpBar>().activeTime += Powerups[Key].SetTime;
+            Powerups[Key].GuiBar.GetComponent<PowerUpBar>().activate();
         }
     }
 
-    /// <summary>
-    /// Used to activate damage up, or add time to it if it's already active
-    /// </summary>
-    public void activateDmgUp()
+    IEnumerator Timer(string Key)
     {
-        // If damage up is not active
-        if (!this.dmgUp)
+        if (this.Powerups[Key].Timer > 0f)
         {
-            // Activate it, add time, and start timer
-            this.dmgUp = true;
-            this.dmgTimer = DamageUpTime;
-
-            //Starts powerup bar countdown
-            PowerUpManager.Instance.DamageUpBar.GetComponent<PowerUpBar>().activeTime = MultiShotTime;
-            PowerUpManager.Instance.DamageUpBar.GetComponent<PowerUpBar>().activate();
-
-            StartCoroutine(DmgUpTick());
-        }
-        else
-        {
-            // Add time to existing damage up
-            this.dmgTimer += DamageUpTime;
-
-            //Starts powerup bar countdown
-            PowerUpManager.Instance.DamageUpBar.GetComponent<PowerUpBar>().activeTime += MultiShotTime;
-            PowerUpManager.Instance.DamageUpBar.GetComponent<PowerUpBar>().activate();
-        }
-    }
-
-    public void activateShield()
-    {
-        if(!this.shield)
-        {
-            this.shield = true;
-            this.shieldTimer = ShieldTime;
-
-            //Starts powerup bar countdown
-            PowerUpManager.Instance.ShieldBar.GetComponent<PowerUpBar>().activeTime = MultiShotTime;
-            PowerUpManager.Instance.ShieldBar.GetComponent<PowerUpBar>().activate();
-
-            StartCoroutine(ShieldTick());
-        }
-        else
-        {
-            this.shieldTimer += ShieldTime;
-
-            //Starts powerup bar countdown
-            PowerUpManager.Instance.ShieldBar.GetComponent<PowerUpBar>().activeTime += MultiShotTime;
-            PowerUpManager.Instance.ShieldBar.GetComponent<PowerUpBar>().activate();
-        }
-    }
-
-    /// <summary>
-    /// Used to activate speed boost, or add time to it if it's already active
-    /// </summary>
-    public void activateSpeedBoost()
-    {
-        // If speed boost is not active
-        if (!this.speedBoost)
-        {
-            // Activate it, add time, and start timer
-            this.speedBoost = true;
-            this.CurrentSpeedBoost = SpeedBoostAmount;
-            this.speedTimer = SpeedBoostTime;
-
-            //Starts powerup bar countdown
-            PowerUpManager.Instance.SpeedBar.GetComponent<PowerUpBar>().activeTime = MultiShotTime;
-            PowerUpManager.Instance.SpeedBar.GetComponent<PowerUpBar>().activate();
-
-            StartCoroutine(SpeedTick());
-        }
-        else
-        {
-            // Add time to existing speed boost
-            this.speedTimer += SpeedBoostTime;
-
-            //Starts powerup bar countdown
-            PowerUpManager.Instance.SpeedBar.GetComponent<PowerUpBar>().activeTime += MultiShotTime;
-            PowerUpManager.Instance.SpeedBar.GetComponent<PowerUpBar>().activate();
-        }
-    }
-
-    /// <summary>
-    /// Basic timer tick function for the multishot
-    /// </summary>
-    IEnumerator MultiTick()
-    {
-        if (this.multiTimer > float.Epsilon)
-        {
-            --this.multiTimer;
+            --this.Powerups[Key].Timer;
             yield return new WaitForSeconds(TICK);
-            StartCoroutine(MultiTick());
+            StartCoroutine(Timer(Key));
         }
         else
         {
-            this.multiShot = false;
-            this.maxLaserCount = 1f;
-        }
-    }
+            this.Powerups[Key].IsActive = false;
 
-    /// <summary>
-    /// Basic timer tick function for the dmgUp
-    /// </summary>
-    IEnumerator DmgUpTick()
-    {
-        if (this.dmgTimer > float.Epsilon)
-        {
-            --this.dmgTimer;
-            yield return new WaitForSeconds(TICK);
-            StartCoroutine(DmgUpTick());
-        }
-        else
-        {
-            this.dmgUp = false;
-        }
-    }
+            if (Key.Equals("Multishot"))
+            {
+                this.maxLaserCount = 1f;
+            }
 
-    /// <summary>
-    /// Basic timer tick function for the shield
-    /// </summary>
-    IEnumerator ShieldTick()
-    {
-        if (this.shieldTimer > float.Epsilon)
-        {
-            --this.shieldTimer;
-            yield return new WaitForSeconds(TICK);
-            StartCoroutine(ShieldTick());
-        }
-        else
-        {
-            this.shield = false;
-            Destroy(GameObject.Find("Shield(Clone)"));
-        }
-    }
+            if (Key.Equals("Shield"))
+            {
+                Destroy(GameObject.Find("Shield(Clone)"));
+            }
 
-    /// <summary>
-    /// Basic timer tick function for the speed boost
-    /// </summary>
-    IEnumerator SpeedTick()
-    {
-        if (this.speedTimer > float.Epsilon)
-        {
-            --this.speedTimer;
-            yield return new WaitForSeconds(TICK);
-            StartCoroutine(SpeedTick());
-        }
-        else
-        {
-            this.speedBoost = false;
-            this.CurrentSpeedBoost = 1f;
+            if(Key.Equals("SpeedBoost"))
+            {
+                this.CurrentSpeedBoost = 1f;
+            }
         }
     }
 }

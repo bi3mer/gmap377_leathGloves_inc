@@ -39,8 +39,6 @@ public class ForceMover : MonoBehaviour {
 		MotionBaseMover.Instance.InducePhysicsPitch((float) (m_planetOrientation.Pitch / MotionBaseMover.Instance.MAX_PITCH_ANGLE));
 		MotionBaseMover.Instance.InducePhysicsRoll((float) (m_planetOrientation.Roll / MotionBaseMover.Instance.MAX_ROLL_ANGLE));
 
-		Debug.DrawLine(transform.position, transform.position + m_Rigidbody.velocity);
-
         CurrentVelocity = m_Rigidbody.velocity.magnitude;
 	}
 
@@ -48,8 +46,7 @@ public class ForceMover : MonoBehaviour {
 	{
 		bool grounded = m_planetOrientation.Grounded;
 
-        Vector3 direction = (Vector3.forward.normalized/* - new Vector3(0, 1, -2).normalized*/).normalized;
-        //Debug.Log(direction);
+        Vector3 direction = (Vector3.forward.normalized).normalized;
 
 	    if (InputManager.Player1VerticalInput > float.Epsilon && grounded) {
             Vector3 force = direction * (m_Rigidbody.mass * acceleration * PowerUpManager.Instance.CurrentSpeedBoost * InputManager.Player1VerticalInput + (1 - InputManager.Player1VerticalInput) * movementAdjust);
@@ -59,9 +56,9 @@ public class ForceMover : MonoBehaviour {
 		}
 
 		if (InputManager.Player1VerticalInput < -1 * float.Epsilon && grounded) {
-			Vector3 force = direction * (m_Rigidbody.mass * acceleration * PowerUpManager.Instance.CurrentSpeedBoost * InputManager.Player1VerticalInput - (-1 + InputManager.Player1VerticalInput) * movementAdjust);
 			if (m_Rigidbody.velocity.magnitude < topSpeed * PowerUpManager.Instance.CurrentSpeedBoost) {
-				m_Rigidbody.AddRelativeForce(force, ForceMode.Force);
+                Vector3 force = direction * (m_Rigidbody.mass * acceleration * PowerUpManager.Instance.CurrentSpeedBoost * InputManager.Player1VerticalInput - (-1 + InputManager.Player1VerticalInput) * movementAdjust);
+                m_Rigidbody.AddRelativeForce(force, ForceMode.Force);
 			}
 		}
 
