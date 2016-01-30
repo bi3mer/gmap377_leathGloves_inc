@@ -61,7 +61,7 @@ public class SpawnSystem : MonoBehaviour {
             if (Player.Instance == null) {
                 break;
             }
-            float dist = DistanceCalculator.euclidianDistance(position, Player.Instance.transform.position);
+            float dist = Vector2.Distance(position, Player.Instance.transform.position);
             MinSpawnDistanceActual = MinSpawnDistanceEmpty + (MinSpawnDistancePopulated - MinSpawnDistanceEmpty) * (CurrentEnemyNumber / CurrentDifficulty);
             MaxSpawnDistanceActual = MinSpawnDistancePopulated + (MaxSpawnDistanceActual - MinSpawnDistancePopulated) * (CurrentEnemyNumber / CurrentDifficulty);
             if (dist > MinSpawnDistanceActual && dist < MaxSpawnDistance) {
@@ -71,15 +71,28 @@ public class SpawnSystem : MonoBehaviour {
                 }
             }
         }
+
+        List<GameObject> prefabsToUse;
+        List<float> weightsToUse;
+        PlanetAISpawner planetAISpawner = Player.Instance.getPlanetNavigation().GetComponent<PlanetAISpawner>();
+        if (planetAISpawner) {
+            prefabsToUse = planetAISpawner.AIOnThisPlanet;
+            weightsToUse = planetAISpawner.AIWeights;
+        }
+        else {
+            prefabsToUse = EnemyPrefabs;
+            weightsToUse = EnemyProbabilities;
+        }
+
         GameObject prefab = null;
         float r = Random.Range(0, 100) / 100.0f;
         float sum = 0;
-        for (int i=0; i<EnemyPrefabs.Count; i++) {
-            if (r < sum + EnemyProbabilities[i]) {
-                prefab = EnemyPrefabs[i];
+        for (int i=0; i<prefabsToUse.Count; i++) {
+            if (r < sum + weightsToUse[i]) {
+                prefab = prefabsToUse[i];
                 break;
             }
-            sum += EnemyProbabilities[i];
+            sum += weightsToUse[i];
         }
         GameObject e = GameObject.Instantiate(prefab, position, new Quaternion()) as GameObject;
         e.GetComponent<EnemyStats>().Spawner = this;
@@ -87,12 +100,6 @@ public class SpawnSystem : MonoBehaviour {
         Gravity nearestPlanet = InterplanetaryObject.GetNearestPlanet(position);
         Vector3 angleToPlanet = position - nearestPlanet.transform.position;
         e.transform.position = e.transform.position + angleToPlanet.normalized * 1f;
-        /*InterplanetaryObject io = e.AddComponent<InterplanetaryObject>();
-        io.NearestPlanet = nearestPlanet;
-        PlanetOrientation po = e.AddComponent<PlanetOrientation>();
-        po.Initialize();
-        po.UpdateOrientation();
-        e.AddComponent<WeebleWobble>();*/
 
         e.AddComponent<EnvironmentOrienter>();
         e.GetComponent<EnvironmentOrienter>().OrientToPlanet();
