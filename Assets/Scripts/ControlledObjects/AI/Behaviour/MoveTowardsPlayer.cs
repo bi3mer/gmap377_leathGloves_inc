@@ -21,6 +21,20 @@ public class MoveTowardsPlayer : AbstractMover
         StartCoroutine(this.updatePlan());
     }
 
+	/// <summary>
+	/// Checks the plan and sees if it needs to be updated
+	/// </summary>
+	private void checkPlan()
+	{	
+		// CHeck if plan is null or the square distance is to large
+		if (this.plan == null || DistanceCalculator.squareEuclidianDistance(base.targetLocation, Player.Instance.transform.position) >= base.minReachDistance)
+		{
+			base.resetTargetIndex();
+			base.setTarget(Player.Instance.transform.position);
+			this.getNewPlan();
+		}
+	}
+
     /// <summary>
     /// Update the plan in a more buffered approach
     /// </summary>
@@ -30,13 +44,7 @@ public class MoveTowardsPlayer : AbstractMover
         // Always running during gameplay
         while (true)
         {
-            // Check if new plan needs to be calculated
-            if (this.plan == null || DistanceCalculator.squareEuclidianDistance(base.targetLocation, Player.Instance.transform.position) >= base.minReachDistance)
-            {
-                base.resetTargetIndex();
-                base.setTarget(Player.Instance.transform.position);
-                this.getNewPlan();
-            }
+			this.checkPlan();
 
             yield return new WaitForSeconds(this.updatePlanBuffer);
         }

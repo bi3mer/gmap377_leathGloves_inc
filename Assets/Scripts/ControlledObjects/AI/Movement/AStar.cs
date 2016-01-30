@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -17,9 +18,6 @@ public class AStar: MonoBehaviour, AiMovement
 	public bool drawPath = false;
 	
 	private float radius;
-
-	[HideInInspector]
-	public float minDistance;
 	
 	// Plan for movement
 	private List<int> plan;
@@ -60,7 +58,7 @@ public class AStar: MonoBehaviour, AiMovement
 	/// <returns></returns>
 	private float calculateDistanceFromVertex(int vertex)
 	{
-		return Vector3.Distance(this.planetVertexNavigation.getVertex(vertex).position, this.target);
+		return DistanceCalculator.squareEuclidianDistance(this.planetVertexNavigation.getVertex(vertex).position, this.target);
 	}
 	
 	// Check for collision at point
@@ -139,10 +137,10 @@ public class AStar: MonoBehaviour, AiMovement
                 if (!visitedNodes.ContainsKey(availableMoves[i]) && !this.collisionAtPoint(this.planetVertexNavigation.getVertex(availableMoves[i]).position))
                 {
                     // Calculate distance between vertex and target
-                    float vertexHeuristic = Vector3.Distance(this.planetVertexNavigation.getVertex(availableMoves[i]).position, this.target);
+                    float vertexHeuristic = DistanceCalculator.squareEuclidianDistance(this.planetVertexNavigation.getVertex(availableMoves[i]).position, this.target);
 
                     // Check if close enough to target
-                    if (vertexHeuristic < this.minDistance)
+					if (vertexHeuristic < this.planetVertexNavigation.avgVertexlength)
                     {
                         // Yes we are, solved
                         this.plan = node.Moves;
@@ -169,6 +167,9 @@ public class AStar: MonoBehaviour, AiMovement
                 }
             }
 		}
+
+		// Delete
+		GC.Collect();
 		
 		// returned failed plan
 		return this.plan;
@@ -198,11 +199,14 @@ public class AStar: MonoBehaviour, AiMovement
     /// </summary>
 	void Start()
 	{
+		// Divide by 2 to get radius not diameter 
 		this.radius = this.body.GetComponent<Collider>().bounds.size.magnitude / 2;
+
+		// Get planets navigation cod
         this.planetVertexNavigation = Player.Instance.getPlanetNavigation();
-        this.minDistance = this.planetVertexNavigation.avgVertexlength;
 	}
 	
+	#if UNITY_EDITOR
     /// <summary>
     /// Debugging Updates
     /// </summary>
@@ -234,4 +238,5 @@ public class AStar: MonoBehaviour, AiMovement
 			}
 		}
 	}
+	#endif
 }
