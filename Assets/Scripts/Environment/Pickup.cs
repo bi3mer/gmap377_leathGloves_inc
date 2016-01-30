@@ -144,7 +144,7 @@ public class Pickup : MonoBehaviour
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
-                PowerUpManager.Instance.activateMultishot();
+                PowerUpManager.Instance.Activate("Multishot");
             }
         };
         
@@ -160,7 +160,7 @@ public class Pickup : MonoBehaviour
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
-                PowerUpManager.Instance.activateDmgUp();
+                PowerUpManager.Instance.Activate("DamageUp");
             }
         };
         
@@ -212,7 +212,7 @@ public class Pickup : MonoBehaviour
         template shieldPickup = (obj) =>
         {
             // If the shield isn't already active
-            if (!PowerUpManager.Instance.IsShield)
+            if (!PowerUpManager.Instance.Powerups["Shield"].IsActive)
             {
                 // Make a shield around the player. This may change from my shitty particle effect
                 GameObject shield = Instantiate(PowerUpManager.Instance.ShieldModel, obj.transform.position, obj.transform.rotation) as GameObject;
@@ -231,7 +231,7 @@ public class Pickup : MonoBehaviour
             }
 
             // Activate the shield power up
-            PowerUpManager.Instance.activateShield();
+            PowerUpManager.Instance.Activate("Shield");
         };
 
 
@@ -246,7 +246,7 @@ public class Pickup : MonoBehaviour
         template speedPickup = (obj) =>
         {
             // Activate the speed boost power up
-            PowerUpManager.Instance.activateSpeedBoost();
+            PowerUpManager.Instance.Activate("SpeedBoost");
         };
         
         // Add them to the array
