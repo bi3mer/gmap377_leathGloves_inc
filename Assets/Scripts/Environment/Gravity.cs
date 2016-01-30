@@ -6,6 +6,12 @@ public class Gravity : MonoBehaviour
     public static List<Gravity> PlanetList = new List<Gravity>();
     public static float range = 1000;
 
+    private Rigidbody _rigidbody; 
+
+    void Start() {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
+
     void Awake() {
         PlanetList.Add(this);
     }
@@ -30,20 +36,17 @@ public class Gravity : MonoBehaviour
         foreach (Collider c in cols)
         {
             Rigidbody rb = c.attachedRigidbody;
-            if (rb != null && rb != GetComponent<Rigidbody>() && !rbs.Contains(rb))
+            if (rb != null && rb != _rigidbody && !rbs.Contains(rb))
             {
                 rbs.Add(rb);
                 Vector3 offset = transform.position - c.transform.position;
 				Vector3 force = offset / offset.sqrMagnitude * GetComponent<Rigidbody>().mass;
-                Debug.DrawLine(c.transform.position, c.transform.position + force);
                 rb.AddForce(force);
 
 				InterplanetaryObject io = c.gameObject.GetComponent<InterplanetaryObject>();
-				if (io) {
-					if (force.magnitude > io.NearestPlanetForce) {
-						io.NearestPlanet = this;
-						io.NearestPlanetForce = force.magnitude;
-					}
+				if (io && force.magnitude > io.NearestPlanetForce) {
+					io.NearestPlanet = this;
+					io.NearestPlanetForce = force.magnitude;
 				}
             }
         }
