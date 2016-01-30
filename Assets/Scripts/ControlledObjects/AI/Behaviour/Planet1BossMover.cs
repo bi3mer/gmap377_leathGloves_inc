@@ -3,8 +3,7 @@ using System.Collections;
 using System;
 
 public class Planet1BossMover : AbstractMover {
-
-    private Vector3 bossTarget;
+	
     private Vector3 initialBossPosition;
 
     private bool playerInRange;
@@ -12,38 +11,57 @@ public class Planet1BossMover : AbstractMover {
     public float minDistanceMagnitude = 50f;
     public float maxDistanceMagnitude = 150f;
 
+	public int updatePlanBuffer = 2;
+
     void Start()
     {
-        base.setMovementScript(this.GetComponent<AStar>());
-        initialBossPosition = this.transform.position;
+		initialBossPosition = transform.position;
+
+		base.targetLocation = Player.Instance.getClosestVertice();
+		base.setMovementScript(this.GetComponent<AStar>());
+		base.setTarget(initialBossPosition);
+		base.moveTowardsPlayerAtEndOfPath = false;
+
+		this.getNewPlan();
+		
+		// Start finding plan
+		StartCoroutine(this.updatePlan());
     }
 
-    public override void AcquireTarget()
-    {
-        // Move up to a minimum distance from the player
-        if (playerInRange)
-        {
-            Vector3 minDistanceFromPlayer = Player.Instance.transform.position - this.transform.position;
-            bossTarget = minDistanceFromPlayer.normalized * minDistanceMagnitude;
-        }
+	/// <summary>
+	/// Update the plan in a more buffered approach
+	/// </summary>
+	/// <returns></returns>
+	IEnumerator updatePlan()
+	{
+		// Always running during gameplay
+		while (true)
+		{
+			this.checkPlan();
+			
+			yield return new WaitForSeconds(this.updatePlanBuffer);
+		}
+	}
 
-        // Player is not in range, so the boss will return to its initial position
-        else
-        {
-            bossTarget = initialBossPosition;
-        }
-    }
+	/// <summary>
+	/// Checks the plan and sees if it needs to be updated
+	/// </summary>
+	private void checkPlan()
+	{	
+		// CHeck if plan is null or the square distance is to large
+		if (this.plan == null || DistanceCalculator.squareEuclidianDistance(base.targetLocation, Player.Instance.transform.position) >= base.minReachDistance)
+		{
+			base.resetTargetIndex();
+
+			// TODO: Use x vertices away functionality in updated A*
+			base.setTarget(Player.Instance.transform.position);
+
+			this.getNewPlan();
+		}
+	}
 
     void Update()
     {
-        // TODO:  Extract this functionality to another script for re-use in the tank and any future enemies
-        playerInRange = (Vector3.Distance(Player.Instance.transform.position, this.transform.position) <= maxDistanceMagnitude);
-        AcquireTarget();
-        if (base.plan == null || base.distanceCheck(bossTarget, Player.Instance.getClosestVertice(), 2f))
-        {
-            base.resetTargetIndex();
-            base.setTarget(bossTarget);
-        }
-        base.executeCurrentPlan();
+		this.executeCurrentPlan ();
     }
 }

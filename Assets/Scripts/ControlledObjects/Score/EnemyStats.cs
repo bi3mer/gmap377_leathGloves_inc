@@ -15,8 +15,6 @@ public class EnemyStats : MonoBehaviour
     private System.Random drop;
     bool isDead;                           // Whether the enemy is dead.
 
-    public SpawnSystem Spawner = null;
-
     void Awake()
     {
 
@@ -102,8 +100,8 @@ public class EnemyStats : MonoBehaviour
     }
 
     public void OnDestroy() {
-        if (Spawner) {
-            Spawner.RegisterEnemyDeath();
+        if (SpawnSystem.Instance) {
+            SpawnSystem.Instance.RegisterEnemyDeath();
         }
     }
 }

@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class SpawnSystem : MonoBehaviour {
-
-    public static SpawnSystem Instance = null;
-
+public class SpawnSystem : MonoBehaviour 
+{
     public int CurrentDifficulty = 5;
     public int DifficultyIncreaseTime = 20;
     public float ChanceDifficultyIncreaseDeath = 0.4f;
@@ -20,11 +18,15 @@ public class SpawnSystem : MonoBehaviour {
 
     private int _timer = 0;
 
-    void Start () {
-        _timer = DifficultyIncreaseTime;
+	public static SpawnSystem Instance = null;
+
+	void Start() 
+	{
+		_timer = DifficultyIncreaseTime;
 	}
 	
-	void Update () {
+	void Update () 
+	{
         _timer--;
         if (_timer <= 0) {
             CurrentDifficulty++;
@@ -47,7 +49,8 @@ public class SpawnSystem : MonoBehaviour {
         }
     }
 
-    void SpawnEnemy() {
+    void SpawnEnemy() 
+	{
         bool foundVertex = false;
         Vector3 position = Vector3.zero;
         
@@ -95,8 +98,11 @@ public class SpawnSystem : MonoBehaviour {
             sum += weightsToUse[i];
         }
         GameObject e = GameObject.Instantiate(prefab, position, new Quaternion()) as GameObject;
-        e.GetComponent<EnemyStats>().Spawner = this;
+
+		// add to hierarchy
         e.transform.parent = transform;
+
+		// TODO: test if we need this
         Gravity nearestPlanet = InterplanetaryObject.GetNearestPlanet(position);
         Vector3 angleToPlanet = position - nearestPlanet.transform.position;
         e.transform.position = e.transform.position + angleToPlanet.normalized * 1f;
@@ -111,4 +117,12 @@ public class SpawnSystem : MonoBehaviour {
         }
         CurrentEnemyNumber -= 1;
     }
+
+	public void DestroyAllChildren()
+	{
+		for(int i = 0; i < this.transform.childCount; i++)
+		{
+			Destroy (this.transform.GetChild(i).gameObject);
+		}
+	}
 }
