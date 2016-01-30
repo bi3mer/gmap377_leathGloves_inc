@@ -6,7 +6,6 @@ public class WarpTransport : MonoBehaviour {
     //take out shit cody added (week 4)
     public Transform destinationWarpPad;
     public float transportDelaySeconds;
-    public GameObject spawner; //added this week 4 take out 
     // REMOVE WHEN BOLTS ARE IN
     public bool canTransport;
 
@@ -17,7 +16,13 @@ public class WarpTransport : MonoBehaviour {
         {
             // Disable player movement while transport is happening
             Player.Instance.GetComponent<ForceMover>().enabled = false;
-            spawner.SetActive(false); //added for week 4 take out
+
+			// Destroys all currently spawned enemies
+			SpawnSystem.Instance.DestroyAllChildren();
+
+			// Disables spawner while player is warping
+			SpawnSystem.Instance.enabled = false;
+
             StartCoroutine(TransportAfterTime());
         }
     }
@@ -40,5 +45,8 @@ public class WarpTransport : MonoBehaviour {
 
         // Re-enables ForceMover script so player can move again
         Player.Instance.GetComponent<ForceMover>().enabled = true;
+
+		// Re-enables SpawnSystem script to create new enemies
+		SpawnSystem.Instance.enabled = true;
     }
 }

@@ -7,9 +7,10 @@ public class searchAndAttack : MonoBehaviour
 	public Transform attackSpawnPoint;
 	public GameObject weapon;
 	public float fireRate;
+	public bool bossAttack;
 
 	// timer for shooting
-	private float timer = 0;
+	private float timer = 0f;
 
 	// player found
 	private bool playerFound = false;
@@ -36,20 +37,21 @@ public class searchAndAttack : MonoBehaviour
 
 		// Check targ
 		if(targ != null)
-		{
-			transform.LookAt(targ.position);
+		{	
+			if(!bossAttack)
+				transform.LookAt(targ.position);
+
 			this.playerFound = true;
 
 			if(timer > fireRate)
 			{
 				// instantiate bullet
-				GameObject bullet = Instantiate(this.weapon, this.attackSpawnPoint.position, this.transform.rotation) as GameObject;
+				GameObject bullet = Instantiate(this.weapon, this.attackSpawnPoint.position, this.transform.rotation) as GameObject; 
 
 				// add target to bullet
 				bullet.GetComponent<FireForward>().target = targ.position;
-
 				// reset timer
-				timer = 0;
+				timer = 0f;
 			}
 		}
 	}

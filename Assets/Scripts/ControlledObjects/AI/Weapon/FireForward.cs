@@ -17,5 +17,8 @@ public class FireForward : MonoBehaviour
 	void Update () 
 	{
 		this.transform.position = Vector3.MoveTowards(this.transform.position, this.target, this.speed * Time.deltaTime);
+		if (this.transform.position.Equals (this.target)) {
+			Destroy (this.gameObject);
+		}
 	}
 }
