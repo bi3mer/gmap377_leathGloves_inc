@@ -11,7 +11,9 @@ public class ScoreManager : MonoBehaviour
     public int multi = 1;
     
 	// The player's score.
-    public int score = 0;   
+    public int score = 0;
+
+    public float BoltCount = 0f;   
          
     public string multiplierText;
 
@@ -91,4 +93,22 @@ public class ScoreManager : MonoBehaviour
    {
        return ScoreManager.Instance.PlayerName;
    }
+
+    /// <summary>
+    /// Add bolts to the BoltCount
+    /// </summary>
+    /// <param name="amount">Amount to add</param>
+    public void collectBolt(float amount)
+    {
+        this.BoltCount += amount;
+    }
+
+    /// <summary>
+    /// Resets the bolt count. Should be used when 
+    /// a new planet is traveled to.
+    /// </summary>
+    public void resetBoltCount()
+    {
+        this.BoltCount = 0f;
+    }
 }
