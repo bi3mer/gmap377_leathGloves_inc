@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 6031fea761370c748897e32fbf255bbc
-timeCreated: 1453704641
-licenseType: Free
+guid: feab58b00fefb451583d770c944ea0ad
+timeCreated: 1454106086
+licenseType: Pro
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Shield
+    4300000: Bomb_pickUp
     7400000: Idle
     9500000: //RootNode
   materials:
