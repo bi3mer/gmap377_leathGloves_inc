@@ -91,9 +91,6 @@ public class VertexNavigation : MonoBehaviour
 		float totalDistance = 0;
 		float verticesExplored = 0;
 
-//		Dictionary<int, bool> visitedNodes = new Dictionary<int, bool>();
-//		Queue<Vertice> unSearchedVerts = new Queue<Vertice>();
-
 		// Search through each vertex
 		for(int i = 0; i < this.vertices.Length; ++i)
 		{
@@ -105,12 +102,12 @@ public class VertexNavigation : MonoBehaviour
 				foreach(int vert in connectingVerts)
 				{
 					++verticesExplored;
-					totalDistance += Vector3.Distance(this.vertices[i], this.vertices[vert]);
+					totalDistance += DistanceCalculator.squareEuclidianDistance(this.vertices[i], this.vertices[vert]);
 				}
 			}
 		}
 
-		// Calculate average and set
+		// Calculate average and set square vertex length
 		this.avgVertexlength = totalDistance / verticesExplored;
 	}
 

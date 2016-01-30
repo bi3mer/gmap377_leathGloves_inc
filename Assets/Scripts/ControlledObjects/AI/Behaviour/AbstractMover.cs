@@ -36,7 +36,6 @@ public abstract class AbstractMover : Enemy
     {
         targetLocation = targ;
         this.aiMovement.setTarget(targetLocation);
-        this.plan = this.aiMovement.getNewPlan();
     }
 
     public void setMovementScript(AiMovement move)
@@ -62,7 +61,7 @@ public abstract class AbstractMover : Enemy
 
     public bool distanceCheck(Vector3 target, Vector3 currentPoint, float minChange)
     {
-        return Vector3.Distance(target, currentPoint) >= minChange;
+        return DistanceCalculator.squareEuclidianDistance(target, currentPoint) >= minChange;
     }
 
     // Run through plan to execute moves
@@ -74,7 +73,7 @@ public abstract class AbstractMover : Enemy
             if (this.targetIndex < this.plan.Count)
             {
                 // Check if we've reached the target in the plan
-                if (Vector3.Distance(this.transform.position, Player.Instance.getPlanetNavigation().getVertex(this.plan[this.targetIndex]).position) < this.minReachDistance)
+                if (DistanceCalculator.squareEuclidianDistance(this.transform.position, Player.Instance.getPlanetNavigation().getVertex(this.plan[this.targetIndex]).position) < this.minReachDistance)
                 {
                     // Increment to go to next target
                     ++this.targetIndex;
@@ -148,6 +147,6 @@ public abstract class AbstractMover : Enemy
     public virtual void handleError()
     {
         // Destroy self
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }
