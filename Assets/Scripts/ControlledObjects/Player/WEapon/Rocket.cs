@@ -22,26 +22,31 @@ public class Rocket : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, ExplosionRadius, TargetLayer);
         
         // Create Explosion object
-        Instantiate(Explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+        Instantiate(Explosion, transform.position, transform.rotation);
         
         // For every object in the explosion
         for (int i = 0; i < hitColliders.Length; ++i )
         {
-            if (hitColliders[i]) {
+            if (hitColliders[i])
+            {
                 // Add an explosion force of <ExplosionForce> to them
                 Rigidbody rb = hitColliders[i].gameObject.GetComponent<Rigidbody>();
-                if (rb) {
+                
+                if (rb)
+                {
                     rb.AddExplosionForce(ExplosionForce, transform.position, this.ExplosionRadius);
                 }
 
                 // Try and find an EnemyHealth script on the gameobject hit.
                 EnemyStats enemyHealth = hitColliders[i].gameObject.GetComponentInParent<EnemyStats>();
 
-                if (hitColliders[i].tag == "Player") {
+                if (hitColliders[i].tag == "Player")
+                {
                     ScoreManager.Instance.DecreaseScore((int)this.GetComponent<Weapon>().damage);
                 }
 
-                if (hitColliders[i].tag == "DestructableEnvironment") {
+                if (hitColliders[i].tag == "DestructableEnvironment")
+                {
                     Destroy(hitColliders[i].gameObject);
                 }
 
@@ -50,6 +55,7 @@ public class Rocket : MonoBehaviour
                     // ... the enemy should take damage.
                     enemyHealth.TakeDamage((int)this.GetComponent<Weapon>().damage);
 
+                    // If the damage up power up is active, do extra damage
                     if (PowerUpManager.Instance.Powerups["DamageUp"].IsActive)
                     {
                         enemyHealth.TakeDamage((int)PowerUpManager.Instance.PowerIncrease);

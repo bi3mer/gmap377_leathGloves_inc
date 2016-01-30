@@ -4,7 +4,9 @@ public class EnemyStats : MonoBehaviour
 {
     public int startingHealth = 100;        // The amount of health the enemy starts the game with.
     public int currentHealth;               // The current health the enemy has.
-   
+
+    public int BoltDropAmount = 5;
+    public GameObject Bolt;
     public int scoreValue = 100;           // The amount added to the player's score when the enemy dies.
     public GameObject Drop1, Drop2, Drop3, Drop4;
     public int DropChance = 25;
@@ -79,6 +81,11 @@ public class EnemyStats : MonoBehaviour
                     Instantiate(Drop4, new Vector3(transform.position.x, transform.position.y + offset, transform.position.z), transform.rotation);
                     break;
             }
+        }
+
+        for (int i = 0; i < this.BoltDropAmount; ++i)
+        {
+            Instantiate(Bolt, transform.position, transform.rotation);
         }
     }
     public virtual void MakeExplosion()
