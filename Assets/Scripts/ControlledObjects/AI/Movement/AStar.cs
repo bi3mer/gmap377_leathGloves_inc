@@ -85,6 +85,7 @@ public class AStar: MonoBehaviour, AiMovement
 	{	
 		// http://docs.unity3d.com/ScriptReference/RaycastHit-triangleIndex.html
 		// Raycast towards center of planet
+		// TODO: remove magic number
 		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, this.planetVertexNavigation.transform.position - this.transform.position, 200f);
 		
 		// Create list to hold unformatted moves

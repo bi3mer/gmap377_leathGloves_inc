@@ -98,37 +98,62 @@ public class PowerUpManager : MonoBehaviour
         else
         {
             Powerups[Key].Timer += Powerups[Key].SetTime;
-            Powerups[Key].GuiBar.GetComponent<PowerUpBar>().activeTime += Powerups[Key].SetTime;
+            Powerups[Key].GuiBar.GetComponent<PowerUpBar>().activeTime = Powerups[Key].Timer;
             Powerups[Key].GuiBar.GetComponent<PowerUpBar>().activate();
         }
     }
 
     IEnumerator Timer(string Key)
     {
-        if (this.Powerups[Key].Timer > 0f)
+        while(Powerups[Key].Timer > 0f)
         {
-            --this.Powerups[Key].Timer;
-            yield return new WaitForSeconds(TICK);
-            StartCoroutine(Timer(Key));
+            Debug.Log("Time Left: " + Powerups[Key].Timer);
+            this.Powerups[Key].Timer -= Time.deltaTime;
+            yield return null;
         }
-        else
+
+        this.Powerups[Key].IsActive = false;
+
+        if (Key.Equals("Multishot"))
         {
-            this.Powerups[Key].IsActive = false;
-
-            if (Key.Equals("Multishot"))
-            {
-                this.maxLaserCount = 1f;
-            }
-
-            if (Key.Equals("Shield"))
-            {
-                Destroy(GameObject.Find("Shield(Clone)"));
-            }
-
-            if(Key.Equals("SpeedBoost"))
-            {
-                this.CurrentSpeedBoost = 1f;
-            }
+            this.maxLaserCount = 1f;
         }
+
+        if (Key.Equals("Shield"))
+        {
+            Destroy(GameObject.Find("Shield(Clone)"));
+        }
+
+        if (Key.Equals("SpeedBoost"))
+        {
+            this.CurrentSpeedBoost = 1f;
+        }
+
+        //if (this.Powerups[Key].Timer > 0f)
+        //{
+        //    Debug.Log("Time Left: " + Powerups[Key].Timer);
+        //    --this.Powerups[Key].Timer;
+        //    yield return new WaitForSeconds(TICK);
+        //    StartCoroutine(Timer(Key));
+        //}
+        //else
+        //{
+        //    this.Powerups[Key].IsActive = false;
+
+        //    if (Key.Equals("Multishot"))
+        //    {
+        //        this.maxLaserCount = 1f;
+        //    }
+
+        //    if (Key.Equals("Shield"))
+        //    {
+        //        Destroy(GameObject.Find("Shield(Clone)"));
+        //    }
+
+        //    if(Key.Equals("SpeedBoost"))
+        //    {
+        //        this.CurrentSpeedBoost = 1f;
+        //    }
+        //}
     }
 }

@@ -4,7 +4,9 @@ public class EnemyStats : MonoBehaviour
 {
     public int startingHealth = 100;        // The amount of health the enemy starts the game with.
     public int currentHealth;               // The current health the enemy has.
-   
+
+    public int BoltDropAmount = 5;
+    public GameObject Bolt;
     public int scoreValue = 100;           // The amount added to the player's score when the enemy dies.
     public GameObject Drop1, Drop2, Drop3, Drop4;
     public int DropChance = 25;
@@ -12,8 +14,6 @@ public class EnemyStats : MonoBehaviour
 
     private System.Random drop;
     bool isDead;                           // Whether the enemy is dead.
-
-    public SpawnSystem Spawner = null;
 
     void Awake()
     {
@@ -80,6 +80,11 @@ public class EnemyStats : MonoBehaviour
                     break;
             }
         }
+
+        for (int i = 0; i < this.BoltDropAmount; ++i)
+        {
+            Instantiate(Bolt, transform.position, transform.rotation);
+        }
     }
     public virtual void MakeExplosion()
     {
@@ -95,8 +100,8 @@ public class EnemyStats : MonoBehaviour
     }
 
     public void OnDestroy() {
-        if (Spawner) {
-            Spawner.RegisterEnemyDeath();
+        if (SpawnSystem.Instance) {
+            SpawnSystem.Instance.RegisterEnemyDeath();
         }
     }
 }

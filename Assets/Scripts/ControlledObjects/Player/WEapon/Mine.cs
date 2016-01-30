@@ -19,7 +19,13 @@ public class Mine : MonoBehaviour
     * LayerCheck - The layer the mine will effect
     */
     public float LightOnIntensity, LightOffIntensity;
-    public float CheckRadius, ExplosionRadius, ExplosionForce, SetTime = 10f, OnTime, ResetTime, ArmedVolume;
+    public float CheckRadius,
+        ExplosionRadius,
+        ExplosionForce,
+        SetTime = 10f,
+        OnTime,
+        ResetTime, 
+        ArmedVolume;
     public GameObject Explosion;
     public AudioClip MineArmed;
     public LayerMask LayerCheck;
@@ -48,7 +54,7 @@ public class Mine : MonoBehaviour
     }
 
     /// <summary>
-    /// Called every frame
+    /// Called every frame to detect enemies within range and do damage to them
     /// </summary>
     void Update()
     {
@@ -101,12 +107,14 @@ public class Mine : MonoBehaviour
                 // Otherwise decrement the OnTime
                 this.OnTime -= Time.deltaTime;
             }
+
+            // If there are enemies within the trigger range
             if (hitColliders.Length > 0)
             {
                 Instantiate(Explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
 
                 // For every object in the explosion
-                for (int i = 0; i < hitColliders.Length; i++)
+                for (int i = 0; i < hitColliders.Length; ++i)
                 {
                     // Add an explosion force of <ExplosionForce> to them
                     hitColliders[i].gameObject.GetComponentInParent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, this.ExplosionRadius);
@@ -128,7 +136,6 @@ public class Mine : MonoBehaviour
                 }
                 Destroy(this.gameObject);
             }
-
         }
     }
 }

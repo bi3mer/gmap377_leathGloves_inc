@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Shooting : MonoBehaviour
-{    
+{
+    const float SHOOTING_DEPTH = 10000f;
+
     /**
      * character - Holds the transform of the player game object.
      * bullet - holds the bullet game object that is being shot.
@@ -39,9 +40,8 @@ public class Shooting : MonoBehaviour
                     newBullet.transform.parent = spwnPt.transform;
                     ++PowerUpManager.Instance.CurrentLaserCount;
                 }
-
-                Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10000f);
-                Vector3 lookPos = Camera.main.ScreenToWorldPoint(mousePos);
+                
+                Vector3 lookPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, SHOOTING_DEPTH));
                 lookPos = lookPos - transform.position;
                 newBullet.transform.LookAt(lookPos);
                 GameObject leftBullet, rightBullet;
@@ -111,13 +111,14 @@ public class Shooting : MonoBehaviour
                         ).normalized * bullet.GetComponent<Weapon>().speed);
                 }
 
-                // If there is still ammo left decement it by 1
+                // If there is still ammo left decrement it by 1
                 if (bullet.GetComponent<Weapon>().ammo > ZERO)
                 {
                     --bullet.GetComponent<Weapon>().ammo;
                     if (bullet.GetComponent<Weapon>().ammo == ZERO)
                     {
                         this.bullet = GetComponent<PickupCache>().Laser;
+
                         //Set Gui to current weapon
                         WeaponDisplayController.Instance.AllOff();
                         WeaponDisplayController.Instance.dLaserOn.enabled = true;
