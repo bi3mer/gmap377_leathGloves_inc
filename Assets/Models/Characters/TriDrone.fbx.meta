@@ -1,94 +1,90 @@
 fileFormatVersion: 2
-guid: 39b0cfee3b18b475f9a19925748fc496
-timeCreated: 1454278643
+guid: 5c2a3055a4614433f9d681a7445753cd
+timeCreated: 1454282120
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: back
-    100002: Back_leg
-    100004: Back_Leg_Protector
-    100006: bevelPolygon7
-    100008: bevelPolygon7 1
-    100010: bevelPolygon7 2
-    100012: bevelPolygon8
-    100014: bevelPolygon8 1
-    100016: bevelPolygon8 2
-    100018: bevelPolygon9
-    100020: bevelPolygon9 1
-    100022: bevelPolygon9 2
-    100024: Center_Body
-    100026: EnemyTriDrone
-    100028: Eye
-    100030: group1
-    100032: group2
-    100034: group3
-    100036: Head
-    100038: L_Leg_Protector
-    100040: L_Side_of_head
-    100042: Left_leg
-    100044: Leg_Gaurd2
-    100046: Leg_Gaurd2 1
-    100048: Leg_Gaurd2 2
-    100050: LegPivot
-    100052: LegPivot2
-    100054: LegPivot3
-    100056: Main_Head_Frame
-    100058: pCylinder9
-    100060: pCylinder9 1
-    100062: pCylinder9 2
-    100064: R_LEg_Protector
-    100066: R_Side_of_head
-    100068: Right_Leg
-    100070: Teeth
-    100072: Top_of_Skull
-    100074: Triangle_base
-    100076: //RootNode
-    100078: Wire1
-    100080: Wire2
-    100082: Wire3
-    400000: back
-    400002: Back_leg
-    400004: Back_Leg_Protector
-    400006: bevelPolygon7
-    400008: bevelPolygon7 1
-    400010: bevelPolygon7 2
-    400012: bevelPolygon8
-    400014: bevelPolygon8 1
-    400016: bevelPolygon8 2
-    400018: bevelPolygon9
-    400020: bevelPolygon9 1
-    400022: bevelPolygon9 2
-    400024: Center_Body
-    400026: EnemyTriDrone
-    400028: Eye
-    400030: group1
-    400032: group2
-    400034: group3
-    400036: Head
-    400038: L_Leg_Protector
-    400040: L_Side_of_head
-    400042: Left_leg
-    400044: Leg_Gaurd2
-    400046: Leg_Gaurd2 1
-    400048: Leg_Gaurd2 2
-    400050: LegPivot
-    400052: LegPivot2
-    400054: LegPivot3
-    400056: Main_Head_Frame
-    400058: pCylinder9
-    400060: pCylinder9 1
-    400062: pCylinder9 2
-    400064: R_LEg_Protector
-    400066: R_Side_of_head
-    400068: Right_Leg
-    400070: Teeth
-    400072: Top_of_Skull
-    400074: Triangle_base
-    400076: //RootNode
-    400078: Wire1
-    400080: Wire2
-    400082: Wire3
+    100000: Back_leg
+    100002: Back_Leg_Protector
+    100004: bevelPolygon7
+    100006: bevelPolygon7 1
+    100008: bevelPolygon7 2
+    100010: bevelPolygon8
+    100012: bevelPolygon8 1
+    100014: bevelPolygon8 2
+    100016: bevelPolygon9
+    100018: bevelPolygon9 1
+    100020: bevelPolygon9 2
+    100022: Center_Body
+    100024: Eye
+    100026: group1
+    100028: group2
+    100030: group3
+    100032: Head
+    100034: L_Leg_Protector
+    100036: L_Side_of_head
+    100038: Left_leg
+    100040: Leg_Gaurd2
+    100042: Leg_Gaurd2 1
+    100044: Leg_Gaurd2 2
+    100046: LegPivot
+    100048: LegPivot2
+    100050: LegPivot3
+    100052: Main_Head_Frame
+    100054: pCylinder9
+    100056: pCylinder9 1
+    100058: pCylinder9 2
+    100060: R_LEg_Protector
+    100062: R_Side_of_head
+    100064: Right_Leg
+    100066: Teeth
+    100068: Top_of_Skull
+    100070: Triangle_base
+    100072: //RootNode
+    100074: Wire1
+    100076: Wire2
+    100078: Wire3
+    400000: Back_leg
+    400002: Back_Leg_Protector
+    400004: bevelPolygon7
+    400006: bevelPolygon7 1
+    400008: bevelPolygon7 2
+    400010: bevelPolygon8
+    400012: bevelPolygon8 1
+    400014: bevelPolygon8 2
+    400016: bevelPolygon9
+    400018: bevelPolygon9 1
+    400020: bevelPolygon9 2
+    400022: Center_Body
+    400024: Eye
+    400026: group1
+    400028: group2
+    400030: group3
+    400032: Head
+    400034: L_Leg_Protector
+    400036: L_Side_of_head
+    400038: Left_leg
+    400040: Leg_Gaurd2
+    400042: Leg_Gaurd2 1
+    400044: Leg_Gaurd2 2
+    400046: LegPivot
+    400048: LegPivot2
+    400050: LegPivot3
+    400052: Main_Head_Frame
+    400054: pCylinder9
+    400056: pCylinder9 1
+    400058: pCylinder9 2
+    400060: R_LEg_Protector
+    400062: R_Side_of_head
+    400064: Right_Leg
+    400066: Teeth
+    400068: Top_of_Skull
+    400070: Triangle_base
+    400072: //RootNode
+    400074: Wire1
+    400076: Wire2
+    400078: Wire3
     2300000: Back_Leg_Protector
     2300002: bevelPolygon7
     2300004: bevelPolygon7 1
@@ -208,7 +204,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 8
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
