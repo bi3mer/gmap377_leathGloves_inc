@@ -36,16 +36,24 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 	[Tooltip("Folder where the objects that should be used in the environment are found. Should have Large, Medium, and Small subfolders.")]
 	public string folder;
 
+	[Tooltip("The number of sections in a section x section grid that the planet will be divided into.")]
 	public int planetSections;
+
+	[Tooltip("How many of each object should be initially generated for the pool.")]
 	public int initialObjects;
+
+	[Tooltip("Generate all objects at once instead of by chunk.")]
 	public bool generateAllAtOnce;
 
-	Dictionary<string, ProceduralGenerationPoint> grid;
-	Dictionary<string, List<EnvironmentOrienter>> chunkGrid;
-	Dictionary<string, bool> chunkStatus;
-	Dictionary<string, List<ProceduralGenerationPoint>> samplePoints;
+	Dictionary<long, ProceduralGenerationPoint> grid;
+	Dictionary<long, List<EnvironmentOrienter>> chunkGrid;
+	Dictionary<long, bool> chunkStatus;
+	Dictionary<long, List<ProceduralGenerationPoint>> samplePoints;
+
 	List<Color> colors;
 	float triangleArea;
+	int gridOffset;
+	int chunkGridOffset;
 	int currentObjects;
 
 	//Dictionary<string, string> locationToObject;
@@ -58,22 +66,28 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 	float uvToMeshRatio;
 
 	int layerMask;
+
+	[SerializeField]
 	List<Vector3[]> triangles;
+
+	[SerializeField]
 	List<Vector2[]> uvsToTriangles;
+
+	List<Vector3> faceNormals;
 
 	// Use this for initialization
 	void Start () {
 		mesh = GetComponent<MeshFilter> ().mesh;
-		grid = new Dictionary<string, ProceduralGenerationPoint>();
-		chunkGrid = new Dictionary<string, List<EnvironmentOrienter>> ();
-		chunkStatus = new Dictionary<string, bool> ();
+		grid = new Dictionary<long, ProceduralGenerationPoint>();
+		chunkGrid = new Dictionary<long, List<EnvironmentOrienter>> ();
+		chunkStatus = new Dictionary<long, bool> ();
 
 		objectPoolByName = new Dictionary<string, List<EnvironmentOrienter>> ();
 		objectBySize = new Dictionary<string, List<GameObject>>();
 
 		triangles = new List<Vector3[]> ();
 		uvsToTriangles = new List<Vector2[]> ();
-
+		faceNormals = new List<Vector3> ();
 		
 		chunkCellSize = 1f / planetSections;
 		layerMask = gameObject.layer;
@@ -84,7 +98,18 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 	public void LoadPlanet()
 	{
 		samplePoints = generatePoisson (minDistance, newPointsCount);
-		
+	
+		List<long> keys = new List<long> (samplePoints.Keys);
+
+		int total = 0;
+
+		for (int i = 0; i < keys.Count; i++)
+		{
+			total += samplePoints[keys[i]].Count;
+		}
+
+		Debug.Log (total);
+
 		if (generateAllAtOnce) {
 			generateAll();
 		}
@@ -109,12 +134,13 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		Object[] mediumObjects = Resources.LoadAll (folder + "/Medium");
 		Object[] smallObjects = Resources.LoadAll (folder + "/Small");
 
-		int choice;
-		string size;
+		List<long> keys = new List<long> (samplePoints.Keys);
+		long key;
 
-
-		foreach(string key in samplePoints.Keys)
+		for(int j = 0; j < keys.Count; j++)
 		{
+			key = keys[j];
+
 			for(int i = 0; i < samplePoints[key].Count; i++)
 			{
 				GameObject ob;
@@ -133,8 +159,11 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 
 				
 				ob.transform.parent = transform;
-				ob.transform.localPosition = samplePoints[key][i].position;
-				ob.GetComponent<EnvironmentOrienter>().DropToPlanet();
+				ob.transform.localPosition = samplePoints[key][i].position + samplePoints[key][i].size * faceNormals[samplePoints[key][i].triangleIndex];
+
+				EnvironmentOrienter orienter = ob.GetComponent<EnvironmentOrienter>();
+				orienter.OrientToPlanet();
+				orienter.DropToPlanet();
 			}
 
 		}
@@ -205,20 +234,18 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 	public void InstantiateBasedOnPlayerLocation()
 	{
 		Vector2 playerUVLoc = Player.Instance.getUVLocation (layerMask);
-		string gridKey = toGrid (playerUVLoc, chunkCellSize);
+		long gridKey = toGrid (playerUVLoc, chunkCellSize, chunkGridOffset);
 
-		string[] nums = gridKey.Split (':');
-		
-		int x = int.Parse (nums [0]);
-		int y = int.Parse (nums [1]);
+		long y = gridKey / gridOffset;
+		long x = gridKey - (y * gridOffset);
 
-		string key;
+		long key;
 
-		for(int i = x - 3; i < x + 3; i++)
+		for(long i = x - 3; i < x + 3; i++)
 		{
-			for(int j = y - 3; j < y + 3; j++)
+			for(long j = y - 3; j < y + 3; j++)
 			{ 
-				key = i + ":" + j;
+				key = i + j * chunkGridOffset;
 
 				if(chunkStatus.ContainsKey(key))
 				{
@@ -243,7 +270,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		}
 	}
 
-	public void activateChunk(string key)
+	public void activateChunk(long key)
 	{
 		List<ProceduralGenerationPoint> points = samplePoints [key];
 		int choice;
@@ -292,7 +319,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 				objectPoolByName[name].Add(o.GetComponent<EnvironmentOrienter>());
 			}
 
-			ob.transform.localPosition = points[i].position;
+			ob.transform.localPosition = points[i].position + samplePoints[key][i].size * faceNormals[samplePoints[key][i].triangleIndex];
 			ob.gameObject.SetActive(true);
 			ob.DropToPlanet();
 			chunkGrid[key].Add(ob);
@@ -302,8 +329,9 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 	}
 
 
-	public void disableChunk(string key)
+	public void disableChunk(long key)
 	{
+		Debug.Log ("disabling");
 		List<EnvironmentOrienter> objects = chunkGrid [key];
 		string name;
 
@@ -318,21 +346,22 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		chunkStatus [key] = false;
 	}
 
-	public Dictionary<string, List<ProceduralGenerationPoint>> generatePoisson(float minDistance, int newPointsCount)
+	public Dictionary<long, List<ProceduralGenerationPoint>> generatePoisson(float minDistance, int newPointsCount)
 	{
+		// gets triangle indices from first submesh
 		int[] triangleIndices = mesh.GetTriangles (0);
 
 		Vector3[] vertices = mesh.vertices;
 		Vector2[] uvs = mesh.uv;
-
-		Dictionary<string, List<ProceduralGenerationPoint>> samplePoints = new Dictionary<string, List<ProceduralGenerationPoint>> ();
+		Vector3[] normals = mesh.normals;
+		Dictionary<long, List<ProceduralGenerationPoint>> samplePoints = new Dictionary<long, List<ProceduralGenerationPoint>> ();
 		colors = new List<Color> ();
 		List<ProceduralGenerationPoint> processList = new List<ProceduralGenerationPoint> ();
 
 		ProceduralGenerationPoint point;
 
 		int rand;
-		string gridPoint;
+		long gridPoint;
 		float minDis;
 	
 		int tries = 0;
@@ -352,50 +381,58 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 			triangleUVs[2] = uvs[triangleIndices[i + 2]];
 			
 			uvsToTriangles.Add(triangleUVs);
+
+			faceNormals.Add ((normals[triangleIndices[i]] + normals[triangleIndices[i + 1]] + normals[triangleIndices[i + 2]])/3);
 		}
 
 		ProceduralGenerationPoint temp = new ProceduralGenerationPoint (getInterpolation (triangles [0]));
-		temp.triangle = triangles [0];
-		temp.uvPos = uvsToTriangles [0];
+		temp.triangleIndex = 0;
 		temp.uvPosition = meshPointToUv (temp);
 
 		ProceduralGenerationPoint temp2 = new ProceduralGenerationPoint (getInterpolation (triangles [1]));
-		temp2.triangle = triangles [1];
-		temp2.uvPos = uvsToTriangles [1];
+		temp2.triangleIndex = 1;
 		temp2.uvPosition = meshPointToUv (temp2);
 
 		uvToMeshRatio = Vector2.Distance (temp.uvPosition, temp2.uvPosition) / Vector3.Distance (temp.position, temp2.position);
+
 		cellSize = (minDistance / Mathf.Sqrt (2f)) * uvToMeshRatio;
+		Vector3 side1 = triangles [0] [0] - triangles [0] [1];
+		Vector3 side2 = triangles [0] [1] - triangles [0] [2];
+		Vector3 side3 = triangles [0] [2] - triangles [0] [0];
 
-		float side1 = Vector3.Distance (triangles [0] [0], triangles [0] [1]);
+		triangleArea = Vector3.Cross (side1 - side2, side1 - side3).magnitude;
 
-		triangleArea = side1;
+		// the number to offset the y value from the x to create a unique index for vector2 hashes in the dictionary
+		int initialNumber = Mathf.CeilToInt ((triangleArea * uvToMeshRatio) / cellSize) * triangles.Count;
+		int power = Mathf.CeilToInt (Mathf.Log10 (initialNumber));
+		gridOffset = Mathf.RoundToInt(Mathf.Pow (10, power));
+		power = Mathf.CeilToInt (Mathf.Log10(planetSections));
+		chunkGridOffset = Mathf.RoundToInt (Mathf.Pow (10, power));
 
 		for (int i = 0; i < startingSeeds; ++i) {
 			rand = Random.Range (0, triangles.Count);
 			ProceduralGenerationPoint firstPoint = new ProceduralGenerationPoint (getInterpolation (triangles [rand]));
 			firstPoint.triangleIndex = rand;
-			firstPoint.triangle = triangles[rand];
-			firstPoint.uvPos = uvsToTriangles[rand];
 			firstPoint.uvPosition = meshPointToUv(firstPoint);
 
 			Color c = getColorAtTriangle(firstPoint);
 
 			firstPoint.size = getSize(getColorChance(c));
 
-			gridPoint = toGrid (firstPoint.uvPosition, cellSize);
+			gridPoint = toGrid (firstPoint.uvPosition, cellSize, gridOffset);
+			firstPoint.gridPosition = gridPoint;
 			minDis = (minDistance + distanceVariance * getDensity(c) + firstPoint.size) * uvToMeshRatio;
-		
+			tries = 0;
+
 			while (grid.ContainsKey(gridPoint) || overlappingPoint(grid, firstPoint, minDis, cellSize, firstPoint.triangleIndex)) 
 			{
 				rand = Random.Range (0, triangles.Count);
 				firstPoint.position = getInterpolation (triangles [rand]);
 				firstPoint.triangleIndex = rand;
-				firstPoint.triangle = triangles[rand];
-				firstPoint.uvPos = uvsToTriangles[rand];
 				firstPoint.uvPosition = meshPointToUv(firstPoint);
 
-				gridPoint = toGrid (firstPoint.uvPosition, cellSize);
+				gridPoint = toGrid (firstPoint.uvPosition, cellSize, gridOffset);
+				firstPoint.gridPosition = gridPoint;
 				minDis = (minDistance + distanceVariance * getDensity(c) + firstPoint.size) * uvToMeshRatio;
 
 				if(tries < maxAttempts)
@@ -408,9 +445,9 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 				}
 			}
 
-			if (tries < maxAttempts && !grid.ContainsKey(gridPoint) && !overlappingPoint(grid, firstPoint, minDis, cellSize, firstPoint.triangleIndex)) 
+			if (tries < maxAttempts) 
 			{
-				string key = toGrid(firstPoint.uvPosition, chunkCellSize);
+				long key = toGrid(firstPoint.uvPosition, chunkCellSize, chunkGridOffset);
 				if(!samplePoints.ContainsKey(key))
 				{
 					samplePoints.Add(key, new List<ProceduralGenerationPoint>());
@@ -423,6 +460,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 
 				if(!chunkGrid.ContainsKey(key))
 				{
+					Debug.Log ("adding " + key);
 					chunkGrid.Add(key, new List<EnvironmentOrienter>());
 				}
 
@@ -431,10 +469,11 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 				
 				colors.Add(getColorAtTriangle(firstPoint));
 				grid.Add (gridPoint, firstPoint);
+				firstPoint.chunkGridPosition = key;
 			}
 		}
 
-		currentObjects = samplePoints.Count;
+		currentObjects = startingSeeds;
 
 		while (currentObjects < maxObjects && processList.Count != 0) 
 		{
@@ -448,16 +487,17 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 				Color c = getColorAtTriangle(newPoint);
 				newPoint.size = getSize(getColorChance(c));
 
-				gridPoint = toGrid (newPoint.uvPosition, cellSize);
-			
+				gridPoint = toGrid (newPoint.uvPosition, cellSize, gridOffset);
+				newPoint.gridPosition = gridPoint;
 				minDis = (minDistance + distanceVariance * getDensity(c) + newPoint.size) * uvToMeshRatio;
-				
+
 				while (grid.ContainsKey(gridPoint) || overlappingPoint(grid, newPoint, minDis, cellSize, newPoint.triangleIndex)) 
 				{
 					newPoint = generateRandomPointAround (point.triangleIndex, triangles, uvsToTriangles, minDistance + distanceVariance + large);
 
 					minDis = (minDistance + distanceVariance * getDensity(c) + newPoint.size) * uvToMeshRatio;
-					gridPoint = toGrid (newPoint.uvPosition, cellSize);
+					gridPoint = toGrid (newPoint.uvPosition, cellSize, gridOffset);
+					newPoint.gridPosition = gridPoint;
 
 					if(tries < maxAttempts)
 					{
@@ -469,9 +509,9 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 					}
 				}
 
-				if (tries < maxAttempts && !grid.ContainsKey(gridPoint) && !overlappingPoint(grid, newPoint, minDis, cellSize, newPoint.triangleIndex)) 
+				if (tries < maxAttempts) 
 				{
-					string key = toGrid(newPoint.uvPosition, chunkCellSize);
+					long key = toGrid(newPoint.uvPosition, chunkCellSize, chunkGridOffset);
 					if(!samplePoints.ContainsKey(key))
 					{
 						samplePoints.Add(key, new List<ProceduralGenerationPoint>());
@@ -493,6 +533,9 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 					colors.Add(getColorAtTriangle(newPoint));
 					currentObjects++;
 					grid.Add(gridPoint, newPoint);
+
+					newPoint.chunkGridPosition = key;
+
 					tries = 0;
 				}
 				else
@@ -511,13 +554,12 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		return samplePoints;
 	}
 
-	public string toGrid(Vector2 point, float minSize)
+	public long toGrid(Vector2 point, float minSize, long gridOffset)
 	{
-		int x = Mathf.CeilToInt (point.x / minSize);
-		int y = Mathf.CeilToInt (point.y / minSize);
-		string p = x + ":" + y;
+		long x = Mathf.CeilToInt (point.x / minSize);
+		long y = Mathf.CeilToInt (point.y / minSize);
 
-		return p;
+		return x + y * gridOffset;
 	}
 
 	public ProceduralGenerationPoint generateRandomPointAround(int triangleIndex, List<Vector3[]> triangles, List<Vector2[]> uvsToTriangles, float minDistance)
@@ -549,11 +591,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		ProceduralGenerationPoint p = new ProceduralGenerationPoint(getInterpolation (triangles [triangleIndex + x]));
 
 		p.triangleIndex = triangleIndex + x;
-		p.triangle = triangles [p.triangleIndex];
-		p.uvPos = uvsToTriangles[triangleIndex + x];
 		p.uvPosition = meshPointToUv (p);
-		p.triangle = triangles [p.triangleIndex];
-
+	
 		p.size = getSize(getColorChance(getColorAtTriangle(p)));                                                         
 		return p;
 	}
@@ -577,8 +616,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 	/// <param name="pos2">Pos2.</param>
 	public bool inRange(Vector2 pos1, Vector2 pos2, float minDist)
 	{
-		float dist_isophotic = Vector2.Distance (pos1, pos2) * 1.3f;
-
+		float dist_isophotic = Vector2.Distance (pos1, pos2) * 1.1f;
+	
 		if(dist_isophotic < minDist)
 		{
 			return true;
@@ -587,17 +626,16 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		return false;
 	}
 
-	public bool overlappingPoint(Dictionary<string, ProceduralGenerationPoint> grid, ProceduralGenerationPoint point, float minDistance, float cellSize, int triangle)
+	public bool overlappingPoint(Dictionary<long, ProceduralGenerationPoint> grid, ProceduralGenerationPoint point, float minDistance, float cellSize, int triangle)
 	{
 		Vector2 newPoint = point.uvPosition;
-		string  gridPoint = toGrid (newPoint, cellSize);
-		string[] nums = gridPoint.Split (':');
+		long gridPoint = point.gridPosition;
 		
-		int x = int.Parse (nums [0]);
-		int y = int.Parse (nums [1]);
+		int y = (int) gridPoint / gridOffset;
+		int x = (int) gridPoint - (y * gridOffset);
 
 		int gridSpaces = Mathf.CeilToInt(minDistance / cellSize);
-		string key;
+		long key;
 
 		for(int i = x - gridSpaces; i < gridSpaces + x; ++i)
 		{
@@ -605,11 +643,11 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 			{
 				if( i != x && j != y)
 				{
-					key = i + ":" + j;
+					key = i + j * gridOffset;
 
 					if(grid.ContainsKey(key))
 					{
-						if(inRange(grid[key].uvPosition, newPoint, (minDistance + grid[key].size) * uvToMeshRatio))
+						if(inRange(grid[key].uvPosition, newPoint, minDistance + grid[key].size))
 						{
 							return true;
 						}
@@ -621,7 +659,11 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		return false;
 	}
 
-
+	/// <summary>
+	/// Gets the color at a location.
+	/// </summary>
+	/// <returns>The color at location on the me.</returns>
+	/// <param name="point">Point.</param>
 	public Color getColorAtTriangle(ProceduralGenerationPoint point)
 	{
 		int x = Mathf.FloorToInt(point.uvPosition.x * heatmapColors.width);
@@ -629,12 +671,25 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		return heatmapColors.GetPixel(x, y);
 	}
 
+	
+	/// <summary>
+	/// Gets the chance for an object to be created at a certain size based on the color of the point in heatmap.
+	/// </summary>
+	/// <returns>2 thresholds, one for small, and one for medium objects. Large will just be anything remaining under 1. </returns>
+	/// <param name="c">A color from the heatmap, c.</param>
 	public Vector2 getColorChance(Color c)
 	{
 		float total = c.r + c.b + c.g;
 
 		return new Vector3(c.r/total, (c.r + c.b) / total);
 	}
+
+	/// <summary>
+	/// Gets the size that the object should be based on the heatmap.
+	/// </summary>
+	/// <returns>The size.</returns>
+	/// <param name="colorChances">There are 2 color chances passed in. If the random number is under the first threshold, then a small object is generated,
+	/// if it's under the second then a medium object is generated. Otherwise, a large object is generated. </param>
 
 	public float getSize(Vector2 colorChances)
 	{
@@ -652,20 +707,33 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		return large;
 	}
 
+	/// <summary>
+	/// Turns a Vector3 position on the mesh to a Vector2 uv point.
+	/// </summary>
+	/// <returns>The Vector2 uv point.</returns>
+	/// <param name="point">Point.</param>
+
 	public Vector2 meshPointToUv(ProceduralGenerationPoint point)
 	{
-		Vector3 toP1 = point.triangle[0] - point.position;
-		Vector3 toP2 = point.triangle[1] - point.position;
-		Vector3 toP3 = point.triangle[2] - point.position;
+		Vector3 toP1 = triangles[point.triangleIndex][0] - point.position;
+		Vector3 toP2 = triangles[point.triangleIndex][1] - point.position;
+		Vector3 toP3 = triangles[point.triangleIndex][2] - point.position;
 
 		float triangleArea = Vector3.Cross (toP1 - toP2, toP1 - toP3).magnitude;
 		float a1 = Vector3.Cross (toP2, toP3).magnitude / triangleArea;
 		float a2 = Vector3.Cross (toP3, toP1).magnitude / triangleArea;
 		float a3 = Vector3.Cross (toP1, toP2).magnitude / triangleArea;
 
-		Vector2 uv = point.uvPos [0] * a1 + point.uvPos [1] * a2 + point.uvPos [2] * a3;
+		Vector2 uv = uvsToTriangles[point.triangleIndex][0] * a1 + uvsToTriangles[point.triangleIndex][1] * a2 + uvsToTriangles[point.triangleIndex][2] * a3;
+
 		return uv;
 	}
+
+	/// <summary>
+	/// Gets the density value for a color. This is determined by how dark the color is, which is determined her by how close the average of the 3 RBG values.
+	/// </summary>
+	/// <returns>The density.</returns>
+	/// <param name="c">C.</param>
 
 	public float getDensity(Color c)
 	{
