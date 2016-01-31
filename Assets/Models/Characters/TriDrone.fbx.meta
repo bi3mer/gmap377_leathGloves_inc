@@ -1,0 +1,251 @@
+fileFormatVersion: 2
+guid: 39b0cfee3b18b475f9a19925748fc496
+timeCreated: 1454278643
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: back
+    100002: Back_leg
+    100004: Back_Leg_Protector
+    100006: bevelPolygon7
+    100008: bevelPolygon7 1
+    100010: bevelPolygon7 2
+    100012: bevelPolygon8
+    100014: bevelPolygon8 1
+    100016: bevelPolygon8 2
+    100018: bevelPolygon9
+    100020: bevelPolygon9 1
+    100022: bevelPolygon9 2
+    100024: Center_Body
+    100026: EnemyTriDrone
+    100028: Eye
+    100030: group1
+    100032: group2
+    100034: group3
+    100036: Head
+    100038: L_Leg_Protector
+    100040: L_Side_of_head
+    100042: Left_leg
+    100044: Leg_Gaurd2
+    100046: Leg_Gaurd2 1
+    100048: Leg_Gaurd2 2
+    100050: LegPivot
+    100052: LegPivot2
+    100054: LegPivot3
+    100056: Main_Head_Frame
+    100058: pCylinder9
+    100060: pCylinder9 1
+    100062: pCylinder9 2
+    100064: R_LEg_Protector
+    100066: R_Side_of_head
+    100068: Right_Leg
+    100070: Teeth
+    100072: Top_of_Skull
+    100074: Triangle_base
+    100076: //RootNode
+    100078: Wire1
+    100080: Wire2
+    100082: Wire3
+    400000: back
+    400002: Back_leg
+    400004: Back_Leg_Protector
+    400006: bevelPolygon7
+    400008: bevelPolygon7 1
+    400010: bevelPolygon7 2
+    400012: bevelPolygon8
+    400014: bevelPolygon8 1
+    400016: bevelPolygon8 2
+    400018: bevelPolygon9
+    400020: bevelPolygon9 1
+    400022: bevelPolygon9 2
+    400024: Center_Body
+    400026: EnemyTriDrone
+    400028: Eye
+    400030: group1
+    400032: group2
+    400034: group3
+    400036: Head
+    400038: L_Leg_Protector
+    400040: L_Side_of_head
+    400042: Left_leg
+    400044: Leg_Gaurd2
+    400046: Leg_Gaurd2 1
+    400048: Leg_Gaurd2 2
+    400050: LegPivot
+    400052: LegPivot2
+    400054: LegPivot3
+    400056: Main_Head_Frame
+    400058: pCylinder9
+    400060: pCylinder9 1
+    400062: pCylinder9 2
+    400064: R_LEg_Protector
+    400066: R_Side_of_head
+    400068: Right_Leg
+    400070: Teeth
+    400072: Top_of_Skull
+    400074: Triangle_base
+    400076: //RootNode
+    400078: Wire1
+    400080: Wire2
+    400082: Wire3
+    2300000: Back_Leg_Protector
+    2300002: bevelPolygon7
+    2300004: bevelPolygon7 1
+    2300006: bevelPolygon7 2
+    2300008: bevelPolygon8
+    2300010: bevelPolygon8 1
+    2300012: bevelPolygon8 2
+    2300014: bevelPolygon9
+    2300016: bevelPolygon9 1
+    2300018: bevelPolygon9 2
+    2300020: Center_Body
+    2300022: Eye
+    2300024: L_Leg_Protector
+    2300026: L_Side_of_head
+    2300028: Leg_Gaurd2
+    2300030: Leg_Gaurd2 1
+    2300032: Leg_Gaurd2 2
+    2300034: LegPivot
+    2300036: LegPivot2
+    2300038: LegPivot3
+    2300040: Main_Head_Frame
+    2300042: pCylinder9
+    2300044: pCylinder9 1
+    2300046: pCylinder9 2
+    2300048: R_LEg_Protector
+    2300050: R_Side_of_head
+    2300052: Teeth
+    2300054: Top_of_Skull
+    2300056: Triangle_base
+    2300058: Wire1
+    2300060: Wire2
+    2300062: Wire3
+    3300000: Back_Leg_Protector
+    3300002: bevelPolygon7
+    3300004: bevelPolygon7 1
+    3300006: bevelPolygon7 2
+    3300008: bevelPolygon8
+    3300010: bevelPolygon8 1
+    3300012: bevelPolygon8 2
+    3300014: bevelPolygon9
+    3300016: bevelPolygon9 1
+    3300018: bevelPolygon9 2
+    3300020: Center_Body
+    3300022: Eye
+    3300024: L_Leg_Protector
+    3300026: L_Side_of_head
+    3300028: Leg_Gaurd2
+    3300030: Leg_Gaurd2 1
+    3300032: Leg_Gaurd2 2
+    3300034: LegPivot
+    3300036: LegPivot2
+    3300038: LegPivot3
+    3300040: Main_Head_Frame
+    3300042: pCylinder9
+    3300044: pCylinder9 1
+    3300046: pCylinder9 2
+    3300048: R_LEg_Protector
+    3300050: R_Side_of_head
+    3300052: Teeth
+    3300054: Top_of_Skull
+    3300056: Triangle_base
+    3300058: Wire1
+    3300060: Wire2
+    3300062: Wire3
+    4300000: L_Side_of_head
+    4300002: R_Side_of_head
+    4300004: Teeth
+    4300006: Top_of_Skull
+    4300008: Main_Head_Frame
+    4300010: Eye
+    4300012: Center_Body
+    4300014: Triangle_base
+    4300016: Back_Leg_Protector
+    4300018: R_LEg_Protector
+    4300020: LegPivot2
+    4300022: L_Leg_Protector
+    4300024: Wire1
+    4300026: Wire2
+    4300028: Wire3
+    4300030: LegPivot
+    4300032: LegPivot3
+    4300034: bevelPolygon9
+    4300036: pCylinder9
+    4300038: bevelPolygon8
+    4300040: Leg_Gaurd2
+    4300042: bevelPolygon7
+    4300044: bevelPolygon9
+    4300046: pCylinder9
+    4300048: bevelPolygon8
+    4300050: Leg_Gaurd2
+    4300052: bevelPolygon7
+    4300054: bevelPolygon9
+    4300056: pCylinder9
+    4300058: bevelPolygon8
+    4300060: Leg_Gaurd2
+    4300062: bevelPolygon7
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
