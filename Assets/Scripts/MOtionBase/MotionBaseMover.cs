@@ -27,6 +27,8 @@ public class MotionBaseMover : MonoBehaviour {
 	void Awake() {
 		if (Instance) {
 			Destroy(this);
+            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this);
 		}
 		else {
 			Instance = this;
@@ -35,7 +37,8 @@ public class MotionBaseMover : MonoBehaviour {
 
 	void Start () {
 		MotionBaseRotation = Vector3.zero;
-		transform.rotation = Quaternion.Euler(MotionBaseRotation);	
+		transform.rotation = Quaternion.Euler(MotionBaseRotation);
+        DontDestroyOnLoad(GetComponent<TransformWrapper>());
 	}
 	
 	void Update () {
@@ -45,43 +48,35 @@ public class MotionBaseMover : MonoBehaviour {
 	}
 
 	void LateUpdate() {
-		/*if (ArtificialInducedPitch < -1) ArtificialInducedPitch = -1;
-		if (ArtificialInducedPitch > 1) ArtificialInducedPitch = 1;
-		if (ArtificialInducedTilt < -1) ArtificialInducedTilt = -1;
-		if (ArtificialInducedTilt > 1) ArtificialInducedTilt = 1;
-
-		if (PhysicsInducedPitch < -1) PhysicsInducedPitch = -1;
-		if (PhysicsInducedPitch > 1) PhysicsInducedPitch = 1;
-		if (PhysicsInducedTilt < -1) PhysicsInducedTilt = -1;
-		if (PhysicsInducedTilt > 1) PhysicsInducedTilt = 1;*/
-
 		TargetRotation = Vector3.zero;
+        TargetArtificialRotation = Vector3.zero;
+        TargetPhysicsRotation = Vector3.zero;
 
-		TargetArtificialRotation = Vector3.zero;
-		TargetArtificialRotation.z = ArtificialInducedRoll * MAX_ROLL_ANGLE;
-		TargetArtificialRotation.x = ArtificialInducedPitch * MAX_PITCH_ANGLE;
+        if (Player.Instance != null) {
+            TargetArtificialRotation.z = ArtificialInducedRoll * MAX_ROLL_ANGLE;
+            TargetArtificialRotation.x = ArtificialInducedPitch * MAX_PITCH_ANGLE;
 
-		TargetPhysicsRotation = Vector3.zero;
-		TargetPhysicsRotation.z = PhysicsInducedRoll * MAX_ROLL_ANGLE;
-		TargetPhysicsRotation.x = PhysicsInducedPitch * MAX_PITCH_ANGLE;
+            TargetPhysicsRotation.z = PhysicsInducedRoll * MAX_ROLL_ANGLE;
+            TargetPhysicsRotation.x = PhysicsInducedPitch * MAX_PITCH_ANGLE;
 
-		TargetRotation = TargetArtificialRotation + TargetPhysicsRotation;
-		if (TargetRotation.z > MAX_ROLL_ANGLE) TargetRotation.z = MAX_ROLL_ANGLE;
-		if (TargetRotation.z < -1 * MAX_ROLL_ANGLE) TargetRotation.z = -1 * MAX_ROLL_ANGLE;
-		if (TargetRotation.x > MAX_PITCH_ANGLE) TargetRotation.x = MAX_PITCH_ANGLE;
-		if (TargetRotation.x < -1 * MAX_PITCH_ANGLE) TargetRotation.x = -1 * MAX_PITCH_ANGLE;
+            TargetRotation = TargetArtificialRotation + TargetPhysicsRotation;
+            if (TargetRotation.z > MAX_ROLL_ANGLE) TargetRotation.z = MAX_ROLL_ANGLE;
+            if (TargetRotation.z < -1 * MAX_ROLL_ANGLE) TargetRotation.z = -1 * MAX_ROLL_ANGLE;
+            if (TargetRotation.x > MAX_PITCH_ANGLE) TargetRotation.x = MAX_PITCH_ANGLE;
+            if (TargetRotation.x < -1 * MAX_PITCH_ANGLE) TargetRotation.x = -1 * MAX_PITCH_ANGLE;
 
 
-		MotionBaseRotation += new Vector3((TargetRotation.x - MotionBaseRotation.x) * ANGLE_LERP_FACTOR, 0, (TargetRotation.z - MotionBaseRotation.z) * ANGLE_LERP_FACTOR);
-		if (Mathf.Abs(MotionBaseRotation.x - TargetRotation.x) < EPSILON) MotionBaseRotation.x = TargetRotation.x;
-		if (Mathf.Abs(MotionBaseRotation.y - TargetRotation.y) < EPSILON) MotionBaseRotation.y = TargetRotation.y;
-		if (Mathf.Abs(MotionBaseRotation.z - TargetRotation.z) < EPSILON) MotionBaseRotation.z = TargetRotation.z;
+            MotionBaseRotation += new Vector3((TargetRotation.x - MotionBaseRotation.x) * ANGLE_LERP_FACTOR, 0, (TargetRotation.z - MotionBaseRotation.z) * ANGLE_LERP_FACTOR);
+            if (Mathf.Abs(MotionBaseRotation.x - TargetRotation.x) < EPSILON) MotionBaseRotation.x = TargetRotation.x;
+            if (Mathf.Abs(MotionBaseRotation.y - TargetRotation.y) < EPSILON) MotionBaseRotation.y = TargetRotation.y;
+            if (Mathf.Abs(MotionBaseRotation.z - TargetRotation.z) < EPSILON) MotionBaseRotation.z = TargetRotation.z;
 
-		transform.rotation = Quaternion.Euler(MotionBaseRotation);
-		ArtificialInducedRoll = 0;
-		ArtificialInducedPitch = 0;
-		PhysicsInducedRoll = 0;
-		PhysicsInducedPitch = 0;
+            transform.rotation = Quaternion.Euler(MotionBaseRotation);
+            ArtificialInducedRoll = 0;
+            ArtificialInducedPitch = 0;
+            PhysicsInducedRoll = 0;
+            PhysicsInducedPitch = 0;
+        }
 	}
 
 	/// <summary>

@@ -5,6 +5,16 @@ using System.Xml.Serialization;
 
 
 public class TransformWrapper : Wrapper {
+
+    public static TransformWrapper Instance;
+    void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        }
+        else {
+            DestroyImmediate(this);
+        }
+    }
 	
 	public float rollAmpFactor = 2.0f;
 	private Vector3 targetVelocity;
