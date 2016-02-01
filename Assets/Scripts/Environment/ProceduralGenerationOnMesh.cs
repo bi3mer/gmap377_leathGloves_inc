@@ -6,7 +6,8 @@ using System.Collections.Generic;
 /// Generates a poisson distribution on the mesh.
 /// </summary>
 /// 
-public class ProceduralGenerationOnMesh : MonoBehaviour {
+public class ProceduralGenerationOnMesh : MonoBehaviour 
+{
 
 	[Tooltip("Max number of objects to be generated.")]
 	public int maxObjects;
@@ -50,7 +51,6 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 	Dictionary<long, bool> chunkStatus;
 	Dictionary<long, List<ProceduralGenerationPoint>> samplePoints;
 
-	List<Color> colors;
 	float triangleArea;
 	int gridOffset;
 	int chunkGridOffset;
@@ -76,7 +76,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 	List<Vector3> faceNormals;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		mesh = GetComponent<MeshFilter> ().mesh;
 		grid = new Dictionary<long, ProceduralGenerationPoint>();
 		chunkGrid = new Dictionary<long, List<EnvironmentOrienter>> ();
@@ -101,15 +102,6 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 	
 		List<long> keys = new List<long> (samplePoints.Keys);
 
-		int total = 0;
-
-		for (int i = 0; i < keys.Count; i++)
-		{
-			total += samplePoints[keys[i]].Count;
-		}
-
-		Debug.Log (total);
-
 		if (generateAllAtOnce) {
 			generateAll();
 		}
@@ -128,6 +120,9 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Generates objects at eaach sample point at once.
+	/// </summary>
 	public void generateAll()
 	{
 		Object[] largeObjects = Resources.LoadAll (folder + "/Large");
@@ -168,6 +163,10 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 
 		}
 	}
+
+	/// <summary>
+	/// Generates the initial pool of objects to be used in chunk by chunk generation.
+	/// </summary>
 	public void generateInitialObjects()
 	{
 		Object[] largeObjects = Resources.LoadAll (folder + "/Large");
@@ -231,6 +230,10 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 	
 	}
 
+	/// <summary>
+	/// Depending on player location, it will pull objects from the object pool and set them to appear in the chunks that the player can see. Chunks that
+	/// are too far away will be deactivated and the objects sent back into the pool.
+	/// </summary>
 	public void InstantiateBasedOnPlayerLocation()
 	{
 		Vector2 playerUVLoc = Player.Instance.getUVLocation (layerMask);
@@ -270,6 +273,10 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Activates the chunk by pulling from the object pool and activating those objects within the chunk.
+	/// </summary>
+	/// <param name="key">All sample points are hashed into chunks by the key. So this key will give a list of objects within a chunk.</param>
 	public void activateChunk(long key)
 	{
 		List<ProceduralGenerationPoint> points = samplePoints [key];
@@ -319,6 +326,9 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 				objectPoolByName[name].Add(o.GetComponent<EnvironmentOrienter>());
 			}
 
+			// objects must be generated away from planet for the drop to planet to work, so here, the normal is used to place the objects away from
+			// the planet
+
 			ob.transform.localPosition = points[i].position + samplePoints[key][i].size * faceNormals[samplePoints[key][i].triangleIndex];
 			ob.gameObject.SetActive(true);
 			ob.DropToPlanet();
@@ -328,10 +338,12 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		chunkStatus [key] = true;
 	}
 
-
+	/// <summary>
+	/// Disables the chunk and send objects back into object pool.
+	/// </summary>
+	/// <param name="key">Key.</param>
 	public void disableChunk(long key)
 	{
-		Debug.Log ("disabling");
 		List<EnvironmentOrienter> objects = chunkGrid [key];
 		string name;
 
@@ -346,6 +358,13 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		chunkStatus [key] = false;
 	}
 
+
+	/// <summary>
+	/// Generates the poisson sampling points that can be used to determine where to place objects.
+	/// </summary>
+	/// <returns>The poisson sampling point.</returns>
+	/// <param name="minDistance">Minimum distance.</param>
+	/// <param name="newPointsCount">Number of new points that should be generated around an existing point.</param>
 	public Dictionary<long, List<ProceduralGenerationPoint>> generatePoisson(float minDistance, int newPointsCount)
 	{
 		// gets triangle indices from first submesh
@@ -355,7 +374,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		Vector2[] uvs = mesh.uv;
 		Vector3[] normals = mesh.normals;
 		Dictionary<long, List<ProceduralGenerationPoint>> samplePoints = new Dictionary<long, List<ProceduralGenerationPoint>> ();
-		colors = new List<Color> ();
+
 		List<ProceduralGenerationPoint> processList = new List<ProceduralGenerationPoint> ();
 
 		ProceduralGenerationPoint point;
@@ -385,6 +404,9 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 			faceNormals.Add ((normals[triangleIndices[i]] + normals[triangleIndices[i + 1]] + normals[triangleIndices[i + 2]])/3);
 		}
 
+		// calculates the ratio of a distance on the 3d mesh to a distance on the 2d uv by getting the distance from the same 2 points on both the mesh
+		// and on the uv
+
 		ProceduralGenerationPoint temp = new ProceduralGenerationPoint (getInterpolation (triangles [0]));
 		temp.triangleIndex = 0;
 		temp.uvPosition = meshPointToUv (temp);
@@ -395,7 +417,11 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 
 		uvToMeshRatio = Vector2.Distance (temp.uvPosition, temp2.uvPosition) / Vector3.Distance (temp.position, temp2.position);
 
+		// size of cells in the mesh grid for generation
 		cellSize = (minDistance / Mathf.Sqrt (2f)) * uvToMeshRatio;
+
+		// calculates the area of a triangle on the mesh
+
 		Vector3 side1 = triangles [0] [0] - triangles [0] [1];
 		Vector3 side2 = triangles [0] [1] - triangles [0] [2];
 		Vector3 side3 = triangles [0] [2] - triangles [0] [0];
@@ -409,20 +435,32 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		power = Mathf.CeilToInt (Mathf.Log10(planetSections));
 		chunkGridOffset = Mathf.RoundToInt (Mathf.Pow (10, power));
 
-		for (int i = 0; i < startingSeeds; ++i) {
+
+		// creates the starting seeds from which points will be generated around
+		for (int i = 0; i < startingSeeds; ++i) 
+		{
 			rand = Random.Range (0, triangles.Count);
 			ProceduralGenerationPoint firstPoint = new ProceduralGenerationPoint (getInterpolation (triangles [rand]));
 			firstPoint.triangleIndex = rand;
 			firstPoint.uvPosition = meshPointToUv(firstPoint);
 
+			// the color at that location
 			Color c = getColorAtTriangle(firstPoint);
 
 			firstPoint.size = getSize(getColorChance(c));
 
 			gridPoint = toGrid (firstPoint.uvPosition, cellSize, gridOffset);
 			firstPoint.gridPosition = gridPoint;
+
+			// the minimum distance of generation taking into acount the minimum distance allowed between objects, the density of the region, and the size of
+			// the object being generated around, all multiplied by the uvToMeshRatio so that the measurement is given in terms of uv distance
+
 			minDis = (minDistance + distanceVariance * getDensity(c) + firstPoint.size) * uvToMeshRatio;
 			tries = 0;
+
+			// if there is already a point within that cell then it is automatically too close to another point
+			// otherwise it will check with overlappingPoint whether or not it is too close to any cells in its neighborhood
+			// if either are true then that means the point is invalid and another point is generated as an attemp
 
 			while (grid.ContainsKey(gridPoint) || overlappingPoint(grid, firstPoint, minDis, cellSize, firstPoint.triangleIndex)) 
 			{
@@ -435,6 +473,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 				firstPoint.gridPosition = gridPoint;
 				minDis = (minDistance + distanceVariance * getDensity(c) + firstPoint.size) * uvToMeshRatio;
 
+				// it will only keep generating new points in an attempt at generating a valid point as many times as the maxAttempts allows
 				if(tries < maxAttempts)
 				{
 					tries ++;
@@ -445,14 +484,19 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 				}
 			}
 
+			// tries < maxAttempts that means it exited the while loop because there was a valid point and not because there were too many
+			// atempts taken
+
 			if (tries < maxAttempts) 
 			{
+				// uses grid location as key in sample points dictionary for access later
 				long key = toGrid(firstPoint.uvPosition, chunkCellSize, chunkGridOffset);
 				if(!samplePoints.ContainsKey(key))
 				{
 					samplePoints.Add(key, new List<ProceduralGenerationPoint>());
 				}
 
+				// registers a chunk to mark it as having objects if chunk is not already registered
 				if(!chunkStatus.ContainsKey(key))
 				{
 					chunkStatus.Add(key, false);
@@ -460,20 +504,23 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 
 				if(!chunkGrid.ContainsKey(key))
 				{
-					Debug.Log ("adding " + key);
 					chunkGrid.Add(key, new List<EnvironmentOrienter>());
 				}
 
 				samplePoints[key].Add (firstPoint);
 				processList.Add (firstPoint);
-				
-				colors.Add(getColorAtTriangle(firstPoint));
+
+				// add point to grid
 				grid.Add (gridPoint, firstPoint);
+
+				// save which chunk that this point is in
 				firstPoint.chunkGridPosition = key;
 			}
 		}
 
 		currentObjects = startingSeeds;
+
+		// not based on those seeds, generate objects around them
 
 		while (currentObjects < maxObjects && processList.Count != 0) 
 		{
@@ -482,6 +529,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 			tries = 0;
 			for(int i = 0; i < newPointsCount; ++i)
 			{
+				// generate a random point around an existing point
 				ProceduralGenerationPoint newPoint = generateRandomPointAround (point.triangleIndex, triangles, uvsToTriangles, minDistance + distanceVariance + large);
 
 				Color c = getColorAtTriangle(newPoint);
@@ -530,7 +578,6 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 						chunkGrid.Add(key, new List<EnvironmentOrienter>());
 					}
 
-					colors.Add(getColorAtTriangle(newPoint));
 					currentObjects++;
 					grid.Add(gridPoint, newPoint);
 
@@ -554,6 +601,17 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		return samplePoints;
 	}
 
+	/// <summary>
+	/// Takes in a uv point and returns a grid location. Can be used for grids of different sizes, for example the main point grid which keeps track of where
+	/// each point generated is on the mesh, or for the chunk grid which divides up the mesh into sections for generation. The value returned is an long representation
+	/// of a vector2. The x value is in the lower decimal places, and the y value is in the higher decimal places. How far apart the two numbers are is determined
+	/// by the gridOffset. For example, if the gridOffset is 1000, that is, there can be up to 999 x values, then if x is 30, and y is 89, the value returned will
+	/// be 89030.
+	/// </summary>
+	/// <returns>A value that represents a location in a grid of a certain size.</returns>
+	/// <param name="point">Point.</param>
+	/// <param name="minSize">Minimum size.</param>
+	/// <param name="gridOffset">Grid offset.</param>
 	public long toGrid(Vector2 point, float minSize, long gridOffset)
 	{
 		long x = Mathf.CeilToInt (point.x / minSize);
@@ -562,9 +620,20 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		return x + y * gridOffset;
 	}
 
+	/// <summary>
+	/// Generates the random point around an existing point.
+	/// </summary>
+	/// <returns>A point.</returns>
+	/// <param name="triangleIndex">Triangle index.</param>
+	/// <param name="triangles">Triangles.</param>
+	/// <param name="uvsToTriangles">Uvs to triangles.</param>
+	/// <param name="minDistance">Minimum distance.</param>
 	public ProceduralGenerationPoint generateRandomPointAround(int triangleIndex, List<Vector3[]> triangles, List<Vector2[]> uvsToTriangles, float minDistance)
 	{
+		// the range of triangle index values away that a point can be generated
 		int range = Mathf.CeilToInt (minDistance / triangleArea * 3f);
+
+		// the actual index value away of the triangle used to generate a new point
 		int x = 0;
 
 		if (Random.Range (0, 2) == 0) 
@@ -597,7 +666,11 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		return p;
 	}
 
-	/// Gets a point 
+	/// <summary>
+	/// Gets the point on the face of the triangle given a triangle represented by 3 location points.
+	/// </summary>
+	/// <returns>A location on a triangle.</returns>
+	/// <param name="triangle">A location.</param>
 	public Vector3 getInterpolation(Vector3[] triangle)
 	{
 		float alpha = Random.Range (0f, 1f);
@@ -609,16 +682,14 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 
 
 	/// <summary>
-	/// Is in range. Calculated based upon isophotic distance
+	/// Is too close to another object. Calculated based upon isophotic distance
 	/// </summary>
 	/// <returns><c>true</c>, if range was ined, <c>false</c> otherwise.</returns>
 	/// <param name="pos1">Pos1.</param>
 	/// <param name="pos2">Pos2.</param>
 	public bool inRange(Vector2 pos1, Vector2 pos2, float minDist)
 	{
-		float dist_isophotic = Vector2.Distance (pos1, pos2) * 1.1f;
-	
-		if(dist_isophotic < minDist)
+		if(Vector2.Distance (pos1, pos2) * 1.1f < minDist)
 		{
 			return true;
 		}
@@ -626,6 +697,15 @@ public class ProceduralGenerationOnMesh : MonoBehaviour {
 		return false;
 	}
 
+	/// <summary>
+	/// Checks the neighboring grid locations to see if there's an object that is too close to a certain point.
+	/// </summary>
+	/// <returns><c>true</c> if it is too close to something <c>false</c> otherwise.</returns>
+	/// <param name="grid">Grid.</param>
+	/// <param name="point">Point.</param>
+	/// <param name="minDistance">Minimum distance.</param>
+	/// <param name="cellSize">Cell size.</param>
+	/// <param name="triangle">Triangle.</param>
 	public bool overlappingPoint(Dictionary<long, ProceduralGenerationPoint> grid, ProceduralGenerationPoint point, float minDistance, float cellSize, int triangle)
 	{
 		Vector2 newPoint = point.uvPosition;
