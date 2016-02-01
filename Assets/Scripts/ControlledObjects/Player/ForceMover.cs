@@ -27,17 +27,19 @@ public class ForceMover : MonoBehaviour {
 		if (InputManager.Player1HorizontalInput < -1 * float.Epsilon) 
 		{
 			transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * InputManager.Player1HorizontalInput);
-			MotionBaseMover.Instance.InduceArtificialRoll(-0.6f);
+            if (MotionBaseMover.Instance) MotionBaseMover.Instance.InduceArtificialRoll(-0.6f);
 		}
 
 		if (InputManager.Player1HorizontalInput > float.Epsilon) 
 		{
 			transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime * InputManager.Player1HorizontalInput);
-			MotionBaseMover.Instance.InduceArtificialRoll(0.6f);
+            if (MotionBaseMover.Instance) MotionBaseMover.Instance.InduceArtificialRoll(0.6f);
 		}
 
-		MotionBaseMover.Instance.InducePhysicsPitch((float) (m_planetOrientation.Pitch / MotionBaseMover.Instance.MAX_PITCH_ANGLE));
-		MotionBaseMover.Instance.InducePhysicsRoll((float) (m_planetOrientation.Roll / MotionBaseMover.Instance.MAX_ROLL_ANGLE));
+        if (MotionBaseMover.Instance) {
+            MotionBaseMover.Instance.InducePhysicsPitch((float)(m_planetOrientation.Pitch / MotionBaseMover.Instance.MAX_PITCH_ANGLE));
+            MotionBaseMover.Instance.InducePhysicsRoll((float)(m_planetOrientation.Roll / MotionBaseMover.Instance.MAX_ROLL_ANGLE));
+        }
 
         CurrentVelocity = m_Rigidbody.velocity.magnitude;
 	}
