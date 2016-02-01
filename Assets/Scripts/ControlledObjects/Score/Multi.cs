@@ -7,6 +7,18 @@ using UnityEngine.UI;
 public class Multi : MonoBehaviour
 {
     private Text multiText;
+    public static Multi Instance = null;
+    void Awake()
+    {
+        if (Instance)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
 	// Use this for initialization
 	void Start ()
@@ -14,8 +26,12 @@ public class Multi : MonoBehaviour
         this.multiText = GetComponent<Text>();
 	}
 
-    void Update()
+    /// <summary>
+    /// Set GUI text for multiplier
+    /// </summary>
+    public void MultiTxtSet()
     {
         multiText.text = ScoreManager.Instance.multiplierText;
     }
+
 }

@@ -2,13 +2,16 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class PlayerHitImage : MonoBehaviour {
-
+public class PlayerHitImage : MonoBehaviour
+{
     private ScoreManager scoreManager;
+
     RawImage hitMarker;
-	public static PlayerHitImage Instance = null;
+	
 	float hitTime = 2.0f;
 	float tempTime = 0;
+
+    public static PlayerHitImage Instance = null;
 
 	void Awake()
 	{
@@ -24,41 +27,28 @@ public class PlayerHitImage : MonoBehaviour {
 		this.hitMarker.enabled = false;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	
-	}
+    /// <summary>
+    /// player is hit. starts coroutine
+    /// </summary>
 	public void playerHit()
 	{
 		tempTime = 0f;
 		StartCoroutine(HitThing());
-		
-		
 	}
 	
-	IEnumerator HitThing() {
+    /// <summary>
+    /// Displays hit marker on screen for hit time
+    /// </summary>
+    /// <returns></returns>
+	IEnumerator HitThing()
+    {
 		this.hitMarker.enabled = true;
-		while (tempTime <= hitTime) {
+		while (tempTime <= hitTime)
+        {
 			tempTime += Time.deltaTime;
 			yield return 0;
 		}
 		tempTime = 0;
 		this.hitMarker.enabled = false;
 	}
-	
-	/*
-		Debug.Log("asdf");
-        if (this.scoreManager.hitActive > float.Epsilon)
-        {
-            this.hitMarker.enabled = true;
-            this.scoreManager.hitActive -= Time.deltaTime; 
-        }
-        else
-        {
-            this.hitMarker.enabled = false;
-        }
-	
-	*/
-	
 }

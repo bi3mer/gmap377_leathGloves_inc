@@ -6,30 +6,26 @@ using UnityEngine.UI;
 public class ScoreMulti : MonoBehaviour 
 {
     public int multiplier = 2;
-    float TimeS = 10;
-
-    public string text;
+    float TimeMulti = 10;
     
     void Start()
     {
         ScoreManager.Instance.SetMultiplier(multiplier);
-        text = ScoreManager.Instance.multiplierText;
-        text = "x" + multiplier;
     }
     
-	
-	// Update is called once per frame
+	// Update is called once per frame only while multi is active
 	void Update ()
     {
-        if (TimeS > 0)
+        if (TimeMulti > 0)
         {
-            text = "x" + multiplier;
+            Multi.Instance.MultiTxtSet();
             Countdown();
         }
 
-        if (TimeS <= 0)
+        if (TimeMulti <= 0)
         {
             timerEnded();
+            Multi.Instance.MultiTxtSet();
         }
     }
 	
@@ -38,9 +34,8 @@ public class ScoreMulti : MonoBehaviour
 	/// </summary>
     void timerEnded()
     {
-        multiplier = 1;
-        ScoreManager.Instance.SetMultiplier(multiplier);
-        text = "x" + multiplier;
+        ScoreManager.Instance.DecreaseMultiplier(ScoreManager.Instance.multi / multiplier);
+        Destroy(gameObject);
     }
 	
 	/// <summary>
@@ -48,7 +43,6 @@ public class ScoreMulti : MonoBehaviour
 	/// </summary>
     void Countdown()
     {
-        TimeS -= Time.deltaTime;
-       
+        TimeMulti -= Time.deltaTime;   
     }
 }

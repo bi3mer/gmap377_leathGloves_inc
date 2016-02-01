@@ -54,7 +54,10 @@ public class Planet1BossMover : AbstractMover {
 			base.resetTargetIndex();
 
 			// TODO: Use x vertices away functionality in updated A*
-			base.setTarget(Player.Instance.transform.position);
+            if(!playerInRange)
+			    base.setTarget(Player.Instance.transform.position);
+            else
+                base.setTarget(this.transform.position);
 
 			this.getNewPlan();
 		}
@@ -63,5 +66,15 @@ public class Planet1BossMover : AbstractMover {
     void Update()
     {
 		this.executeCurrentPlan ();
+    }
+
+    void OnTriggerEnter(Collider obj)
+    {
+        playerInRange = obj.gameObject.CompareTag("Player");
+    }
+
+    void OnTriggerExit(Collider obj)
+    {
+        playerInRange = !obj.gameObject.CompareTag("Player");
     }
 }

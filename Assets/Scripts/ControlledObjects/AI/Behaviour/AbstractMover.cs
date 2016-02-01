@@ -30,6 +30,12 @@ public abstract class AbstractMover : Enemy
     private int errorsFound = 0;
 
 	// TODO: Chose vertice type, flying or ground etc.
+    public enum VertexType
+    {
+        FLYING, GROUND,
+    };
+
+    public VertexType vertexType;
 
     // Assigner methods
     public void setTarget(Vector3 targ)

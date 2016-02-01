@@ -2,7 +2,8 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class HighScoreList : MonoBehaviour {
+public class HighScoreList : MonoBehaviour
+{
 	public Text HighScoreTitle;
 	Text HighScoreListGUI;
 	public static HighScoreList Instance = null;

@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class ParticleHolder : MonoBehaviour {
+public class ParticleHolder : MonoBehaviour
+{
     public static ParticleHolder Instance = null;
     public GameObject enemySimpleExplosion;
 
+    /// <summary>
+    /// called at awake.
+    /// </summary>
     void Awake()
     {
         if (Instance)
@@ -15,6 +18,5 @@ public class ParticleHolder : MonoBehaviour {
         {
             Instance = this;
         }
-        
     }
 }

@@ -16,13 +16,19 @@ public class SimpleTimer : MonoBehaviour
     Text text;
     public Text restartText;
     public bool GameOver = false;
-    
+
+    /// <summary>
+    /// called on awake
+    /// </summary>
     void Awake()
     {
         // Set up the reference.
         text = GetComponent<Text>();    
     }
 
+    /// <summary>
+    /// called every frame
+    /// </summary>
     void Update()
     {
         if (this.timeS >= 0)
@@ -74,8 +80,7 @@ public class SimpleTimer : MonoBehaviour
         timeS -= Time.deltaTime; 
         int minutes = Mathf.FloorToInt(timeS / 60F);
         int seconds = Mathf.FloorToInt(timeS - minutes * 60);
-        string cleanTime = string.Format("{0:0}:{1:00}", minutes, seconds);
-        text.text = "Time: " + cleanTime;
+        text.text = "Time: " + string.Format("{0:0}:{1:00}", minutes, seconds);
     }
 }
 

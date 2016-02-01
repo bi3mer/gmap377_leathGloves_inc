@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -37,12 +35,6 @@ public class ScoreManager : MonoBehaviour
         
         DontDestroyOnLoad(ScoreManager.Instance);
     }
-
-    //Runs every frame
-    void Update()
-    {
-        this.multiplierText = "x" + multi.ToString();
-    }
     
     /// <summary>
     /// Sets the multiplier.
@@ -50,7 +42,18 @@ public class ScoreManager : MonoBehaviour
     /// <param name="mult">Mult.</param>
     public void SetMultiplier(int mult)
     {
+        this.multi *= mult;
+        this.multiplierText = "x" + multi.ToString();
+    }
+
+    /// <summary>
+    /// Decrease the multiplier
+    /// </summary>
+    /// <param name="mult"></param>
+    public void DecreaseMultiplier(int mult)
+    {
         this.multi = mult;
+        this.multiplierText = "x" + multi.ToString();
     }
     
     /// <summary>
