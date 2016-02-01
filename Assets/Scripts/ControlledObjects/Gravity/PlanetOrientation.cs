@@ -241,7 +241,7 @@ public class PlanetOrientation : MonoBehaviour {
 
         int MAX = 50;
         int i = 0;
-        while ((Mathf.Abs(Pitch) > float.Epsilon || Mathf.Abs(Roll) > float.Epsilon) && i < MAX) {
+        while ((Mathf.Abs(Pitch) > 1 || Mathf.Abs(Roll) > 1) && i < MAX) {
             //TODO: Having scale not (1, 1, 1) breaks it?
 
             Vector3 pointPlanet = PlanetMarker.transform.position;
@@ -260,7 +260,7 @@ public class PlanetOrientation : MonoBehaviour {
             UpdateOrientation();
             i++;
         }
-        if (Mathf.Abs(Pitch) > float.Epsilon || Mathf.Abs(Roll) > float.Epsilon) {
+        if (Mathf.Abs(Pitch) > 1 || Mathf.Abs(Roll) > 1) {
             Vector3 dirToPlanet = (transform.position - PlanetMarker.transform.position).normalized;
             Vector3 dirToDownMarker = (transform.position - DownMarker.transform.position).normalized;
 
@@ -269,7 +269,7 @@ public class PlanetOrientation : MonoBehaviour {
             }
         }
 
-        if (Mathf.Abs(Pitch) > float.Epsilon || Mathf.Abs(Roll) > float.Epsilon) {
+        if (Mathf.Abs(Pitch) > 1 || Mathf.Abs(Roll) > 1) {
             Debug.Log("** Failed to orient " + gameObject.name);
         }
 
