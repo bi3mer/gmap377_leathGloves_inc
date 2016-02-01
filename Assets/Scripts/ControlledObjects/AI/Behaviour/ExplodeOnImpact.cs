@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class ExplodeOnImpact : MonoBehaviour
 {
@@ -11,16 +10,13 @@ public class ExplodeOnImpact : MonoBehaviour
     public float explosionLift = 5.0f;
     public float explosionRadius = 3.0f;
 
-	// Ship category
-	public bool isShip = true;
-
     // damage done to score
     public int damage = 10;
 
 	private void deathAnimation()
 	{
 		// Collision explosion
-		GameObject.Instantiate(explosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+		GameObject.Instantiate(explosion, transform.position, transform.rotation);
         
 		// Deinstatiate self
 		Destroy(this.gameObject);
@@ -45,9 +41,5 @@ public class ExplodeOnImpact : MonoBehaviour
         {
 			this.collisionPlayer(col);
         }
-		else if(!this.isShip)
-		{
-			this.deathAnimation();
-		}
     }
 }

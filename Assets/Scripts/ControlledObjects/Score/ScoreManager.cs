@@ -38,7 +38,7 @@ public class ScoreManager : MonoBehaviour
         DontDestroyOnLoad(ScoreManager.Instance);
     }
 
-
+    //Runs every frame
     void Update()
     {
         this.multiplierText = "x" + multi.ToString();
@@ -76,24 +76,24 @@ public class ScoreManager : MonoBehaviour
 		
     }
 
-	/// <summary>
-	/// Sets the name.
-	/// </summary>
-	/// <param name="PlayerName">Player name.</param>
-	public void SetName(string PlayerName)
+    /// <summary>
+    /// Gets the name.
+    /// </summary>
+    /// <returns>The name.</returns>
+    public string GetName()
+    {
+        return ScoreManager.Instance.PlayerName;
+    }
+
+    /// <summary>
+    /// Sets the name.
+    /// </summary>
+    /// <param name="PlayerName">Player name.</param>
+    public void SetName(string PlayerName)
    	{
    		ScoreManager.Instance.PlayerName = PlayerName;
    	}
-   
-   /// <summary>
-   /// Gets the name.
-   /// </summary>
-   /// <returns>The name.</returns>
-   public string GetName()
-   {
-       return ScoreManager.Instance.PlayerName;
-   }
-
+  
     /// <summary>
     /// Add bolts to the BoltCount
     /// </summary>

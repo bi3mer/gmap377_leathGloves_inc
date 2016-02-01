@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
-public class WeaponDisplayController : MonoBehaviour {
+public class WeaponDisplayController : MonoBehaviour
+{
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
-    public static WeaponDisplayController Instance = null;
+    
     PickupCache cache;
     public Image dLaserOn;
     public Texture2D dLaserC;
@@ -23,6 +23,7 @@ public class WeaponDisplayController : MonoBehaviour {
     public Text rocketAmmo;
     public Texture2D rocketC;
 
+    public static WeaponDisplayController Instance = null;
 
     void Awake()
     {
@@ -37,20 +38,26 @@ public class WeaponDisplayController : MonoBehaviour {
         }
     }
 
+    // TODO: Make this more efficient
     // Update is called once per frame
     void Update ()
     {
         ChangeAmmo();
 	}
 
+    /// <summary>
+    /// Changes GUI to represent current ammo.
+    /// </summary>
     public void ChangeAmmo()
     {
-        beamAmmo.text = this.cache.LaserBeam.GetComponent<Weapon>().ammo.ToString();
-        rocketAmmo.text = this.cache.Rocket.GetComponent<Weapon>().ammo.ToString();
-        mineAmmo.text = this.cache.Mine.GetComponent<Weapon>().ammo.ToString();
-
+        this.beamAmmo.text = this.cache.LaserBeam.GetComponent<Weapon>().ammo.ToString();
+        this.rocketAmmo.text = this.cache.Rocket.GetComponent<Weapon>().ammo.ToString();
+        this.mineAmmo.text = this.cache.Mine.GetComponent<Weapon>().ammo.ToString();
 
     }
+    /// <summary>
+    /// Clears all ammo.
+    /// </summary>
     public void ZeroOutAmmo()
     {
         this.cache.LaserBeam.GetComponent<Weapon>().ammo = 0;
@@ -58,13 +65,21 @@ public class WeaponDisplayController : MonoBehaviour {
         this.cache.Mine.GetComponent<Weapon>().ammo = 0;
     }
 
+    /// <summary>
+    /// Turns off all weapons gui.
+    /// </summary>
     public void AllOff()
     {
-        dLaserOn.enabled = false;
-        beamOn.enabled = false;
-        mineOn.enabled = false;
-        rocketsOn.enabled = false;
+        this.dLaserOn.enabled = false;
+        this.beamOn.enabled = false;
+        this.mineOn.enabled = false;
+        this.rocketsOn.enabled = false;
     }
+
+    /// <summary>
+    /// To change the cursor image.
+    /// </summary>
+    /// <param name="type"></param>
     public void ChangeCursor(string type)
     {
         switch (type)

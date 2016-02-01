@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
@@ -24,6 +23,5 @@ public class Score : MonoBehaviour {
         {
             this.score = GetComponent<Text>();
         }
-	
 	}
 }
