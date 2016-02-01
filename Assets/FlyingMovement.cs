@@ -8,6 +8,7 @@ public class FlyingMovement : AbstractMover {
     // TODO: Change to vertices away?
     public float flyAwayDistance = 100f;
 
+    // Used to keep track of which direction enemy is moving
     private bool flyingTowardsPlayer = true;
 
     public DropTheBomb flyingBomb;
@@ -16,6 +17,7 @@ public class FlyingMovement : AbstractMover {
     [HideInInspector]
     public float flyingVertexHeight = 50f;
 
+    // Used for figuring out when the bomb should be dropped
     public float proximityModifier = 1.25f;
 
     void Start () {
