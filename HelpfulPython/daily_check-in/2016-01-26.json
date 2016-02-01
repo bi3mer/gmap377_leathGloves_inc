@@ -70,5 +70,80 @@
         "user": "U0J235A57",
         "text": "~~~~~~~~~~~~~~~~~~~~BREAK LINE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
         "ts": "1453872126.000041"
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "No need to do the breakline",
+        "ts": "1453872482.000042"
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "I'm going to write a script to do that",
+        "ts": "1453872491.000043",
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U0J235A57"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "I'll let you know when it is done",
+        "ts": "1453872503.000044"
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "Oh and this is me checking in for today :smile:",
+        "ts": "1453872508.000045"
+    },
+    {
+        "type": "message",
+        "user": "U0J235A57",
+        "text": "Sounds good thanks",
+        "ts": "1453872573.000046"
+    },
+    {
+        "type": "message",
+        "user": "U0J3LL9PB",
+        "text": "Song of the day: uptown funk",
+        "ts": "1453873196.000047"
+    },
+    {
+        "type": "message",
+        "user": "U0J235A57",
+        "text": ":squirrel:",
+        "ts": "1453873228.000048"
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "Alright I pushed it and it works",
+        "ts": "1453876369.000049"
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "the script has instructions",
+        "ts": "1453876379.000050"
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "on how to export slack stuff and all that",
+        "ts": "1453876386.000051"
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "and if you are wondering if it'll work if you just post a lot on one day to trick it... you will be incorrect in that assumption",
+        "ts": "1453876420.000052"
     }
 ]

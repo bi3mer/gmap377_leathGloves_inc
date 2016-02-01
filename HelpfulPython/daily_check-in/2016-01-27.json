@@ -1,0 +1,209 @@
+[
+    {
+        "type": "message",
+        "user": "U0J1XP6NA",
+        "text": "i'll find a way",
+        "ts": "1453905026.000002"
+    },
+    {
+        "type": "message",
+        "user": "U0J1XCZAP",
+        "text": "Pugnacious  (adjective, puhg-ney-shuh-s) inclined to quarrel or fight readily; quarrelsome; belligerent.",
+        "ts": "1453907897.000003"
+    },
+    {
+        "type": "message",
+        "user": "U0J1V4ABW",
+        "text": "(\u256f\u00b0\u25a1\u00b0)\u256f\ufe35 \u253b\u2501\u253b",
+        "ts": "1453908965.000004"
+    },
+    {
+        "type": "message",
+        "user": "U0J235A57",
+        "text": ":thinking_face:",
+        "ts": "1453914540.000005"
+    },
+    {
+        "type": "message",
+        "user": "U0J1X7VT5",
+        "text": "does anyone know professor lloyd's email",
+        "ts": "1453918528.000006"
+    },
+    {
+        "type": "message",
+        "user": "U0J235A57",
+        "text": "rel63",
+        "ts": "1453918580.000007"
+    },
+    {
+        "type": "message",
+        "user": "U0J1X7VT5",
+        "text": "thanks!",
+        "ts": "1453918608.000008"
+    },
+    {
+        "type": "message",
+        "user": "U0J235A57",
+        "text": "no problem",
+        "ts": "1453918620.000009"
+    },
+    {
+        "type": "message",
+        "user": "U0J3RMG22",
+        "text": "Word",
+        "ts": "1453923080.000010"
+    },
+    {
+        "type": "message",
+        "user": "U0J2U3PJT",
+        "text": "Fuck c++",
+        "ts": "1453924646.000011"
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "C++ is awesome",
+        "ts": "1453924721.000012"
+    },
+    {
+        "type": "message",
+        "subtype": "file_share",
+        "text": "<@U0J235A57|rowlandsc> uploaded a file: <https:\/\/infiniteskies.slack.com\/files\/rowlandsc\/F0KHUAXC4\/00f7c1c7141712358114301580_700wa_0.gif|00f7c1c7141712358114301580_700wa_0.gif>",
+        "file": {
+            "id": "F0KHUAXC4",
+            "created": 1453924948,
+            "timestamp": 1453924948,
+            "name": "00f7c1c7141712358114301580_700wa_0.gif",
+            "title": "00f7c1c7141712358114301580_700wa_0.gif",
+            "mimetype": "image\/gif",
+            "filetype": "gif",
+            "pretty_type": "GIF",
+            "user": "U0J235A57",
+            "editable": false,
+            "size": 134132,
+            "mode": "hosted",
+            "is_external": false,
+            "external_type": "",
+            "is_public": true,
+            "public_url_shared": false,
+            "display_as_bot": false,
+            "username": "",
+            "url_private": "https:\/\/files.slack.com\/files-pri\/T0J1Y7FS4-F0KHUAXC4\/00f7c1c7141712358114301580_700wa_0.gif?t=xoxe-18066253888-19948525954-19944805925-7d4eedeb50",
+            "url_private_download": "https:\/\/files.slack.com\/files-pri\/T0J1Y7FS4-F0KHUAXC4\/download\/00f7c1c7141712358114301580_700wa_0.gif?t=xoxe-18066253888-19948525954-19944805925-7d4eedeb50",
+            "thumb_64": "https:\/\/files.slack.com\/files-tmb\/T0J1Y7FS4-F0KHUAXC4-d37ce6196f\/00f7c1c7141712358114301580_700wa_0_64.png?t=xoxe-18066253888-19948525954-19944805925-7d4eedeb50",
+            "thumb_80": "https:\/\/files.slack.com\/files-tmb\/T0J1Y7FS4-F0KHUAXC4-d37ce6196f\/00f7c1c7141712358114301580_700wa_0_80.png?t=xoxe-18066253888-19948525954-19944805925-7d4eedeb50",
+            "thumb_360": "https:\/\/files.slack.com\/files-tmb\/T0J1Y7FS4-F0KHUAXC4-d37ce6196f\/00f7c1c7141712358114301580_700wa_0_360.png?t=xoxe-18066253888-19948525954-19944805925-7d4eedeb50",
+            "thumb_360_w": 269,
+            "thumb_360_h": 200,
+            "thumb_160": "https:\/\/files.slack.com\/files-tmb\/T0J1Y7FS4-F0KHUAXC4-d37ce6196f\/00f7c1c7141712358114301580_700wa_0_160.png?t=xoxe-18066253888-19948525954-19944805925-7d4eedeb50",
+            "image_exif_rotation": 1,
+            "original_w": 269,
+            "original_h": 200,
+            "permalink": "https:\/\/infiniteskies.slack.com\/files\/rowlandsc\/F0KHUAXC4\/00f7c1c7141712358114301580_700wa_0.gif",
+            "permalink_public": "https:\/\/slack-files.com\/T0J1Y7FS4-F0KHUAXC4-cca8792cab",
+            "channels": [
+                "C0KBJM15G"
+            ],
+            "groups": [
+
+            ],
+            "ims": [
+
+            ],
+            "comments_count": 0
+        },
+        "user": "U0J235A57",
+        "upload": true,
+        "display_as_bot": false,
+        "username": "<@U0J235A57|rowlandsc>",
+        "bot_id": null,
+        "ts": "1453924950.000013"
+    },
+    {
+        "type": "message",
+        "user": "U0J3LL9PB",
+        "text": "I like c#",
+        "ts": "1453927210.000014"
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "Make sure you checkin",
+        "ts": "1453939755.000015"
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "My script will catch you",
+        "ts": "1453939761.000016"
+    },
+    {
+        "type": "message",
+        "user": "U0J6T6ARG",
+        "text": "Alive ",
+        "ts": "1453941009.000017"
+    },
+    {
+        "type": "message",
+        "user": "U0J1YGMUK",
+        "text": "Here",
+        "ts": "1453944930.000018"
+    },
+    {
+        "type": "message",
+        "user": "U0J1XP6NA",
+        "text": "what if i make a script to check in...",
+        "ts": "1453946741.000019"
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "I doubt you can \/ will",
+        "ts": "1453946797.000020"
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "Take it as a challenge",
+        "ts": "1453946801.000021"
+    },
+    {
+        "type": "message",
+        "user": "U0J1XP6NA",
+        "text": "or",
+        "ts": "1453946810.000022"
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "But it won't count towards your 10 hours",
+        "ts": "1453946812.000023",
+        "reactions": [
+            {
+                "name": "white_check_mark",
+                "users": [
+                    "U0J235A57"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "type": "message",
+        "user": "U0J1XP6NA",
+        "text": "a complete waste of time",
+        "ts": "1453946813.000024"
+    },
+    {
+        "type": "message",
+        "user": "U0J1XP6NA",
+        "text": "psh",
+        "ts": "1453946817.000025"
+    },
+    {
+        "type": "message",
+        "user": "U0J242FDE",
+        "text": "Lol",
+        "ts": "1453946818.000026"
+    }
+]
