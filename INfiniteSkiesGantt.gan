@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Infinite Skies " company="Lumpy Labs" webLink="https://infiniteskiesgame.wordpress.com/" view-date="2016-01-03" view-index="0" gantt-divider-location="333" resource-divider-location="300" version="2.7.1" locale="en_US">
+    <description/>
+    <view zooming-state="default:5" id="gantt-chart">
+        <field id="tpd3" name="Name" width="63" order="0"/>
+        <field id="tpd4" name="Begin date" width="19" order="1"/>
+        <field id="tpd5" name="End date" width="17" order="2"/>
+        <option id="color.recent"><![CDATA[#ff9999]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="50" order="0"/>
+        <field id="1" name="Default role" width="50" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="431" name="Coding" meeting="false" start="2016-01-05" duration="49" complete="0" expand="true">
+            <task id="432" name="Fix Warnings" color="#000000" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
+                <notes><![CDATA[Everyone
+]]></notes>
+            </task>
+            <task id="433" name="Alex2" meeting="false" start="2016-01-05" duration="49" complete="0" expand="true">
+                <task id="434" name="Hover Jump" color="#8cb6ce" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Alex2]]></notes>
+                </task>
+                <task id="435" name="Fixed Update Research" color="#8cb6ce" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Alex2]]></notes>
+                    <depend id="436" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="436" name="Fixed Update Implementation" color="#8cb6ce" meeting="false" start="2016-01-12" duration="10" complete="0" expand="true">
+                    <notes><![CDATA[Alex2]]></notes>
+                </task>
+                <task id="437" name="Hover Tank" color="#8cb6ce" meeting="false" start="2016-01-12" duration="10" complete="0" expand="true">
+                    <notes><![CDATA[alex2
+]]></notes>
+                </task>
+                <task id="438" name="SpawnManager Empty Object" meeting="false" start="2016-01-25" duration="7" complete="0" expand="true"/>
+                <task id="439" name="Enemy Rocket Fix" meeting="false" start="2016-01-25" duration="7" complete="0" expand="true"/>
+                <task id="440" name="Warp Kill AI" meeting="false" start="2016-01-25" duration="7" complete="0" expand="true"/>
+                <task id="441" name="Boss AI" meeting="false" start="2016-01-26" duration="1" complete="0" expand="true">
+                    <depend id="442" type="2" difference="0" hardness="Strong"/>
+                    <depend id="443" type="2" difference="0" hardness="Strong"/>
+                    <depend id="444" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="442" name="Boss Weapons" meeting="false" start="2016-01-27" duration="6" complete="0" expand="true"/>
+                <task id="443" name="Boss Movement" meeting="false" start="2016-01-27" duration="6" complete="0" expand="true"/>
+                <task id="444" name="Boss Balance" meeting="false" start="2016-01-27" duration="6" complete="0" expand="true"/>
+                <task id="445" name="Flying Enemy" meeting="false" start="2016-01-26" duration="2" complete="0" expand="true">
+                    <depend id="446" type="2" difference="0" hardness="Strong"/>
+                    <depend id="447" type="2" difference="0" hardness="Strong"/>
+                    <depend id="448" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="446" name="Flying Enemy Movement" meeting="false" start="2016-01-28" duration="12" complete="0" expand="true"/>
+                <task id="447" name="Flying Enemy Attack" meeting="false" start="2016-01-28" duration="12" complete="0" expand="true"/>
+                <task id="448" name="Flying Enemy Balance" meeting="false" start="2016-01-28" duration="17" complete="0" expand="true"/>
+                <task id="449" name="Goliath Boss" meeting="false" start="2016-02-19" duration="1" complete="0" expand="true">
+                    <depend id="450" type="2" difference="0" hardness="Strong"/>
+                    <depend id="451" type="2" difference="0" hardness="Strong"/>
+                    <depend id="452" type="2" difference="0" hardness="Strong"/>
+                    <depend id="453" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="450" name="Goliath charge" meeting="false" start="2016-02-22" duration="6" complete="0" expand="true"/>
+                <task id="451" name="Goliath movement" meeting="false" start="2016-02-22" duration="6" complete="0" expand="true"/>
+                <task id="452" name="Goliath Animation" meeting="false" start="2016-02-22" duration="10" complete="0" expand="true"/>
+                <task id="453" name="Goliath Balance" meeting="false" start="2016-02-22" duration="10" complete="0" expand="true"/>
+                <task id="454" name="Balance &amp; Polish" meeting="false" start="2016-03-04" duration="6" complete="0" expand="true"/>
+            </task>
+            <task id="455" name="Bryan" meeting="false" start="2016-01-05" duration="49" complete="0" expand="true">
+                <task id="456" name="Laser Line Renderer" color="#ff6666" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Bryan
+]]></notes>
+                </task>
+                <task id="457" name="List of Power Ups" color="#ff6666" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Bryan
+]]></notes>
+                    <depend id="458" type="2" difference="0" hardness="Strong"/>
+                    <depend id="459" type="2" difference="0" hardness="Strong"/>
+                    <depend id="460" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="458" name="Add power ups to gannt" color="#ff6666" meeting="false" start="2016-01-12" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Bryan
+]]></notes>
+                    <depend id="464" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="459" name="Power Up Prototype 1" color="#ff6666" meeting="false" start="2016-01-12" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Bryan
+]]></notes>
+                    <depend id="462" type="2" difference="0" hardness="Strong"/>
+                    <depend id="463" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="460" name="Power Up Prototype 2" color="#ff6666" meeting="false" start="2016-01-12" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Bryan
+]]></notes>
+                    <depend id="461" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="461" name="Power Up Protype 3" color="#ff6666" meeting="false" start="2016-01-19" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Bryan]]></notes>
+                </task>
+                <task id="462" name="Power Up Protype 4" color="#ff6666" meeting="false" start="2016-01-19" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Bryan]]></notes>
+                </task>
+                <task id="463" name="Power Up Protype 5" color="#ff6666" meeting="false" start="2016-01-19" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Bryan]]></notes>
+                </task>
+                <task id="464" name="Play Test and Balance 1-2" color="#ff6666" meeting="false" start="2016-01-19" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Bryan]]></notes>
+                    <depend id="465" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="465" name="Play Test and Balance 3-5" color="#ff6666" meeting="false" start="2016-01-26" duration="5" complete="0" expand="true"/>
+                <task id="466" name="Bolt System" color="#ff6666" meeting="false" start="2016-01-27" duration="4" complete="0" expand="true">
+                    <notes><![CDATA[Bryan]]></notes>
+                </task>
+                <task id="467" name="Bolt Collection System" color="#ff6666" meeting="false" start="2016-01-27" duration="4" complete="0" expand="true"/>
+                <task id="468" name="Bolt Collect In Game" color="#ff6666" meeting="false" start="2016-01-27" duration="4" complete="0" expand="true"/>
+                <task id="469" name="Input Events" color="#ff6666" meeting="false" start="2016-01-19" duration="10" complete="0" expand="true"/>
+                <task id="470" name="Pick Up Cache, Singleton" color="#ff6666" meeting="false" start="2016-01-27" duration="9" complete="0" expand="true"/>
+                <task id="471" name="System Logger" color="#ff6666" meeting="false" start="2016-02-08" duration="6" complete="0" expand="true"/>
+                <task id="472" name="Rocket Animation" color="#ff6666" meeting="false" start="2016-02-08" duration="6" complete="0" expand="true"/>
+                <task id="473" name="Teleporter, cool effects with bolts" color="#ff6666" meeting="false" start="2016-02-08" duration="11" complete="0" expand="true"/>
+                <task id="474" name="Teleporter, bolts to work" color="#ff6666" meeting="false" start="2016-02-08" duration="6" complete="0" expand="true"/>
+                <task id="475" name="Recoil" color="#ff6666" meeting="false" start="2016-02-22" duration="6" complete="0" expand="true"/>
+                <task id="476" name="Crystal Destruction" color="#ff6666" meeting="false" start="2016-02-22" duration="10" complete="0" expand="true"/>
+                <task id="477" name="Playtest &amp; balance" color="#ff6666" meeting="false" start="2016-02-29" duration="10" complete="0" expand="true"/>
+                <task id="478" name="Laser Turret Enemy" color="#ff6666" meeting="false" start="2016-02-29" duration="10" complete="0" expand="true"/>
+                <task id="479" name="2 xbox controllers" color="#ff6666" meeting="false" start="2016-01-05" duration="39" complete="0" expand="true">
+                    <notes><![CDATA[Bryan]]></notes>
+                </task>
+                <task id="480" name="DROP THE BASE" color="#ff6666" meeting="false" start="2016-01-05" duration="49" complete="0" expand="true">
+                    <notes><![CDATA[Bryan]]></notes>
+                </task>
+            </task>
+            <task id="481" name="Laura" meeting="false" start="2016-01-05" duration="49" complete="0" expand="true">
+                <task id="482" name="UI Scaling" color="#00ff00" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Laura]]></notes>
+                </task>
+                <task id="483" name="Procedural Generation Research" color="#00ff00" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Laura]]></notes>
+                    <depend id="484" type="2" difference="0" hardness="Strong"/>
+                    <depend id="485" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="484" name="Procedural Generation, prototype" color="#00ff00" meeting="false" start="2016-01-12" duration="15" complete="0" expand="true">
+                    <notes><![CDATA[Laura
+]]></notes>
+                    <depend id="486" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="485" name="Heat Map, prototype" color="#00ff00" meeting="false" start="2016-01-12" duration="15" complete="0" expand="true">
+                    <notes><![CDATA[Laura
+]]></notes>
+                    <depend id="486" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="486" name="Test and balance results" color="#00ff00" meeting="false" start="2016-02-02" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Laura
+]]></notes>
+                </task>
+                <task id="487" name="Camera Menu" color="#00ff00" meeting="false" start="2016-01-26" duration="6" complete="0" expand="true"/>
+                <task id="488" name="UI" color="#00ff00" meeting="false" start="2016-01-26" duration="6" complete="0" expand="true"/>
+                <task id="489" name="Proc. Generation of Power ups" color="#00ff00" meeting="false" start="2016-02-02" duration="6" complete="0" expand="true"/>
+                <task id="490" name="Envr. Objects Changin" color="#00ff00" meeting="false" start="2016-02-09" duration="6" complete="0" expand="true"/>
+                <task id="491" name="End Game boss world" color="#00ff00" meeting="false" start="2016-02-16" duration="19" complete="0" expand="true"/>
+            </task>
+            <task id="492" name="Alex" meeting="false" start="2016-01-05" duration="49" complete="0" expand="true">
+                <task id="493" name="Perpindicular Script" color="#99ffff" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Alex]]></notes>
+                </task>
+                <task id="494" name="Saving State Research" color="#99ffff" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Alex]]></notes>
+                    <depend id="495" type="2" difference="0" hardness="Strong"/>
+                    <depend id="496" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="495" name="Implement Saving State" color="#99ffff" meeting="false" start="2016-01-12" duration="14" complete="0" expand="true">
+                    <notes><![CDATA[Alex]]></notes>
+                </task>
+                <task id="496" name="Saving Player Id" color="#99ffff" meeting="false" start="2016-01-12" duration="15" complete="0" expand="true">
+                    <notes><![CDATA[Alex]]></notes>
+                </task>
+                <task id="497" name="Evaluate and add more" color="#99ffff" meeting="false" start="2016-02-02" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Alex]]></notes>
+                </task>
+                <task id="498" name="Smooth Player Movement" color="#99ffff" meeting="false" start="2016-02-02" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Alex]]></notes>
+                </task>
+                <task id="499" name="Restart" color="#99ffff" meeting="false" start="2016-02-02" duration="6" complete="0" expand="true"/>
+                <task id="500" name="Orientar bug fixes" color="#99ffff" meeting="false" start="2016-02-02" duration="6" complete="0" expand="true"/>
+                <task id="501" name="SMooth Motion Base (in Code review)" color="#99ffff" meeting="false" start="2016-02-09" duration="6" complete="0" expand="true"/>
+                <task id="502" name="Strafing" color="#99ffff" meeting="false" start="2016-02-09" duration="6" complete="0" expand="true"/>
+                <task id="503" name="Player Movement weight" color="#99ffff" meeting="false" start="2016-02-16" duration="11" complete="0" expand="true"/>
+                <task id="504" name="Prevent flipping too much" color="#99ffff" meeting="false" start="2016-02-16" duration="11" complete="0" expand="true"/>
+                <task id="505" name="Help with Final Planet / Polish" color="#99ffff" meeting="false" start="2016-03-01" duration="9" complete="0" expand="true"/>
+            </task>
+            <task id="506" name="Colan" meeting="false" start="2016-01-05" duration="49" complete="0" expand="true">
+                <task id="507" name="Remove Singelton" color="#ff00ff" meeting="false" start="2016-01-05" duration="10" complete="0" expand="true">
+                    <notes><![CDATA[Colan]]></notes>
+                </task>
+                <task id="508" name="Add Example Dynamic ENVR" color="#ff00ff" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Colan]]></notes>
+                </task>
+                <task id="509" name="Third Person Test" color="#ff00ff" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Colan]]></notes>
+                </task>
+                <task id="510" name="Update Gantt" color="#ff00ff" meeting="false" start="2016-01-12" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Colan]]></notes>
+                </task>
+                <task id="511" name="Boss" color="#ff00ff" meeting="false" start="2016-01-19" duration="10" complete="0" expand="true">
+                    <notes><![CDATA[Colan]]></notes>
+                </task>
+                <task id="512" name="New Enemy Type Discussion" color="#ff00ff" meeting="false" start="2016-01-19" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Colan]]></notes>
+                    <depend id="513" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="513" name="Update Gantt v2" color="#ff00ff" meeting="false" start="2016-01-26" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Colan]]></notes>
+                </task>
+                <task id="514" name="Optimization" color="#ff00ff" meeting="false" start="2016-01-26" duration="9" complete="0" expand="true"/>
+                <task id="515" name="Vertexes Away" color="#ff00ff" meeting="false" start="2016-01-26" duration="11" complete="0" expand="true"/>
+                <task id="516" name="Flying Vertice Switch" color="#ff00ff" meeting="false" start="2016-01-26" duration="11" complete="0" expand="true"/>
+                <task id="517" name="Polish Boss 1" color="#ff00ff" meeting="false" start="2016-02-02" duration="6" complete="0" expand="true"/>
+                <task id="518" name="Concept work on final boss Planet" color="#ff00ff" meeting="false" start="2016-02-02" duration="6" complete="0" expand="true"/>
+                <task id="519" name="Swamp Boss" color="#ff00ff" meeting="false" start="2016-02-10" duration="1" complete="0" expand="true">
+                    <depend id="520" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="520" name="Movement" color="#ff00ff" meeting="false" start="2016-02-11" duration="5" complete="0" expand="true"/>
+                <task id="521" name="Attacks" color="#ff00ff" meeting="false" start="2016-02-11" duration="10" complete="0" expand="true"/>
+                <task id="522" name="Balance" color="#ff00ff" meeting="false" start="2016-02-17" duration="10" complete="0" expand="true"/>
+                <task id="523" name="Help Final Boss Planet" color="#ff00ff" meeting="false" start="2016-03-01" duration="9" complete="0" expand="true"/>
+            </task>
+            <task id="524" name="Cody" meeting="false" start="2016-01-05" duration="46" complete="0" expand="true">
+                <task id="525" name="Falling Rocks" color="#cccccc" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Cody]]></notes>
+                </task>
+                <task id="526" name="Update with more tasks" color="#cccccc" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
+                    <notes><![CDATA[Cody]]></notes>
+                </task>
+                <task id="527" name="Start Screen" color="#cccccc" meeting="false" start="2016-01-11" duration="6" complete="0" expand="true"/>
+                <task id="528" name="Game Warnings with Colan" color="#cccccc" meeting="false" start="2016-01-11" duration="6" complete="0" expand="true"/>
+                <task id="529" name="Image effect research &amp; implementation" color="#cccccc" meeting="false" start="2016-01-11" duration="6" complete="0" expand="true"/>
+                <task id="530" name="Script Planet Change COlor" color="#cccccc" meeting="false" start="2016-01-18" duration="6" complete="0" expand="true"/>
+                <task id="531" name="Planet Rim Shader" color="#cccccc" meeting="false" start="2016-01-18" duration="6" complete="0" expand="true"/>
+                <task id="532" name="Power up bar offset time" color="#cccccc" meeting="false" start="2016-01-26" duration="6" complete="0" expand="true"/>
+                <task id="533" name="power up bar v2" color="#cccccc" meeting="false" start="2016-01-26" duration="11" complete="0" expand="true"/>
+                <task id="534" name="Weapon Cursor v2" color="#cccccc" meeting="false" start="2016-02-02" duration="6" complete="0" expand="true"/>
+                <task id="535" name="GUI ANchors" color="#cccccc" meeting="false" start="2016-02-02" duration="6" complete="0" expand="true"/>
+                <task id="536" name="Ice Planet Geyser" color="#cccccc" meeting="false" start="2016-02-09" duration="6" complete="0" expand="true"/>
+                <task id="537" name="Falling Boulders leep" color="#cccccc" meeting="false" start="2016-02-09" duration="6" complete="0" expand="true"/>
+                <task id="538" name="Dyn. Envr obj. 1" color="#cccccc" meeting="false" start="2016-02-16" duration="6" complete="0" expand="true"/>
+                <task id="539" name="Dyn. Envr obj. 2" color="#cccccc" meeting="false" start="2016-02-16" duration="6" complete="0" expand="true"/>
+                <task id="540" name="Dyn. Envr obj. 3" color="#cccccc" meeting="false" start="2016-02-16" duration="6" complete="0" expand="true"/>
+                <task id="541" name="Warp Effect" color="#cccccc" meeting="false" start="2016-02-16" duration="6" complete="0" expand="true"/>
+                <task id="542" name="Blots GUI" color="#cccccc" meeting="false" start="2016-02-23" duration="6" complete="0" expand="true"/>
+                <task id="543" name="Light map" color="#cccccc" meeting="false" start="2016-03-01" duration="6" complete="0" expand="true"/>
+                <task id="544" name="Optimize" color="#cccccc" meeting="false" start="2016-03-01" duration="6" complete="0" expand="true"/>
+                <task id="545" name="Bolt GUI" color="#cccccc" meeting="false" start="2016-02-02" duration="6" complete="0" expand="true"/>
+            </task>
+        </task>
+        <task id="27" name="DesignArt" color="#8cb6ce" meeting="false" start="2016-01-05" duration="43" complete="0" expand="true">
+            <task id="40" name="Bernie" color="#ff9999" meeting="false" start="2016-01-05" duration="36" complete="0" expand="true">
+                <task id="73" name="Desert Enviornment Assets" color="#8cb6ce" meeting="false" start="2016-01-05" duration="27" complete="0" expand="true"/>
+                <task id="74" name="Steam Geyser Model" color="#8cb6ce" meeting="false" start="2016-01-25" duration="8" complete="0" expand="true"/>
+                <task id="75" name="Draft Planet 3" color="#8cb6ce" meeting="false" start="2016-02-01" duration="6" complete="0" expand="true"/>
+                <task id="78" name="Copy_Planet 2 Design Layout" color="#8cb6ce" meeting="false" start="2016-01-28" duration="4" complete="0" expand="true"/>
+                <task id="81" name="Copy_Planet 1 Design Layout" color="#8cb6ce" meeting="false" start="2016-01-28" duration="4" complete="0" expand="true"/>
+                <task id="83" name="Game Title/Logo PDF" color="#8cb6ce" meeting="false" start="2016-02-01" duration="2" complete="0" expand="true"/>
+                <task id="85" name="Model Ziggurat Temple" color="#8cb6ce" meeting="false" start="2016-01-25" duration="9" complete="0" expand="true"/>
+                <task id="87" name="GUI Elements" color="#8cb6ce" meeting="false" start="2016-01-25" duration="9" complete="0" expand="true"/>
+                <task id="104" name="Ice Environment Assets" color="#8cb6ce" meeting="false" start="2016-02-02" duration="16" complete="0" expand="true"/>
+            </task>
+            <task id="41" name="Michael" color="#ff9999" meeting="false" start="2016-01-05" duration="37" complete="0" expand="true">
+                <task id="67" name="Boss 1 Concept Art" color="#8cb6ce" meeting="false" start="2016-01-05" duration="6" complete="0" expand="true"/>
+                <task id="70" name="Desert Boss 1 Model" color="#8cb6ce" meeting="false" start="2016-01-11" duration="7" complete="0" expand="true"/>
+                <task id="50" name="HeatMap Test" color="#8cb6ce" meeting="false" start="2016-01-11" duration="2" complete="0" expand="true"/>
+                <task id="59" name="Desert Enviornment Assets" color="#8cb6ce" meeting="false" start="2016-01-11" duration="21" complete="0" expand="true"/>
+                <task id="63" name="Enemy TriDrone" color="#8cb6ce" meeting="false" start="2016-01-19" duration="10" complete="0" expand="true"/>
+                <task id="53" name="Planet 1 Heatmap" color="#8cb6ce" meeting="false" start="2016-01-26" duration="12" complete="0" expand="true"/>
+                <task id="60" name="Planet 1 Design Layout" color="#8cb6ce" meeting="false" start="2016-01-28" duration="4" complete="0" expand="true"/>
+                <task id="69" name="New Desert Planet Mesh" color="#8cb6ce" meeting="false" start="2016-01-29" duration="7" complete="0" expand="true"/>
+                <task id="61" name="Planet 2 Design Layout" color="#8cb6ce" meeting="false" start="2016-01-28" duration="4" complete="0" expand="true"/>
+                <task id="107" name="Gantt Chart" color="#8cb6ce" meeting="false" start="2016-02-01" duration="18" complete="0" expand="true"/>
+                <task id="64" name="Planet 2 Heat Map" color="#8cb6ce" meeting="false" start="2016-02-08" duration="6" complete="0" expand="true"/>
+                <task id="66" name="Static/Correcting Assets" color="#8cb6ce" meeting="false" start="2016-02-08" duration="11" complete="0" expand="true"/>
+            </task>
+            <task id="42" name="Ethan" color="#ff9999" meeting="false" start="2016-01-11" duration="39" complete="0" expand="true">
+                <task id="90" name="GDD" color="#8cb6ce" meeting="false" start="2016-01-11" duration="39" complete="0" expand="true"/>
+                <task id="99" name="Artillery Animation" color="#8cb6ce" meeting="false" start="2016-01-11" duration="12" complete="0" expand="true"/>
+                <task id="97" name="Rocket Animation" color="#8cb6ce" meeting="false" start="2016-01-18" duration="9" complete="0" expand="true"/>
+                <task id="98" name="5 Powerup Icons" color="#8cb6ce" meeting="false" start="2016-01-18" duration="12" complete="0" expand="true"/>
+                <task id="96" name="Artilery Shell Projectile" color="#8cb6ce" meeting="false" start="2016-01-25" duration="7" complete="0" expand="true"/>
+                <task id="100" name="Two Obelisk Models" color="#8cb6ce" meeting="false" start="2016-01-25" duration="9" complete="0" expand="true"/>
+                <task id="102" name="Enemy Animations" color="#8cb6ce" meeting="false" start="2016-02-01" duration="17" complete="0" expand="true"/>
+            </task>
+            <task id="43" name="Will" color="#ff9999" meeting="false" start="2016-01-05" duration="36" complete="0" expand="true">
+                <task id="119" name="Player Tank Model" color="#8cb6ce" meeting="false" start="2016-01-05" duration="7" complete="0" expand="true"/>
+                <task id="122" name="Flyer Enemy Remodel" color="#8cb6ce" meeting="false" start="2016-01-05" duration="7" complete="0" expand="true"/>
+                <task id="110" name="Desert Enviornment Assets" color="#8cb6ce" meeting="false" start="2016-01-11" duration="21" complete="0" expand="true"/>
+                <task id="116" name="Ice Boss Concept Art" color="#8cb6ce" meeting="false" start="2016-01-20" duration="8" complete="0" expand="true"/>
+                <task id="117" name="Ice Boss Model" color="#8cb6ce" meeting="false" start="2016-01-20" duration="11" complete="0" expand="true"/>
+                <task id="111" name="Temple Ruins" color="#8cb6ce" meeting="false" start="2016-01-25" duration="8" complete="0" expand="true"/>
+                <task id="123" name="Kamikaze Enemy Remodel" color="#8cb6ce" meeting="false" start="2016-01-26" duration="7" complete="0" expand="true"/>
+                <task id="121" name="Fish Bones/Animal Skull Models" color="#8cb6ce" meeting="false" start="2016-01-29" duration="9" complete="0" expand="true"/>
+                <task id="131" name="Planet 3 Concept Art" color="#8cb6ce" meeting="false" start="2016-02-01" duration="6" complete="0" expand="true"/>
+                <task id="127" name="Ice Environment Assets" color="#8cb6ce" meeting="false" start="2016-02-02" duration="16" complete="0" expand="true"/>
+                <task id="115" name="Ice Boss Animation" color="#8cb6ce" meeting="false" start="2016-02-08" duration="7" complete="0" expand="true"/>
+            </task>
+            <task id="44" name="Vince" color="#ff9999" meeting="false" start="2016-01-05" duration="36" complete="0" expand="true">
+                <task id="152" name="Update Old Artillery" color="#8cb6ce" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true"/>
+                <task id="153" name="Update Enemy Tank" color="#8cb6ce" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true"/>
+                <task id="145" name="Tank Boss Upgrade" color="#8cb6ce" meeting="false" start="2016-01-11" duration="14" complete="0" expand="true"/>
+                <task id="141" name="Artillery Shell Model" color="#8cb6ce" meeting="false" start="2016-01-18" duration="7" complete="0" expand="true"/>
+                <task id="142" name="Gear Pickup Model" color="#8cb6ce" meeting="false" start="2016-01-18" duration="7" complete="0" expand="true"/>
+                <task id="156" name="4 Unique Weapon Reticles" color="#8cb6ce" meeting="false" start="2016-01-18" duration="7" complete="0" expand="true"/>
+                <task id="143" name="Warp Portal Model" color="#8cb6ce" meeting="false" start="2016-01-25" duration="7" complete="0" expand="true"/>
+                <task id="144" name="Landing Pad Model" color="#8cb6ce" meeting="false" start="2016-01-25" duration="7" complete="0" expand="true"/>
+                <task id="146" name="New Ice Artillery" color="#8cb6ce" meeting="false" start="2016-02-01" duration="17" complete="0" expand="true"/>
+                <task id="147" name="New Ice Flyer" color="#8cb6ce" meeting="false" start="2016-02-01" duration="17" complete="0" expand="true"/>
+                <task id="148" name="New Ice Kamikaze" color="#8cb6ce" meeting="false" start="2016-02-01" duration="17" complete="0" expand="true"/>
+                <task id="149" name="New Ice Tank" color="#8cb6ce" meeting="false" start="2016-02-01" duration="17" complete="0" expand="true"/>
+            </task>
+            <task id="45" name="Nick" color="#ff9999" meeting="false" start="2016-01-11" duration="7" complete="0" expand="true">
+                <task id="160" name="Planet 1 Concept Art" color="#8cb6ce" meeting="false" start="2016-01-11" duration="7" complete="0" expand="true"/>
+                <task id="161" name="Planet 2 Concept Art" color="#8cb6ce" meeting="false" start="2016-01-11" duration="7" complete="0" expand="true"/>
+                <task id="162" name="Planet 3 Concept Art" color="#8cb6ce" meeting="false" start="2016-01-11" duration="7" complete="0" expand="true"/>
+            </task>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <taskdisplaycolumns>
+        <displaycolumn property-id="tpd2" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd6" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd3" order="0" width="198" visible="true"/>
+        <displaycolumn property-id="tpd4" order="1" width="60" visible="true"/>
+        <displaycolumn property-id="tpd7" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd8" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd12" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd5" order="2" width="56" visible="true"/>
+        <displaycolumn property-id="tpd10" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd11" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd9" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd1" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd13" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd0" order="-1" width="75" visible="false"/>
+    </taskdisplaycolumns>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
