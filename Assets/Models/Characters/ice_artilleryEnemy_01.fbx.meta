@@ -1,0 +1,178 @@
+fileFormatVersion: 2
+guid: 6241778bca7fa474ebec906db9ca50ec
+timeCreated: 1454352412
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: barrel
+    100002: barrel_housing
+    100004: body
+    100006: engine01
+    100008: engine02
+    100010: greeble01
+    100012: greeble010
+    100014: greeble011
+    100016: greeble012
+    100018: greeble02
+    100020: greeble03
+    100022: greeble04
+    100024: greeble05
+    100026: greeble06
+    100028: greeble07
+    100030: greeble07 1
+    100032: greeble08
+    100034: greeble09
+    100036: gun_carriage
+    100038: //RootNode
+    100040: intake01
+    100042: intake02
+    400000: barrel
+    400002: barrel_housing
+    400004: body
+    400006: engine01
+    400008: engine02
+    400010: greeble01
+    400012: greeble010
+    400014: greeble011
+    400016: greeble012
+    400018: greeble02
+    400020: greeble03
+    400022: greeble04
+    400024: greeble05
+    400026: greeble06
+    400028: greeble07
+    400030: greeble07 1
+    400032: greeble08
+    400034: greeble09
+    400036: gun_carriage
+    400038: //RootNode
+    400040: intake01
+    400042: intake02
+    2300000: barrel
+    2300002: barrel_housing
+    2300004: body
+    2300006: engine01
+    2300008: engine02
+    2300010: greeble01
+    2300012: greeble010
+    2300014: greeble011
+    2300016: greeble012
+    2300018: greeble02
+    2300020: greeble03
+    2300022: greeble04
+    2300024: greeble05
+    2300026: greeble06
+    2300028: greeble07
+    2300030: greeble07 1
+    2300032: greeble08
+    2300034: greeble09
+    2300036: gun_carriage
+    2300038: intake01
+    2300040: intake02
+    3300000: barrel
+    3300002: barrel_housing
+    3300004: body
+    3300006: engine01
+    3300008: engine02
+    3300010: greeble01
+    3300012: greeble010
+    3300014: greeble011
+    3300016: greeble012
+    3300018: greeble02
+    3300020: greeble03
+    3300022: greeble04
+    3300024: greeble05
+    3300026: greeble06
+    3300028: greeble07
+    3300030: greeble07 1
+    3300032: greeble08
+    3300034: greeble09
+    3300036: gun_carriage
+    3300038: intake01
+    3300040: intake02
+    4300000: body
+    4300002: gun_carriage
+    4300004: barrel_housing
+    4300006: barrel
+    4300008: greeble04
+    4300010: greeble07
+    4300012: greeble08
+    4300014: greeble09
+    4300016: greeble010
+    4300018: greeble011
+    4300020: greeble012
+    4300022: intake01
+    4300024: engine01
+    4300026: greeble01
+    4300028: greeble02
+    4300030: intake02
+    4300032: greeble03
+    4300034: greeble05
+    4300036: greeble06
+    4300038: greeble07
+    4300040: engine02
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
