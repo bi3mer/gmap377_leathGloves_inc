@@ -1,0 +1,247 @@
+fileFormatVersion: 2
+guid: fed1b117fe3334dc2898b689691b738c
+timeCreated: 1454284210
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Back_leg
+    100002: Back_Leg_Protector
+    100004: bevelPolygon7
+    100006: bevelPolygon7 1
+    100008: bevelPolygon7 2
+    100010: bevelPolygon8
+    100012: bevelPolygon8 1
+    100014: bevelPolygon8 2
+    100016: bevelPolygon9
+    100018: bevelPolygon9 1
+    100020: bevelPolygon9 2
+    100022: Center_Body
+    100024: Eye
+    100026: group1
+    100028: group2
+    100030: group3
+    100032: Head
+    100034: L_Leg_Protector
+    100036: L_Side_of_head
+    100038: Left_leg
+    100040: Leg_Gaurd2
+    100042: Leg_Gaurd2 1
+    100044: Leg_Gaurd2 2
+    100046: LegPivot
+    100048: LegPivot2
+    100050: LegPivot3
+    100052: Main_Head_Frame
+    100054: pCylinder9
+    100056: pCylinder9 1
+    100058: pCylinder9 2
+    100060: R_LEg_Protector
+    100062: R_Side_of_head
+    100064: Right_Leg
+    100066: Teeth
+    100068: Top_of_Skull
+    100070: Triangle_base
+    100072: //RootNode
+    100074: Wire1
+    100076: Wire2
+    100078: Wire3
+    400000: Back_leg
+    400002: Back_Leg_Protector
+    400004: bevelPolygon7
+    400006: bevelPolygon7 1
+    400008: bevelPolygon7 2
+    400010: bevelPolygon8
+    400012: bevelPolygon8 1
+    400014: bevelPolygon8 2
+    400016: bevelPolygon9
+    400018: bevelPolygon9 1
+    400020: bevelPolygon9 2
+    400022: Center_Body
+    400024: Eye
+    400026: group1
+    400028: group2
+    400030: group3
+    400032: Head
+    400034: L_Leg_Protector
+    400036: L_Side_of_head
+    400038: Left_leg
+    400040: Leg_Gaurd2
+    400042: Leg_Gaurd2 1
+    400044: Leg_Gaurd2 2
+    400046: LegPivot
+    400048: LegPivot2
+    400050: LegPivot3
+    400052: Main_Head_Frame
+    400054: pCylinder9
+    400056: pCylinder9 1
+    400058: pCylinder9 2
+    400060: R_LEg_Protector
+    400062: R_Side_of_head
+    400064: Right_Leg
+    400066: Teeth
+    400068: Top_of_Skull
+    400070: Triangle_base
+    400072: //RootNode
+    400074: Wire1
+    400076: Wire2
+    400078: Wire3
+    2300000: Back_Leg_Protector
+    2300002: bevelPolygon7
+    2300004: bevelPolygon7 1
+    2300006: bevelPolygon7 2
+    2300008: bevelPolygon8
+    2300010: bevelPolygon8 1
+    2300012: bevelPolygon8 2
+    2300014: bevelPolygon9
+    2300016: bevelPolygon9 1
+    2300018: bevelPolygon9 2
+    2300020: Center_Body
+    2300022: Eye
+    2300024: L_Leg_Protector
+    2300026: L_Side_of_head
+    2300028: Leg_Gaurd2
+    2300030: Leg_Gaurd2 1
+    2300032: Leg_Gaurd2 2
+    2300034: LegPivot
+    2300036: LegPivot2
+    2300038: LegPivot3
+    2300040: Main_Head_Frame
+    2300042: pCylinder9
+    2300044: pCylinder9 1
+    2300046: pCylinder9 2
+    2300048: R_LEg_Protector
+    2300050: R_Side_of_head
+    2300052: Teeth
+    2300054: Top_of_Skull
+    2300056: Triangle_base
+    2300058: Wire1
+    2300060: Wire2
+    2300062: Wire3
+    3300000: Back_Leg_Protector
+    3300002: bevelPolygon7
+    3300004: bevelPolygon7 1
+    3300006: bevelPolygon7 2
+    3300008: bevelPolygon8
+    3300010: bevelPolygon8 1
+    3300012: bevelPolygon8 2
+    3300014: bevelPolygon9
+    3300016: bevelPolygon9 1
+    3300018: bevelPolygon9 2
+    3300020: Center_Body
+    3300022: Eye
+    3300024: L_Leg_Protector
+    3300026: L_Side_of_head
+    3300028: Leg_Gaurd2
+    3300030: Leg_Gaurd2 1
+    3300032: Leg_Gaurd2 2
+    3300034: LegPivot
+    3300036: LegPivot2
+    3300038: LegPivot3
+    3300040: Main_Head_Frame
+    3300042: pCylinder9
+    3300044: pCylinder9 1
+    3300046: pCylinder9 2
+    3300048: R_LEg_Protector
+    3300050: R_Side_of_head
+    3300052: Teeth
+    3300054: Top_of_Skull
+    3300056: Triangle_base
+    3300058: Wire1
+    3300060: Wire2
+    3300062: Wire3
+    4300000: L_Side_of_head
+    4300002: R_Side_of_head
+    4300004: Teeth
+    4300006: Top_of_Skull
+    4300008: Main_Head_Frame
+    4300010: Eye
+    4300012: Center_Body
+    4300014: Triangle_base
+    4300016: Back_Leg_Protector
+    4300018: R_LEg_Protector
+    4300020: LegPivot2
+    4300022: L_Leg_Protector
+    4300024: Wire1
+    4300026: Wire2
+    4300028: Wire3
+    4300030: LegPivot
+    4300032: LegPivot3
+    4300034: bevelPolygon9
+    4300036: pCylinder9
+    4300038: bevelPolygon8
+    4300040: Leg_Gaurd2
+    4300042: bevelPolygon7
+    4300044: bevelPolygon9
+    4300046: pCylinder9
+    4300048: bevelPolygon8
+    4300050: Leg_Gaurd2
+    4300052: bevelPolygon7
+    4300054: bevelPolygon9
+    4300056: pCylinder9
+    4300058: bevelPolygon8
+    4300060: Leg_Gaurd2
+    4300062: bevelPolygon7
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 8
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
