@@ -92,7 +92,12 @@ users = {
 		'name': 'Will',
 		'count': 0,
 		'modified': False
-	}
+	},
+	'USLACKBOT': {
+        'name': 'The Bot is more active than some of you i bet',
+        'count': 0,
+        'modified': False
+    }
 }
 ## Get file names
 jsonFiles = [f for f in listdir(DIRECTORY) if isfile(join(DIRECTORY, f))]
