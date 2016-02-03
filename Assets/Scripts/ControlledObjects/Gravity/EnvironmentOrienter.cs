@@ -13,28 +13,67 @@ public class EnvironmentOrienter : MonoBehaviour {
 
     public void OrientToPlanet() {
         InterplanetaryObject io = gameObject.AddComponent<InterplanetaryObject>();
-        PlanetOrientation po = gameObject.AddComponent<PlanetOrientation>();
-        po.OrientToPlanet(PlanetOverride);
-        po.Deinitialize();
-        DestroyImmediate(po);
+        if (PlanetOverride != null) io.NearestPlanet = PlanetOverride;
+        else io.NearestPlanet = InterplanetaryObject.GetNearestPlanet(transform.position);
+        
+        transform.LookAt(io.NearestPlanet.transform.position);
+        transform.Rotate(new Vector3(1.0f, 0, 0), 90);
+        InvertOrientation();
         DestroyImmediate(io);
     }
 
     public void InvertOrientation() {
-        InterplanetaryObject io = gameObject.AddComponent<InterplanetaryObject>();
-        PlanetOrientation po = gameObject.AddComponent<PlanetOrientation>();
-        po.InvertRotation();
-        po.Deinitialize();
-        DestroyImmediate(po);
-        DestroyImmediate(io);
+        transform.localRotation *= Quaternion.Euler(0, 0, 180);
     }
 
     public void DropToPlanet() {
         InterplanetaryObject io = gameObject.AddComponent<InterplanetaryObject>();
-        PlanetOrientation po = gameObject.AddComponent<PlanetOrientation>();
-        po.DropToPlanet(PlanetOverride, ExtraDropDistance);
-        po.Deinitialize();
-        DestroyImmediate(po);
+
+        Collider collider = GetComponent<Collider>();
+        if (!collider) {
+            Debug.Log(gameObject.name + " does not have a collider: cannot drop to planet surface");
+            return;
+        }
+
+        if (PlanetOverride != null) io.NearestPlanet = PlanetOverride;
+        else io.NearestPlanet = InterplanetaryObject.GetNearestPlanet(transform.position);
+
+        Collider planetCollider = io.NearestPlanet.GetComponent<MeshCollider>();
+        RaycastHit hit = new RaycastHit();
+
+        // Look for planet's surface, which needs to be between the object's center and the planet's center, with no other objects in the way
+        Physics.Raycast(transform.position, io.NearestPlanet.transform.position - transform.position, out hit);
+        if (hit.collider == null) {
+            Debug.Log(gameObject.name + ": no raycast hit");
+        }
+        else if (hit.collider != planetCollider) {
+            Debug.Log(gameObject.name + ": did not hit planet, hit " + hit.collider.gameObject.name);
+        }
+        else {
+            int i = 1;
+            Vector3 startPos = transform.position;
+            float move = hit.distance / 2;
+            Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+
+            while (i < 15) {
+                transform.position = startPos - transform.up * move;
+
+                Vector3 closestPoint = GetComponent<Rigidbody>().ClosestPointOnBounds(io.NearestPlanet.transform.position);
+                if (Physics.Raycast(closestPoint, io.NearestPlanet.transform.position - closestPoint, hit.distance * 2)) {
+                    move += hit.distance / ((float)Mathf.Pow(2, i));
+                }
+                else {
+                    move -= hit.distance / ((float)Mathf.Pow(2, i));
+                }
+
+                i++;
+            }
+
+            transform.position -= transform.up * ExtraDropDistance;
+
+            DestroyImmediate(rb);
+        }
+
         DestroyImmediate(io);
     }
 
