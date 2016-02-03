@@ -4,6 +4,6 @@ using System.Collections;
 public class MotionBaseFollower : MonoBehaviour {
 
 	void LateUpdate () {
-		transform.localRotation = MotionBaseMover.Instance.transform.rotation;
+		if (MotionBaseMover.Instance) transform.localRotation = MotionBaseMover.Instance.transform.rotation;
 	}
 }
