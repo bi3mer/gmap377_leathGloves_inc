@@ -10,14 +10,14 @@ public class BoltCollection : MonoBehaviour
     public float
         Range = 5,
         MoveSpeed = 2f,
-        ScatterForceRange = 5;
+        ScatterForceRange = 5f;
 
     public LayerMask TargetLayer;
 
     void Start()
     {
         rand = new System.Random();
-        GetComponent<Rigidbody>().AddForce(new Vector3(rand.Next((int)ScatterForceRange), rand.Next((int)ScatterForceRange), rand.Next((int)ScatterForceRange)));
+        GetComponent<Rigidbody>().AddForce(new Vector3(rand.Next(-(int)ScatterForceRange, (int)ScatterForceRange), rand.Next(-(int)ScatterForceRange, (int)ScatterForceRange), rand.Next(-(int)ScatterForceRange, (int)ScatterForceRange)));
     }
 
     void Update()

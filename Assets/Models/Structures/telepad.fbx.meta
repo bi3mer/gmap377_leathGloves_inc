@@ -1,0 +1,196 @@
+fileFormatVersion: 2
+guid: e253a34305f37104bac08591dd5a60d5
+timeCreated: 1454559843
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: group1
+    100002: group2
+    100004: group3
+    100006: group4
+    100008: pCube4
+    100010: pCube4 1
+    100012: pCube4 2
+    100014: pCube4 3
+    100016: pCylinder1
+    100018: power_conduit1
+    100020: power_conduit2
+    100022: power_conduit2 1
+    100024: power_conduit2 2
+    100026: power_conduit2 3
+    100028: power_conduit3
+    100030: power_conduit3 1
+    100032: power_conduit3 2
+    100034: power_conduit3 3
+    100036: power_conduit4
+    100038: power_conduit4 1
+    100040: power_conduit4 2
+    100042: power_conduit4 3
+    100044: power_conduit5
+    100046: power_conduit5 1
+    100048: power_conduit5 2
+    100050: power_conduit5 3
+    100052: power_conduit6
+    100054: //RootNode
+    400000: group1
+    400002: group2
+    400004: group3
+    400006: group4
+    400008: pCube4
+    400010: pCube4 1
+    400012: pCube4 2
+    400014: pCube4 3
+    400016: pCylinder1
+    400018: power_conduit1
+    400020: power_conduit2
+    400022: power_conduit2 1
+    400024: power_conduit2 2
+    400026: power_conduit2 3
+    400028: power_conduit3
+    400030: power_conduit3 1
+    400032: power_conduit3 2
+    400034: power_conduit3 3
+    400036: power_conduit4
+    400038: power_conduit4 1
+    400040: power_conduit4 2
+    400042: power_conduit4 3
+    400044: power_conduit5
+    400046: power_conduit5 1
+    400048: power_conduit5 2
+    400050: power_conduit5 3
+    400052: power_conduit6
+    400054: //RootNode
+    2300000: pCube4
+    2300002: pCube4 1
+    2300004: pCube4 2
+    2300006: pCube4 3
+    2300008: pCylinder1
+    2300010: power_conduit1
+    2300012: power_conduit2
+    2300014: power_conduit2 1
+    2300016: power_conduit2 2
+    2300018: power_conduit2 3
+    2300020: power_conduit3
+    2300022: power_conduit3 1
+    2300024: power_conduit3 2
+    2300026: power_conduit3 3
+    2300028: power_conduit4
+    2300030: power_conduit4 1
+    2300032: power_conduit4 2
+    2300034: power_conduit4 3
+    2300036: power_conduit5
+    2300038: power_conduit5 1
+    2300040: power_conduit5 2
+    2300042: power_conduit5 3
+    2300044: power_conduit6
+    3300000: pCube4
+    3300002: pCube4 1
+    3300004: pCube4 2
+    3300006: pCube4 3
+    3300008: pCylinder1
+    3300010: power_conduit1
+    3300012: power_conduit2
+    3300014: power_conduit2 1
+    3300016: power_conduit2 2
+    3300018: power_conduit2 3
+    3300020: power_conduit3
+    3300022: power_conduit3 1
+    3300024: power_conduit3 2
+    3300026: power_conduit3 3
+    3300028: power_conduit4
+    3300030: power_conduit4 1
+    3300032: power_conduit4 2
+    3300034: power_conduit4 3
+    3300036: power_conduit5
+    3300038: power_conduit5 1
+    3300040: power_conduit5 2
+    3300042: power_conduit5 3
+    3300044: power_conduit6
+    4300000: pCylinder1
+    4300002: power_conduit1
+    4300004: pCube4
+    4300006: power_conduit2
+    4300008: power_conduit3
+    4300010: power_conduit4
+    4300012: power_conduit5
+    4300014: pCube4
+    4300016: power_conduit2
+    4300018: power_conduit3
+    4300020: power_conduit4
+    4300022: power_conduit5
+    4300024: pCube4
+    4300026: power_conduit2
+    4300028: power_conduit3
+    4300030: power_conduit4
+    4300032: power_conduit5
+    4300034: pCube4
+    4300036: power_conduit2
+    4300038: power_conduit3
+    4300040: power_conduit4
+    4300042: power_conduit5
+    4300044: power_conduit6
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

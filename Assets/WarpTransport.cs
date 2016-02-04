@@ -9,10 +9,13 @@ public class WarpTransport : MonoBehaviour {
     // REMOVE WHEN BOLTS ARE IN
     public bool canTransport;
 
+    private ParticleSystem onEffect;
+
     void Start()
     {
         this.canTransport = false;
         ScoreManager.AmountReached += ActivateTeleport;
+        this.onEffect = GetComponentInChildren<ParticleSystem>();
     }
 
     void OnTriggerStay(Collider collider)
@@ -59,13 +62,12 @@ public class WarpTransport : MonoBehaviour {
     public void ActivateTeleport()
     {
         // TODO: Some shit to make that jawn look fancy and what not
-        Debug.Log("Teleport Active\n");
+        this.onEffect.Play();
         this.canTransport = true;
     }
 
     void OnApplicationQuit()
     {
-        Debug.Log("HOOOOOOOO it ended!");
         ScoreManager.AmountReached -= ActivateTeleport;
     }
 }
