@@ -7,10 +7,10 @@ public class AStar: MonoBehaviour, AiMovement
 {
 	[HideInInspector]
 	public Vector3 target;
-
-    [HideInInspector]
-    public VertexNavigation planetVertexNavigation;
-
+	
+	[HideInInspector]
+	public VertexNavigation planetVertexNavigation;
+	
 	public int distanceToGround = 10;
 	public LayerMask layersToAvoid;
 	public GameObject body;
@@ -20,15 +20,15 @@ public class AStar: MonoBehaviour, AiMovement
 	private float radius;
 	
 	// Plan for movement
-	private List<int> plan;
+	private List<int> plan = new List<int>();
 	public List<int> Plan
 	{
 		get 
 		{
 			return this.plan;
 		}
-		set 
-		{ 
+		set
+		{
 			// pass
 		}
 	}
@@ -39,7 +39,7 @@ public class AStar: MonoBehaviour, AiMovement
 	/// <returns>The plan.</returns>
 	public List<int> getPlan()
 	{
-		return this.Plan;
+		return this.Plan; // Why a getter and a get method? duplicate??
 	}
 	
 	/// <summary>
@@ -48,9 +48,9 @@ public class AStar: MonoBehaviour, AiMovement
 	/// <param name="target">Target.</param>
 	public void setTarget(Vector3 target)
 	{
-		this.target = target;
+		this.target = target; // Why not a setter?
 	}
-
+	
 	/// <summary>
 	/// Calculate the herustic using the given vertex
 	/// </summary>
@@ -64,24 +64,17 @@ public class AStar: MonoBehaviour, AiMovement
 	// Check for collision at point
 	private bool collisionAtPoint(Vector3 pos)
 	{
-		bool found = false;
-		
 		// Get collisions
 		Collider[] hitColliders = Physics.OverlapSphere(pos, this.radius, this.layersToAvoid);
 		
 		// Check if colliders found
-		if (hitColliders.Length > 0)
-		{
-			found = true;
-		}
-		
-		return found;
+		return hitColliders.Length > 0;
 	}
 	
 	/// <summary>
 	/// get path plan
 	/// </summary>
-	private List<int> getThePath()
+	private void GeneratePath() // More clear.
 	{	
 		// http://docs.unity3d.com/ScriptReference/RaycastHit-triangleIndex.html
 		// Raycast towards center of planet
@@ -89,91 +82,88 @@ public class AStar: MonoBehaviour, AiMovement
 		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, this.planetVertexNavigation.transform.position - this.transform.position, 200f);
 		
 		// Create list to hold unformatted moves
-		List<int> unFormattedMoves = new List<int>();
+		int[] unFormattedMoves = new int[3];
 		
 		// fill open list
-        for (int i = 0; i < hits.Length; ++i) //RaycastHit hit in hits
-        {
-            // Check if correct mesh was hit
-            if (hits[i].collider != null && hits[i].collider.CompareTag("Planet") && hits[i].triangleIndex != -1)
-            {
-                unFormattedMoves = this.planetVertexNavigation.getMovesTriangle(hits[i].triangleIndex * 3);
-                break;
-            }
-        }
-		
-		// Visited nodes
-		Dictionary<int, bool> visitedNodes = new Dictionary<int, bool>();
-		
-		// Instantiate priority queue
-		PriorityQueue queue = new PriorityQueue();
+		for (int i = 0; i < hits.Length; ++i) //RaycastHit hit in hits
+		{
+			// Check if correct mesh was hit
+			if (hits[i].triangleIndex != -1 && hits[i].collider != null && hits[i].collider.CompareTag("Planet"))
+			{
+				this.planetVertexNavigation.getMovesTriangle(hits[i].triangleIndex * 3, ref unFormattedMoves);
+				break;
+			}
+		}
 		
 		// Add nodes to priority queue
-        for (int i = 0; i < unFormattedMoves.Count; ++i)
-        {
-            // Create list of moves
-            List<int> moves = new List<int>();
-            moves.Add(unFormattedMoves[i]);
-
-            // Create new node
-            AStarNode node = new AStarNode(1, 1, unFormattedMoves[i], moves);
-
-            // add node to queue
-            queue.addNode(node);
-        }
+		PriorityQueue queue = new PriorityQueue();
+		
+		// Create list of moves
+		List<int> moves = new List<int>();
+		
+		for (int i = 0; i < unFormattedMoves.Length; ++i)
+		{
+			moves.Add(unFormattedMoves[i]);
+			
+			// Create new node
+			AStarNode node = new AStarNode(1, 1, unFormattedMoves[i], moves);
+			
+			// add node to queue
+			queue.addNode(node);
+			
+			moves.Clear();
+		}
+		
+		// Visited nodes
+		HashSet<int> visitedNodes = new HashSet<int>();
 		
 		// Run A* while moves available
-		while (queue.Length() > 0)
+		while (queue.Length() > 0) // Is there an IsEmpty property... this may be better.
 		{ 
 			// Grab best node from priority queue
 			AStarNode node = queue.popNode();
-			  
-            // Get moves for a vertex
-            List<int> availableMoves = this.planetVertexNavigation.getMovesVertex(node.Index);
-
+			
+			// Get moves for a vertex
+			List<int> availableMoves = this.planetVertexNavigation.getMovesVertex(node.Index);
+			
 			// Loop through the nodes available paths
-            for (int i = 0; i < availableMoves.Count; ++i)
-            {
-                // Only use vertex if we haven't already explored this node
-                if (!visitedNodes.ContainsKey(availableMoves[i]) && !this.collisionAtPoint(this.planetVertexNavigation.getVertex(availableMoves[i]).position))
-                {
-                    // Calculate distance between vertex and target
-                    float vertexHeuristic = DistanceCalculator.squareEuclidianDistance(this.planetVertexNavigation.getVertex(availableMoves[i]).position, this.target);
-
-                    // Check if close enough to target
+			for (int i = 0; i < availableMoves.Count; ++i)
+			{
+				// Only use vertex if we haven't already explored this node
+				if (!visitedNodes.Contains(availableMoves[i]) && !this.collisionAtPoint(this.planetVertexNavigation.getVertex(availableMoves[i]).position))
+				{
+					// Calculate distance between vertex and target
+					float vertexHeuristic = DistanceCalculator.squareEuclidianDistance(this.planetVertexNavigation.getVertex(availableMoves[i]).position, this.target);
+					
+					// Check if close enough to target
 					if (vertexHeuristic < this.planetVertexNavigation.avgVertexlength)
-                    {
-                        // Yes we are, solved
-                        this.plan = node.Moves;
-                        this.plan.Add(availableMoves[i]);
-
-                        // return plan
-                        return this.plan;
-                    }
-                    else
-                    {
-                        // add to visited
-                        visitedNodes.Add(availableMoves[i], true);
-
-                        // Create cropy of moves
-                        List<int> newMoves = new List<int>(node.Moves);
-                        newMoves.Add(availableMoves[i]);
-
-                        // Create new nodes with heuristic and step cost
-                        AStarNode newNode = new AStarNode(node.G + this.calculateDistanceFromVertex(availableMoves[i]), vertexHeuristic, availableMoves[i], newMoves);
-
-                        // add node to queue
-                        queue.addNode(newNode);
-                    }
-                }
-            }
+					{
+						// Yes we are, solved
+						this.plan = node.Moves;
+						this.plan.Add(availableMoves[i]);
+						
+						// return plan
+						return; // Please shoot me now... mid function returns?? really?
+					}
+					else
+					{
+						// add to visited
+						visitedNodes.Add(availableMoves[i]);
+						
+						// Create cropy of moves
+						List<int> newMoves = new List<int>(node.Moves); // Try to remove this creation.... can we??
+						// Can we just modify the 'node'? (maybe not)
+						newMoves.Add(availableMoves[i]);
+						
+						// Create new nodes with heuristic and step cost
+						AStarNode newNode = new AStarNode(node.G + this.calculateDistanceFromVertex(availableMoves[i]), vertexHeuristic, availableMoves[i], newMoves);
+						
+						// add node to queue
+						queue.addNode(newNode);
+					}
+				}
+			}
 		}
-
-		// Delete
-		GC.Collect();
-		
-		// returned failed plan
-		return this.plan;
 	}
 	
 	/// <summary>
@@ -183,34 +173,34 @@ public class AStar: MonoBehaviour, AiMovement
 	/// <returns>The Plan</returns>
 	public List<int> getNewPlan()
 	{
-		this.plan = new List<int>();
-
+		this.Plan.Clear();
+		
 		// Check if target exists
-		if (this.target.Equals(Vector3.zero))
+		if (!this.target.Equals(Vector3.zero)) // Inverted logic.
 		{
-			return this.plan;
+			// Get plan
+			this.GeneratePath();
 		}
-
-		// Get plan
-		return this.getThePath();
+		
+		return this.Plan;
 	}
 	
-    /// <summary>
-    /// Initialize components
-    /// </summary>
+	/// <summary>
+	/// Initialize components
+	/// </summary>
 	void Start()
 	{
 		// Divide by 2 to get radius not diameter 
 		this.radius = this.body.GetComponent<Collider>().bounds.size.magnitude / 2;
-
+		
 		// Get planets navigation cod
-        this.planetVertexNavigation = Player.Instance.getPlanetNavigation();
+		this.planetVertexNavigation = Player.Instance.getPlanetNavigation();
 	}
 	
 	#if UNITY_EDITOR
-    /// <summary>
-    /// Debugging Updates
-    /// </summary>
+	/// <summary>
+	/// Debugging Updates
+	/// </summary>
 	void Update()
 	{
 		// Draw Raycast down

@@ -10,7 +10,6 @@ public class Rocket : MonoBehaviour
      */
     public float ExplosionRadius, ExplosionForce;
     public GameObject Explosion;
-    public LayerMask TargetLayer;
 
     /// <summary>
     /// Triggered when the bullet collides with anything
@@ -19,7 +18,7 @@ public class Rocket : MonoBehaviour
     void OnCollisionEnter(Collision obj)
     {
         // Get all the objects in a <ExplosionRadius> radius from where the bullet collided
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, ExplosionRadius, TargetLayer);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
         
         // Create Explosion object
         Instantiate(Explosion, transform.position, transform.rotation);
@@ -40,12 +39,11 @@ public class Rocket : MonoBehaviour
                 // Try and find an EnemyHealth script on the gameobject hit.
                 EnemyStats enemyHealth = hitColliders[i].gameObject.GetComponentInParent<EnemyStats>();
 
-                if (hitColliders[i].tag == "Player")
+                if (hitColliders[i].CompareTag("Player"))
                 {
                     ScoreManager.Instance.DecreaseScore((int)this.GetComponent<Weapon>().damage);
                 }
-
-                if (hitColliders[i].tag == "DestructableEnvironment")
+                else if (hitColliders[i].CompareTag("DestructableEnvironment"))
                 {
                     Destroy(hitColliders[i].gameObject);
                 }
