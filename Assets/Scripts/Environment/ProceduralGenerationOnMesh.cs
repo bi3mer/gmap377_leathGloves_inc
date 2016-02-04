@@ -33,9 +33,14 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	public float medium;
 	[Tooltip("Size of large objects")]
 	public float large;
+	[Tooltip("Size of powerups objects")]
+	public float powerUpSize;
 
 	[Tooltip("Folder where the objects that should be used in the environment are found. Should have Large, Medium, and Small subfolders.")]
 	public string folder;
+
+	[Tooltip("Folder where the powerups are found.")]
+	public string powerupFolder;
 
 	[Tooltip("The number of sections in a section x section grid that the planet will be divided into.")]
 	public int planetSections;
@@ -46,6 +51,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	[Tooltip("Generate all objects at once instead of by chunk.")]
 	public bool generateAllAtOnce;
 
+	[Tooltip("Value from 0 to 1 that determines how likely it is for a powerup to show up")]
+	public float powerupChance;
 	Dictionary<long, ProceduralGenerationPoint> grid;
 	Dictionary<long, List<EnvironmentOrienter>> chunkGrid;
 	Dictionary<long, bool> chunkStatus;
@@ -99,8 +106,6 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	public void LoadPlanet()
 	{
 		samplePoints = generatePoisson (minDistance, newPointsCount);
-	
-		List<long> keys = new List<long> (samplePoints.Keys);
 
 		if (generateAllAtOnce) {
 			generateAll();
@@ -128,7 +133,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		Object[] largeObjects = Resources.LoadAll (folder + "/Large");
 		Object[] mediumObjects = Resources.LoadAll (folder + "/Medium");
 		Object[] smallObjects = Resources.LoadAll (folder + "/Small");
-
+		Object[] powerUpObjects = Resources.LoadAll (powerupFolder);
 		List<long> keys = new List<long> (samplePoints.Keys);
 		long key;
 
@@ -147,10 +152,15 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 				{
 					ob = GameObject.Instantiate((GameObject) mediumObjects[Random.Range(0, mediumObjects.Length)]);
 				}
-				else
+				else if(samplePoints[key][i].size == large)
 				{
 					ob = GameObject.Instantiate((GameObject) largeObjects[Random.Range(0, largeObjects.Length)]);
 				}
+				else
+				{
+					ob = GameObject.Instantiate((GameObject) powerUpObjects[Random.Range(0, powerUpObjects.Length)]);
+				}
+
 
 				
 				ob.transform.parent = transform;
@@ -172,6 +182,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		Object[] largeObjects = Resources.LoadAll (folder + "/Large");
 		Object[] mediumObjects = Resources.LoadAll (folder + "/Medium");
 		Object[] smallObjects = Resources.LoadAll (folder + "/Small");
+		Object[] powerUpObjects = Resources.LoadAll (powerupFolder);
 
 		int i, j;
 
@@ -227,6 +238,25 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 				objectPoolByName[ob.name].Add(ob.GetComponent<EnvironmentOrienter>());
 			}
 		}
+
+		objectBySize.Add ("PowerUp", new List<GameObject> ());
+		Debug.Log (powerUpObjects.Length);
+		for(i = 0; i < largeObjects.Length; i++)
+		{
+			objectBySize["PowerUp"].Add((GameObject) powerUpObjects[i]);
+			objectPoolByName.Add(powerUpObjects[i].name, new List<EnvironmentOrienter>());
+			
+			for(j = 0; j < initialObjects; j++)
+			{
+				GameObject ob = GameObject.Instantiate((GameObject) powerUpObjects[i]);
+				
+				ob.name = powerUpObjects[i].name;
+				ob.transform.parent = transform;
+				ob.SetActive(false);
+				objectPoolByName[ob.name].Add(ob.GetComponent<EnvironmentOrienter>());
+			}
+		}
+
 	
 	}
 
@@ -299,10 +329,15 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 					choice = Random.Range(0, objectBySize["Medium"].Count);
 					name = objectBySize["Medium"][choice].name;
 				}
-				else
+				else if(points[i].size == large)
 				{
 					choice = Random.Range(0, objectBySize["Large"].Count);
 					name = objectBySize["Large"][choice].name;
+				}
+				else
+				{
+					choice = Random.Range(0, objectBySize["PowerUp"].Count);
+					name = objectBySize["PowerUp"][choice].name;
 				}
 
 				ob = objectPoolByName[name][0];
@@ -331,6 +366,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 
 			ob.transform.localPosition = points[i].position + samplePoints[key][i].size * faceNormals[samplePoints[key][i].triangleIndex];
 			ob.gameObject.SetActive(true);
+			ob.OrientToPlanet();
 			ob.DropToPlanet();
 			chunkGrid[key].Add(ob);
 		}
@@ -775,16 +811,19 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	{
 		float i = Random.Range (0f, 1f);
 
-		if(i < colorChances[0])
-		{
-			return small;
-		}
-		else if(i < colorChances[1])
-		{
-			return medium;
-		}
+		if (i < powerupChance) {
 	
-		return large;
+			return powerUpSize;
+		} else {
+			i = Random.Range (0f, 1f);
+			if (i < colorChances [0]) {
+				return small;
+			} else if (i < colorChances [1]) {
+				return medium;
+			}
+	
+			return large;
+		}
 	}
 
 	/// <summary>
