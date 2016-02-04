@@ -4,6 +4,9 @@ public class ScoreManager : MonoBehaviour
 {
     public string PlayerName;
     public static ScoreManager Instance = null;
+
+    public delegate void BoltAction();
+    public static event BoltAction AmountReached;
     
     // initial Multiplier.
     public int multi = 1;
@@ -11,7 +14,8 @@ public class ScoreManager : MonoBehaviour
 	// The player's score.
     public int score = 0;
 
-    public float BoltCount = 0f;   
+    public float BoltCount = 0f,
+        BoltGoal = 200f;   
          
     public string multiplierText;
 
@@ -104,6 +108,11 @@ public class ScoreManager : MonoBehaviour
     public void collectBolt(float amount)
     {
         this.BoltCount += amount;
+        if(BoltCount > BoltGoal)
+        {
+            AmountReached();
+            resetBoltCount();
+        }
     }
 
     /// <summary>
