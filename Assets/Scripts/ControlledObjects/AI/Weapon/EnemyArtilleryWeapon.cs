@@ -26,7 +26,7 @@ public class EnemyArtilleryWeapon : MonoBehaviour
 		this.speed  = this.GetComponent<Weapon>().speed;
 		this.state  = States.rise;;
 		this.originalPosition = transform.position;
-		this.rotationSpeed = 180 * this.speed / (Mathf.PI * Player.Instance.getPlanetNavigation().radius);
+		this.rotationSpeed = 180 * this.speed / (Mathf.PI * Player.Instance.getPlanetNavigation().Radius);
 	}
 
     private void addNewRigidBody()
