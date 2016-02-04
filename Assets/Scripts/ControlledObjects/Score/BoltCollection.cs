@@ -5,12 +5,20 @@ public class BoltCollection : MonoBehaviour
 {
     // How much it increases the bolt count by
     public float BoltIncreaseAmount = 5f;
+    System.Random rand;
 
     public float
         Range = 5,
-        MoveSpeed = 2f;
+        MoveSpeed = 2f,
+        ScatterForceRange = 5;
 
     public LayerMask TargetLayer;
+
+    void Start()
+    {
+        rand = new System.Random();
+        GetComponent<Rigidbody>().AddForce(new Vector3(rand.Next((int)ScatterForceRange), rand.Next((int)ScatterForceRange), rand.Next((int)ScatterForceRange)));
+    }
 
     void Update()
     {

@@ -9,6 +9,12 @@ public class WarpTransport : MonoBehaviour {
     // REMOVE WHEN BOLTS ARE IN
     public bool canTransport;
 
+    void Start()
+    {
+        this.canTransport = false;
+        ScoreManager.AmountReached += ActivateTeleport;
+    }
+
     void OnTriggerStay(Collider collider)
     {
         // TODO:  add check for player bolt quantity
@@ -17,11 +23,11 @@ public class WarpTransport : MonoBehaviour {
             // Disable player movement while transport is happening
             Player.Instance.GetComponent<ForceMover>().enabled = false;
 
-			// Destroys all currently spawned enemies
-			SpawnSystem.Instance.DestroyAllChildren();
+            // Destroys all currently spawned enemies
+            SpawnSystem.Instance.DestroyAllChildren();
 
-			// Disables spawner while player is warping
-			SpawnSystem.Instance.enabled = false;
+            // Disables spawner while player is warping
+            SpawnSystem.Instance.enabled = false;
 
             StartCoroutine(TransportAfterTime());
         }
@@ -46,7 +52,20 @@ public class WarpTransport : MonoBehaviour {
         // Re-enables ForceMover script so player can move again
         Player.Instance.GetComponent<ForceMover>().enabled = true;
 
-		// Re-enables SpawnSystem script to create new enemies
-		SpawnSystem.Instance.enabled = true;
+        // Re-enables SpawnSystem script to create new enemies
+        SpawnSystem.Instance.enabled = true;
+    }
+
+    public void ActivateTeleport()
+    {
+        // TODO: Some shit to make that jawn look fancy and what not
+        Debug.Log("Teleport Active\n");
+        this.canTransport = true;
+    }
+
+    void OnApplicationQuit()
+    {
+        Debug.Log("HOOOOOOOO it ended!");
+        ScoreManager.AmountReached -= ActivateTeleport;
     }
 }
