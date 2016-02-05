@@ -7,6 +7,7 @@ public class DeleteThisScriptAferDemo : MonoBehaviour
     public Transform startMarker;
     public float timeToMove = 10f;
     public GameObject boss;
+	public GameObject gui;
 
     private Vector3 startPos;
     private float startTime;
@@ -17,6 +18,8 @@ public class DeleteThisScriptAferDemo : MonoBehaviour
         startMarker = this.transform;
         startTime = Time.time;
         journeyLength = Vector3.Distance(startMarker.position, endMarker.position);
+
+		this.gui.SetActive(false);
     }
     void Update()
     {
