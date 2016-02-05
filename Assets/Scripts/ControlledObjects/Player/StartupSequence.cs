@@ -77,7 +77,7 @@ public class StartupSequence : MonoBehaviour {
     void LookAtApproachWaypoint(int waypointIndex)
     {
         if (!(waypointIndex >= planetApproachPathPositions.Length-1))
-            Player.Instance.transform.DOLookAt(planetApproachPathPositions[waypointIndex + 1], 1f);
+            Player.Instance.transform.DOLookAt(planetApproachPathPositions[waypointIndex + 1], 2f);
         else
             Player.Instance.transform.DOLookAt(crashLandingPathPositions[0], 1f);
     }
@@ -85,6 +85,6 @@ public class StartupSequence : MonoBehaviour {
     void LookAtCrashWaypoint(int waypointIndex)
     {
         if(!(waypointIndex >= crashLandingPathPositions.Length-1))
-            Player.Instance.transform.DOLookAt(crashLandingPathPositions[waypointIndex + 1], 1f);
+            Player.Instance.transform.DOLookAt(crashLandingPathPositions[waypointIndex + 1], 2f);
     }
 }
