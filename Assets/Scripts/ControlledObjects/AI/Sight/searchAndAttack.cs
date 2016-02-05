@@ -38,8 +38,14 @@ public class searchAndAttack : MonoBehaviour
 		// Check targ
 		if(targ != null)
 		{	
-			if(!bossAttack)
-				transform.LookAt(targ.position);
+			if(!this.bossAttack)
+			{
+//				transform.LookAt(targ.position);
+				// Get correct location to look in
+				this.transform.LookAt( new Vector3( targ.position.x, 
+				                                    this.transform.position.y, 
+				                                    targ.position.z));
+			}
 
 			this.playerFound = true;
 
@@ -50,6 +56,7 @@ public class searchAndAttack : MonoBehaviour
 
 				// add target to bullet
 				bullet.GetComponent<FireForward>().target = targ.position;
+
 				// reset timer
 				timer = 0f;
 			}

@@ -12,16 +12,22 @@ public class AISight : MonoBehaviour {
     /// </summary>
     public Transform LookForPlayer() 
 	{
-        Transform t = null;
-        int count = Eyes.Length;
-        for (int i=0; i<count; i++) {
-            RaycastHit hit = Eyes[i].LookForPlayer();
-            if (hit.collider != null && hit.collider.tag == Player.Instance.tag) {
-                return hit.collider.transform;
-            }
-        }
+		// Check each eye
+		for (int i=0; i < Eyes.Length; ++i) 
+		{	
+			// Use Eye to see if player is in sight
+			RaycastHit hit = Eyes[i].LookForPlayer();
 
-        return t;
+			// check the hit received from the eye
+            if (hit.collider != null && hit.collider.CompareTag(Player.Instance.tag))
+			{
+				// Return the transform if valid
+				return hit.collider.transform;
+			}
+		}
+	
+		// No transform found, return null
+        return null;
     }
 
 }

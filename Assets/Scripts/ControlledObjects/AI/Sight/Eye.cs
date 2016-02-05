@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Eye : MonoBehaviour {
-
+public class Eye : MonoBehaviour 
+{
     [Tooltip("The total field of view the eye can see within, in degrees.")]
     public float FieldOfView = 120;
+
     [Tooltip("The maximum distance the eye can detect the player within.")]
     public float MaxSightDistance = Mathf.Infinity;
 
@@ -16,7 +17,9 @@ public class Eye : MonoBehaviour {
     /// the way, the hit will return that object's collider. If the player is within the field of view
     /// and max distance and there are no colliders in the way, it hit's collider will be the player.
     /// </summary>
-    public RaycastHit LookForPlayer() {
+    public RaycastHit LookForPlayer() 
+	{
+		// Get direction towards the player
         Vector3 rayDirection = Player.Instance.getTransformPosition() - transform.position;
         
 		if(this.debugRayCast)
