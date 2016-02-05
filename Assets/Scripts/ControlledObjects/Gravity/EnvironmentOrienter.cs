@@ -11,7 +11,8 @@ public class EnvironmentOrienter : MonoBehaviour {
     [Tooltip("Drops the objects a little farther, so that the object intersects with the planet instead of just touching it.")]
     public float ExtraDropDistance = 0;
 
-    public void OrientToPlanet() {
+    public void OrientToPlanet() 
+    {
         InterplanetaryObject io = gameObject.AddComponent<InterplanetaryObject>();
         if (PlanetOverride != null) io.NearestPlanet = PlanetOverride;
         else io.NearestPlanet = InterplanetaryObject.GetNearestPlanet(transform.position);
