@@ -9,7 +9,8 @@ public class EnemyArtillery : MonoBehaviour
 	public float rotateSpeed = 20;
 	public float fireResetTime = 10;
     public float timeToTarget = 5f;
-    public float shellHeightModifier = 1.1f;
+    public float maxShellHeight = 25f;
+    public float calculationSwitchDistance = 10f;
     public bool delayedFire;
 
 	private float previousAngle = 0;
@@ -42,20 +43,25 @@ public class EnemyArtillery : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if(this.readyToFire && this.inPositionToFire)
-		{
-			GameObject clone = (GameObject) Instantiate(this.projectile, this.attackSpawnPoint.position, this.attackSpawnPoint.rotation);
-            // clone.GetComponent<Rigidbody>().AddForce(clone.transform.forward * Vector3.Distance(this.transform.position, Player.Instance.transform.position) * 10);
+        if (this.readyToFire && this.inPositionToFire)
+        {
+            float distanceToPlayer = DistanceCalculator.squareEuclidianDistance(this.transform.position, Player.Instance.transform.position);
 
-            Vector3 midpoint = Vector3.Lerp(attackSpawnPoint.position, Player.Instance.transform.position, 0.5f);
+            GameObject clone = (GameObject)Instantiate(this.projectile, this.attackSpawnPoint.position, this.attackSpawnPoint.rotation);
 
-            Vector3 point1 = attackSpawnPoint.position;
-            Vector3 point2 = midpoint * shellHeightModifier;
-            Vector3 point3 = Player.Instance.transform.position;
+            if (distanceToPlayer >= Mathf.Pow(calculationSwitchDistance, 2f))
+            { 
+              clone.GetComponent<Rigidbody>().AddForce(clone.transform.forward * Vector3.Distance(attackSpawnPoint.position, Player.Instance.transform.position) * 10);
+            }
+            else
+            {
 
-            Vector3[] shellArcPath = { point1, point2, point3 };
+                float shellVelocityX = (Vector3.Distance(Player.Instance.transform.position, attackSpawnPoint.position) / timeToTarget);
+                float shellVelocityY = ((maxShellHeight - 4.9f * Mathf.Pow(timeToTarget, 2)) / timeToTarget);
+                float shellVelocity = Mathf.Sqrt(Mathf.Pow(shellVelocityX, 2) + Mathf.Pow(shellVelocityY, 2)) / 2f;
 
-            clone.transform.DOPath(shellArcPath, timeToTarget, PathType.CatmullRom);
+                clone.GetComponent<Rigidbody>().AddForce(clone.transform.forward * shellVelocity, ForceMode.Impulse);
+            }
 
 			this.readyToFire = false;
 			this.inPositionToFire = false;
