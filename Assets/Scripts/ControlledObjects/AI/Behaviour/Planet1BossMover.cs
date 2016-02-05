@@ -6,7 +6,8 @@ public class Planet1BossMover : AbstractMover {
 	
     private Vector3 initialBossPosition;
 
-    private bool playerInRange;
+    public bool playerInRange;
+    private bool playerRangeChanged = false;
 
     public float minDistanceMagnitude = 50f;
     public float maxDistanceMagnitude = 150f;
@@ -49,15 +50,18 @@ public class Planet1BossMover : AbstractMover {
 	private void checkPlan()
 	{	
 		// CHeck if plan is null or the square distance is to large
-		if (this.plan == null || DistanceCalculator.squareEuclidianDistance(base.targetLocation, Player.Instance.transform.position) >= base.minReachDistance)
+		if (this.plan == null || DistanceCalculator.squareEuclidianDistance(base.targetLocation, Player.Instance.transform.position) >= base.minReachDistance || playerRangeChanged)
 		{
+            playerRangeChanged = false;
 			base.resetTargetIndex();
 
-			// TODO: Use x vertices away functionality in updated A*
-            if(!playerInRange)
-			    base.setTarget(Player.Instance.transform.position);
+            // TODO: Use x vertices away functionality in updated A*
+            if (playerInRange)
+                base.setTarget(Player.Instance.transform.position);
             else
+            {
                 base.setTarget(this.transform.position);
+            }
 
 			this.getNewPlan();
 		}
@@ -70,11 +74,15 @@ public class Planet1BossMover : AbstractMover {
 
     void OnTriggerEnter(Collider obj)
     {
-        playerInRange = obj.gameObject.CompareTag("Player");
+        if(obj.gameObject.CompareTag("Player"))
+            playerInRange = true;
+        playerRangeChanged = true;
     }
 
     void OnTriggerExit(Collider obj)
     {
-        playerInRange = !obj.gameObject.CompareTag("Player");
+        if(obj.gameObject.CompareTag("Player"))
+            playerInRange = false;
+        playerRangeChanged = true;
     }
 }
