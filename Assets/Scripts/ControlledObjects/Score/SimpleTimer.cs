@@ -16,6 +16,7 @@ public class SimpleTimer : MonoBehaviour
     Text text;
     public Text restartText;
     public bool GameOver = false;
+    public float RestartTime = 15;
 
     /// <summary>
     /// called on awake
@@ -39,19 +40,16 @@ public class SimpleTimer : MonoBehaviour
         else if (this.timeS <= 0)
         {
             if (!GameOver) {
-                OnGameOver();
+                //OnGameOver();
                 GameOver = true;
+                timerEnded();
             }
-            timerEnded();
 
+            timeS -= Time.deltaTime;
+
+            StartCoroutine(RestartOnTimer());
             if (InputManager.PlayerStartInput > float.Epsilon || Input.GetKeyDown(KeyCode.Alpha1)) {
-                restartText.enabled = false;
-   
-                HighScoreList.Instance.ClearAll();
-                WeaponDisplayController.Instance.ZeroOutAmmo();
-
-                Application.LoadLevel(0);
-                Time.timeScale = 1;
+                Restart();
             } 
         }
     }
@@ -81,6 +79,20 @@ public class SimpleTimer : MonoBehaviour
         int minutes = Mathf.FloorToInt(timeS / 60F);
         int seconds = Mathf.FloorToInt(timeS - minutes * 60);
         text.text = "Time: " + string.Format("{0:0}:{1:00}", minutes, seconds);
+    }
+
+    void Restart() {
+        restartText.enabled = false;
+
+        HighScoreList.Instance.ClearAll();
+        WeaponDisplayController.Instance.ZeroOutAmmo();
+
+        Application.LoadLevel(0);
+        Time.timeScale = 1;
+    }
+
+    IEnumerator RestartOnTimer() {
+        yield return new WaitForSeconds(RestartTime);
     }
 }
 
