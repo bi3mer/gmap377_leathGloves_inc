@@ -1,0 +1,221 @@
+fileFormatVersion: 2
+guid: e609cf453a56be641b43d866601bd602
+timeCreated: 1454781124
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Botleaf1
+    100002: Botleaf2
+    100004: Botstem
+    100006: Flower 1
+    100008: //RootNode
+    100010: Flowerfeeler1a
+    100012: Flowerfeeler1b
+    100014: Flowerfeeler2a
+    100016: Flowerfeeler2b
+    100018: Flowerfeeler3a
+    100020: Flowerfeeler3b
+    100022: Flowerfeeler4a
+    100024: Flowerfeeler4b
+    100026: Flowerpetal1
+    100028: Flowerpetal2
+    100030: Flowerpetal3
+    100032: Flowerpetal4
+    100034: leafInsideblu
+    100036: leafInsideblue
+    100038: leafInsideorangeBot1
+    100040: leafInsideorangeBot2
+    100042: leafInsideorangeTop1
+    100044: leafInsideorangeTop2
+    100046: Midleaf1
+    100048: Midleaf2
+    100050: Midstem
+    100052: Plantbase1
+    100054: Stem
+    100056: Topleaf1
+    100058: Topleaf2
+    100060: Topstem
+    400000: Botleaf1
+    400002: Botleaf2
+    400004: Botstem
+    400006: Flower 1
+    400008: //RootNode
+    400010: Flowerfeeler1a
+    400012: Flowerfeeler1b
+    400014: Flowerfeeler2a
+    400016: Flowerfeeler2b
+    400018: Flowerfeeler3a
+    400020: Flowerfeeler3b
+    400022: Flowerfeeler4a
+    400024: Flowerfeeler4b
+    400026: Flowerpetal1
+    400028: Flowerpetal2
+    400030: Flowerpetal3
+    400032: Flowerpetal4
+    400034: leafInsideblu
+    400036: leafInsideblue
+    400038: leafInsideorangeBot1
+    400040: leafInsideorangeBot2
+    400042: leafInsideorangeTop1
+    400044: leafInsideorangeTop2
+    400046: Midleaf1
+    400048: Midleaf2
+    400050: Midstem
+    400052: Plantbase1
+    400054: Stem
+    400056: Topleaf1
+    400058: Topleaf2
+    400060: Topstem
+    2300000: Botleaf1
+    2300002: Botleaf2
+    2300004: Botstem
+    2300006: Flowerfeeler1a
+    2300008: Flowerfeeler1b
+    2300010: Flowerfeeler2a
+    2300012: Flowerfeeler2b
+    2300014: Flowerfeeler3a
+    2300016: Flowerfeeler3b
+    2300018: Flowerfeeler4a
+    2300020: Flowerfeeler4b
+    2300022: Flowerpetal1
+    2300024: Flowerpetal2
+    2300026: Flowerpetal3
+    2300028: Flowerpetal4
+    2300030: leafInsideblu
+    2300032: leafInsideblue
+    2300034: leafInsideorangeBot1
+    2300036: leafInsideorangeBot2
+    2300038: leafInsideorangeTop1
+    2300040: leafInsideorangeTop2
+    2300042: Midleaf1
+    2300044: Midleaf2
+    2300046: Midstem
+    2300048: Plantbase1
+    2300050: Stem
+    2300052: Topleaf1
+    2300054: Topleaf2
+    2300056: Topstem
+    3300000: Botleaf1
+    3300002: Botleaf2
+    3300004: Botstem
+    3300006: Flowerfeeler1a
+    3300008: Flowerfeeler1b
+    3300010: Flowerfeeler2a
+    3300012: Flowerfeeler2b
+    3300014: Flowerfeeler3a
+    3300016: Flowerfeeler3b
+    3300018: Flowerfeeler4a
+    3300020: Flowerfeeler4b
+    3300022: Flowerpetal1
+    3300024: Flowerpetal2
+    3300026: Flowerpetal3
+    3300028: Flowerpetal4
+    3300030: leafInsideblu
+    3300032: leafInsideblue
+    3300034: leafInsideorangeBot1
+    3300036: leafInsideorangeBot2
+    3300038: leafInsideorangeTop1
+    3300040: leafInsideorangeTop2
+    3300042: Midleaf1
+    3300044: Midleaf2
+    3300046: Midstem
+    3300048: Plantbase1
+    3300050: Stem
+    3300052: Topleaf1
+    3300054: Topleaf2
+    3300056: Topstem
+    4300000: Plantbase1
+    4300002: Botleaf2
+    4300004: Botleaf1
+    4300006: Botstem
+    4300008: Midleaf1
+    4300010: Midleaf2
+    4300012: Stem
+    4300014: Topleaf2
+    4300016: Topstem
+    4300018: Topleaf1
+    4300020: Midstem
+    4300022: Flowerfeeler4b
+    4300024: Flowerfeeler4a
+    4300026: Flowerfeeler2b
+    4300028: Flowerfeeler2a
+    4300030: Flowerfeeler3b
+    4300032: Flowerfeeler3a
+    4300034: Flowerfeeler1a
+    4300036: Flowerfeeler1b
+    4300038: Flowerpetal4
+    4300040: Flowerpetal2
+    4300042: Flowerpetal1
+    4300044: Flowerpetal3
+    4300046: leafInsideblu
+    4300048: leafInsideblue
+    4300050: leafInsideorangeTop1
+    4300052: leafInsideorangeTop2
+    4300054: leafInsideorangeBot1
+    4300056: leafInsideorangeBot2
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 0
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

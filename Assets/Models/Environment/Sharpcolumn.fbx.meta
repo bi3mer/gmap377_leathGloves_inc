@@ -1,0 +1,161 @@
+fileFormatVersion: 2
+guid: 1641f83b95b5b1c4eb008fce39af7e1e
+timeCreated: 1454780957
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: IceColumn
+    100002: Needles
+    100004: //RootNode
+    100006: SharpneedleTop
+    100008: SharpneedleTop1
+    100010: SharpneedleTop10
+    100012: SharpneedleTop11
+    100014: SharpneedleTop12
+    100016: SharpneedleTop13
+    100018: SharpneedleTop14
+    100020: SharpneedleTop2
+    100022: SharpneedleTop3
+    100024: SharpneedleTop4
+    100026: SharpneedleTop5
+    100028: SharpneedleTop6
+    100030: SharpneedleTop7
+    100032: SharpneedleTop8
+    100034: SharpneedleTop9
+    100036: snow
+    400000: IceColumn
+    400002: Needles
+    400004: //RootNode
+    400006: SharpneedleTop
+    400008: SharpneedleTop1
+    400010: SharpneedleTop10
+    400012: SharpneedleTop11
+    400014: SharpneedleTop12
+    400016: SharpneedleTop13
+    400018: SharpneedleTop14
+    400020: SharpneedleTop2
+    400022: SharpneedleTop3
+    400024: SharpneedleTop4
+    400026: SharpneedleTop5
+    400028: SharpneedleTop6
+    400030: SharpneedleTop7
+    400032: SharpneedleTop8
+    400034: SharpneedleTop9
+    400036: snow
+    2300000: IceColumn
+    2300002: SharpneedleTop
+    2300004: SharpneedleTop1
+    2300006: SharpneedleTop10
+    2300008: SharpneedleTop11
+    2300010: SharpneedleTop12
+    2300012: SharpneedleTop13
+    2300014: SharpneedleTop14
+    2300016: SharpneedleTop2
+    2300018: SharpneedleTop3
+    2300020: SharpneedleTop4
+    2300022: SharpneedleTop5
+    2300024: SharpneedleTop6
+    2300026: SharpneedleTop7
+    2300028: SharpneedleTop8
+    2300030: SharpneedleTop9
+    2300032: snow
+    3300000: IceColumn
+    3300002: SharpneedleTop
+    3300004: SharpneedleTop1
+    3300006: SharpneedleTop10
+    3300008: SharpneedleTop11
+    3300010: SharpneedleTop12
+    3300012: SharpneedleTop13
+    3300014: SharpneedleTop14
+    3300016: SharpneedleTop2
+    3300018: SharpneedleTop3
+    3300020: SharpneedleTop4
+    3300022: SharpneedleTop5
+    3300024: SharpneedleTop6
+    3300026: SharpneedleTop7
+    3300028: SharpneedleTop8
+    3300030: SharpneedleTop9
+    3300032: snow
+    4300000: SharpneedleTop4
+    4300002: SharpneedleTop5
+    4300004: SharpneedleTop6
+    4300006: SharpneedleTop7
+    4300008: SharpneedleTop8
+    4300010: SharpneedleTop9
+    4300012: SharpneedleTop10
+    4300014: SharpneedleTop11
+    4300016: SharpneedleTop12
+    4300018: SharpneedleTop13
+    4300020: SharpneedleTop14
+    4300022: SharpneedleTop
+    4300024: SharpneedleTop3
+    4300026: SharpneedleTop2
+    4300028: SharpneedleTop1
+    4300030: snow
+    4300032: IceColumn
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
