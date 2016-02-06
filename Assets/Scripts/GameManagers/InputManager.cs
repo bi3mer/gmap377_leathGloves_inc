@@ -22,6 +22,19 @@ public class InputManager : MonoBehaviour {
                 return Input.GetAxisRaw("Vertical");
         }
     }
+    public static float Player1Strafe {
+        get {
+            if (XCI.GetNumPluggedCtrlrs() >= 1) { 
+                if (XCI.GetButton(XboxButton.LeftBumper, 1))
+                    return -1;
+                if (XCI.GetButton(XboxButton.RightBumper, 1))
+                    return 1;
+                return 0;
+            }
+            else
+                return Input.GetAxisRaw("Strafe");
+        }
+    }
     public static float Player2HorizontalInput {
         get {
             if (XCI.GetNumPluggedCtrlrs() >= 2) {
