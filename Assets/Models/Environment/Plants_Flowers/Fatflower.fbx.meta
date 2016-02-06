@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: fc3d63b3c5538b34385b6c13bb6a98b9
+timeCreated: 1454793662
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Fatbase
+    100002: //RootNode
+    100004: Fatleaf1
+    100006: Fatleaf2
+    100008: Fatleaf3
+    100010: Fatleaf4
+    100012: Fatstem
+    100014: Fatstem1
+    100016: FatStem4
+    100018: Fatstem5
+    100020: FatstemMain
+    100022: FattopSpore1
+    100024: FattopSpore2
+    100026: FattopSpore3
+    100028: FattopSpore4
+    100030: FattopSpore5
+    100032: FattopSpore6
+    400000: Fatbase
+    400002: //RootNode
+    400004: Fatleaf1
+    400006: Fatleaf2
+    400008: Fatleaf3
+    400010: Fatleaf4
+    400012: Fatstem
+    400014: Fatstem1
+    400016: FatStem4
+    400018: Fatstem5
+    400020: FatstemMain
+    400022: FattopSpore1
+    400024: FattopSpore2
+    400026: FattopSpore3
+    400028: FattopSpore4
+    400030: FattopSpore5
+    400032: FattopSpore6
+    2300000: Fatbase
+    2300002: Fatleaf1
+    2300004: Fatleaf2
+    2300006: Fatleaf3
+    2300008: Fatleaf4
+    2300010: Fatstem
+    2300012: Fatstem1
+    2300014: FatStem4
+    2300016: Fatstem5
+    2300018: FatstemMain
+    2300020: FattopSpore1
+    2300022: FattopSpore2
+    2300024: FattopSpore3
+    2300026: FattopSpore4
+    2300028: FattopSpore5
+    2300030: FattopSpore6
+    3300000: Fatbase
+    3300002: Fatleaf1
+    3300004: Fatleaf2
+    3300006: Fatleaf3
+    3300008: Fatleaf4
+    3300010: Fatstem
+    3300012: Fatstem1
+    3300014: FatStem4
+    3300016: Fatstem5
+    3300018: FatstemMain
+    3300020: FattopSpore1
+    3300022: FattopSpore2
+    3300024: FattopSpore3
+    3300026: FattopSpore4
+    3300028: FattopSpore5
+    3300030: FattopSpore6
+    4300000: Fatstem1
+    4300002: Fatstem
+    4300004: FatstemMain
+    4300006: Fatleaf4
+    4300008: Fatleaf2
+    4300010: FattopSpore6
+    4300012: FattopSpore5
+    4300014: FattopSpore4
+    4300016: FattopSpore3
+    4300018: FattopSpore2
+    4300020: FattopSpore1
+    4300022: Fatleaf1
+    4300024: FatStem4
+    4300026: Fatleaf3
+    4300028: Fatstem5
+    4300030: Fatbase
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 0
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

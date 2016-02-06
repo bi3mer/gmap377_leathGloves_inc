@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e609cf453a56be641b43d866601bd602
-timeCreated: 1454781124
+guid: c29556770de0f5044a31f1213dced369
+timeCreated: 1454793661
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,28 +9,28 @@ ModelImporter:
     100002: Botleaf2
     100004: Botstem
     100006: Flower 1
-    100008: //RootNode
-    100010: Flowerfeeler1a
-    100012: Flowerfeeler1b
-    100014: Flowerfeeler2a
-    100016: Flowerfeeler2b
-    100018: Flowerfeeler3a
-    100020: Flowerfeeler3b
-    100022: Flowerfeeler4a
-    100024: Flowerfeeler4b
-    100026: Flowerpetal1
-    100028: Flowerpetal2
-    100030: Flowerpetal3
-    100032: Flowerpetal4
-    100034: leafInsideblu
-    100036: leafInsideblue
-    100038: leafInsideorangeBot1
-    100040: leafInsideorangeBot2
-    100042: leafInsideorangeTop1
-    100044: leafInsideorangeTop2
-    100046: Midleaf1
-    100048: Midleaf2
-    100050: Midstem
+    100008: Flowerfeeler1a
+    100010: Flowerfeeler1b
+    100012: Flowerfeeler2a
+    100014: Flowerfeeler2b
+    100016: Flowerfeeler3a
+    100018: Flowerfeeler3b
+    100020: Flowerfeeler4a
+    100022: Flowerfeeler4b
+    100024: Flowerpetal1
+    100026: Flowerpetal2
+    100028: Flowerpetal3
+    100030: Flowerpetal4
+    100032: leafInsideblu
+    100034: leafInsideblue
+    100036: leafInsideorangeBot1
+    100038: leafInsideorangeBot2
+    100040: leafInsideorangeTop1
+    100042: leafInsideorangeTop2
+    100044: Midleaf1
+    100046: Midleaf2
+    100048: Midstem
+    100050: //RootNode
     100052: Plantbase1
     100054: Stem
     100056: Topleaf1
@@ -40,28 +40,28 @@ ModelImporter:
     400002: Botleaf2
     400004: Botstem
     400006: Flower 1
-    400008: //RootNode
-    400010: Flowerfeeler1a
-    400012: Flowerfeeler1b
-    400014: Flowerfeeler2a
-    400016: Flowerfeeler2b
-    400018: Flowerfeeler3a
-    400020: Flowerfeeler3b
-    400022: Flowerfeeler4a
-    400024: Flowerfeeler4b
-    400026: Flowerpetal1
-    400028: Flowerpetal2
-    400030: Flowerpetal3
-    400032: Flowerpetal4
-    400034: leafInsideblu
-    400036: leafInsideblue
-    400038: leafInsideorangeBot1
-    400040: leafInsideorangeBot2
-    400042: leafInsideorangeTop1
-    400044: leafInsideorangeTop2
-    400046: Midleaf1
-    400048: Midleaf2
-    400050: Midstem
+    400008: Flowerfeeler1a
+    400010: Flowerfeeler1b
+    400012: Flowerfeeler2a
+    400014: Flowerfeeler2b
+    400016: Flowerfeeler3a
+    400018: Flowerfeeler3b
+    400020: Flowerfeeler4a
+    400022: Flowerfeeler4b
+    400024: Flowerpetal1
+    400026: Flowerpetal2
+    400028: Flowerpetal3
+    400030: Flowerpetal4
+    400032: leafInsideblu
+    400034: leafInsideblue
+    400036: leafInsideorangeBot1
+    400038: leafInsideorangeBot2
+    400040: leafInsideorangeTop1
+    400042: leafInsideorangeTop2
+    400044: Midleaf1
+    400046: Midleaf2
+    400048: Midstem
+    400050: //RootNode
     400052: Plantbase1
     400054: Stem
     400056: Topleaf1
