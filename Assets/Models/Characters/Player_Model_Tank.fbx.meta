@@ -1,0 +1,175 @@
+fileFormatVersion: 2
+guid: 370ee2d99b4e5794a8a9813bcb828696
+timeCreated: 1454877294
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Details
+    100002: hoverTank_body
+    100004: hoverTank_dtailPlate
+    100006: hovertank_greeble_10
+    100008: hovertank_greeble_11
+    100010: hovertank_handle
+    100012: hovertank_handle1
+    100014: hovertank_handle2
+    100016: hovertank_handle3
+    100018: hovertank_light
+    100020: hovertank_spotlight
+    100022: hovertank_spotlight1
+    100024: hovertank_spotlight2
+    100026: hovertank_spotlightSupport1
+    100028: hovertank_spotlightSupport2
+    100030: hovertank_spotlightSupport3
+    100032: hovertank_spotlightSupport4
+    100034: hovertank_spotlightSupport5
+    100036: hovertank_spotlightSupport6
+    100038: hovertank_spotlightSupport7
+    100040: pCube1
+    100042: //RootNode
+    400000: Details
+    400002: hoverTank_body
+    400004: hoverTank_dtailPlate
+    400006: hovertank_greeble_10
+    400008: hovertank_greeble_11
+    400010: hovertank_handle
+    400012: hovertank_handle1
+    400014: hovertank_handle2
+    400016: hovertank_handle3
+    400018: hovertank_light
+    400020: hovertank_spotlight
+    400022: hovertank_spotlight1
+    400024: hovertank_spotlight2
+    400026: hovertank_spotlightSupport1
+    400028: hovertank_spotlightSupport2
+    400030: hovertank_spotlightSupport3
+    400032: hovertank_spotlightSupport4
+    400034: hovertank_spotlightSupport5
+    400036: hovertank_spotlightSupport6
+    400038: hovertank_spotlightSupport7
+    400040: pCube1
+    400042: //RootNode
+    2300000: hoverTank_body
+    2300002: hoverTank_dtailPlate
+    2300004: hovertank_greeble_10
+    2300006: hovertank_greeble_11
+    2300008: hovertank_handle
+    2300010: hovertank_handle1
+    2300012: hovertank_handle2
+    2300014: hovertank_handle3
+    2300016: hovertank_light
+    2300018: hovertank_spotlight
+    2300020: hovertank_spotlight1
+    2300022: hovertank_spotlight2
+    2300024: hovertank_spotlightSupport1
+    2300026: hovertank_spotlightSupport2
+    2300028: hovertank_spotlightSupport3
+    2300030: hovertank_spotlightSupport4
+    2300032: hovertank_spotlightSupport5
+    2300034: hovertank_spotlightSupport6
+    2300036: hovertank_spotlightSupport7
+    2300038: pCube1
+    3300000: hoverTank_body
+    3300002: hoverTank_dtailPlate
+    3300004: hovertank_greeble_10
+    3300006: hovertank_greeble_11
+    3300008: hovertank_handle
+    3300010: hovertank_handle1
+    3300012: hovertank_handle2
+    3300014: hovertank_handle3
+    3300016: hovertank_light
+    3300018: hovertank_spotlight
+    3300020: hovertank_spotlight1
+    3300022: hovertank_spotlight2
+    3300024: hovertank_spotlightSupport1
+    3300026: hovertank_spotlightSupport2
+    3300028: hovertank_spotlightSupport3
+    3300030: hovertank_spotlightSupport4
+    3300032: hovertank_spotlightSupport5
+    3300034: hovertank_spotlightSupport6
+    3300036: hovertank_spotlightSupport7
+    3300038: pCube1
+    4300000: hoverTank_body
+    4300002: hoverTank_dtailPlate
+    4300004: hovertank_greeble_10
+    4300006: hovertank_greeble_11
+    4300008: hovertank_spotlight
+    4300010: hovertank_spotlightSupport1
+    4300012: hovertank_spotlightSupport2
+    4300014: hovertank_spotlightSupport3
+    4300016: hovertank_spotlight1
+    4300018: hovertank_spotlightSupport4
+    4300020: hovertank_spotlightSupport5
+    4300022: hovertank_spotlightSupport6
+    4300024: hovertank_spotlight2
+    4300026: hovertank_spotlightSupport7
+    4300028: hovertank_handle
+    4300030: hovertank_handle1
+    4300032: hovertank_handle2
+    4300034: hovertank_handle3
+    4300036: hovertank_light
+    4300038: pCube1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
