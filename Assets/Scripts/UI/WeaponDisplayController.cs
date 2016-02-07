@@ -27,7 +27,7 @@ public class WeaponDisplayController : MonoBehaviour
 
     void Awake()
     {
-		cache = this.GetComponent<PickupCache>();
+		cache = PickupCache.Instance;
         if (Instance)
         {
             Destroy(this);

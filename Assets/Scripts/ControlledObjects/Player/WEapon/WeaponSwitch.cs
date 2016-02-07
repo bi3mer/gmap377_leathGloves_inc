@@ -10,7 +10,7 @@ public class WeaponSwitch : MonoBehaviour {
     /// </summary>
     void Start()
     {
-		cache = this.GetComponent<PickupCache>();
+        cache = PickupCache.Instance;
     }
 
     /// <summary>

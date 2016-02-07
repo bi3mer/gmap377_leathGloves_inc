@@ -66,8 +66,8 @@ public class Pickup : MonoBehaviour
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
-                obj.gameObject.GetComponent<Shooting>().bullet = this.GetComponent<PickupCache>().Rocket;
-                this.GetComponent<PickupCache>().Rocket.GetComponent<Weapon>().ammo += 5;
+                obj.gameObject.GetComponent<Shooting>().bullet = PickupCache.Instance.Rocket;
+                PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo += 5;
 
                 //Set Gui to current weapon
                 WeaponDisplayController.Instance.AllOff();
@@ -87,8 +87,8 @@ public class Pickup : MonoBehaviour
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
-                obj.gameObject.GetComponent<Shooting>().bullet = this.GetComponent<PickupCache>().LaserBeam;
-                this.GetComponent<PickupCache>().LaserBeam.GetComponent<Weapon>().ammo += 3;
+                obj.gameObject.GetComponent<Shooting>().bullet = PickupCache.Instance.LaserBeam;
+                PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo += 3;
 
                 //Set Gui to current weapon
                 WeaponDisplayController.Instance.AllOff();
@@ -123,8 +123,8 @@ public class Pickup : MonoBehaviour
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
-                obj.gameObject.GetComponent<Shooting>().bullet = this.GetComponent<PickupCache>().Mine;
-                this.GetComponent<PickupCache>().Mine.GetComponent<Weapon>().ammo += 3;
+                obj.gameObject.GetComponent<Shooting>().bullet = PickupCache.Instance.Mine;
+                PickupCache.Instance.Mine.GetComponent<Weapon>().ammo += 3;
 
                 //Set Gui to current weapon
                 WeaponDisplayController.Instance.AllOff();

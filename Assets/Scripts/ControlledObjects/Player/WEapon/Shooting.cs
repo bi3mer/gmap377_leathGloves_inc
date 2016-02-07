@@ -35,7 +35,7 @@ public class Shooting : MonoBehaviour
 
 
                 // Parent the object to the spawn point if it's a laserbeam
-                if (bullet.gameObject.name == GetComponent<PickupCache>().LaserBeam.gameObject.name)
+                if (bullet.gameObject.name == PickupCache.Instance.LaserBeam.gameObject.name)
                 {
                     newBullet.transform.parent = spwnPt.transform;
                     ++PowerUpManager.Instance.CurrentLaserCount;
@@ -54,7 +54,7 @@ public class Shooting : MonoBehaviour
                     leftBullet = Instantiate(bullet, leftSpwn.transform.position, Quaternion.Euler(Vector3.forward)) as GameObject;
                     rightBullet = Instantiate(bullet, rightSpwn.transform.position, Quaternion.Euler(Vector3.forward)) as GameObject;
 
-                    if (bullet.gameObject.name == GetComponent<PickupCache>().LaserBeam.gameObject.name)
+                    if (bullet.gameObject.name == PickupCache.Instance.LaserBeam.gameObject.name)
                     {
                         ++PowerUpManager.Instance.CurrentLaserCount;
                         ++PowerUpManager.Instance.CurrentLaserCount;
@@ -67,7 +67,7 @@ public class Shooting : MonoBehaviour
                     rightBullet.transform.Rotate(new Vector3(0f, PowerUpManager.Instance.MultiShotAngle, 0f));
 
                     // Parent left and right button
-                    if (bullet.gameObject.name == GetComponent<PickupCache>().LaserBeam.gameObject.name)
+                    if (bullet.gameObject.name == PickupCache.Instance.LaserBeam.gameObject.name)
                     {
                         leftBullet.transform.parent = leftSpwn.transform;
                         rightBullet.transform.parent = rightSpwn.transform;
@@ -117,7 +117,7 @@ public class Shooting : MonoBehaviour
                     --bullet.GetComponent<Weapon>().ammo;
                     if (bullet.GetComponent<Weapon>().ammo == ZERO)
                     {
-                        this.bullet = GetComponent<PickupCache>().Laser;
+                        this.bullet = PickupCache.Instance.Laser;
 
                         //Set Gui to current weapon
                         WeaponDisplayController.Instance.AllOff();

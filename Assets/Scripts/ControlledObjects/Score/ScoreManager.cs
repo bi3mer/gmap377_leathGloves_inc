@@ -5,8 +5,11 @@ public class ScoreManager : MonoBehaviour
     public string PlayerName;
     public static ScoreManager Instance = null;
 
+    // Delegate to create events with
     public delegate void BoltAction();
-    public static event BoltAction AmountReached;
+
+    // Events for the warp system to subscribe to
+    public static event BoltAction AmountReached, PlayerTeleported;
     
     // initial Multiplier.
     public int multi = 1;
@@ -14,6 +17,7 @@ public class ScoreManager : MonoBehaviour
 	// The player's score.
     public int score = 0;
 
+    // The current bolt count, and the goal to activate the teleporters
     public float BoltCount = 0f,
         BoltGoal = 200f;   
          
@@ -107,11 +111,13 @@ public class ScoreManager : MonoBehaviour
     /// <param name="amount">Amount to add</param>
     public void collectBolt(float amount)
     {
+        // Add to the bolt count
         this.BoltCount += amount;
-        if(BoltCount > BoltGoal)
+
+        // If the goal is reached, call event
+        if(BoltCount >= BoltGoal)
         {
             AmountReached();
-            resetBoltCount();
         }
     }
 
@@ -122,5 +128,8 @@ public class ScoreManager : MonoBehaviour
     public void resetBoltCount()
     {
         this.BoltCount = 0f;
+
+        // Call deactivate event
+        PlayerTeleported();
     }
 }

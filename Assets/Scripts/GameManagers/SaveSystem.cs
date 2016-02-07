@@ -16,17 +16,17 @@ public class SaveSystem : MonoBehaviour {
         public int Score = ScoreManager.Instance.score;
         public Vector3 PlayerPosition = Player.Instance.transform.position;
         public Quaternion PlayerRotation = Player.instance.transform.rotation;
-        public float BeamAmmo = WeaponDisplayController.Instance.GetComponent<PickupCache>().LaserBeam.GetComponent<Weapon>().ammo;
-        public float MineAmmo = WeaponDisplayController.Instance.GetComponent<PickupCache>().Mine.GetComponent<Weapon>().ammo;
-        public float RocketAmmo = WeaponDisplayController.Instance.GetComponent<PickupCache>().Rocket.GetComponent<Weapon>().ammo;
+        public float BeamAmmo = PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo;
+        public float MineAmmo = PickupCache.Instance.Mine.GetComponent<Weapon>().ammo;
+        public float RocketAmmo = PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo;
 
         public void Load() {
             ScoreManager.Instance.score = Score;
             Player.Instance.transform.position = PlayerPosition;
             Player.Instance.transform.rotation = PlayerRotation;
-            WeaponDisplayController.Instance.GetComponent<PickupCache>().LaserBeam.GetComponent<Weapon>().ammo = BeamAmmo;
-            WeaponDisplayController.Instance.GetComponent<PickupCache>().Mine.GetComponent<Weapon>().ammo = MineAmmo;
-            WeaponDisplayController.Instance.GetComponent<PickupCache>().Rocket.GetComponent<Weapon>().ammo = RocketAmmo;
+            PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo = BeamAmmo;
+            PickupCache.Instance.Mine.GetComponent<Weapon>().ammo = MineAmmo;
+            PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo = RocketAmmo;
         }
     }
 
