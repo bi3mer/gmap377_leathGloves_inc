@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Name_InputField : MonoBehaviour
 {
 
+	public Button continueButton;
     private InputField nameInput;
 
     /// <summary>
@@ -30,4 +31,12 @@ public class Name_InputField : MonoBehaviour
             SaveSystem.Instance.Initialize(playerName);
         }
     }
+
+	public void checkValue()
+	{
+		if(nameInput.text.Length > 0)
+		{
+			continueButton.interactable = true;
+		}
+	}
 }

@@ -8,9 +8,14 @@ using XboxCtrlrInput;
 public class AimController : MonoBehaviour
 {
     public static AimController Instance;
+	public Texture2D cursorTexture;
 
     void Awake()
     {
+		Vector2 cursorHotspot = new Vector2 (cursorTexture.width / 2f, cursorTexture.height / 2f);
+
+		Cursor.SetCursor (cursorTexture, cursorHotspot, CursorMode.Auto);
+
         if(Instance == null)
         {
             Instance = this;

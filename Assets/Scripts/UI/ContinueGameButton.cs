@@ -4,7 +4,6 @@ using System.Collections;
 
 public class ContinueGameButton : MonoBehaviour {
 
-    public InputField NameInputField;
     private Button _button;
 
     void Start() {
@@ -12,9 +11,8 @@ public class ContinueGameButton : MonoBehaviour {
     }
 
 	void Update () {
-        string text = NameInputField.text;
-
-        if (System.IO.File.Exists(SaveSystem.Instance.SaveDirectory + "/" + text + SaveSystem.Instance.FileExt)) {
+		string text = GameStartManager.Instance.nameInputFieldData;        
+		if (System.IO.File.Exists(SaveSystem.Instance.SaveDirectory + "/" + text + SaveSystem.Instance.FileExt)) {
             _button.interactable = true;
         }
         else {

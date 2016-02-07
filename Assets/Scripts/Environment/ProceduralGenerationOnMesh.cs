@@ -485,9 +485,9 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 
 			firstPoint.size = getSize(getColorChance(c));
 
-			gridPoint = toGrid (firstPoint.uvPosition, cellSize, gridOffset);
-			firstPoint.gridPosition = gridPoint;
-
+			gridPoint = toGrid (firstPoint.uvPosition, chunkCellSize, chunkGridOffset);
+			firstPoint.chunkGridPosition = gridPoint;
+			firstPoint.gridPosition = toGrid (firstPoint.uvPosition, cellSize, gridOffset);
 			// the minimum distance of generation taking into acount the minimum distance allowed between objects, the density of the region, and the size of
 			// the object being generated around, all multiplied by the uvToMeshRatio so that the measurement is given in terms of uv distance
 
@@ -498,15 +498,17 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 			// otherwise it will check with overlappingPoint whether or not it is too close to any cells in its neighborhood
 			// if either are true then that means the point is invalid and another point is generated as an attemp
 
-			while (grid.ContainsKey(gridPoint) || overlappingPoint(grid, firstPoint, minDis, cellSize, firstPoint.triangleIndex)) 
+			while (chunkGrid.ContainsKey(gridPoint) || overlappingPoint(grid, firstPoint, minDis, cellSize, firstPoint.triangleIndex)) 
 			{
 				rand = Random.Range (0, triangles.Count);
 				firstPoint.position = getInterpolation (triangles [rand]);
 				firstPoint.triangleIndex = rand;
 				firstPoint.uvPosition = meshPointToUv(firstPoint);
 
-				gridPoint = toGrid (firstPoint.uvPosition, cellSize, gridOffset);
-				firstPoint.gridPosition = gridPoint;
+				gridPoint = toGrid(firstPoint.uvPosition, chunkCellSize, chunkGridOffset);
+				firstPoint.chunkGridPosition = gridPoint;
+				firstPoint.gridPosition = toGrid (firstPoint.uvPosition, cellSize, gridOffset);
+
 				minDis = (minDistance + distanceVariance * getDensity(c) + firstPoint.size) * uvToMeshRatio;
 
 				// it will only keep generating new points in an attempt at generating a valid point as many times as the maxAttempts allows
@@ -526,7 +528,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 			if (tries < maxAttempts) 
 			{
 				// uses grid location as key in sample points dictionary for access later
-				long key = toGrid(firstPoint.uvPosition, chunkCellSize, chunkGridOffset);
+				long key = firstPoint.chunkGridPosition;
+				firstPoint.gridPosition = toGrid (firstPoint.uvPosition, cellSize, gridOffset);
 				if(!samplePoints.ContainsKey(key))
 				{
 					samplePoints.Add(key, new List<ProceduralGenerationPoint>());
@@ -547,10 +550,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 				processList.Add (firstPoint);
 
 				// add point to grid
-				grid.Add (gridPoint, firstPoint);
-
-				// save which chunk that this point is in
-				firstPoint.chunkGridPosition = key;
+				grid.Add (firstPoint.gridPosition, firstPoint);
 			}
 		}
 
@@ -575,7 +575,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 				newPoint.gridPosition = gridPoint;
 				minDis = (minDistance + distanceVariance * getDensity(c) + newPoint.size) * uvToMeshRatio;
 
-				while (grid.ContainsKey(gridPoint) || overlappingPoint(grid, newPoint, minDis, cellSize, newPoint.triangleIndex)) 
+				while (grid.ContainsKey(gridPoint) || overlappingPoint(grid, newPoint, minDis,cellSize, newPoint.triangleIndex)) 
 				{
 					newPoint = generateRandomPointAround (point.triangleIndex, triangles, uvsToTriangles, minDistance + distanceVariance + large);
 
@@ -746,7 +746,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	{
 		Vector2 newPoint = point.uvPosition;
 		long gridPoint = point.gridPosition;
-		
+
 		int y = (int) gridPoint / gridOffset;
 		int x = (int) gridPoint - (y * gridOffset);
 

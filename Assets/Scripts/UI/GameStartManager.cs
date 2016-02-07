@@ -10,18 +10,23 @@ public class GameStartManager : MonoBehaviour {
     public Canvas StartScreenCanvas;
     public Canvas LoadingCanvas;
     public Text LoadingText;
-    public InputField NameInputField;
+   // public InputField NameInputField;
     public Button ContinueButton;
     public Button NewGameButton;
     public float LoadingTextCycleTime = 0.3f;
 
+	public string nameInputFieldData;
+
     void Awake() {
+		nameInputFieldData = GameObject.Find ("NameLoadScreenManager").GetComponent<NameLoadScreenManager> ().getNameFieldData ();
         if (!Instance) {
             Instance = this;
         }
         else {
             Destroy(this);
         }
+
+		GameObject.Destroy (GameObject.Find ("NameLoadScreenManager"));
     }
 
     void Start() {
@@ -52,19 +57,20 @@ public class GameStartManager : MonoBehaviour {
 
 
     public void OnNewGameButtonPressed() {
-        SaveSystem.Instance.PlayerID = NameInputField.text;
-        ScoreManager.Instance.PlayerName = NameInputField.text;
+		SaveSystem.Instance.PlayerID = nameInputFieldData;
+        ScoreManager.Instance.PlayerName = nameInputFieldData;
 
         StartScreenCanvas.enabled = false;
+		LoadingCanvas.gameObject.SetActive (true);
         StartCoroutine(CycleLoadingText());
         Application.LoadLevelAsync("OriginalScene");
         StartCoroutine(DestroyLoadingScreenOnLoad());
     }
 
     public void OnContinueButtonPressed() {
-        SaveSystem.Instance.PlayerID = NameInputField.text;
-        ScoreManager.Instance.PlayerName = NameInputField.text;
-
+		SaveSystem.Instance.PlayerID = nameInputFieldData;
+		ScoreManager.Instance.PlayerName = nameInputFieldData;
+		LoadingCanvas.gameObject.SetActive (true);
         StartScreenCanvas.enabled = false;
         StartCoroutine(CycleLoadingText());
         SaveSystem.Instance.SetLoadAtGameStart();
