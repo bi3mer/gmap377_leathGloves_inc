@@ -63,20 +63,27 @@ public class LaserBeamCylinder : MonoBehaviour
             // Create the "Got hit by laser" particle effect.
             GameObject.Instantiate(CollisionParticle, col.gameObject.transform.position, Quaternion.Euler(Vector3.zero));
 
-            // Get the enemy info
-            EnemyStats enemyHealth = col.transform.gameObject.GetComponentInParent<EnemyStats>();
-
-            // If the EnemyStats component was found on the game object
-            if (enemyHealth != null)
+            if (this.Target == "Enemy")
             {
-                // ... the enemy should take damage.
-                enemyHealth.TakeDamage((int)this.GetComponentInParent<Weapon>().damage);
+                // Get the enemy info
+                EnemyStats enemyHealth = col.transform.gameObject.GetComponentInParent<EnemyStats>();
 
-                // If the damage increase power up is active, do additional damage
-                if (PowerUpManager.Instance.Powerups["DamageUp"].IsActive)
+                // If the EnemyStats component was found on the game object
+                if (enemyHealth != null)
                 {
-                    enemyHealth.TakeDamage((int)PowerUpManager.Instance.PowerIncrease);
+                    // ... the enemy should take damage.
+                    enemyHealth.TakeDamage((int)this.GetComponentInParent<Weapon>().damage);
+
+                    // If the damage increase power up is active, do additional damage
+                    if (PowerUpManager.Instance.Powerups["DamageUp"].IsActive)
+                    {
+                        enemyHealth.TakeDamage((int)PowerUpManager.Instance.PowerIncrease);
+                    }
                 }
+            }
+            else if(this.Target == "Player")
+            {
+                ScoreManager.Instance.DecreaseScore((int)GetComponent<Weapon>().damage);
             }
         }
     }
@@ -86,7 +93,10 @@ public class LaserBeamCylinder : MonoBehaviour
     /// </summary>
     void OnDestroy()
     {
-        // Decrease the laser count by 1
-        --PowerUpManager.Instance.CurrentLaserCount;
+        if (this.Target == "Enemy")
+        {
+            // Decrease the laser count by 1
+            --PowerUpManager.Instance.CurrentLaserCount;
+        }
     }
 }
