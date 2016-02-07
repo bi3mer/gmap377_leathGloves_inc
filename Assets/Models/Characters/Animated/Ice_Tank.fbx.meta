@@ -1,0 +1,204 @@
+fileFormatVersion: 2
+guid: b8ae0a1a5e36fe94fb84526cfd8a75b9
+timeCreated: 1454801132
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Ice_Tank_Barrel_j
+    100004: Ice_Tank_base
+    100006: Ice_Tank_Base_j
+    100008: Ice_Tank_connector_NOANIM_j
+    100010: Ice_Tank_End_j
+    100012: Ice_Tank_joints
+    100014: Ice_Tank_Mesh
+    100016: Ice_Tank_Root_j
+    100018: Ice_Tank_Rotater
+    100020: Ice_Tank_Rotater_j
+    100022: Ice_Tank_Turret
+    400000: //RootNode
+    400002: Ice_Tank_Barrel_j
+    400004: Ice_Tank_base
+    400006: Ice_Tank_Base_j
+    400008: Ice_Tank_connector_NOANIM_j
+    400010: Ice_Tank_End_j
+    400012: Ice_Tank_joints
+    400014: Ice_Tank_Mesh
+    400016: Ice_Tank_Root_j
+    400018: Ice_Tank_Rotater
+    400020: Ice_Tank_Rotater_j
+    400022: Ice_Tank_Turret
+    4300000: Ice_Tank_base
+    4300002: Ice_Tank_Rotater
+    4300004: Ice_Tank_Turret
+    7400000: Idle
+    7400002: Shoot
+    9500000: //RootNode
+    13700000: Ice_Tank_base
+    13700002: Ice_Tank_Rotater
+    13700004: Ice_Tank_Turret
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 24
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Ice_Tank_joints
+        weight: 1
+      - path: Ice_Tank_joints/Ice_Tank_Root_j
+        weight: 1
+      - path: Ice_Tank_joints/Ice_Tank_Root_j/Ice_Tank_Base_j
+        weight: 1
+      - path: Ice_Tank_joints/Ice_Tank_Root_j/Ice_Tank_Base_j/Ice_Tank_connector_NOANIM_j
+        weight: 1
+      - path: Ice_Tank_joints/Ice_Tank_Root_j/Ice_Tank_Base_j/Ice_Tank_connector_NOANIM_j/Ice_Tank_Rotater_j
+        weight: 1
+      - path: Ice_Tank_joints/Ice_Tank_Root_j/Ice_Tank_Base_j/Ice_Tank_connector_NOANIM_j/Ice_Tank_Rotater_j/Ice_Tank_Barrel_j
+        weight: 1
+      - path: Ice_Tank_joints/Ice_Tank_Root_j/Ice_Tank_Base_j/Ice_Tank_connector_NOANIM_j/Ice_Tank_Rotater_j/Ice_Tank_Barrel_j/Ice_Tank_End_j
+        weight: 1
+      - path: Ice_Tank_Mesh
+        weight: 1
+      - path: Ice_Tank_Mesh/Ice_Tank_base
+        weight: 1
+      - path: Ice_Tank_Mesh/Ice_Tank_Rotater
+        weight: 1
+      - path: Ice_Tank_Mesh/Ice_Tank_Turret
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Shoot
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Ice_Tank_joints
+        weight: 1
+      - path: Ice_Tank_joints/Ice_Tank_Root_j
+        weight: 1
+      - path: Ice_Tank_joints/Ice_Tank_Root_j/Ice_Tank_Base_j
+        weight: 1
+      - path: Ice_Tank_joints/Ice_Tank_Root_j/Ice_Tank_Base_j/Ice_Tank_connector_NOANIM_j
+        weight: 1
+      - path: Ice_Tank_joints/Ice_Tank_Root_j/Ice_Tank_Base_j/Ice_Tank_connector_NOANIM_j/Ice_Tank_Rotater_j
+        weight: 1
+      - path: Ice_Tank_joints/Ice_Tank_Root_j/Ice_Tank_Base_j/Ice_Tank_connector_NOANIM_j/Ice_Tank_Rotater_j/Ice_Tank_Barrel_j
+        weight: 1
+      - path: Ice_Tank_joints/Ice_Tank_Root_j/Ice_Tank_Base_j/Ice_Tank_connector_NOANIM_j/Ice_Tank_Rotater_j/Ice_Tank_Barrel_j/Ice_Tank_End_j
+        weight: 1
+      - path: Ice_Tank_Mesh
+        weight: 1
+      - path: Ice_Tank_Mesh/Ice_Tank_base
+        weight: 1
+      - path: Ice_Tank_Mesh/Ice_Tank_Rotater
+        weight: 1
+      - path: Ice_Tank_Mesh/Ice_Tank_Turret
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,198 @@
+fileFormatVersion: 2
+guid: b6731c1da7fb3f543b3375ab1883b827
+timeCreated: 1454801101
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: desert_arty_01:Desert_Artilery_mesh
+    100004: desert_arty_01:Desert_Artillery_Barrel
+    100006: desert_arty_01:desert_Artillery_rotater
+    100008: desert_arty_01:Desert_Artlliery_base
+    100010: Ice_Artillery_Barrel_j
+    100012: Ice_Artillery_Base_j
+    100014: Ice_Artillery_End_j
+    100016: Ice_Artillery_Joints
+    100018: Ice_Artillery_root_j
+    100020: Ice_Artillery_Rotator_j
+    400000: //RootNode
+    400002: desert_arty_01:Desert_Artilery_mesh
+    400004: desert_arty_01:Desert_Artillery_Barrel
+    400006: desert_arty_01:desert_Artillery_rotater
+    400008: desert_arty_01:Desert_Artlliery_base
+    400010: Ice_Artillery_Barrel_j
+    400012: Ice_Artillery_Base_j
+    400014: Ice_Artillery_End_j
+    400016: Ice_Artillery_Joints
+    400018: Ice_Artillery_root_j
+    400020: Ice_Artillery_Rotator_j
+    4300000: desert_arty_01:Desert_Artillery_Barrel
+    4300002: desert_arty_01:desert_Artillery_rotater
+    4300004: desert_arty_01:Desert_Artlliery_base
+    7400000: Shoot
+    7400002: Idle
+    9500000: //RootNode
+    13700000: desert_arty_01:Desert_Artillery_Barrel
+    13700002: desert_arty_01:desert_Artillery_rotater
+    13700004: desert_arty_01:Desert_Artlliery_base
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Shoot
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: desert_arty_01:Desert_Artilery_mesh
+        weight: 1
+      - path: desert_arty_01:Desert_Artilery_mesh/desert_arty_01:Desert_Artillery_Barrel
+        weight: 1
+      - path: desert_arty_01:Desert_Artilery_mesh/desert_arty_01:desert_Artillery_rotater
+        weight: 1
+      - path: desert_arty_01:Desert_Artilery_mesh/desert_arty_01:Desert_Artlliery_base
+        weight: 1
+      - path: Ice_Artillery_Joints
+        weight: 1
+      - path: Ice_Artillery_Joints/Ice_Artillery_root_j
+        weight: 1
+      - path: Ice_Artillery_Joints/Ice_Artillery_root_j/Ice_Artillery_Base_j
+        weight: 1
+      - path: Ice_Artillery_Joints/Ice_Artillery_root_j/Ice_Artillery_Base_j/Ice_Artillery_Rotator_j
+        weight: 1
+      - path: Ice_Artillery_Joints/Ice_Artillery_root_j/Ice_Artillery_Base_j/Ice_Artillery_Rotator_j/Ice_Artillery_Barrel_j
+        weight: 1
+      - path: Ice_Artillery_Joints/Ice_Artillery_root_j/Ice_Artillery_Base_j/Ice_Artillery_Rotator_j/Ice_Artillery_Barrel_j/Ice_Artillery_End_j
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 24
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: desert_arty_01:Desert_Artilery_mesh
+        weight: 1
+      - path: desert_arty_01:Desert_Artilery_mesh/desert_arty_01:Desert_Artillery_Barrel
+        weight: 1
+      - path: desert_arty_01:Desert_Artilery_mesh/desert_arty_01:desert_Artillery_rotater
+        weight: 1
+      - path: desert_arty_01:Desert_Artilery_mesh/desert_arty_01:Desert_Artlliery_base
+        weight: 1
+      - path: Ice_Artillery_Joints
+        weight: 1
+      - path: Ice_Artillery_Joints/Ice_Artillery_root_j
+        weight: 1
+      - path: Ice_Artillery_Joints/Ice_Artillery_root_j/Ice_Artillery_Base_j
+        weight: 1
+      - path: Ice_Artillery_Joints/Ice_Artillery_root_j/Ice_Artillery_Base_j/Ice_Artillery_Rotator_j
+        weight: 1
+      - path: Ice_Artillery_Joints/Ice_Artillery_root_j/Ice_Artillery_Base_j/Ice_Artillery_Rotator_j/Ice_Artillery_Barrel_j
+        weight: 1
+      - path: Ice_Artillery_Joints/Ice_Artillery_root_j/Ice_Artillery_Base_j/Ice_Artillery_Rotator_j/Ice_Artillery_Barrel_j/Ice_Artillery_End_j
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

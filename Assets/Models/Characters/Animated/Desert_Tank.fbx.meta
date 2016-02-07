@@ -1,0 +1,204 @@
+fileFormatVersion: 2
+guid: 489855e5891b0a645a7ab92663a91400
+timeCreated: 1454801119
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Desert_Hover_Tank_Mesh
+    100002: desert_hoverTank_01:Desert_Tank_Base_j
+    100004: desert_hoverTank_01:Desert_Tank_connector_NOANIM_j
+    100006: desert_hoverTank_01:Desert_Tank_joints
+    100008: desert_hoverTank_01:Desert_Tank_Root_j
+    100010: desert_hoverTank_01:Desert_Tank_Rotater
+    100012: desert_hoverTank_01:Deserter_Tank_Barrel_j
+    100014: desert_hoverTank_01:Deserter_Tank_End_j
+    100016: desert_hoverTank_01:Deserter_Tank_Rotater_j
+    100018: //RootNode
+    100020: Desert_Tank_Base
+    100022: Desert_Tank_Turret
+    400000: Desert_Hover_Tank_Mesh
+    400002: desert_hoverTank_01:Desert_Tank_Base_j
+    400004: desert_hoverTank_01:Desert_Tank_connector_NOANIM_j
+    400006: desert_hoverTank_01:Desert_Tank_joints
+    400008: desert_hoverTank_01:Desert_Tank_Root_j
+    400010: desert_hoverTank_01:Desert_Tank_Rotater
+    400012: desert_hoverTank_01:Deserter_Tank_Barrel_j
+    400014: desert_hoverTank_01:Deserter_Tank_End_j
+    400016: desert_hoverTank_01:Deserter_Tank_Rotater_j
+    400018: //RootNode
+    400020: Desert_Tank_Base
+    400022: Desert_Tank_Turret
+    4300000: Desert_Tank_Base
+    4300002: Desert_Tank_Turret
+    4300004: desert_hoverTank_01:Desert_Tank_Rotater
+    7400000: Idle
+    7400002: Shoot
+    9500000: //RootNode
+    13700000: desert_hoverTank_01:Desert_Tank_Rotater
+    13700002: Desert_Tank_Base
+    13700004: Desert_Tank_Turret
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 24
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Desert_Hover_Tank_Mesh
+        weight: 1
+      - path: Desert_Hover_Tank_Mesh/desert_hoverTank_01:Desert_Tank_Rotater
+        weight: 1
+      - path: Desert_Hover_Tank_Mesh/Desert_Tank_Base
+        weight: 1
+      - path: Desert_Hover_Tank_Mesh/Desert_Tank_Turret
+        weight: 1
+      - path: desert_hoverTank_01:Desert_Tank_joints
+        weight: 1
+      - path: desert_hoverTank_01:Desert_Tank_joints/desert_hoverTank_01:Desert_Tank_Root_j
+        weight: 1
+      - path: desert_hoverTank_01:Desert_Tank_joints/desert_hoverTank_01:Desert_Tank_Root_j/desert_hoverTank_01:Desert_Tank_Base_j
+        weight: 1
+      - path: desert_hoverTank_01:Desert_Tank_joints/desert_hoverTank_01:Desert_Tank_Root_j/desert_hoverTank_01:Desert_Tank_Base_j/desert_hoverTank_01:Desert_Tank_connector_NOANIM_j
+        weight: 1
+      - path: desert_hoverTank_01:Desert_Tank_joints/desert_hoverTank_01:Desert_Tank_Root_j/desert_hoverTank_01:Desert_Tank_Base_j/desert_hoverTank_01:Desert_Tank_connector_NOANIM_j/desert_hoverTank_01:Deserter_Tank_Rotater_j
+        weight: 1
+      - path: desert_hoverTank_01:Desert_Tank_joints/desert_hoverTank_01:Desert_Tank_Root_j/desert_hoverTank_01:Desert_Tank_Base_j/desert_hoverTank_01:Desert_Tank_connector_NOANIM_j/desert_hoverTank_01:Deserter_Tank_Rotater_j/desert_hoverTank_01:Deserter_Tank_Barrel_j
+        weight: 1
+      - path: desert_hoverTank_01:Desert_Tank_joints/desert_hoverTank_01:Desert_Tank_Root_j/desert_hoverTank_01:Desert_Tank_Base_j/desert_hoverTank_01:Desert_Tank_connector_NOANIM_j/desert_hoverTank_01:Deserter_Tank_Rotater_j/desert_hoverTank_01:Deserter_Tank_Barrel_j/desert_hoverTank_01:Deserter_Tank_End_j
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Shoot
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Desert_Hover_Tank_Mesh
+        weight: 1
+      - path: Desert_Hover_Tank_Mesh/desert_hoverTank_01:Desert_Tank_Rotater
+        weight: 1
+      - path: Desert_Hover_Tank_Mesh/Desert_Tank_Base
+        weight: 1
+      - path: Desert_Hover_Tank_Mesh/Desert_Tank_Turret
+        weight: 1
+      - path: desert_hoverTank_01:Desert_Tank_joints
+        weight: 1
+      - path: desert_hoverTank_01:Desert_Tank_joints/desert_hoverTank_01:Desert_Tank_Root_j
+        weight: 1
+      - path: desert_hoverTank_01:Desert_Tank_joints/desert_hoverTank_01:Desert_Tank_Root_j/desert_hoverTank_01:Desert_Tank_Base_j
+        weight: 1
+      - path: desert_hoverTank_01:Desert_Tank_joints/desert_hoverTank_01:Desert_Tank_Root_j/desert_hoverTank_01:Desert_Tank_Base_j/desert_hoverTank_01:Desert_Tank_connector_NOANIM_j
+        weight: 1
+      - path: desert_hoverTank_01:Desert_Tank_joints/desert_hoverTank_01:Desert_Tank_Root_j/desert_hoverTank_01:Desert_Tank_Base_j/desert_hoverTank_01:Desert_Tank_connector_NOANIM_j/desert_hoverTank_01:Deserter_Tank_Rotater_j
+        weight: 1
+      - path: desert_hoverTank_01:Desert_Tank_joints/desert_hoverTank_01:Desert_Tank_Root_j/desert_hoverTank_01:Desert_Tank_Base_j/desert_hoverTank_01:Desert_Tank_connector_NOANIM_j/desert_hoverTank_01:Deserter_Tank_Rotater_j/desert_hoverTank_01:Deserter_Tank_Barrel_j
+        weight: 1
+      - path: desert_hoverTank_01:Desert_Tank_joints/desert_hoverTank_01:Desert_Tank_Root_j/desert_hoverTank_01:Desert_Tank_Base_j/desert_hoverTank_01:Desert_Tank_connector_NOANIM_j/desert_hoverTank_01:Deserter_Tank_Rotater_j/desert_hoverTank_01:Deserter_Tank_Barrel_j/desert_hoverTank_01:Deserter_Tank_End_j
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
