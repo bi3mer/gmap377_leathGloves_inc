@@ -1,0 +1,297 @@
+fileFormatVersion: 2
+guid: b01accfc733df17479e79ebc083fa2fa
+timeCreated: 1454884439
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Glaciermain
+    100004: needle10
+    100006: needle10 1
+    100008: needle10 2
+    100010: needle10 3
+    100012: needle11
+    100014: needle11 1
+    100016: needle11 2
+    100018: needle11 3
+    100020: needle12
+    100022: needle12 1
+    100024: needle12 2
+    100026: needle12 3
+    100028: needle13
+    100030: needle13 1
+    100032: needle13 2
+    100034: needle13 3
+    100036: needle14
+    100038: needle14 1
+    100040: needle14 2
+    100042: needle14 3
+    100044: needle15
+    100046: needle15 1
+    100048: needle15 2
+    100050: needle15 3
+    100052: needle16
+    100054: needle16 1
+    100056: needle16 2
+    100058: needle16 3
+    100060: needle17
+    100062: needle17 1
+    100064: needle17 2
+    100066: needle17 3
+    100068: needle18
+    100070: needle18 1
+    100072: needle18 2
+    100074: needle18 3
+    100076: needle19
+    100078: needle19 1
+    100080: needle19 2
+    100082: needle19 3
+    100084: needles
+    100086: needles1
+    100088: needles2
+    100090: needles3
+    100092: Snowside
+    100094: Snowtop
+    400000: //RootNode
+    400002: Glaciermain
+    400004: needle10
+    400006: needle10 1
+    400008: needle10 2
+    400010: needle10 3
+    400012: needle11
+    400014: needle11 1
+    400016: needle11 2
+    400018: needle11 3
+    400020: needle12
+    400022: needle12 1
+    400024: needle12 2
+    400026: needle12 3
+    400028: needle13
+    400030: needle13 1
+    400032: needle13 2
+    400034: needle13 3
+    400036: needle14
+    400038: needle14 1
+    400040: needle14 2
+    400042: needle14 3
+    400044: needle15
+    400046: needle15 1
+    400048: needle15 2
+    400050: needle15 3
+    400052: needle16
+    400054: needle16 1
+    400056: needle16 2
+    400058: needle16 3
+    400060: needle17
+    400062: needle17 1
+    400064: needle17 2
+    400066: needle17 3
+    400068: needle18
+    400070: needle18 1
+    400072: needle18 2
+    400074: needle18 3
+    400076: needle19
+    400078: needle19 1
+    400080: needle19 2
+    400082: needle19 3
+    400084: needles
+    400086: needles1
+    400088: needles2
+    400090: needles3
+    400092: Snowside
+    400094: Snowtop
+    2300000: Glaciermain
+    2300002: needle10
+    2300004: needle10 1
+    2300006: needle10 2
+    2300008: needle10 3
+    2300010: needle11
+    2300012: needle11 1
+    2300014: needle11 2
+    2300016: needle11 3
+    2300018: needle12
+    2300020: needle12 1
+    2300022: needle12 2
+    2300024: needle12 3
+    2300026: needle13
+    2300028: needle13 1
+    2300030: needle13 2
+    2300032: needle13 3
+    2300034: needle14
+    2300036: needle14 1
+    2300038: needle14 2
+    2300040: needle14 3
+    2300042: needle15
+    2300044: needle15 1
+    2300046: needle15 2
+    2300048: needle15 3
+    2300050: needle16
+    2300052: needle16 1
+    2300054: needle16 2
+    2300056: needle16 3
+    2300058: needle17
+    2300060: needle17 1
+    2300062: needle17 2
+    2300064: needle17 3
+    2300066: needle18
+    2300068: needle18 1
+    2300070: needle18 2
+    2300072: needle18 3
+    2300074: needle19
+    2300076: needle19 1
+    2300078: needle19 2
+    2300080: needle19 3
+    2300082: Snowside
+    2300084: Snowtop
+    3300000: Glaciermain
+    3300002: needle10
+    3300004: needle10 1
+    3300006: needle10 2
+    3300008: needle10 3
+    3300010: needle11
+    3300012: needle11 1
+    3300014: needle11 2
+    3300016: needle11 3
+    3300018: needle12
+    3300020: needle12 1
+    3300022: needle12 2
+    3300024: needle12 3
+    3300026: needle13
+    3300028: needle13 1
+    3300030: needle13 2
+    3300032: needle13 3
+    3300034: needle14
+    3300036: needle14 1
+    3300038: needle14 2
+    3300040: needle14 3
+    3300042: needle15
+    3300044: needle15 1
+    3300046: needle15 2
+    3300048: needle15 3
+    3300050: needle16
+    3300052: needle16 1
+    3300054: needle16 2
+    3300056: needle16 3
+    3300058: needle17
+    3300060: needle17 1
+    3300062: needle17 2
+    3300064: needle17 3
+    3300066: needle18
+    3300068: needle18 1
+    3300070: needle18 2
+    3300072: needle18 3
+    3300074: needle19
+    3300076: needle19 1
+    3300078: needle19 2
+    3300080: needle19 3
+    3300082: Snowside
+    3300084: Snowtop
+    4300000: needle19
+    4300002: needle18
+    4300004: needle17
+    4300006: needle16
+    4300008: needle15
+    4300010: needle14
+    4300012: needle13
+    4300014: needle12
+    4300016: needle11
+    4300018: needle10
+    4300020: needle19
+    4300022: needle18
+    4300024: needle17
+    4300026: needle16
+    4300028: needle15
+    4300030: needle14
+    4300032: needle13
+    4300034: needle12
+    4300036: needle11
+    4300038: needle10
+    4300040: needle19
+    4300042: needle18
+    4300044: needle17
+    4300046: needle16
+    4300048: needle15
+    4300050: needle14
+    4300052: needle13
+    4300054: needle12
+    4300056: needle11
+    4300058: needle10
+    4300060: needle19
+    4300062: needle18
+    4300064: needle17
+    4300066: needle16
+    4300068: needle15
+    4300070: needle14
+    4300072: needle13
+    4300074: needle12
+    4300076: needle11
+    4300078: needle10
+    4300080: Glaciermain
+    4300082: Snowtop
+    4300084: Snowside
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 0
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

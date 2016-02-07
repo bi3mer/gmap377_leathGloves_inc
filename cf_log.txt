@@ -1,0 +1,1 @@
+Warning: None triangle mesh: UpsideDownIceColumn (file: 'C:\Users\Owner\Documents\GitHub\gmap377_leathGloves_inc\Assets\Models\Environment\Structures\Acciavatti_Sharpcolumn.fbx') [ (line 0)]
