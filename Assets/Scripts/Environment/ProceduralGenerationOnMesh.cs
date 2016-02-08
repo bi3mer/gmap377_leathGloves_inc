@@ -24,6 +24,10 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 
 	[Tooltip("How many starting points should be created to generate around. Generatlly the more starting seeds the greater the spread of points around the mesh.")]
 	public int startingSeeds;
+
+	[Tooltip("The minumum density needed for a starting seed to be generated at a location.")]
+	public float startingSeedsDensityThreshold;
+
 	[Tooltip("The heatmap used for this mesh.")]
 	public Texture2D heatmapColors;
 
@@ -53,6 +57,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 
 	[Tooltip("Value from 0 to 1 that determines how likely it is for a powerup to show up")]
 	public float powerupChance;
+
 	Dictionary<long, ProceduralGenerationPoint> grid;
 	Dictionary<long, List<EnvironmentOrienter>> chunkGrid;
 	Dictionary<long, bool> chunkStatus;
@@ -240,7 +245,6 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		}
 
 		objectBySize.Add ("PowerUp", new List<GameObject> ());
-		Debug.Log (powerUpObjects.Length);
 		for(i = 0; i < largeObjects.Length; i++)
 		{
 			objectBySize["PowerUp"].Add((GameObject) powerUpObjects[i]);
@@ -498,7 +502,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 			// otherwise it will check with overlappingPoint whether or not it is too close to any cells in its neighborhood
 			// if either are true then that means the point is invalid and another point is generated as an attemp
 
-			while (chunkGrid.ContainsKey(gridPoint) || overlappingPoint(grid, firstPoint, minDis, cellSize, firstPoint.triangleIndex)) 
+			while ((1- getDensity(c)) < startingSeedsDensityThreshold || chunkGrid.ContainsKey(gridPoint) || overlappingPoint(grid, firstPoint, minDis, cellSize, firstPoint.triangleIndex)) 
 			{
 				rand = Random.Range (0, triangles.Count);
 				firstPoint.position = getInterpolation (triangles [rand]);
@@ -850,12 +854,13 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 
 	/// <summary>
 	/// Gets the density value for a color. This is determined by how dark the color is, which is determined her by how close the average of the 3 RBG values.
+	/// Brightest algorithm: brightness  =  sqrt( .241 R2 + .691 G2 + .068 B2 )
 	/// </summary>
 	/// <returns>The density.</returns>
 	/// <param name="c">C.</param>
 
 	public float getDensity(Color c)
 	{
-		return (c.b + c.g + c.r)/3f;
+		return Mathf.Sqrt(Mathf.Pow(c.b * 255, 2f) * 0.68f + Mathf.Pow(c.g * 255, 2f) * 0.691f + Mathf.Pow (c.r * 255, 2f) * 0.241f) / 255f;
 	}
 }
