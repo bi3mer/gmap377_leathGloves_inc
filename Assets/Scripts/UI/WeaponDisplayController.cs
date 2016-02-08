@@ -50,6 +50,7 @@ public class WeaponDisplayController : MonoBehaviour
     /// </summary>
     public void ChangeAmmo()
     {
+
         this.beamAmmo.text = this.cache.LaserBeam.GetComponent<Weapon>().ammo.ToString();
         this.rocketAmmo.text = this.cache.Rocket.GetComponent<Weapon>().ammo.ToString();
         this.mineAmmo.text = this.cache.Mine.GetComponent<Weapon>().ammo.ToString();
