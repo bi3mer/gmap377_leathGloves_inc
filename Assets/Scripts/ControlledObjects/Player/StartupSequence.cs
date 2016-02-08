@@ -49,15 +49,9 @@ public class StartupSequence : MonoBehaviour {
 	
     IEnumerator ApproachSequence()
     {
-        Player.Instance.transform.DOPath(planetApproachPathPositions, planetApproachDuration, PathType.CatmullRom).OnWaypointChange(LookAtApproachWaypoint).OnComplete(()=>StartCoroutine(ShakeAndCrash()));
-        yield return null;
-    }
-
-    IEnumerator ShakeAndCrash()
-    {
+        Player.Instance.transform.DOPath(planetApproachPathPositions, planetApproachDuration, PathType.CatmullRom).OnWaypointChange(LookAtApproachWaypoint);
+        yield return new WaitForSeconds(planetApproachDuration - 2f);
         Player.Instance.transform.DOShakeRotation(shakeAndCrashDuration, shakeIntensity);
-        Player.Instance.transform.DOPath(crashLandingPathPositions, shakeAndCrashDuration, PathType.CatmullRom).OnWaypointChange(LookAtCrashWaypoint).OnComplete(()=>StartCoroutine(EnableGameplayElements()));
-        yield return null;
     }
 
     IEnumerator EnableGameplayElements()
@@ -78,13 +72,5 @@ public class StartupSequence : MonoBehaviour {
     {
         if (!(waypointIndex >= planetApproachPathPositions.Length-1))
             Player.Instance.transform.DOLookAt(planetApproachPathPositions[waypointIndex + 1], 2f);
-        else
-            Player.Instance.transform.DOLookAt(crashLandingPathPositions[0], 1f);
-    }
-
-    void LookAtCrashWaypoint(int waypointIndex)
-    {
-        if(!(waypointIndex >= crashLandingPathPositions.Length-1))
-            Player.Instance.transform.DOLookAt(crashLandingPathPositions[waypointIndex + 1], 2f);
     }
 }
