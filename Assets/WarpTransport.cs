@@ -32,10 +32,10 @@ public class WarpTransport : MonoBehaviour {
             Player.Instance.GetComponent<ForceMover>().enabled = false;
 
             // Destroys all currently spawned enemies
-            SpawnSystem.Instance.DestroyAllChildren();
+            //SpawnSystem.Instance.DestroyAllChildren();
 
             // Disables spawner while player is warping
-            SpawnSystem.Instance.enabled = false;
+            //SpawnSystem.Instance.enabled = false;
 
             StartCoroutine(TransportAfterTime());
             ScoreManager.Instance.resetBoltCount();
