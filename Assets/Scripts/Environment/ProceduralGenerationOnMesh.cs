@@ -502,7 +502,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 			// otherwise it will check with overlappingPoint whether or not it is too close to any cells in its neighborhood
 			// if either are true then that means the point is invalid and another point is generated as an attemp
 
-			while ((1- getDensity(c)) < startingSeedsDensityThreshold || chunkGrid.ContainsKey(gridPoint) || overlappingPoint(grid, firstPoint, minDis, cellSize, firstPoint.triangleIndex)) 
+			while ((1- getDensity(c)) < startingSeedsDensityThreshold || chunkGrid.ContainsKey(gridPoint) 
+			       || grid.ContainsKey(firstPoint.gridPosition)|| overlappingPoint(grid, firstPoint, minDis, cellSize, firstPoint.triangleIndex)) 
 			{
 				rand = Random.Range (0, triangles.Count);
 				firstPoint.position = getInterpolation (triangles [rand]);
@@ -554,6 +555,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 				processList.Add (firstPoint);
 
 				// add point to grid
+
 				grid.Add (firstPoint.gridPosition, firstPoint);
 			}
 		}
