@@ -17,7 +17,7 @@ public class PickupCache : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(this);
         }
     }
 }
