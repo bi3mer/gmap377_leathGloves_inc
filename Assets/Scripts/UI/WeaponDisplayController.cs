@@ -6,7 +6,6 @@ public class WeaponDisplayController : MonoBehaviour
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
     
-    PickupCache cache;
     public Image dLaserOn;
     public Texture2D dLaserC;
 
@@ -27,7 +26,6 @@ public class WeaponDisplayController : MonoBehaviour
 
     void Awake()
     {
-		cache = PickupCache.Instance;
         if (Instance)
         {
             Destroy(this);
@@ -51,9 +49,9 @@ public class WeaponDisplayController : MonoBehaviour
     public void ChangeAmmo()
     {
 
-        this.beamAmmo.text = this.cache.LaserBeam.GetComponent<Weapon>().ammo.ToString();
-        this.rocketAmmo.text = this.cache.Rocket.GetComponent<Weapon>().ammo.ToString();
-        this.mineAmmo.text = this.cache.Mine.GetComponent<Weapon>().ammo.ToString();
+        this.beamAmmo.text = PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo.ToString();
+        this.rocketAmmo.text = PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo.ToString();
+        this.mineAmmo.text = PickupCache.Instance.Mine.GetComponent<Weapon>().ammo.ToString();
 
     }
     /// <summary>
@@ -61,9 +59,9 @@ public class WeaponDisplayController : MonoBehaviour
     /// </summary>
     public void ZeroOutAmmo()
     {
-        this.cache.LaserBeam.GetComponent<Weapon>().ammo = 0;
-        this.cache.Rocket.GetComponent<Weapon>().ammo = 0;
-        this.cache.Mine.GetComponent<Weapon>().ammo = 0;
+        PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo = 0;
+        PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo = 0;
+        PickupCache.Instance.Mine.GetComponent<Weapon>().ammo = 0;
     }
 
     /// <summary>
