@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class WeaponDisplayController : MonoBehaviour
 {
-    public CursorMode cursorMode = CursorMode.Auto;
+    public CursorMode cursorMode = CursorMode.ForceSoftware;
     public Vector2 hotSpot = Vector2.zero;
     
     public Image dLaserOn;
