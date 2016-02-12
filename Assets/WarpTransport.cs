@@ -32,10 +32,10 @@ public class WarpTransport : MonoBehaviour {
             Player.Instance.GetComponent<ForceMover>().enabled = false;
 
             // Destroys all currently spawned enemies
-            //SpawnSystem.Instance.DestroyAllChildren();
+            SpawnSystem.Instance.DestroyAllChildren();
 
             // Disables spawner while player is warping
-            //SpawnSystem.Instance.enabled = false;
+            SpawnSystem.Instance.enabled = false;
 
             StartCoroutine(TransportAfterTime());
             ScoreManager.Instance.resetBoltCount();
@@ -54,6 +54,9 @@ public class WarpTransport : MonoBehaviour {
 
         // Sets player position to new warp pad location, plus an offset so they are above the warp pad
         Player.Instance.transform.position = destinationWarpPad.position + destinationWarpPad.up;
+
+        // Change the player's nearest planet
+        Player.Instance.GetComponent<InterplanetaryObject>().NearestPlanet = InterplanetaryObject.GetNearestPlanet(Player.Instance.transform.position);
 
         // Sets player rotation to the same as the destination warp pad, which will be orientated properly
         Player.Instance.transform.rotation = destinationWarpPad.rotation;

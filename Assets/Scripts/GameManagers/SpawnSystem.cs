@@ -15,6 +15,7 @@ public class SpawnSystem : MonoBehaviour
     public List<GameObject> EnemyPrefabs;
     public List<float> EnemyProbabilities;
     public int CurrentEnemyNumber = 0;
+    public int MaxTries = 50;
 
     private int _timer = 0;
 
@@ -58,7 +59,8 @@ public class SpawnSystem : MonoBehaviour
         if (EnemyPrefabs.Count == 0) return;
 
 		int verticesSize = Player.Instance.getPlanetNavigation().vertices.Length;
-        while (!foundVertex) {
+        int tries = 0;
+        while (!foundVertex && tries < MaxTries) {
 			position = Player.Instance.getPlanetNavigation().vertices[Random.Range(0, verticesSize)];
 
             if (Player.Instance == null) {
@@ -74,6 +76,9 @@ public class SpawnSystem : MonoBehaviour
                 }
             }
         }
+
+        // Can't find a location to spawn
+        if (tries == MaxTries) return;
 
         List<GameObject> prefabsToUse;
         List<float> weightsToUse;

@@ -239,28 +239,6 @@ public class PlanetOrientation : MonoBehaviour {
         if (!_initialized) Initialize();
         UpdateOrientation();
 
-        int MAX = 50;
-        int i = 0;
-        /*while ((Mathf.Abs(Pitch) > 1 || Mathf.Abs(Roll) > 1) && i < MAX) {
-            //TODO: Having scale not (1, 1, 1) breaks it?
-
-            Vector3 pointPlanet = PlanetMarker.transform.position;
-            Vector3 pointCenter = transform.position;
-            Vector3 pointRight = RightMarker.transform.position;
-            Plane rightPlane = new Plane(pointPlanet, pointCenter, pointRight);
-            Vector3 vectorToPlanet = pointCenter - pointPlanet;
-            Vector3 rightAxis = Vector3.Cross(vectorToPlanet, rightPlane.normal);
-            transform.localRotation = Quaternion.AngleAxis(Pitch, rightAxis) * transform.localRotation;
-
-            Vector3 pointForward = ForwardMarker.transform.position;
-            Plane forwardPlane = new Plane(pointPlanet, pointCenter, pointForward);
-            Vector3 forwardAxis = -1 * Vector3.Cross(vectorToPlanet, forwardPlane.normal);
-            transform.localRotation = Quaternion.AngleAxis(Roll, forwardAxis) * transform.localRotation;
-
-            UpdateOrientation();
-            i++;
-        }*/
-
         transform.LookAt(PlanetMarker.transform.position);
         transform.Rotate(new Vector3(1.0f, 0, 0), 90);
 
