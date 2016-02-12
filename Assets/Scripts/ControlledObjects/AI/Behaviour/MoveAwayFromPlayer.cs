@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveAwayFromPlayer : AbstractMover 
+public class MoveAwayFromPlayer : BufferedMovement 
 {
-	public float updatePlanBuffer = .5f;
 	private VertexNavigation planetVertexNavigation;
 	
 	/// <summary>
@@ -16,15 +15,12 @@ public class MoveAwayFromPlayer : AbstractMover
 
 		base.setMovementScript(this.GetComponent<AStar>());
 		base.moveTowardsPlayerAtEndOfPath = false;
-		
-		// Start finding plan
-		StartCoroutine(this.updatePlan());
 	}
 
 	/// <summary>
 	/// Checks the plan and sees if it needs to be updated
 	/// </summary>
-	private void checkPlan()
+	public override void checkPlan()
 	{	
 		// CHeck if plan is null or the square distance is to large
 		if (this.plan == null || DistanceCalculator.squareEuclidianDistance(this.transform.position, Player.Instance.transform.position) < base.minMoveDistance)
@@ -33,28 +29,6 @@ public class MoveAwayFromPlayer : AbstractMover
 			this.updateTargetForMinimumDistance();
 			this.getNewPlan(this.targetLocation);
 		}
-	}
-
-	/// <summary>
-	/// Update the plan in a more buffered approach
-	/// </summary>
-	/// <returns></returns>
-	IEnumerator updatePlan()
-	{
-		// Always running during gameplay
-		while (true)
-		{
-			this.checkPlan();
-			
-			yield return new WaitForSeconds(this.updatePlanBuffer);
-		}
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-		// Execute movement
-		this.executeCurrentPlan();
 	}
 
 	/// <summary>
