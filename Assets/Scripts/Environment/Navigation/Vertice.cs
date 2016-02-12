@@ -25,7 +25,6 @@ public class Vertice
 		{
 			return this.vertexNavigation.vertices[this.key];
 		}
-		
 		set 
 		{
 			// pass

@@ -13,12 +13,30 @@ public class AStar: MonoBehaviour, AiMovement
 	
 	public int distanceToGround = 10;
 	public LayerMask layersToAvoid;
+
+	[Tooltip("Body of AI being moved, should be largest part horizontoally.")]
 	public GameObject body;
+
+	[Tooltip("If you want to keep a minimum distance from the Player")]
+	public bool keepMinimumDistance = false;
+
+	[Tooltip("Minimum Square Distance From Player")]
+	public int minimumSquareDistance = 10;
+
+	[Tooltip("Debugging tools, turn off on builds")]
 	public bool drawRayCastDown = false;
+
+	[Tooltip("Debugging tools, turn off on builds")]
 	public bool drawPath = false;
-	
+
+	public enum VerticeType
+	{
+		FlYING, GROUND
+	};
+	public VerticeType movementType;
+
 	private float radius;
-	
+
 	// Plan for movement
 	private List<int> plan = new List<int>();
 	public List<int> Plan
@@ -74,13 +92,8 @@ public class AStar: MonoBehaviour, AiMovement
 	/// <summary>
 	/// get path plan
 	/// </summary>
-	private void GeneratePath() // More clear.
+	private void GeneratePath(RaycastHit[] hits)
 	{	
-		// http://docs.unity3d.com/ScriptReference/RaycastHit-triangleIndex.html
-		// Raycast towards center of planet
-		// TODO: remove magic number
-		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, this.planetVertexNavigation.transform.position - this.transform.position, 200f);
-		
 		// Create list to hold unformatted moves
 		int[] unFormattedMoves = new int[3];
 		
@@ -129,8 +142,18 @@ public class AStar: MonoBehaviour, AiMovement
 			// Loop through the nodes available paths
 			for (int i = 0; i < availableMoves.Count; ++i)
 			{
+				bool pointCollision;
+				if(this.movementType == VerticeType.GROUND) 
+				{
+					pointCollision = !this.collisionAtPoint(this.planetVertexNavigation.getVertex(availableMoves[i]).position);
+				}
+				else
+				{
+					pointCollision = !this.collisionAtPoint(this.planetVertexNavigation.flyingVertices[this.planetVertexNavigation.getVertex(availableMoves[i]).key]);
+				}
+
 				// Only use vertex if we haven't already explored this node
-				if (!visitedNodes.Contains(availableMoves[i]) && !this.collisionAtPoint(this.planetVertexNavigation.getVertex(availableMoves[i]).position))
+				if (!visitedNodes.Contains(availableMoves[i]) && pointCollision)
 				{
 					// Calculate distance between vertex and target
 					float vertexHeuristic = DistanceCalculator.squareEuclidianDistance(this.planetVertexNavigation.getVertex(availableMoves[i]).position, this.target);
@@ -142,8 +165,8 @@ public class AStar: MonoBehaviour, AiMovement
 						this.plan = node.Moves;
 						this.plan.Add(availableMoves[i]);
 						
-						// return plan
-						return; // Please shoot me now... mid function returns?? really?
+						// break out of loop
+						return; 
 					}
 					else
 					{
@@ -151,8 +174,9 @@ public class AStar: MonoBehaviour, AiMovement
 						visitedNodes.Add(availableMoves[i]);
 						
 						// Create cropy of moves
-						List<int> newMoves = new List<int>(node.Moves); // Try to remove this creation.... can we??
-						// Can we just modify the 'node'? (maybe not)
+						List<int> newMoves = new List<int>(node.Moves); 
+
+						// Add available moves
 						newMoves.Add(availableMoves[i]);
 						
 						// Create new nodes with heuristic and step cost
@@ -165,23 +189,29 @@ public class AStar: MonoBehaviour, AiMovement
 			}
 		}
 	}
-	
+
 	/// <summary>
 	/// Create new plan if a target is in place
 	/// </summary>
 	/// <param name="pos"></param>
 	/// <returns>The Plan</returns>
-	public List<int> getNewPlan()
+	public List<int> getNewPlan(Vector3 targ)
 	{
+		// set current targ
+		this.target = targ;
+
+		// Empty the plan
 		this.Plan.Clear();
 		
 		// Check if target exists
 		if (!this.target.Equals(Vector3.zero)) // Inverted logic.
 		{
-			// Get plan
-			this.GeneratePath();
+			// http://docs.unity3d.com/ScriptReference/RaycastHit-triangleIndex.html
+			// Raycast towards center of planet and generate a plan
+			this.GeneratePath(Physics.RaycastAll(this.transform.position, this.planetVertexNavigation.transform.position - this.transform.position, this.planetVertexNavigation.Radius));
 		}
-		
+
+		// Return plan found
 		return this.Plan;
 	}
 	

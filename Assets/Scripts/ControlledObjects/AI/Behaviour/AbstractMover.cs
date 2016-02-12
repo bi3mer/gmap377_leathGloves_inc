@@ -7,6 +7,8 @@ public abstract class AbstractMover : Enemy
     [HideInInspector]
     public Vector3 targetLocation;
 
+	public float minMoveDistance = 10f;
+
     private AiMovement aiMovement;
 
     // Movement variables
@@ -29,30 +31,30 @@ public abstract class AbstractMover : Enemy
     public int errorsAccepted = 3;
     private int errorsFound = 0;
 
-	// TODO: Chose vertice type, flying or ground etc.
-    public enum VertexType
-    {
-        FLYING, GROUND,
-    };
+	private AStar.VerticeType vertType;
 
-    public VertexType vertexType;
+	void Start()
+	{
+		// get vertice type to move on
+		this.vertType = this.GetComponent<AStar>().movementType;
+	}
 
     // Assigner methods
     public void setTarget(Vector3 targ)
     {
-        targetLocation = targ;
+        this.targetLocation = targ;
         this.aiMovement.setTarget(targetLocation);
     }
 
     public void setMovementScript(AiMovement move)
     {
-        aiMovement = move;
+        this.aiMovement = move;
     }
 
     // Accessor methods
     public AiMovement getMovementScript()
     {
-        return aiMovement;
+        return this.aiMovement;
     }
 
     public void resetTargetIndex()
@@ -77,9 +79,20 @@ public abstract class AbstractMover : Enemy
         if (this.aiMovement != null)
         {
             if (this.targetIndex < this.plan.Count)
-            {
+            {	
+				Vector3 targPos;
+
+				if(this.vertType == AStar.VerticeType.GROUND)
+				{
+					targPos = Player.Instance.getPlanetNavigation().getVertex(this.plan[this.targetIndex]).position;
+				}
+				else
+				{
+					targPos = Player.Instance.getPlanetNavigation().flyingVertices[Player.Instance.getPlanetNavigation().getVertex(this.plan[this.targetIndex]).key];
+				}
+
                 // Check if we've reached the target in the plan
-                if (DistanceCalculator.squareEuclidianDistance(this.transform.position, Player.Instance.getPlanetNavigation().getVertex(this.plan[this.targetIndex]).position) < this.minReachDistance)
+                if (DistanceCalculator.squareEuclidianDistance(this.transform.position, targPos) < this.minReachDistance)
                 {
                     // Increment to go to next target
                     ++this.targetIndex;
@@ -88,7 +101,7 @@ public abstract class AbstractMover : Enemy
                 if (this.targetIndex < this.plan.Count)
                 {
                     // move towards target in plan
-                    this.move(Player.Instance.getPlanetNavigation().getVertex(this.plan[targetIndex]).position);
+                    this.move(targPos);
                 }
                 else if (this.moveTowardsPlayerAtEndOfPath)
                 {
@@ -106,7 +119,7 @@ public abstract class AbstractMover : Enemy
                 ++this.errorsFound;
 
                 // Get a new plan
-                this.getNewPlan();
+                this.getNewPlan(this.targetLocation);
             }
             else
             { 
@@ -142,9 +155,10 @@ public abstract class AbstractMover : Enemy
     /// <summary>
     /// Get a new plan
     /// </summary>
-    public virtual void getNewPlan() 
+    public virtual void getNewPlan(Vector3 targ) 
     {
-        this.plan = this.aiMovement.getNewPlan();
+		this.targetLocation = targ;
+        this.plan = this.aiMovement.getNewPlan(targ);
     }
 
     /// <summary>

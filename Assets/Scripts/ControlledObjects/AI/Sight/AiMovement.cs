@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public interface AiMovement 
 {
 	// Get plan
-	List<int> getNewPlan();
+	List<int> getNewPlan(Vector3 target);
 
 	// Set target
 	void setTarget(Vector3 target);

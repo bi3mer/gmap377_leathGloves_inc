@@ -23,7 +23,7 @@ public class Planet1BossMover : AbstractMover {
 		base.setTarget(initialBossPosition);
 		base.moveTowardsPlayerAtEndOfPath = false;
 
-		this.getNewPlan();
+		this.getNewPlan(Player.Instance.transform.position);
 		
 		// Start finding plan
 		StartCoroutine(this.updatePlan());
@@ -63,7 +63,7 @@ public class Planet1BossMover : AbstractMover {
                 base.setTarget(this.transform.position);
             }
 
-			this.getNewPlan();
+			this.getNewPlan(base.targetLocation);
 		}
 	}
 
