@@ -13,6 +13,8 @@ public class ProceduralGenerationPoint {
 	public long gridPosition;
 	public long chunkGridPosition;
 
+	public Color c;
+
 	public ProceduralGenerationPoint(Vector3 pos)
 	{
 		position = pos;
