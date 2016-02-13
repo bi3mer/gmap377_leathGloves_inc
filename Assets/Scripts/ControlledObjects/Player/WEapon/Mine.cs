@@ -29,6 +29,7 @@ public class Mine : MonoBehaviour
     public GameObject Explosion;
     public AudioClip MineArmed;
     public LayerMask LayerCheck;
+    public int ScoreDecreaseAmount = 20;
 
     /**
     * Private Variable Description
@@ -116,21 +117,30 @@ public class Mine : MonoBehaviour
                 // For every object in the explosion
                 for (int i = 0; i < hitColliders.Length; ++i)
                 {
+
                     // Add an explosion force of <ExplosionForce> to them
                     hitColliders[i].gameObject.GetComponentInParent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, this.ExplosionRadius);
 
-                    // Try and find an EnemyHealth script on the gameobject hit.
-                    EnemyStats enemyHealth = hitColliders[i].gameObject.GetComponentInParent<EnemyStats>();
-
-                    // If the EnemyHealth component exist...
-                    if (enemyHealth != null)
+                    if (hitColliders[i].gameObject.name == "Player")
                     {
-                        // ... the enemy should take damage.
-                        enemyHealth.TakeDamage((int)this.GetComponent<Weapon>().damage);
+                        ScoreManager.Instance.DecreaseScore(ScoreDecreaseAmount);
+                    }
+                    else
+                    {
 
-                        if (PowerUpManager.Instance.Powerups["DamageUp"].IsActive)
+                        // Try and find an EnemyHealth script on the gameobject hit.
+                        EnemyStats enemyHealth = hitColliders[i].gameObject.GetComponentInParent<EnemyStats>();
+
+                        // If the EnemyHealth component exist...
+                        if (enemyHealth != null)
                         {
-                            enemyHealth.TakeDamage((int)PowerUpManager.Instance.PowerIncrease);
+                            // ... the enemy should take damage.
+                            enemyHealth.TakeDamage((int)this.GetComponent<Weapon>().damage);
+
+                            if (PowerUpManager.Instance.Powerups["DamageUp"].IsActive)
+                            {
+                                enemyHealth.TakeDamage((int)PowerUpManager.Instance.PowerIncrease);
+                            }
                         }
                     }
                 }

@@ -16,8 +16,7 @@ public class BoltCollection : MonoBehaviour
 
     void Start()
     {
-        rand = new System.Random();
-        GetComponent<Rigidbody>().AddForce(new Vector3(rand.Next(-(int)ScatterForceRange, (int)ScatterForceRange), rand.Next(-(int)ScatterForceRange, (int)ScatterForceRange), rand.Next(-(int)ScatterForceRange, (int)ScatterForceRange)));
+        GetComponent<Rigidbody>().AddExplosionForce(40f, this.transform.position, 1f);
     }
 
     void Update()
@@ -39,7 +38,7 @@ public class BoltCollection : MonoBehaviour
     /// When the bolt is collected, add the specified amount to the bolt count.
     /// </summary>
     /// <param name="player"></param>
-    void OnCollisionEnter(Collision player)
+    void OnTriggerEnter(Collider player)
     {
         // If the object is the player
         if(player.gameObject.tag == "Player")

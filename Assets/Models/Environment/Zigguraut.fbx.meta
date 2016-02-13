@@ -16,9 +16,11 @@ ModelImporter:
     2300000: Landing
     2300002: Stairs
     2300004: ZigguratMainBody
+    2300006: //RootNode
     3300000: Landing
     3300002: Stairs
     3300004: ZigguratMainBody
+    3300006: //RootNode
     4300000: ZigguratMainBody
     4300002: Landing
     4300004: Stairs
