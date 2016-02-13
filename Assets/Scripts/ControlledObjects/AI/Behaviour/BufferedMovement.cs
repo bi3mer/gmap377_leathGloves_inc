@@ -13,9 +13,10 @@ public abstract class BufferedMovement : AbstractMover
 	/// <summary>
 	/// Start this instance.
 	/// </summary>
-	void init () 
+	public void init () 
 	{
 		base.init();
+
 		// Start finding plan
 		StartCoroutine(this.updatePlan());
 	}
@@ -26,6 +27,9 @@ public abstract class BufferedMovement : AbstractMover
 	/// <returns></returns>
 	IEnumerator updatePlan()
 	{
+		// Buffer on start
+		yield return new WaitForSeconds(this.updatePlanBuffer);
+
 		// Always running during gameplay
 		while (true)
 		{

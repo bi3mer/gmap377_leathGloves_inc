@@ -10,6 +10,8 @@ public class MoveAwayFromPlayer : BufferedMovement
 	/// </summary>
 	void Start()
 	{
+		base.init();
+
 		// grab aStar to get vertex navigation
 		this.planetVertexNavigation = this.GetComponent<AStar>().planetVertexNavigation;
 
