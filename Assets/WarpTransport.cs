@@ -5,9 +5,11 @@ using DG.Tweening;
 public class WarpTransport : MonoBehaviour {
     //to do
     //take out shit cody added (week 4)
-    public Transform destinationWarpPad;
+    public GameObject destinationWarpPad;
     public float transportDelaySeconds;
 	public float shakeIntensity;
+
+	public GameObject[] planetBosses;
 
     private ParticleSystem onEffect;
 
@@ -51,6 +53,7 @@ public class WarpTransport : MonoBehaviour {
     /// <returns></returns>
     IEnumerator TransportAfterTime()
     {
+		DisableBosses ();
 		Player.Instance.transform.DOShakeRotation (transportDelaySeconds - 0.5f, shakeIntensity, 2);
 		Player.Instance.transform.DOMove (Player.Instance.transform.position + this.transform.up * 1.5f, transportDelaySeconds - 0.5f);
         // Wait for the above specified time
@@ -59,10 +62,10 @@ public class WarpTransport : MonoBehaviour {
 		Player.Instance.DOKill ();
 
 		// Sets player position to new warp pad location, plus an offset so they are above the warp pad
-		Player.Instance.transform.position = destinationWarpPad.position + destinationWarpPad.up * 1.5f;
+		Player.Instance.transform.position = destinationWarpPad.transform.position + destinationWarpPad.transform.up * 1.5f;
 
 		Player.Instance.transform.DOShakeRotation (transportDelaySeconds - 0.5f, shakeIntensity, 2);
-		Player.Instance.transform.DOMove (Player.Instance.transform.position - destinationWarpPad.up * 1.5f, transportDelaySeconds - 0.5f);
+		Player.Instance.transform.DOMove (Player.Instance.transform.position - destinationWarpPad.transform.up * 1.5f, transportDelaySeconds - 0.5f);
 
 		// Wait for the above specified time
 		yield return new WaitForSeconds(transportDelaySeconds);
@@ -73,11 +76,12 @@ public class WarpTransport : MonoBehaviour {
         Player.Instance.GetComponent<InterplanetaryObject>().NearestPlanet = InterplanetaryObject.GetNearestPlanet(Player.Instance.transform.position);
 
         // Sets player rotation to the same as the destination warp pad, which will be orientated properly
-        Player.Instance.transform.rotation = destinationWarpPad.rotation;
+        Player.Instance.transform.rotation = destinationWarpPad.transform.rotation;
 
         // Re-enables ForceMover script so player can move again
         // TODO: uncomment this COLANASDFJAS;LDKJA;SKLDFJALSKD;JAS;LKDJASL;KDJ;ALKSDFJLAK;SDF;LKASDFJAL;KSDFJ;LKJ
         Player.Instance.GetComponent<ForceMover>().enabled = true;
+		EnableBosses ();
         
         // Re-enables SpawnSystem script to create new enemies
         SpawnSystem.Instance.enabled = true;
@@ -109,4 +113,21 @@ public class WarpTransport : MonoBehaviour {
         ScoreManager.AmountReached -= ActivateTeleport;
         ScoreManager.PlayerTeleported -= DeactivateTeleport;
     }
+
+	void DisableBosses()
+	{
+		for (int i = 0; i < planetBosses.Length; i++) 
+		{
+			planetBosses[i].SetActive(false);
+		}
+	}
+
+	void EnableBosses()
+	{
+		GameObject[] destinationBosses = destinationWarpPad.GetComponent<WarpTransport> ().planetBosses;
+		for (int i = 0; i < destinationBosses.Length; i++) 
+		{
+			destinationBosses[i].SetActive(true);
+		}
+	}
 }

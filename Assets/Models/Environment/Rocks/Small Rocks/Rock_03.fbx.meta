@@ -1,7 +1,19 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 25943215ede1ed54fbfaae01b6d48058
 timeCreated: 1455401206
 licenseType: Free
+=======
+<<<<<<< HEAD
+guid: a220caeb4bea446fca629d5b65888463
+timeCreated: 1455402282
+licenseType: Pro
+=======
+guid: 25943215ede1ed54fbfaae01b6d48058
+timeCreated: 1455401206
+licenseType: Free
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
