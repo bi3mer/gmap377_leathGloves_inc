@@ -27,12 +27,17 @@ public class Shooting : MonoBehaviour
         // LaserExists checks to make sure a laserbeam is not currently active.
         if ((Input.GetMouseButtonDown(0) /*|| InputManager.Player2Shoot > float.Epsilon*/) && (ammo > ZERO || ammo < ZERO))
         {
-
             if (PowerUpManager.Instance.CurrentLaserCount < PowerUpManager.Instance.MaxLaserCount)
             {
                 // Bullet being created
                 GameObject newBullet = Instantiate(bullet, spwnPt.transform.position, Quaternion.Euler(Vector3.forward)) as GameObject;
-
+              /*  RaycastHit target;
+                Ray aim = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(aim, out target))
+                {
+                    Debug.Log("Hit " + target.transform.gameObject.name);
+                    newBullet.transform.position = Vector3.Lerp(newBullet.transform.position, target.transform.position, Time.deltaTime * newBullet.GetComponent<Weapon>().speed);
+                }*/
 
                 // Parent the object to the spawn point if it's a laserbeam
                 if (bullet.gameObject.name == PickupCache.Instance.LaserBeam.gameObject.name)
@@ -42,8 +47,9 @@ public class Shooting : MonoBehaviour
                 }
                 
                 Vector3 lookPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, SHOOTING_DEPTH));
-                lookPos = lookPos - transform.position;
+                
                 newBullet.transform.LookAt(lookPos);
+                
                 GameObject leftBullet, rightBullet;
 
                 // If multishot is active
