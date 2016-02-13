@@ -11,6 +11,9 @@ public class EnemyStats : MonoBehaviour
     public GameObject Drop1, Drop2, Drop3, Drop4;
     public int DropChance = 25;
     public float offset = 1;
+    public float Scatter = 0.01f;
+    public int ScatterMin = -5;
+    public int ScatterMax = 5;
 
     private System.Random drop;
     bool isDead;                           // Whether the enemy is dead.
@@ -81,9 +84,20 @@ public class EnemyStats : MonoBehaviour
             }
         }
 
+        // Used to scatter the bolts
+        System.Random rand = new System.Random();
+        Vector3 boltOffset;
+
         for (int i = 0; i < this.BoltDropAmount; ++i)
         {
-            Instantiate(Bolt, transform.position, transform.rotation);
+            // Move the position of the bolt a little so they're not all overlapping
+            boltOffset = new Vector3(
+                (float)rand.Next(ScatterMin, ScatterMax) * Scatter,
+                (float)rand.Next(ScatterMin, ScatterMax) * Scatter,
+                (float)rand.Next(ScatterMin, ScatterMax) * Scatter);
+
+            // Create the bolt
+            Instantiate(Bolt, transform.position + boltOffset, transform.rotation);
         }
     }
     public virtual void MakeExplosion()
