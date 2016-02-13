@@ -44,7 +44,7 @@ public class RotatingMenuPanel : MonoBehaviour {
 		{
 			if(dependsOnNameField)
 			{
-				string text = GameStartManager.Instance.nameInputFieldData;        
+				string text = SaveSystem.Instance.PlayerID;        
 				if (System.IO.File.Exists(SaveSystem.Instance.SaveDirectory + "/" + text + SaveSystem.Instance.FileExt)) {
 					mainButton.interactable = true;
 					displayPanel.color = new Color(displayPanel.color.r, displayPanel.color.g, displayPanel.color.b, 0.6f);

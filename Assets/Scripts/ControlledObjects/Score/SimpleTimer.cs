@@ -42,6 +42,7 @@ public class SimpleTimer : MonoBehaviour
             if (!GameOver) {
                 //OnGameOver();
                 GameOver = true;
+                SaveSystem.Instance.SaveGame();
                 timerEnded();
             }
 

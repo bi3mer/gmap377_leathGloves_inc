@@ -14,10 +14,15 @@ public class NameLoadScreenManager : MonoBehaviour {
 		DontDestroyOnLoad (this.gameObject);
 	}
 
+    
 	public string getNameFieldData()
 	{
 		return nameFieldData;
 	}
+
+    public void UpdateFieldData(string value) {
+        nameFieldData = value;
+    }
 
 	public void LoadMenu()
 	{
