@@ -28,6 +28,9 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	[Tooltip("The minumum density needed for a starting seed to be generated at a location.")]
 	public float startingSeedsDensityThreshold;
 
+	[Tooltip("The minumum density needed for a non-starting point to be generated at a location.")]
+	public float generationDensityThreshold;
+
 	[Tooltip("The heatmap used for this mesh.")]
 	public Texture2D heatmapColors;
 
@@ -165,8 +168,6 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 				{
 					ob = GameObject.Instantiate((GameObject) powerUpObjects[Random.Range(0, powerUpObjects.Length)]);
 				}
-
-
 				
 				ob.transform.parent = transform;
 				ob.transform.localPosition = samplePoints[key][i].position + samplePoints[key][i].size * faceNormals[samplePoints[key][i].triangleIndex];
@@ -488,6 +489,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 			Color c = getColorAtTriangle(firstPoint);
 
 			firstPoint.size = getSize(getColorChance(c));
+			firstPoint.c = c;
 
 			gridPoint = toGrid (firstPoint.uvPosition, chunkCellSize, chunkGridOffset);
 			firstPoint.chunkGridPosition = gridPoint;
@@ -502,7 +504,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 			// otherwise it will check with overlappingPoint whether or not it is too close to any cells in its neighborhood
 			// if either are true then that means the point is invalid and another point is generated as an attemp
 
-			while ((1- getDensity(c)) < startingSeedsDensityThreshold || chunkGrid.ContainsKey(gridPoint) 
+			while ((1- getDensity(firstPoint.c)) < startingSeedsDensityThreshold || chunkGrid.ContainsKey(gridPoint) 
 			       || grid.ContainsKey(firstPoint.gridPosition)|| overlappingPoint(grid, firstPoint, minDis, cellSize, firstPoint.triangleIndex)) 
 			{
 				rand = Random.Range (0, triangles.Count);
@@ -576,12 +578,12 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 
 				Color c = getColorAtTriangle(newPoint);
 				newPoint.size = getSize(getColorChance(c));
-
+				newPoint.c = c;
 				gridPoint = toGrid (newPoint.uvPosition, cellSize, gridOffset);
 				newPoint.gridPosition = gridPoint;
 				minDis = (minDistance + distanceVariance * getDensity(c) + newPoint.size) * uvToMeshRatio;
 
-				while (grid.ContainsKey(gridPoint) || overlappingPoint(grid, newPoint, minDis,cellSize, newPoint.triangleIndex)) 
+				while ((1- getDensity(newPoint.c)) < generationDensityThreshold  || grid.ContainsKey(gridPoint) || overlappingPoint(grid, newPoint, minDis,cellSize, newPoint.triangleIndex)) 
 				{
 					newPoint = generateRandomPointAround (point.triangleIndex, triangles, uvsToTriangles, minDistance + distanceVariance + large);
 
@@ -606,7 +608,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 					{
 						samplePoints.Add(key, new List<ProceduralGenerationPoint>());
 					}
-					
+
 					samplePoints[key].Add (newPoint);
 					processList.Add(newPoint);
 
@@ -704,7 +706,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		p.triangleIndex = triangleIndex + x;
 		p.uvPosition = meshPointToUv (p);
 	
-		p.size = getSize(getColorChance(getColorAtTriangle(p)));                                                         
+		p.size = getSize(getColorChance(getColorAtTriangle(p)));   
+		p.c = getColorAtTriangle (p);
 		return p;
 	}
 
@@ -752,7 +755,6 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	{
 		Vector2 newPoint = point.uvPosition;
 		long gridPoint = point.gridPosition;
-
 		int y = (int) gridPoint / gridOffset;
 		int x = (int) gridPoint - (y * gridOffset);
 
@@ -863,6 +865,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 
 	public float getDensity(Color c)
 	{
-		return Mathf.Sqrt(Mathf.Pow(c.b * 255, 2f) * 0.68f + Mathf.Pow(c.g * 255, 2f) * 0.691f + Mathf.Pow (c.r * 255, 2f) * 0.241f) / 255f;
+		float density = Mathf.Sqrt(Mathf.Pow(c.b * 255, 2f) * 0.68f + Mathf.Pow(c.g * 255, 2f) * 0.691f + Mathf.Pow (c.r * 255, 2f) * 0.241f) / 255f;
+
+		return density;
 	}
 }
