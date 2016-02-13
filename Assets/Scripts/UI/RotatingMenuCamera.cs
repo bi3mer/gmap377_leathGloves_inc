@@ -82,7 +82,7 @@ public class RotatingMenuCamera : MonoBehaviour {
 		{
 			// switching panels can occur using the buttons or the keyboard control
 
-			if(Input.GetKeyDown(KeyCode.A))
+			if(Input.GetKeyDown(KeyCode.A) || InputManager.Player1Strafe < -1 * float.Epsilon || InputManager.Player2HorizontalInput < -1 * float.Epsilon)
 			{
 				if(currentPanel == Panel.MENU)
 				{
@@ -93,7 +93,7 @@ public class RotatingMenuCamera : MonoBehaviour {
 					toInstructionMenu();
 				}
 			}
-			else if(Input.GetKeyDown(KeyCode.D))
+			else if(Input.GetKeyDown(KeyCode.D) || InputManager.Player1Strafe > float.Epsilon || InputManager.Player2HorizontalInput > float.Epsilon)
 			{
 				if(currentPanel == Panel.MENU)
 				{
