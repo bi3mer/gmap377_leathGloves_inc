@@ -6,6 +6,8 @@ public class Gravity : MonoBehaviour
     public static List<Gravity> PlanetList = new List<Gravity>();
     public static float range = 1000;
 
+    public LayerMask GravityEffectedObjects;
+
     private Rigidbody _rigidbody; 
 
     void Start() {
@@ -30,7 +32,7 @@ public class Gravity : MonoBehaviour
 
     void FixedUpdate()
     {
-        Collider[] cols = Physics.OverlapSphere(transform.position, range);
+        Collider[] cols = Physics.OverlapSphere(transform.position, range, GravityEffectedObjects);
         List<Rigidbody> rbs = new List<Rigidbody>();
 
         foreach (Collider c in cols)
