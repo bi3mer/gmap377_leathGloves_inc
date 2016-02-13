@@ -15,6 +15,10 @@ public class MoveAwayFromPlayer : BufferedMovement
 
 		base.setMovementScript(this.GetComponent<AStar>());
 		base.moveTowardsPlayerAtEndOfPath = false;
+
+		// Build plan
+		this.updateTargetForMinimumDistance();
+		this.getNewPlan(this.targetLocation);
 	}
 
 	/// <summary>

@@ -5,9 +5,17 @@ public abstract class BufferedMovement : AbstractMover
 {
 	public float updatePlanBuffer = .5f;
 
-	// Use this for initialization
-	void Start () 
+	/// <summary>
+	/// Checks the plan.
+	/// </summary>
+	public abstract void checkPlan();
+
+	/// <summary>
+	/// Start this instance.
+	/// </summary>
+	void init () 
 	{
+		base.init();
 		// Start finding plan
 		StartCoroutine(this.updatePlan());
 	}
@@ -26,8 +34,6 @@ public abstract class BufferedMovement : AbstractMover
 			yield return new WaitForSeconds(this.updatePlanBuffer);
 		}
 	}
-
-	public abstract void checkPlan();
 
 	// Update is called once per frame
 	void Update()
