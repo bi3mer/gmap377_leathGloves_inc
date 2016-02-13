@@ -33,7 +33,7 @@ public abstract class AbstractMover : Enemy
 
 	private AStar.VerticeType vertType;
 
-	void Start()
+	public void init()
 	{
 		// get vertice type to move on
 		this.vertType = this.GetComponent<AStar>().movementType;

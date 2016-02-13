@@ -9,6 +9,7 @@ public class MoveTowardsPlayer : BufferedMovement
     /// </summary>
     void Start()
     {
+		base.init();
         base.targetLocation = Player.Instance.getClosestVertice();
         base.setMovementScript(this.GetComponent<AStar>());
         base.moveTowardsPlayerAtEndOfPath = true;
