@@ -1,0 +1,1062 @@
+fileFormatVersion: 2
+guid: bc7f0f48d38459f40b7f197332e98cc6
+timeCreated: 1455427392
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Boss_Tank_Barrel_Left
+    100004: Boss_Tank_Barrel_Right
+    100006: Boss_Tank_Base
+    100008: Boss_Tank_Base_j
+    100010: Boss_Tank_left_artillery
+    100012: Boss_Tank_Left_Artillery_End_j
+    100014: Boss_Tank_Left_Artillery_j
+    100016: Boss_Tank_Left_Missile_End_j
+    100018: Boss_Tank_Left_Missile_j
+    100020: Boss_Tank_Left_Turret_End_j
+    100022: Boss_Tank_Left_Turret_j
+    100024: Boss_Tank_Mesh
+    100026: Boss_Tank_Missiles_left
+    100028: Boss_Tank_Missiles_Right
+    100030: Boss_Tank_right_artillery
+    100032: Boss_Tank_Right_Artillery_End_j
+    100034: Boss_Tank_Right_Artillery_j
+    100036: Boss_Tank_Right_Missile_End_j
+    100038: Boss_Tank_Right_Missile_j
+    100040: Boss_Tank_Right_Turret_End_j
+    100042: Boss_Tank_Right_Turret_j
+    100044: Boss_Tank_Root_j
+    100046: Boss_Tank_Rotater
+    100048: Boss_Tank_Rotater_j
+    400000: //RootNode
+    400002: Boss_Tank_Barrel_Left
+    400004: Boss_Tank_Barrel_Right
+    400006: Boss_Tank_Base
+    400008: Boss_Tank_Base_j
+    400010: Boss_Tank_left_artillery
+    400012: Boss_Tank_Left_Artillery_End_j
+    400014: Boss_Tank_Left_Artillery_j
+    400016: Boss_Tank_Left_Missile_End_j
+    400018: Boss_Tank_Left_Missile_j
+    400020: Boss_Tank_Left_Turret_End_j
+    400022: Boss_Tank_Left_Turret_j
+    400024: Boss_Tank_Mesh
+    400026: Boss_Tank_Missiles_left
+    400028: Boss_Tank_Missiles_Right
+    400030: Boss_Tank_right_artillery
+    400032: Boss_Tank_Right_Artillery_End_j
+    400034: Boss_Tank_Right_Artillery_j
+    400036: Boss_Tank_Right_Missile_End_j
+    400038: Boss_Tank_Right_Missile_j
+    400040: Boss_Tank_Right_Turret_End_j
+    400042: Boss_Tank_Right_Turret_j
+    400044: Boss_Tank_Root_j
+    400046: Boss_Tank_Rotater
+    400048: Boss_Tank_Rotater_j
+    4300000: Boss_Tank_right_artillery
+    4300002: Boss_Tank_left_artillery
+    4300004: Boss_Tank_Missiles_left
+    4300006: Boss_Tank_Missiles_Right
+    4300008: Boss_Tank_Rotater
+    4300010: Boss_Tank_Base
+    4300012: Boss_Tank_Barrel_Left
+    4300014: Boss_Tank_Barrel_Right
+    7400000: Idle
+    7400002: Left Missile Shoot
+    7400004: Right Missile Shoot
+    7400006: Both Missiles Shoot
+    7400008: Right Artillery Shoot
+    7400010: Left Artillery Shoot
+    7400012: Both Artillery Shoot
+    7400014: Left Turret Shoot
+    7400016: Right Turret Shoot
+    7400018: Both Turret Shoot
+    7400020: Rotate Counter Clockwise
+    7400022: Rotate Clockwise
+    9500000: //RootNode
+    13700000: Boss_Tank_Barrel_Left
+    13700002: Boss_Tank_Barrel_Right
+    13700004: Boss_Tank_Base
+    13700006: Boss_Tank_left_artillery
+    13700008: Boss_Tank_Missiles_left
+    13700010: Boss_Tank_Missiles_Right
+    13700012: Boss_Tank_right_artillery
+    13700014: Boss_Tank_Rotater
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 201
+      lastFrame: 210
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Tank_Mesh
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Base
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_left_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_right_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Rotater
+        weight: 1
+      - path: Boss_Tank_Root_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j/Boss_Tank_Left_Missile_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j/Boss_Tank_Right_Missile_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j/Boss_Tank_Left_Artillery_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j/Boss_Tank_Left_Turret_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j/Boss_Tank_Right_Artillery_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j/Boss_Tank_Right_Turret_End_j
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Left Missile Shoot
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Tank_Mesh
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Base
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_left_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_right_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Rotater
+        weight: 1
+      - path: Boss_Tank_Root_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j/Boss_Tank_Left_Missile_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j/Boss_Tank_Right_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j/Boss_Tank_Left_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j/Boss_Tank_Left_Turret_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j/Boss_Tank_Right_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j/Boss_Tank_Right_Turret_End_j
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Right Missile Shoot
+      takeName: Take 001
+      firstFrame: 13
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Tank_Mesh
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Base
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_left_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_right_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Rotater
+        weight: 1
+      - path: Boss_Tank_Root_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j/Boss_Tank_Left_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j/Boss_Tank_Right_Missile_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j/Boss_Tank_Left_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j/Boss_Tank_Left_Turret_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j/Boss_Tank_Right_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j/Boss_Tank_Right_Turret_End_j
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Both Missiles Shoot
+      takeName: Take 001
+      firstFrame: 25
+      lastFrame: 36
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Tank_Mesh
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Base
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_left_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_right_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Rotater
+        weight: 1
+      - path: Boss_Tank_Root_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j/Boss_Tank_Left_Missile_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j/Boss_Tank_Right_Missile_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j/Boss_Tank_Left_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j/Boss_Tank_Left_Turret_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j/Boss_Tank_Right_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j/Boss_Tank_Right_Turret_End_j
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Right Artillery Shoot
+      takeName: Take 001
+      firstFrame: 37
+      lastFrame: 47
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Tank_Mesh
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Base
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_left_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_right_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Rotater
+        weight: 1
+      - path: Boss_Tank_Root_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j/Boss_Tank_Left_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j/Boss_Tank_Right_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j/Boss_Tank_Left_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j/Boss_Tank_Left_Turret_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j/Boss_Tank_Right_Artillery_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j/Boss_Tank_Right_Turret_End_j
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Left Artillery Shoot
+      takeName: Take 001
+      firstFrame: 48
+      lastFrame: 58
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Tank_Mesh
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Base
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_left_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_right_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Rotater
+        weight: 1
+      - path: Boss_Tank_Root_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j/Boss_Tank_Left_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j/Boss_Tank_Right_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j/Boss_Tank_Left_Artillery_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j/Boss_Tank_Left_Turret_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j/Boss_Tank_Right_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j/Boss_Tank_Right_Turret_End_j
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Both Artillery Shoot
+      takeName: Take 001
+      firstFrame: 59
+      lastFrame: 69
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Tank_Mesh
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Base
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_left_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_right_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Rotater
+        weight: 1
+      - path: Boss_Tank_Root_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j/Boss_Tank_Left_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j/Boss_Tank_Right_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j/Boss_Tank_Left_Artillery_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j/Boss_Tank_Left_Turret_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j/Boss_Tank_Right_Artillery_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j/Boss_Tank_Right_Turret_End_j
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Left Turret Shoot
+      takeName: Take 001
+      firstFrame: 70
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Tank_Mesh
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Base
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_left_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_right_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Rotater
+        weight: 1
+      - path: Boss_Tank_Root_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j/Boss_Tank_Left_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j/Boss_Tank_Right_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j/Boss_Tank_Left_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j/Boss_Tank_Left_Turret_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j/Boss_Tank_Right_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j/Boss_Tank_Right_Turret_End_j
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Right Turret Shoot
+      takeName: Take 001
+      firstFrame: 81
+      lastFrame: 91
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Tank_Mesh
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Base
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_left_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_right_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Rotater
+        weight: 1
+      - path: Boss_Tank_Root_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j/Boss_Tank_Left_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j/Boss_Tank_Right_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j/Boss_Tank_Left_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j/Boss_Tank_Left_Turret_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j/Boss_Tank_Right_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j/Boss_Tank_Right_Turret_End_j
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Both Turret Shoot
+      takeName: Take 001
+      firstFrame: 92
+      lastFrame: 102
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Tank_Mesh
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Base
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_left_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_right_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Rotater
+        weight: 1
+      - path: Boss_Tank_Root_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j/Boss_Tank_Left_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j/Boss_Tank_Right_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j/Boss_Tank_Left_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j/Boss_Tank_Left_Turret_End_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j/Boss_Tank_Right_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j/Boss_Tank_Right_Turret_End_j
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Rotate Counter Clockwise
+      takeName: Take 001
+      firstFrame: 103
+      lastFrame: 151
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Tank_Mesh
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Base
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_left_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_right_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Rotater
+        weight: 1
+      - path: Boss_Tank_Root_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j/Boss_Tank_Left_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j/Boss_Tank_Right_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j/Boss_Tank_Left_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j/Boss_Tank_Left_Turret_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j/Boss_Tank_Right_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j/Boss_Tank_Right_Turret_End_j
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Rotate Clockwise
+      takeName: Take 001
+      firstFrame: 152
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Tank_Mesh
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Barrel_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Base
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_left_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_left
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Missiles_Right
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_right_artillery
+        weight: 1
+      - path: Boss_Tank_Mesh/Boss_Tank_Rotater
+        weight: 1
+      - path: Boss_Tank_Root_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Left_Missile_j/Boss_Tank_Left_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Right_Missile_j/Boss_Tank_Right_Missile_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j
+        weight: 1
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Artillery_j/Boss_Tank_Left_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Left_Turret_j/Boss_Tank_Left_Turret_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Artillery_j/Boss_Tank_Right_Artillery_End_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j
+        weight: 0
+      - path: Boss_Tank_Root_j/Boss_Tank_Base_j/Boss_Tank_Rotater_j/Boss_Tank_Right_Turret_j/Boss_Tank_Right_Turret_End_j
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
