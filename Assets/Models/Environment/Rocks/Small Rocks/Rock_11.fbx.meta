@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 guid: d64c13e7b5e24644bb06a1e8672cddc3
 timeCreated: 1455401218
 licenseType: Free
@@ -13,6 +14,11 @@ guid: d64c13e7b5e24644bb06a1e8672cddc3
 timeCreated: 1455401218
 licenseType: Free
 >>>>>>> origin/master
+>>>>>>> Stashed changes
+=======
+guid: 705f769f7c68a47f48b680e622eaa31f
+timeCreated: 1455400770
+licenseType: Free
 >>>>>>> Stashed changes
 ModelImporter:
   serializedVersion: 18
@@ -68,9 +74,15 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
+<<<<<<< Updated upstream
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
     normalImportMode: 0
+=======
+    normalSmoothAngle: 0
+    splitTangentsAcrossUV: 1
+    normalImportMode: 1
+>>>>>>> Stashed changes
     tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0

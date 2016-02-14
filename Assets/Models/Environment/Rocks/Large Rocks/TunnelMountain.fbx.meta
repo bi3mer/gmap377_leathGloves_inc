@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 guid: 23a62c0fb38caec46a84b6aa91bbb7f7
 timeCreated: 1455401206
 licenseType: Free
@@ -13,6 +14,11 @@ guid: 23a62c0fb38caec46a84b6aa91bbb7f7
 timeCreated: 1455401206
 licenseType: Free
 >>>>>>> origin/master
+>>>>>>> Stashed changes
+=======
+guid: 2429545d557814ca396848cce6851142
+timeCreated: 1455400769
+licenseType: Free
 >>>>>>> Stashed changes
 ModelImporter:
   serializedVersion: 18
