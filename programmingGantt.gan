@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Infinite Skies " company="Lumpy Labs" webLink="https://infiniteskiesgame.wordpress.com/" view-date="2015-11-29" view-index="0" gantt-divider-location="353" resource-divider-location="300" version="2.7.1" locale="en_US">
+<?xml version="1.0" encoding="UTF-8"?><project name="Infinite Skies " company="Lumpy Labs" webLink="https://infiniteskiesgame.wordpress.com/" view-date="2016-01-03" view-index="0" gantt-divider-location="353" resource-divider-location="300" version="2.7.1" locale="en_US">
     <description/>
     <view zooming-state="default:7" id="gantt-chart">
         <field id="tpd3" name="Name" width="55" order="0"/>
         <field id="tpd4" name="Begin date" width="22" order="1"/>
         <field id="tpd5" name="End date" width="21" order="2"/>
-        <option id="color.recent"><![CDATA[#99ffff #ff00ff #00ff00 #cccccc #eeeeee #ff6666 #000000 #330000]]></option>
+        <option id="color.recent"><![CDATA[#ff00ff #00ff00 #99ffff #cccccc #eeeeee #ff6666 #000000 #330000]]></option>
     </view>
     <view id="resource-table">
         <field id="0" name="Name" width="50" order="0"/>
@@ -34,7 +34,7 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="431" name="Coding" meeting="false" start="2016-01-05" duration="49" complete="0" expand="false">
+        <task id="431" name="Coding" meeting="false" start="2016-01-05" duration="49" complete="0" expand="true">
             <task id="432" name="Fix Warnings" color="#000000" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
                 <notes><![CDATA[Everyone
 ]]></notes>
@@ -177,6 +177,8 @@
                 <task id="489" name="Proc. Generation of Power ups" color="#00ff00" meeting="false" start="2016-02-02" duration="6" complete="0" expand="true"/>
                 <task id="490" name="Envr. Objects Changin" color="#00ff00" meeting="false" start="2016-02-09" duration="6" complete="0" expand="true"/>
                 <task id="491" name="End Game boss world" color="#00ff00" meeting="false" start="2016-02-16" duration="19" complete="0" expand="true"/>
+                <task id="546" name="Moving Walls" color="#00ff00" meeting="false" start="2016-02-09" duration="9" complete="0" expand="true"/>
+                <task id="549" name="Moving Platforms" color="#00ff00" meeting="false" start="2016-02-09" duration="9" complete="0" expand="true"/>
             </task>
             <task id="492" name="Alex" meeting="false" start="2016-01-05" duration="49" complete="0" expand="false">
                 <task id="493" name="Perpindicular Script" color="#99ffff" meeting="false" start="2016-01-05" duration="5" complete="0" expand="true">
@@ -207,7 +209,7 @@
                 <task id="504" name="Prevent flipping too much" color="#99ffff" meeting="false" start="2016-02-16" duration="11" complete="0" expand="true"/>
                 <task id="505" name="Help with Final Planet / Polish" color="#99ffff" meeting="false" start="2016-03-01" duration="9" complete="0" expand="true"/>
             </task>
-            <task id="506" name="Colan" meeting="false" start="2016-01-05" duration="49" complete="0" expand="false">
+            <task id="506" name="Colan" meeting="false" start="2016-01-05" duration="49" complete="0" expand="true">
                 <task id="507" name="Remove Singelton" color="#ff00ff" meeting="false" start="2016-01-05" duration="10" complete="0" expand="true">
                     <notes><![CDATA[Colan]]></notes>
                 </task>
@@ -235,12 +237,17 @@
                 <task id="516" name="Flying Vertice Switch" color="#ff00ff" meeting="false" start="2016-01-26" duration="11" complete="0" expand="true"/>
                 <task id="517" name="Polish Boss 1" color="#ff00ff" meeting="false" start="2016-02-02" duration="6" complete="0" expand="true"/>
                 <task id="518" name="Concept work on final boss Planet" color="#ff00ff" meeting="false" start="2016-02-02" duration="6" complete="0" expand="true"/>
-                <task id="519" name="Swamp Boss" color="#ff00ff" meeting="false" start="2016-02-10" duration="1" complete="0" expand="true">
+                <task id="519" name="Mine Layer Boss" color="#ff00ff" meeting="false" start="2016-02-10" duration="1" complete="0" expand="true">
                     <depend id="520" type="2" difference="0" hardness="Strong"/>
                 </task>
                 <task id="520" name="Movement" color="#ff00ff" meeting="false" start="2016-02-11" duration="5" complete="0" expand="true"/>
                 <task id="521" name="Attacks" color="#ff00ff" meeting="false" start="2016-02-11" duration="10" complete="0" expand="true"/>
                 <task id="522" name="Balance" color="#ff00ff" meeting="false" start="2016-02-17" duration="10" complete="0" expand="true"/>
+                <task id="551" name="Scorpion Boss" color="#ff00ff" meeting="false" start="2016-02-15" duration="11" complete="0" expand="false">
+                    <task id="560" name="Movement" color="#ff00ff" meeting="false" start="2016-02-15" duration="5" complete="0" expand="true"/>
+                    <task id="561" name="Attack" color="#ff00ff" meeting="false" start="2016-02-15" duration="11" complete="0" expand="true"/>
+                    <task id="562" name="Balance" color="#ff00ff" meeting="false" start="2016-02-15" duration="11" complete="0" expand="true"/>
+                </task>
                 <task id="523" name="Help Final Boss Planet" color="#ff00ff" meeting="false" start="2016-03-01" duration="9" complete="0" expand="true"/>
             </task>
             <task id="524" name="Cody" meeting="false" start="2016-01-05" duration="46" complete="0" expand="false">

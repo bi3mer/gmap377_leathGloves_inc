@@ -78,6 +78,7 @@ public abstract class AbstractMover : Enemy
         // If no plan is found, do nothing
         if (this.aiMovement != null)
         {
+
             if (this.targetIndex < this.plan.Count)
             {	
 				Vector3 targPos;
@@ -103,12 +104,13 @@ public abstract class AbstractMover : Enemy
                     // move towards target in plan
                     this.move(targPos);
                 }
-                else if (this.moveTowardsPlayerAtEndOfPath)
-                {
-                    // Move towards the player
-                    this.move(Player.Instance.transform.position);
-                }
             }
+			else if (this.moveTowardsPlayerAtEndOfPath)
+			{
+				// Move towards the player
+				this.move(Player.Instance.transform.position);
+			}
+			// No actions currently for when not supposed to reach th
         }
         else
         {

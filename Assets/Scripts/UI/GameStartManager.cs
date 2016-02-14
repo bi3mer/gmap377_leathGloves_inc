@@ -57,10 +57,7 @@ public class GameStartManager : MonoBehaviour {
 
 
     public void OnNewGameButtonPressed() {
-		SaveSystem.Instance.PlayerID = nameInputFieldData;
-        ScoreManager.Instance.PlayerName = nameInputFieldData;
-
-        StartScreenCanvas.enabled = false;
+		StartScreenCanvas.enabled = false;
 		LoadingCanvas.gameObject.SetActive (true);
         StartCoroutine(CycleLoadingText());
         Application.LoadLevelAsync("OriginalScene");
@@ -68,8 +65,6 @@ public class GameStartManager : MonoBehaviour {
     }
 
     public void OnContinueButtonPressed() {
-		SaveSystem.Instance.PlayerID = nameInputFieldData;
-		ScoreManager.Instance.PlayerName = nameInputFieldData;
 		LoadingCanvas.gameObject.SetActive (true);
         StartScreenCanvas.enabled = false;
         StartCoroutine(CycleLoadingText());

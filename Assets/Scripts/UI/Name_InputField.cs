@@ -25,11 +25,7 @@ public class Name_InputField : MonoBehaviour
     public void setPlayerName(string playerName)
     {
         ScoreManager.Instance.SetName(playerName);
-
-        if (SaveSystem.Instance)
-        {
-            SaveSystem.Instance.Initialize(playerName);
-        }
+        SaveSystem.Instance.PlayerID = playerName;
     }
 
 	public void checkValue()
@@ -37,6 +33,7 @@ public class Name_InputField : MonoBehaviour
 		if(nameInput.text.Length > 0)
 		{
 			continueButton.interactable = true;
+            setPlayerName(nameInput.text);
 		}
 	}
 }

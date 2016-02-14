@@ -24,6 +24,7 @@ public class SaveSystem : MonoBehaviour {
             ScoreManager.Instance.score = Score;
             Player.Instance.transform.position = PlayerPosition;
             Player.Instance.transform.rotation = PlayerRotation;
+            Player.Instance.GetComponent<InterplanetaryObject>().NearestPlanet = InterplanetaryObject.GetNearestPlanet(PlayerPosition);
             PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo = BeamAmmo;
             PickupCache.Instance.Mine.GetComponent<Weapon>().ammo = MineAmmo;
             PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo = RocketAmmo;
@@ -91,6 +92,9 @@ public class SaveSystem : MonoBehaviour {
         System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(SaveFile));
         SaveFile save = new SaveFile();
 
+        if (System.IO.File.Exists(SaveSystem.Instance.SaveDirectory + "/" + PlayerID + FileExt)) {
+            System.IO.File.Delete(SaveSystem.Instance.SaveDirectory + "/" + PlayerID + FileExt);
+        }
         System.IO.FileStream file = System.IO.File.OpenWrite(SaveDirectory + "\\" + PlayerID + FileExt);
         writer.Serialize(file, save);
         file.Close();

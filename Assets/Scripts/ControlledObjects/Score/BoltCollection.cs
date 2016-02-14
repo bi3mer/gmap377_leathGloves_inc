@@ -14,11 +14,6 @@ public class BoltCollection : MonoBehaviour
 
     public LayerMask TargetLayer;
 
-    void Start()
-    {
-        GetComponent<Rigidbody>().AddExplosionForce(40f, this.transform.position, 1f);
-    }
-
     void Update()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, this.Range, TargetLayer);
