@@ -1,25 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 guid: d3128341eb0446347816c8ef0d78cf41
-timeCreated: 1455401218
-licenseType: Free
-=======
-<<<<<<< HEAD
-guid: 084508e53f73041c59b8222a4ce14ee6
-timeCreated: 1455402267
-licenseType: Pro
-=======
-guid: d3128341eb0446347816c8ef0d78cf41
-timeCreated: 1455401218
-licenseType: Free
->>>>>>> origin/master
->>>>>>> Stashed changes
-=======
-guid: 76d7d63838e43492f911281e897269c7
-timeCreated: 1455400770
-licenseType: Free
->>>>>>> Stashed changes
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
@@ -28,6 +8,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Rock01
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -51,7 +32,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -67,15 +48,9 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-<<<<<<< Updated upstream
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
     normalImportMode: 0
-=======
-    normalSmoothAngle: 0
-    splitTangentsAcrossUV: 1
-    normalImportMode: 1
->>>>>>> Stashed changes
     tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0
@@ -92,7 +67,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

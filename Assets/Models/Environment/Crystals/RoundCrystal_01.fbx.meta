@@ -1,25 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 guid: 9119767e6ee71444e8371d5d565213d0
-timeCreated: 1455401213
-licenseType: Free
-=======
-<<<<<<< HEAD
-guid: f2fd3b01ff0844b659b89bad240b1808
-timeCreated: 1455402285
-licenseType: Pro
-=======
-guid: 9119767e6ee71444e8371d5d565213d0
-timeCreated: 1455401213
-licenseType: Free
->>>>>>> origin/master
->>>>>>> Stashed changes
-=======
-guid: b49e71b604db840e39b3cf424967d070
-timeCreated: 1455400772
-licenseType: Free
->>>>>>> Stashed changes
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
@@ -28,6 +8,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: RoundCrystal01
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -51,7 +32,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -86,7 +67,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

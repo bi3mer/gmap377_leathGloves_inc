@@ -1,25 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 guid: 4655d769686f3d644834f5c468f8c9ef
-timeCreated: 1455401209
-licenseType: Free
-=======
-<<<<<<< HEAD
-guid: 85522dd5f77ed49229da97f8a971dda0
-timeCreated: 1455402280
-licenseType: Pro
-=======
-guid: 4655d769686f3d644834f5c468f8c9ef
-timeCreated: 1455401209
-licenseType: Free
->>>>>>> origin/master
->>>>>>> Stashed changes
-=======
-guid: 4f4a2b8c3786d40f389c9411e7c4f641
-timeCreated: 1455400770
-licenseType: Free
->>>>>>> Stashed changes
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
@@ -28,6 +8,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: smallRockPillar
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -51,7 +32,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -86,7 +67,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

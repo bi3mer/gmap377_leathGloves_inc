@@ -1,25 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 guid: f3487d7eb010027459318a6266abc8dd
-timeCreated: 1455401220
-licenseType: Free
-=======
-<<<<<<< HEAD
-guid: 44c320635dca7421abdf269bf52fa5ea
-timeCreated: 1455402277
-licenseType: Pro
-=======
-guid: f3487d7eb010027459318a6266abc8dd
-timeCreated: 1455401220
-licenseType: Free
->>>>>>> origin/master
->>>>>>> Stashed changes
-=======
-guid: c418d5da1cbca4f6cabe6a5bfe3ebfbb
-timeCreated: 1455400773
-licenseType: Free
->>>>>>> Stashed changes
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
@@ -50,6 +30,7 @@ ModelImporter:
     2300000: pCylinder2
     3300000: pCylinder2
     4300000: pCylinder2
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -73,7 +54,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -108,7 +89,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
