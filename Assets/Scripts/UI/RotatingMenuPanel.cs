@@ -8,6 +8,8 @@ public class RotatingMenuPanel : MonoBehaviour {
 	public Button mainButton;
 	public Image displayPanel;
 	public bool dependsOnNameField;
+	public Text[] screenLabel;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -30,6 +32,14 @@ public class RotatingMenuPanel : MonoBehaviour {
 			mainButton.interactable = false;
 		}
 
+		if(screenLabel.Length > 0)
+		{
+			for(int i = 0; i < screenLabel.Length; i++)
+			{
+				screenLabel[i].gameObject.SetActive(false);
+			}
+		}
+
 		displayPanel.color = new Color(displayPanel.color.r, displayPanel.color.g, displayPanel.color.b, 0.1f);
 	}
 
@@ -38,6 +48,14 @@ public class RotatingMenuPanel : MonoBehaviour {
 		for(int i = 0; i < switchButtons.Length; i++)
 		{
 			switchButtons[i].gameObject.SetActive(true);
+		}
+
+		if(screenLabel.Length > 0)
+		{
+			for(int i = 0; i < screenLabel.Length; i++)
+			{
+				screenLabel[i].gameObject.SetActive(true);
+			}
 		}
 
 		if(mainButton != null)

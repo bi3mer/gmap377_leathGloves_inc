@@ -61,6 +61,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	[Tooltip("Value from 0 to 1 that determines how likely it is for a powerup to show up")]
 	public float powerupChance;
 
+	public string planetName;
+
 	Dictionary<long, ProceduralGenerationPoint> grid;
 	Dictionary<long, List<EnvironmentOrienter>> chunkGrid;
 	Dictionary<long, bool> chunkStatus;
@@ -73,6 +75,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 
 	//Dictionary<string, string> locationToObject;
 	Dictionary<string, List<EnvironmentOrienter>> objectPoolByName;
+	Dictionary<string, GameObject> objectByName;
+
 	Dictionary<string, List<GameObject>> objectBySize;
 
 	Mesh mesh;
@@ -81,15 +85,14 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	float uvToMeshRatio;
 
 	int layerMask;
-
-	[SerializeField]
+	
 	List<Vector3[]> triangles;
-
-	[SerializeField]
+	
 	List<Vector2[]> uvsToTriangles;
 
 	List<Vector3> faceNormals;
 
+	static Dictionary<string, serializedInformation> serializedSamplePointsByPlanet = new Dictionary<string, serializedInformation>();
 	// Use this for initialization
 	void Start () 
 	{
@@ -100,6 +103,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 
 		objectPoolByName = new Dictionary<string, List<EnvironmentOrienter>> ();
 		objectBySize = new Dictionary<string, List<GameObject>>();
+		objectByName = new Dictionary<string, GameObject> ();
 
 		triangles = new List<Vector3[]> ();
 		uvsToTriangles = new List<Vector2[]> ();
@@ -113,7 +117,14 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 
 	public void LoadPlanet()
 	{
-		samplePoints = generatePoisson (minDistance, newPointsCount);
+		if(serializedSamplePointsByPlanet.ContainsKey(planetName))
+		{
+			reconstructSamplePoints(planetName);
+		}
+		else
+		{
+			samplePoints = generatePoisson (minDistance, newPointsCount);
+		}
 
 		if (generateAllAtOnce) {
 			generateAll();
@@ -122,6 +133,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		{
 			generateInitialObjects ();
 		}
+
+
 	}
 	
 	// Update is called once per frame
@@ -152,25 +165,40 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 			for(int i = 0; i < samplePoints[key].Count; i++)
 			{
 				GameObject ob;
-				if(samplePoints[key][i].size == small)
+
+				if(samplePoints[key][i].objectName == null)
 				{
-					ob = GameObject.Instantiate((GameObject) smallObjects[Random.Range(0, smallObjects.Length)]);
-				}
-				else if(samplePoints[key][i].size == medium)
-				{
-					ob = GameObject.Instantiate((GameObject) mediumObjects[Random.Range(0, mediumObjects.Length)]);
-				}
-				else if(samplePoints[key][i].size == large)
-				{
-					ob = GameObject.Instantiate((GameObject) largeObjects[Random.Range(0, largeObjects.Length)]);
+					GameObject selection;
+					if(samplePoints[key][i].size == small)
+					{
+						selection = (GameObject) smallObjects[Random.Range(0, smallObjects.Length)];
+						ob = GameObject.Instantiate(selection);
+					}
+					else if(samplePoints[key][i].size == medium)
+					{
+						selection = (GameObject) mediumObjects[Random.Range(0, mediumObjects.Length)];
+						ob = GameObject.Instantiate(selection);
+					}
+					else if(samplePoints[key][i].size == large)
+					{
+						selection = (GameObject) largeObjects[Random.Range(0, largeObjects.Length)];
+						ob = GameObject.Instantiate(selection);
+					}
+					else
+					{
+						selection = (GameObject) powerUpObjects[Random.Range(0, powerUpObjects.Length)];
+						ob = GameObject.Instantiate(selection);
+					}
+					
+					ob.transform.parent = transform;
+					ob.transform.localPosition = samplePoints[key][i].position + samplePoints[key][i].size * faceNormals[samplePoints[key][i].triangleIndex];
+					samplePoints[key][i].objectName = ob.gameObject.name;
 				}
 				else
 				{
-					ob = GameObject.Instantiate((GameObject) powerUpObjects[Random.Range(0, powerUpObjects.Length)]);
+					ob = GameObject.Instantiate(objectByName[samplePoints[key][i].objectName]);
+					ob.name = samplePoints[key][i].objectName;
 				}
-				
-				ob.transform.parent = transform;
-				ob.transform.localPosition = samplePoints[key][i].position + samplePoints[key][i].size * faceNormals[samplePoints[key][i].triangleIndex];
 
 				EnvironmentOrienter orienter = ob.GetComponent<EnvironmentOrienter>();
 				orienter.OrientToPlanet();
@@ -198,6 +226,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		{
 			objectBySize["Small"].Add((GameObject) smallObjects[i]);
 			objectPoolByName.Add(smallObjects[i].name, new List<EnvironmentOrienter>());
+			objectByName.Add (smallObjects[i].name, (GameObject) smallObjects[i]);
 
 			for(j = 0; j < initialObjects; j++)
 			{
@@ -216,7 +245,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		{
 			objectBySize["Medium"].Add((GameObject) mediumObjects[i]);
 			objectPoolByName.Add(mediumObjects[i].name, new List<EnvironmentOrienter>());
-			
+			objectByName.Add (mediumObjects[i].name, (GameObject) mediumObjects[i]);
+
 			for(j = 0; j < initialObjects; j++)
 			{
 				GameObject ob = GameObject.Instantiate((GameObject) mediumObjects[i]);
@@ -233,7 +263,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		{
 			objectBySize["Large"].Add((GameObject) largeObjects[i]);
 			objectPoolByName.Add(largeObjects[i].name, new List<EnvironmentOrienter>());
-			
+			objectByName.Add (largeObjects[i].name, (GameObject) largeObjects[i]);
+
 			for(j = 0; j < initialObjects; j++)
 			{
 				GameObject ob = GameObject.Instantiate((GameObject) largeObjects[i]);
@@ -250,7 +281,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		{
 			objectBySize["PowerUp"].Add((GameObject) powerUpObjects[i]);
 			objectPoolByName.Add(powerUpObjects[i].name, new List<EnvironmentOrienter>());
-			
+			objectByName.Add (powerUpObjects[i].name, (GameObject) powerUpObjects[i]);
+
 			for(j = 0; j < initialObjects; j++)
 			{
 				GameObject ob = GameObject.Instantiate((GameObject) powerUpObjects[i]);
@@ -868,5 +900,58 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		float density = Mathf.Sqrt(Mathf.Pow(c.b * 255, 2f) * 0.68f + Mathf.Pow(c.g * 255, 2f) * 0.691f + Mathf.Pow (c.r * 255, 2f) * 0.241f) / 255f;
 
 		return density;
+	}
+
+	struct serializedInformation
+	{
+		public List<long> samplePointKeys;
+		public List<Vector3> samplePointLocations;
+		public List<string> samplePointObjects;
+	}
+
+	public void serializeSamplePoints()
+	{
+		serializedInformation info = new serializedInformation ();
+
+		List<long> samplePointChunks = new List<long> (samplePoints.Keys);
+		List<Vector3> samplePointLocations = new List<Vector3> ();
+		List<string> samplePointObjects = new List<string> ();
+		for(int i = 0; i < samplePointChunks.Count; i++)
+		{
+			for(int j = 0; j < samplePoints[samplePointChunks[i]].Count; j++)
+			{
+				samplePointLocations.Add(samplePoints[samplePointChunks[i]][j].position);
+				samplePointObjects.Add(samplePoints[samplePointChunks[i]][j].objectName);
+			}
+		}
+
+		info.samplePointKeys = samplePointChunks;
+		info.samplePointLocations = samplePointLocations;
+		info.samplePointObjects = samplePointObjects;
+
+		if(!serializedSamplePointsByPlanet.ContainsKey(this.gameObject.name))
+		{
+			serializedSamplePointsByPlanet.Add(this.gameObject.name, info);
+		}
+		else
+		{
+			serializedSamplePointsByPlanet[this.gameObject.name] = info;
+		}
+	}
+
+	public void reconstructSamplePoints(string name)
+	{
+		List<long> keys = new List<long> (serializedSamplePointsByPlanet [name].samplePointKeys);
+		for(int i = 0; i < keys.Count; i++)
+		{
+			samplePoints.Add(keys[i], new List<ProceduralGenerationPoint>());
+			
+			for(int j = 0; j < serializedSamplePointsByPlanet[name].samplePointLocations.Count; j++)
+			{
+				ProceduralGenerationPoint p = new ProceduralGenerationPoint(serializedSamplePointsByPlanet[name].samplePointLocations[j]);
+				p.objectName = serializedSamplePointsByPlanet[name].samplePointObjects[j];
+				samplePoints[keys[i]].Add (p);
+			}
+		}
 	}
 }
