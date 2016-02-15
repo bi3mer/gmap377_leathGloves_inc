@@ -5,10 +5,19 @@ public abstract class BufferedMovement : AbstractMover
 {
 	public float updatePlanBuffer = .5f;
 
+    [Tooltip ("Make false if another script is going to be running this game object")]
+    public bool shouldRunCoRoutine = true;
+
 	/// <summary>
 	/// Checks the plan.
 	/// </summary>
 	public abstract void checkPlan();
+
+    /// <summary>
+    /// Check if should update plan
+    /// </summary>
+    /// <returns></returns>
+    public abstract bool shouldUpdatePlan();
 
 	/// <summary>
 	/// Start this instance.
@@ -17,8 +26,11 @@ public abstract class BufferedMovement : AbstractMover
 	{
 		base.init();
 
-		// Start finding plan
-		StartCoroutine(this.updatePlan());
+        if (this.shouldRunCoRoutine)
+        {
+            // Start finding plan
+            StartCoroutine(this.updatePlan());
+        }
 	}
 	
 	/// <summary>
@@ -38,6 +50,22 @@ public abstract class BufferedMovement : AbstractMover
 			yield return new WaitForSeconds(this.updatePlanBuffer);
 		}
 	}
+
+    /// <summary>
+    /// Call to disable this script and stop Update
+    /// </summary>
+    public void Disable()
+    {
+        this.enabled = false;
+    }
+
+    /// <summary>
+    /// Call to enable this script and continue update
+    /// </summary>
+    public void Enable()
+    {
+        this.enabled = true;
+    }
 
 	// Update is called once per frame
 	void Update()
