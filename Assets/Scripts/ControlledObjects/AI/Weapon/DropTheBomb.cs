@@ -8,10 +8,43 @@ public class DropTheBomb : MonoBehaviour {
     public float bombVelocity;
 
     [HideInInspector]
-    public float maxDistance = 100f;
+    public float maxDistance = 250f;
+
+    private float furthestDistance;
+
+    void Start()
+    {
+        furthestDistance = this.GetComponent<MoveAwayFromPlayer>().minMoveDistance;
+        StartCoroutine(CheckProximity());
+    }
+
+    IEnumerator CheckProximity()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1f);
+            if (Physics.Raycast(this.transform.position, -this.transform.up, maxDistance, LayerMask.NameToLayer("Player")))
+            {
+                dropBomb(new Vector3());
+                break;
+            }
+        }
+
+        StartCoroutine(WaitThenGoAgain());
+    }
+
+    IEnumerator WaitThenGoAgain()
+    {
+        while ((this.transform.position.sqrMagnitude - Player.Instance.transform.position.sqrMagnitude) <= furthestDistance)
+        {
+            yield return new WaitForSeconds(1f);
+        }
+        StartCoroutine(CheckProximity());
+    }
 
     public void dropBomb(Vector3 target)
     {
+        SystemLogger.write("droppin da bomb");
         GameObject bomb = Instantiate(enemyBomb, bombSpawnLocation.position, this.transform.rotation) as GameObject;
 
         // Everything from here down is basically kinematic equations to calculate the necessary forward velocity

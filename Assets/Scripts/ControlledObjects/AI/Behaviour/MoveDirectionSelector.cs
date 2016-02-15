@@ -3,7 +3,8 @@ using System.Collections;
 
 public class MoveDirectionSelector : MonoBehaviour {
 
-    public float distanceThreshold;
+    public float noCloserThan;
+    public float asFarAs;
 
     private MoveTowardsPlayer towardsPlayer;
     private MoveAwayFromPlayer awayFromPlayer;
@@ -19,7 +20,7 @@ public class MoveDirectionSelector : MonoBehaviour {
 
     IEnumerator TowardsPlayer()
     {
-        while(DistanceCalculator.squareEuclidianDistance(Player.Instance.transform.position, this.transform.position) > distanceThreshold)
+        while(DistanceCalculator.squareEuclidianDistance(Player.Instance.transform.position, this.transform.position) > noCloserThan)
         {
             yield return new WaitForSeconds(1f);
         }
@@ -30,7 +31,7 @@ public class MoveDirectionSelector : MonoBehaviour {
 
     IEnumerator AwayFromPlayer()
     {
-        while(DistanceCalculator.squareEuclidianDistance(Player.Instance.transform.position, this.transform.position) <= distanceThreshold)
+        while(DistanceCalculator.squareEuclidianDistance(Player.Instance.transform.position, this.transform.position) <= asFarAs)
         {
             yield return new WaitForSeconds(2f);
         }
