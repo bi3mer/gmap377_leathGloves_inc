@@ -67,8 +67,19 @@ public abstract class BufferedMovement : AbstractMover
         this.enabled = true;
     }
 
-	// Update is called once per frame
-	void Update()
+    
+    void OnEnable()
+    {
+        StartCoroutine(updatePlan());
+    }
+
+    void OnDisable()
+    {
+        StopCoroutine(updatePlan());
+    }
+
+    // Update is called once per frame
+    void Update()
 	{
 		// Execute movement
 		this.executeCurrentPlan();

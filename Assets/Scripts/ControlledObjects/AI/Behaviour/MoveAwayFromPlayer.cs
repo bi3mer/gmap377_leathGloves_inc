@@ -4,7 +4,9 @@ using System.Collections;
 public class MoveAwayFromPlayer : BufferedMovement 
 {
 	private VertexNavigation planetVertexNavigation;
-	
+
+    private bool forceUpdatePlan;
+
 	/// <summary>
 	/// Initialize information
 	/// </summary>
@@ -29,13 +31,18 @@ public class MoveAwayFromPlayer : BufferedMovement
     /// <returns></returns>
     public override bool shouldUpdatePlan()
     {
+        if (forceUpdatePlan)
+        {
+            forceUpdatePlan = false;
+            return true;
+        }
         return (this.plan == null || DistanceCalculator.squareEuclidianDistance(this.transform.position, Player.Instance.transform.position) < base.minMoveDistance);
     }
 
-	/// <summary>
-	/// Checks the plan and sees if it needs to be updated
-	/// </summary>
-	public override void checkPlan()
+    /// <summary>
+    /// Checks the plan and sees if it needs to be updated
+    /// </summary>
+    public override void checkPlan()
 	{	
 		// CHeck if plan is null or the square distance is to large
 		if (this.shouldUpdatePlan())
@@ -46,16 +53,21 @@ public class MoveAwayFromPlayer : BufferedMovement
 		}
 	}
 
+    void OnEnable()
+    {
+        forceUpdatePlan = true;
+    }
+
 	/// <summary>
 	/// Updates the target to take into account the minimum distance.
 	/// </summary>
 	private void updateTargetForMinimumDistance()
 	{
-		// set target to be above the planet (TODO: remove magic number)
-		this.targetLocation = this.transform.position - this.transform.forward * -1 * 50;
+        // set target to be above the planet (TODO: remove magic number)
+        this.targetLocation = this.transform.position - this.transform.forward * -1 * 50;
 
-		// Place target onto planet by using raycast from the point away from planet that we calculated with cross product
-		RaycastHit[] hits = Physics.RaycastAll(this.targetLocation, this.planetVertexNavigation.transform.position - this.targetLocation, this.planetVertexNavigation.Radius);
+        // Place target onto planet by using raycast from the point away from planet that we calculated with cross product
+        RaycastHit[] hits = Physics.RaycastAll(this.targetLocation, this.planetVertexNavigation.transform.position - this.targetLocation, this.planetVertexNavigation.Radius);
 
 		for(int i = 0; i < hits.Length; ++i)
 		{

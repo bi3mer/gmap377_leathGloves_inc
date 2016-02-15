@@ -19,7 +19,7 @@ public class MoveDirectionSelector : MonoBehaviour {
 
     IEnumerator TowardsPlayer()
     {
-        while(DistanceCalculator.squareEuclidianDistance(Player.Instance.transform.position, this.transform.position) >= distanceThreshold)
+        while(DistanceCalculator.squareEuclidianDistance(Player.Instance.transform.position, this.transform.position) > distanceThreshold)
         {
             yield return new WaitForSeconds(1f);
         }
@@ -32,7 +32,7 @@ public class MoveDirectionSelector : MonoBehaviour {
     {
         while(DistanceCalculator.squareEuclidianDistance(Player.Instance.transform.position, this.transform.position) <= distanceThreshold)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
         awayFromPlayer.enabled = false;
         towardsPlayer.enabled = true;

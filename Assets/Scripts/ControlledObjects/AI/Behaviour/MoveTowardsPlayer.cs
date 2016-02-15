@@ -29,11 +29,11 @@ public class MoveTowardsPlayer : BufferedMovement
 	/// Checks the plan and sees if it needs to be updated
 	/// </summary>
 	public override void checkPlan()
-	{	
-		// Check if plan is null or the square distance is to large
-		if (this.shouldUpdatePlan())
+	{
+        // Check if plan is null or the square distance is to large
+        if (this.shouldUpdatePlan())
 		{
-			base.resetTargetIndex();
+            base.resetTargetIndex();
 			this.getNewPlan(Player.Instance.transform.position);
 		}
 	}

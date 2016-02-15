@@ -24,5 +24,6 @@ public class BossDelay : MonoBehaviour {
 		yield return new WaitForSeconds (delayInSeconds);
         selector.enabled = true;
         towardsPlayer.enabled = true;
-	}
+        awayFromPlayer.enabled = false;
+    }
 }
