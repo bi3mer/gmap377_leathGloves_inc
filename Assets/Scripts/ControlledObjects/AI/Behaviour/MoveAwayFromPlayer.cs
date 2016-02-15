@@ -23,13 +23,22 @@ public class MoveAwayFromPlayer : BufferedMovement
 		this.getNewPlan(this.targetLocation);
 	}
 
+    /// <summary>
+    /// Check if plan needs to be updated
+    /// </summary>
+    /// <returns></returns>
+    public override bool shouldUpdatePlan()
+    {
+        return (this.plan == null || DistanceCalculator.squareEuclidianDistance(this.transform.position, Player.Instance.transform.position) < base.minMoveDistance);
+    }
+
 	/// <summary>
 	/// Checks the plan and sees if it needs to be updated
 	/// </summary>
 	public override void checkPlan()
 	{	
 		// CHeck if plan is null or the square distance is to large
-		if (this.plan == null || DistanceCalculator.squareEuclidianDistance(this.transform.position, Player.Instance.transform.position) < base.minMoveDistance)
+		if (this.shouldUpdatePlan())
 		{
 			base.resetTargetIndex();
 			this.updateTargetForMinimumDistance();
