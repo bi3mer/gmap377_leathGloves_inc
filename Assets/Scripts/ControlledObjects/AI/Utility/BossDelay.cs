@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BossDelay : MonoBehaviour {
 
+    /*
     private MoveTowardsPlayer towardsPlayer;
     private MoveAwayFromPlayer awayFromPlayer;
     private MoveDirectionSelector selector;
@@ -25,5 +26,24 @@ public class BossDelay : MonoBehaviour {
         selector.enabled = true;
         towardsPlayer.enabled = true;
         awayFromPlayer.enabled = false;
+    }
+    */
+
+    private BufferedMovement mover;
+
+    public float delayInSeconds = 5f;
+
+    void Start()
+    {
+        mover = this.GetComponent<BufferedMovement>();
+        mover.enabled = false;
+
+        StartCoroutine(CountdownTimer());
+    }
+
+    IEnumerator CountdownTimer()
+    {
+        yield return new WaitForSeconds(delayInSeconds);
+        mover.enabled = true;
     }
 }

@@ -12,6 +12,7 @@ public class EnemyArtillery : MonoBehaviour
     public float maxShellHeight = 25f;
     public float calculationSwitchDistance = 10f;
     public bool delayedFire;
+    public bool bossAttack;
 
 	private float previousAngle = 0;
 	private float previousPreviousAngle = 0;
@@ -67,7 +68,7 @@ public class EnemyArtillery : MonoBehaviour
 			this.inPositionToFire = false;
 			StartCoroutine(this.getReadyToFire());
 		}
-		else if(!this.inPositionToFire)
+		else if(!this.inPositionToFire && !this.bossAttack)
 		{
 			float angle = Vector3.Angle(this.transform.forward, Player.Instance.transform.position - this.transform.position);
 			

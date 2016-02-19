@@ -20,7 +20,7 @@ public class MoveDirectionSelector : MonoBehaviour {
 
     IEnumerator TowardsPlayer()
     {
-        while(DistanceCalculator.squareEuclidianDistance(Player.Instance.transform.position, this.transform.position) > noCloserThan)
+        while(Vector3.Angle(-this.transform.up, Player.Instance.transform.position) > noCloserThan)
         {
             yield return new WaitForSeconds(1f);
         }

@@ -135,7 +135,7 @@ public abstract class AbstractMover : Enemy
     /// Move Towards the given target
     /// </summary>
     /// <param name="targ"></param>
-    public void move(Vector3 targ)
+    public virtual void move(Vector3 targ)
     {
         // Set rotation
         Quaternion destRotation = Quaternion.LookRotation(targ - transform.position, transform.up);

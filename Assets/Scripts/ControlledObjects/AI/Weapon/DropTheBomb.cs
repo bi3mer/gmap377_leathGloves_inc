@@ -23,7 +23,7 @@ public class DropTheBomb : MonoBehaviour {
         while(true)
         {
             yield return new WaitForSeconds(1f);
-            if (Physics.Raycast(this.transform.position, -this.transform.up, maxDistance, LayerMask.NameToLayer("Player")))
+            if (Vector3.Angle(Player.Instance.transform.position - this.transform.position, -this.transform.up) <= 10f)
             {
                 dropBomb(new Vector3());
                 break;
@@ -47,9 +47,10 @@ public class DropTheBomb : MonoBehaviour {
         SystemLogger.write("droppin da bomb");
         GameObject bomb = Instantiate(enemyBomb, bombSpawnLocation.position, this.transform.rotation) as GameObject;
 
+        /*
         // Everything from here down is basically kinematic equations to calculate the necessary forward velocity
         // for the bomb to hit the player at its current location
-        Vector3 enemyToPlayer = this.transform.position - Player.Instance.transform.position;
+        Vector3 enemyToPlayer = Player.Instance.transform.position - this.transform.position;
         float angle = Vector3.Angle(this.transform.forward, enemyToPlayer);
         float horizontalDistanceToPlayer = enemyToPlayer.magnitude * Mathf.Cos(angle);
 
@@ -62,7 +63,9 @@ public class DropTheBomb : MonoBehaviour {
 
             bomb.GetComponent<Rigidbody>().useGravity = true;
             bomb.GetComponent<TImedDestroySelf>().lifetime = 25f;
-        }
+        }*/
+
+        bomb.GetComponent<Rigidbody>().useGravity = true;
 
     }
 }
