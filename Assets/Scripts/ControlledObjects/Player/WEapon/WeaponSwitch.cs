@@ -21,6 +21,7 @@ public class WeaponSwitch : MonoBehaviour {
         // If player 2 pushes up on the dpad, or presses '1' on the keyboard, switch to the default laser
         if (InputManager.Player2VerticalInput > 0 || Input.GetKeyDown(KeyCode.Alpha1))
         {
+            SystemLogger.write("Weapon Switch: Default Laser");
             //Set Gui to current weapon
             WeaponDisplayController.Instance.AllOff();
             WeaponDisplayController.Instance.dLaserOn.enabled = true;
@@ -35,6 +36,7 @@ public class WeaponSwitch : MonoBehaviour {
             // If there's ammo
             if (cache.Rocket.GetComponent<Weapon>().ammo > 0)
             {
+                SystemLogger.write("Weapon Switch: Rocket");
                 // Set Gui to current weapon
                 WeaponDisplayController.Instance.AllOff();
                 WeaponDisplayController.Instance.rocketsOn.enabled = true;
@@ -50,6 +52,7 @@ public class WeaponSwitch : MonoBehaviour {
             // If there's ammo
             if (cache.LaserBeam.GetComponent<Weapon>().ammo > 0)
             {
+                SystemLogger.write("Weapon Switch: Laser Beam");
                 // Set Gui to current weapon
                 WeaponDisplayController.Instance.AllOff();
                 WeaponDisplayController.Instance.beamOn.enabled = true;
@@ -65,6 +68,7 @@ public class WeaponSwitch : MonoBehaviour {
             // If there's ammo
             if (cache.Mine.GetComponent<Weapon>().ammo > 0)
             {
+                SystemLogger.write("Weapon Switch: Mine");
                 // Set Gui to current weapon
                 WeaponDisplayController.Instance.AllOff();
                 WeaponDisplayController.Instance.mineOn.enabled = true;

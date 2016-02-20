@@ -27,6 +27,7 @@ public class Shooting : MonoBehaviour
         // LaserExists checks to make sure a laserbeam is not currently active.
         if ((Input.GetMouseButtonDown(0) /*|| InputManager.Player2Shoot > float.Epsilon*/) && (ammo > ZERO || ammo < ZERO))
         {
+            SystemLogger.write("Shot fired");
             if (PowerUpManager.Instance.CurrentLaserCount < PowerUpManager.Instance.MaxLaserCount)
             {
                 // Bullet being created

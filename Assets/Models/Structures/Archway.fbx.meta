@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: aadcc770d36ce4443957b6e196c0483e
-timeCreated: 1454787101
+guid: 920e0c5db76d1584cbb41d7deb259847
+timeCreated: 1455905590
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -92,10 +92,16 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
+<<<<<<< HEAD:Assets/Models/Structures/Acciavatti_Archway.fbx.meta
     normalSmoothAngle: 0
     splitTangentsAcrossUV: 1
     normalImportMode: 1
     tangentImportMode: 1
+=======
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+>>>>>>> origin/master:Assets/Models/Structures/Archway.fbx.meta
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
