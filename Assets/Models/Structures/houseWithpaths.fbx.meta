@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: c1000a30b25cc81488a1c1c2a4448fa8
-timeCreated: 1454787097
+guid: 661be99958172f941b99a676df549f8f
+timeCreated: 1455905587
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: AlphaFoundation
-    100004: BetaFoundation
-    100006: CharlieFoundation
-    100008: DeltaFoundation
+    100000: AlphaFoundation
+    100002: BetaFoundation
+    100004: CharlieFoundation
+    100006: DeltaFoundation
+    100008: //RootNode
     100010: Roof
     100012: supportColumnalpha1
     100014: supportColumnalpha2
@@ -27,11 +27,11 @@ ModelImporter:
     100038: supportColumndelta2
     100040: supportColumndelta3
     100042: supportColumndelta4
-    400000: //RootNode
-    400002: AlphaFoundation
-    400004: BetaFoundation
-    400006: CharlieFoundation
-    400008: DeltaFoundation
+    400000: AlphaFoundation
+    400002: BetaFoundation
+    400004: CharlieFoundation
+    400006: DeltaFoundation
+    400008: //RootNode
     400010: Roof
     400012: supportColumnalpha1
     400014: supportColumnalpha2
@@ -153,8 +153,8 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 0
-    normalImportMode: 1
+    normalSmoothAngle: 60
+    normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0

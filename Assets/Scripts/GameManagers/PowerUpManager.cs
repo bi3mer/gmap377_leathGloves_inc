@@ -53,7 +53,7 @@ public class PowerUpManager : MonoBehaviour
             Powerups.Add("SpeedBoost", this.SpeedBoost);
             Powerups.Add("Bomb", this.Bomb);
 
-
+            SystemLogger.write("Powerup Manager attached to: " + this.gameObject.name);
         }
         else
         {
@@ -71,10 +71,18 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Activate a power up
+    /// </summary>
+    /// <param name="Key">Key for the power up in the dictionary</param>
     public void Activate(string Key)
     {
+        SystemLogger.write("Activating " + Key);
+
+        // If the powerup is not already active
         if (!Powerups[Key].IsActive)
         {
+            // Set up the initial parameters
             Powerups[Key].IsActive = true;
             Powerups[Key].Timer += Powerups[Key].SetTime;
             Powerups[Key].GuiBar.GetComponent<PowerUpBar>().activeTime = Powerups[Key].SetTime;
@@ -82,20 +90,24 @@ public class PowerUpManager : MonoBehaviour
 			Powerups[Key].GuiBar.GetComponent<PowerUpBar>().transform.SetAsFirstSibling();
 			Powerups[Key].guiIcon.SetActive(true);
 
+            // If it's the Multishot power up, increase the max laser count
             if (Key.Equals("Multishot"))
             {
                 this.maxLaserCount = 3;
             }
 
+            // If it's the speed boost, change the speed of the player
             if(Key.Equals("SpeedBoost"))
             {
                 this.CurrentSpeedBoost = SpeedBoostAmount;
             }
 
+            // Start the timer
             StartCoroutine(Timer(Key));
         }
         else
         {
+            // Add time to the timer
             Powerups[Key].Timer += Powerups[Key].SetTime;
             Powerups[Key].GuiBar.GetComponent<PowerUpBar>().activeTime = Powerups[Key].Timer;
             Powerups[Key].GuiBar.GetComponent<PowerUpBar>().activate();
@@ -105,31 +117,43 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// A timer for the power ups
+    /// </summary>
+    /// <param name="Key">The specific power up key</param>
+    /// <returns></returns>
     IEnumerator Timer(string Key)
     {
+        // While there's still time left on the timer
         while(Powerups[Key].Timer > 0f)
         {
-    
+            // Count down
             this.Powerups[Key].Timer -= Time.deltaTime;
             yield return null;
         }
 
+        // Deactive power up
         this.Powerups[Key].IsActive = false;
 		Powerups[Key].guiIcon.SetActive(false);
 
+        // If the power up was a multishot, set the max laser count back to 1
         if (Key.Equals("Multishot"))
         {
             this.maxLaserCount = 1f;
         }
 
+        // If the power up was a shield, destroy the shield effect
         if (Key.Equals("Shield"))
         {
             Destroy(GameObject.Find("Shield(Clone)"));
         }
 
+        // If the power up was a speed boost, set the speed back to normal
         if (Key.Equals("SpeedBoost"))
         {
             this.CurrentSpeedBoost = 1f;
         }
+
+        SystemLogger.write("Power up time complete");
     }
 }

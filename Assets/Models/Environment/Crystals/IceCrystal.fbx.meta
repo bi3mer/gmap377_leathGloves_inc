@@ -1,62 +1,15 @@
 fileFormatVersion: 2
-guid: d63a52d2ef3f1dc4a8557cb7e2884e63
-timeCreated: 1454787114
+guid: 6b325e77ac8e79043aa0b18361ffef65
+timeCreated: 1455996524
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: botObelisk
-    100004: botRing1
-    100006: ObeliskBody
-    100008: ObelsikStand
-    100010: Ring2
-    100012: Ring3
-    100014: Ring4
-    100016: Ring5
-    100018: TopObelisk
-    100020: topRing6
     400000: //RootNode
-    400002: botObelisk
-    400004: botRing1
-    400006: ObeliskBody
-    400008: ObelsikStand
-    400010: Ring2
-    400012: Ring3
-    400014: Ring4
-    400016: Ring5
-    400018: TopObelisk
-    400020: topRing6
-    2300000: botObelisk
-    2300002: botRing1
-    2300004: ObeliskBody
-    2300006: ObelsikStand
-    2300008: Ring2
-    2300010: Ring3
-    2300012: Ring4
-    2300014: Ring5
-    2300016: TopObelisk
-    2300018: topRing6
-    3300000: botObelisk
-    3300002: botRing1
-    3300004: ObeliskBody
-    3300006: ObelsikStand
-    3300008: Ring2
-    3300010: Ring3
-    3300012: Ring4
-    3300014: Ring5
-    3300016: TopObelisk
-    3300018: topRing6
-    4300000: ObelsikStand
-    4300002: botObelisk
-    4300004: ObeliskBody
-    4300006: TopObelisk
-    4300008: botRing1
-    4300010: Ring2
-    4300012: Ring3
-    4300014: Ring4
-    4300016: Ring5
-    4300018: topRing6
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pSolid2
     9500000: //RootNode
   materials:
     importMaterials: 1

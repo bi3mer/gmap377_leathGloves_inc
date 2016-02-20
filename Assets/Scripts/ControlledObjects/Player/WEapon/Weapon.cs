@@ -11,6 +11,7 @@ public class Weapon: MonoBehaviour
     /// <param name="col">The object it collides with</param>
     void OnCollisionEnter(Collision col)
     {
+        SystemLogger.write("Bullet collision");
         // If it's an enemy
         if (col.gameObject.tag == this.targetTag)
         {
