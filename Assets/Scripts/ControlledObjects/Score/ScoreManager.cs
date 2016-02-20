@@ -40,8 +40,7 @@ public class ScoreManager : MonoBehaviour
             SystemLogger.write("Score Manager attached to: " + this.gameObject.name);
         }
 
-        multiplierText = "x" + multi.ToString();
-		BoltTxt.text = "Bolt: " + (int)((this.BoltCount / this.BoltGoal) * 100)  + "%";
+       
         // Reset the score.
         score = 0;
         
