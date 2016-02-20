@@ -9,6 +9,9 @@ public class searchAndAttack : MonoBehaviour
 	public float fireRate;
 	public bool bossAttack;
 
+	[Tooltip("check if you want the weapon to be attached to the spawnpoint")]
+	public bool AttachToPlayerOnFire = false;
+
 	// timer for shooting
 	private float timer = 0f;
 
@@ -35,8 +38,6 @@ public class searchAndAttack : MonoBehaviour
 		// add to timer
 		timer += Time.deltaTime;
 
-        
-
 		// Check targ
 		if(targ != null)
 		{
@@ -62,11 +63,17 @@ public class searchAndAttack : MonoBehaviour
 				// instantiate bullet
 				GameObject bullet = Instantiate(this.weapon, this.attackSpawnPoint.position, this.transform.rotation) as GameObject; 
 
-				// add target to bullet
-				bullet.GetComponent<FireForward>().target = targ.position;
+				// Check if it should be attached to player
+				if(this.AttachToPlayerOnFire)
+				{
+					bullet.transform.parent = this.attackSpawnPoint;
+				}
 
 				// reset timer
 				timer = 0f;
+
+				// add target to bullet
+				bullet.GetComponent<FireForward>().target = targ.position;
 			}
 		}
 	}
