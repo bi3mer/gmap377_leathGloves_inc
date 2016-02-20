@@ -1,0 +1,125 @@
+fileFormatVersion: 2
+guid: 920e0c5db76d1584cbb41d7deb259847
+timeCreated: 1455905590
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Roof
+    100004: support1
+    100006: support1a
+    100008: support2
+    100010: support2a
+    100012: support3
+    100014: support3a
+    100016: support4
+    100018: support4a
+    400000: //RootNode
+    400002: Roof
+    400004: support1
+    400006: support1a
+    400008: support2
+    400010: support2a
+    400012: support3
+    400014: support3a
+    400016: support4
+    400018: support4a
+    2300000: Roof
+    2300002: support1
+    2300004: support1a
+    2300006: support2
+    2300008: support2a
+    2300010: support3
+    2300012: support3a
+    2300014: support4
+    2300016: support4a
+    3300000: Roof
+    3300002: support1
+    3300004: support1a
+    3300006: support2
+    3300008: support2a
+    3300010: support3
+    3300012: support3a
+    3300014: support4
+    3300016: support4a
+    4300000: support1
+    4300002: Roof
+    4300004: support2
+    4300006: support3
+    4300008: support4
+    4300010: support1a
+    4300012: support2a
+    4300014: support3a
+    4300016: support4a
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+<<<<<<< HEAD:Assets/Models/Structures/Acciavatti_Archway.fbx.meta
+    normalSmoothAngle: 0
+    splitTangentsAcrossUV: 1
+    normalImportMode: 1
+    tangentImportMode: 1
+=======
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+>>>>>>> origin/master:Assets/Models/Structures/Archway.fbx.meta
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: 661be99958172f941b99a676df549f8f
+timeCreated: 1455905587
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: AlphaFoundation
+    100002: BetaFoundation
+    100004: CharlieFoundation
+    100006: DeltaFoundation
+    100008: //RootNode
+    100010: Roof
+    100012: supportColumnalpha1
+    100014: supportColumnalpha2
+    100016: supportColumnalpha3
+    100018: supportColumnalpha4
+    100020: supportColumnbeta1
+    100022: supportColumnbeta2
+    100024: supportColumnbeta3
+    100026: supportColumnbeta4
+    100028: supportColumncharlie1
+    100030: supportColumncharlie2
+    100032: supportColumncharlie3
+    100034: supportColumncharlie4
+    100036: supportColumndelta1
+    100038: supportColumndelta2
+    100040: supportColumndelta3
+    100042: supportColumndelta4
+    400000: AlphaFoundation
+    400002: BetaFoundation
+    400004: CharlieFoundation
+    400006: DeltaFoundation
+    400008: //RootNode
+    400010: Roof
+    400012: supportColumnalpha1
+    400014: supportColumnalpha2
+    400016: supportColumnalpha3
+    400018: supportColumnalpha4
+    400020: supportColumnbeta1
+    400022: supportColumnbeta2
+    400024: supportColumnbeta3
+    400026: supportColumnbeta4
+    400028: supportColumncharlie1
+    400030: supportColumncharlie2
+    400032: supportColumncharlie3
+    400034: supportColumncharlie4
+    400036: supportColumndelta1
+    400038: supportColumndelta2
+    400040: supportColumndelta3
+    400042: supportColumndelta4
+    2300000: AlphaFoundation
+    2300002: BetaFoundation
+    2300004: CharlieFoundation
+    2300006: DeltaFoundation
+    2300008: Roof
+    2300010: supportColumnalpha1
+    2300012: supportColumnalpha2
+    2300014: supportColumnalpha3
+    2300016: supportColumnalpha4
+    2300018: supportColumnbeta1
+    2300020: supportColumnbeta2
+    2300022: supportColumnbeta3
+    2300024: supportColumnbeta4
+    2300026: supportColumncharlie1
+    2300028: supportColumncharlie2
+    2300030: supportColumncharlie3
+    2300032: supportColumncharlie4
+    2300034: supportColumndelta1
+    2300036: supportColumndelta2
+    2300038: supportColumndelta3
+    2300040: supportColumndelta4
+    3300000: AlphaFoundation
+    3300002: BetaFoundation
+    3300004: CharlieFoundation
+    3300006: DeltaFoundation
+    3300008: Roof
+    3300010: supportColumnalpha1
+    3300012: supportColumnalpha2
+    3300014: supportColumnalpha3
+    3300016: supportColumnalpha4
+    3300018: supportColumnbeta1
+    3300020: supportColumnbeta2
+    3300022: supportColumnbeta3
+    3300024: supportColumnbeta4
+    3300026: supportColumncharlie1
+    3300028: supportColumncharlie2
+    3300030: supportColumncharlie3
+    3300032: supportColumncharlie4
+    3300034: supportColumndelta1
+    3300036: supportColumndelta2
+    3300038: supportColumndelta3
+    3300040: supportColumndelta4
+    4300000: AlphaFoundation
+    4300002: BetaFoundation
+    4300004: DeltaFoundation
+    4300006: CharlieFoundation
+    4300008: supportColumncharlie1
+    4300010: supportColumncharlie2
+    4300012: supportColumncharlie3
+    4300014: supportColumncharlie4
+    4300016: supportColumndelta2
+    4300018: supportColumndelta3
+    4300020: supportColumndelta4
+    4300022: supportColumndelta1
+    4300024: supportColumnbeta3
+    4300026: supportColumnbeta2
+    4300028: supportColumnbeta1
+    4300030: supportColumnbeta4
+    4300032: supportColumnalpha2
+    4300034: supportColumnalpha3
+    4300036: supportColumnalpha4
+    4300038: supportColumnalpha1
+    4300040: Roof
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+<<<<<<< HEAD:Assets/Models/Structures/Acciavatti_houseWithpaths.fbx.meta
+    normalSmoothAngle: 0
+    splitTangentsAcrossUV: 1
+    normalImportMode: 1
+    tangentImportMode: 1
+=======
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+>>>>>>> origin/master:Assets/Models/Structures/houseWithpaths.fbx.meta
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
