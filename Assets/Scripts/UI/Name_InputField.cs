@@ -24,7 +24,6 @@ public class Name_InputField : MonoBehaviour
     /// <param name="playerName">The desired name for the player</param>
     public void setPlayerName(string playerName)
     {
-        ScoreManager.Instance.SetName(playerName);
         SaveSystem.Instance.PlayerID = playerName;
     }
 

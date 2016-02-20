@@ -43,7 +43,7 @@ public class ScoreManager : MonoBehaviour
        
         // Reset the score.
         score = 0;
-        
+		SetName ();
         DontDestroyOnLoad(ScoreManager.Instance);
     }
     
@@ -108,10 +108,11 @@ public class ScoreManager : MonoBehaviour
     /// Sets the name.
     /// </summary>
     /// <param name="PlayerName">Player name.</param>
-    public void SetName(string PlayerName)
-    {
-        SystemLogger.write("Player Name Set to: " + PlayerName);
-        ScoreManager.Instance.PlayerName = PlayerName;
+    public void SetName()
+	{
+		PlayerName = SaveSystem.Instance.PlayerID;
+		SystemLogger.write("Player Name Set to: " + PlayerName);
+        
    	}
   
     /// <summary>
