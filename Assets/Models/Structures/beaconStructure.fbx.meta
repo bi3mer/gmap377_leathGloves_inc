@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 3c9b3f24c6d3e9c40bfcc08733b13a69
-timeCreated: 1454787103
+guid: 17856224808145b459c811006aa36ae4
+timeCreated: 1455905585
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: arch1
-    100004: arch2
-    100006: arm1
-    100008: arm2
-    100010: beacons
+    100000: arch1
+    100002: arch2
+    100004: arm1
+    100006: arm2
+    100008: beacons
+    100010: //RootNode
     100012: botArch
     100014: botArch2
     100016: botArm
@@ -30,12 +30,12 @@ ModelImporter:
     100044: topArm2
     100046: topBeacon1
     100048: topBeacon2
-    400000: //RootNode
-    400002: arch1
-    400004: arch2
-    400006: arm1
-    400008: arm2
-    400010: beacons
+    400000: arch1
+    400002: arch2
+    400004: arm1
+    400006: arm2
+    400008: beacons
+    400010: //RootNode
     400012: botArch
     400014: botArch2
     400016: botArm
@@ -150,8 +150,8 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 0
-    normalImportMode: 1
+    normalSmoothAngle: 60
+    normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
