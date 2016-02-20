@@ -82,7 +82,6 @@ public class Pickup : MonoBehaviour
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
-                obj.gameObject.GetComponent<Shooting>().bullet = PickupCache.Instance.LaserBeam;
                 PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo += 3;
             }
         };

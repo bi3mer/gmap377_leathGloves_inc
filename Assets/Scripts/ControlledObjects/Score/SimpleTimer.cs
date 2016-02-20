@@ -87,6 +87,7 @@ public class SimpleTimer : MonoBehaviour
 
         HighScoreList.Instance.ClearAll();
         WeaponDisplayController.Instance.ZeroOutAmmo();
+        ScoreManager.Instance.resetBoltCount();
 
         Application.LoadLevel(0);
         Time.timeScale = 1;
