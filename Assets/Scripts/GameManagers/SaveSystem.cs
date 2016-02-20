@@ -22,6 +22,11 @@ public class SaveSystem : MonoBehaviour {
         public float MineAmmo = PickupCache.Instance.Mine.GetComponent<Weapon>().ammo;
         public float RocketAmmo = PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo;
 
+        public bool TankBossDead = BossManager.Instance.Planet1Tank ? false : true;
+        public bool ScorpionDead = BossManager.Instance.Scorpion ? false : true;
+        public bool MineLayerDead = BossManager.Instance.MineLayer ? false : true;
+        public bool GoliathDead = BossManager.Instance.Goliath ? false : true;
+
         public void Load() {
             ScoreManager.Instance.score = Score;
             Player.Instance.transform.position = PlayerPosition;
@@ -30,6 +35,11 @@ public class SaveSystem : MonoBehaviour {
             PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo = BeamAmmo;
             PickupCache.Instance.Mine.GetComponent<Weapon>().ammo = MineAmmo;
             PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo = RocketAmmo;
+
+            if (TankBossDead) Destroy(BossManager.Instance.Planet1Tank);
+            if (ScorpionDead) Destroy(BossManager.Instance.Scorpion);
+            if (MineLayerDead) Destroy(BossManager.Instance.MineLayer);
+            if (GoliathDead) Destroy(BossManager.Instance.Goliath);
         }
     }
 
