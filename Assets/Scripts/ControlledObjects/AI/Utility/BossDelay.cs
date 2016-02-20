@@ -28,22 +28,17 @@ public class BossDelay : MonoBehaviour {
         awayFromPlayer.enabled = false;
     }
     */
-
-    private BufferedMovement mover;
-
     public float delayInSeconds = 5f;
+	public string ClassToActivate;
 
     void Start()
     {
-        mover = this.GetComponent<BufferedMovement>();
-        mover.enabled = false;
-
         StartCoroutine(CountdownTimer());
     }
 
     IEnumerator CountdownTimer()
     {
         yield return new WaitForSeconds(delayInSeconds);
-        mover.enabled = true;
+		(this.GetComponent(this.ClassToActivate) as MonoBehaviour).enabled = true;
     }
 }

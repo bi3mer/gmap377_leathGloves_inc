@@ -66,6 +66,7 @@ public class AStar: MonoBehaviour, AiMovement
 	/// <param name="target">Target.</param>
 	public void setTarget(Vector3 target)
 	{
+		SystemLogger.write("setting target");
 		this.target = target; // Why not a setter?
 	}
 	
@@ -94,6 +95,8 @@ public class AStar: MonoBehaviour, AiMovement
 	/// </summary>
 	private void GeneratePath(RaycastHit[] hits)
 	{	
+		SystemLogger.write("Creating a path");
+
 		// Create list to hold unformatted moves
 		int[] unFormattedMoves = new int[3];
 		
@@ -161,6 +164,8 @@ public class AStar: MonoBehaviour, AiMovement
 					// Check if close enough to target
 					if (vertexHeuristic < this.planetVertexNavigation.avgVertexlength)
 					{
+						SystemLogger.write("Path has been found");
+
 						// Yes we are, solved
 						this.plan = node.Moves;
 						this.plan.Add(availableMoves[i]);
@@ -197,6 +202,8 @@ public class AStar: MonoBehaviour, AiMovement
 	/// <returns>The Plan</returns>
 	public List<int> getNewPlan(Vector3 targ)
 	{
+		SystemLogger.write("Getting a new plan");
+
 		// set current targ
 		this.target = targ;
 
@@ -204,7 +211,7 @@ public class AStar: MonoBehaviour, AiMovement
 		this.Plan.Clear();
 		
 		// Check if target exists
-		if (!this.target.Equals(Vector3.zero)) // Inverted logic.
+		if (!this.target.Equals(Vector3.zero))
 		{
 			// http://docs.unity3d.com/ScriptReference/RaycastHit-triangleIndex.html
 			// Raycast towards center of planet and generate a plan
@@ -220,6 +227,8 @@ public class AStar: MonoBehaviour, AiMovement
 	/// </summary>
 	void Start()
 	{
+		SystemLogger.write("Init this");
+
 		// Divide by 2 to get radius not diameter 
 		this.radius = this.body.GetComponent<Collider>().bounds.size.magnitude / 2;
 		

@@ -25,11 +25,14 @@ public abstract class AbstractMover : Enemy
     // Moving through movement plan
     [HideInInspector]
     public List<int> plan;
-    private int targetIndex = 0;
+    protected int targetIndex = 0;
 
     // Used to detect if error is found from plan being null multiple times
     public int errorsAccepted = 3;
     private int errorsFound = 0;
+
+	// Use to orient to planet after each node
+	private EnvironmentOrienter orientor;
 
 	private AStar.VerticeType vertType;
 
@@ -137,6 +140,8 @@ public abstract class AbstractMover : Enemy
     /// <param name="targ"></param>
     public virtual void move(Vector3 targ)
     {
+		SystemLogger.write("Moving towards target");
+
         // Set rotation
         Quaternion destRotation = Quaternion.LookRotation(targ - transform.position, transform.up);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, destRotation, rotationMaxDegrees * Time.deltaTime);

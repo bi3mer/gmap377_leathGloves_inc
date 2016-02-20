@@ -48,8 +48,6 @@ public class searchAndAttack : MonoBehaviour
                 //Debug.Log("angle: " + angle);
 
                 //transform.Rotate(Vector3.up, angle);
-                Debug.Log("here3!");
-
                 Vector3 targetPosition = targ.position;
                 Vector3 newRotation = Quaternion.LookRotation(targetPosition - this.transform.position, this.transform.up).eulerAngles;
                 this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.Euler(newRotation), Time.deltaTime);

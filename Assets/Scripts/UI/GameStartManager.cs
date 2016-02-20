@@ -18,6 +18,13 @@ public class GameStartManager : MonoBehaviour {
 	public string nameInputFieldData;
 
     void Awake() {
+		// Defefine whether ot log or not
+		#if UNITY_EDITOR
+		SystemLogger.logToFile = true;
+		#else
+		SystemLogger.logToFile = false;
+		#endif
+
 		nameInputFieldData = GameObject.Find ("NameLoadScreenManager").GetComponent<NameLoadScreenManager> ().getNameFieldData ();
         if (!Instance) {
             Instance = this;

@@ -42,8 +42,9 @@ public class EnvironmentOrienter : MonoBehaviour {
         Collider planetCollider = io.NearestPlanet.GetComponent<MeshCollider>();
         RaycastHit hit = new RaycastHit();
 
-        // Look for planet's surface, which needs to be between the object's center and the planet's center, with no other objects in the way
-        Physics.Raycast(transform.position, io.NearestPlanet.transform.position - transform.position, out hit);
+        // Look for planet's surface, which needs to be between the object's center and the planet's center
+        int layer = LayerMask.GetMask("Planet");
+        Physics.Raycast(transform.position, io.NearestPlanet.transform.position - transform.position, out hit, Mathf.Infinity, layer);
         if (hit.collider == null) {
             Debug.Log(gameObject.name + ": no raycast hit");
         }
