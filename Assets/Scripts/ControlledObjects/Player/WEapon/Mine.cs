@@ -47,11 +47,16 @@ public class Mine : MonoBehaviour
     /// </summary>
     void Start()
     {
+		SystemLogger.write("Initalizing Mine");
         this.audioSource = GetComponent<AudioSource>();
         this.mineLight = GetComponentInChildren<Light>();
         this.isOn = false;
         this.mineLight.intensity = this.LightOffIntensity;
         playSound = false;
+
+		SystemLogger.write("Dropping to planet");
+		GetComponent<EnvironmentOrienter>().OrientToPlanet();
+		GetComponent<EnvironmentOrienter>().DropToPlanet();
     }
 
     /// <summary>
@@ -144,6 +149,7 @@ public class Mine : MonoBehaviour
                         }
                     }
                 }
+				SystemLogger.write("Mine exploding");
                 Destroy(this.gameObject);
             }
         }

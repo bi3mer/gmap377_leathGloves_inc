@@ -8,7 +8,11 @@ public static class SystemLogger
     // TODO: Decide on file path of log file
     private static string outputFilePath = "logfile.txt";
 
+#if UNITY_EDITOR
 	public static bool logToFile = true;
+#else
+	public static bool logToFile = false;
+#endif
 
     // Initializes FileStream for output into specified log file
     private static StreamWriter writer = new StreamWriter(outputFilePath, false, System.Text.Encoding.UTF8);

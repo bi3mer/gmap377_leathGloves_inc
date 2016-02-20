@@ -14,7 +14,7 @@ public class MineDropper : Observer
     public Transform mineSpawnLocation;
 
     [Tooltip ("Time between each mine drop")]
-    public float timeBetweenEachMineDrop = 1.5f;
+    public float timeBetweenEachMineDrop = 5.0f;
 
     private bool shouldDropMines = true;
 
@@ -23,11 +23,20 @@ public class MineDropper : Observer
     /// </summary>
     void Start()
     {
+		SystemLogger.write("Instantiating Mine Dropper");
+
         base.init();
+
+		// Begin Dropping MInes
+		StartCoroutine(this.dropMines());
     }
 
     private IEnumerator dropMines()
     {
+		SystemLogger.write("Beginning to drop more mines");
+		this.shouldDropMines = true;
+
+		// Will drop mines until max reached
         while (shouldDropMines)
         { 
             this.dropMine();
@@ -36,7 +45,8 @@ public class MineDropper : Observer
     }
 
     public override void ObserverableAdded()
-    { 
+    {
+		SystemLogger.write("Adding mine to observables");
         // Incrase # of mines
         ++this.currentNumberOfMines;
 
@@ -49,6 +59,7 @@ public class MineDropper : Observer
     }
     public override void OvserverableRemoved()
     {
+		SystemLogger.write("Mine has been destroyed, updating");
         // Reduce # of mines
         --this.currentNumberOfMines;
 
@@ -63,8 +74,9 @@ public class MineDropper : Observer
     /// <summary>
     /// Drop a mine onto the planet
     /// </summary>
-    public void dropMine()
+    private void dropMine()
     {
+		SystemLogger.write("instantiating new mine");
         GameObject newMine = (GameObject) Instantiate(this.mine, this.mineSpawnLocation.position, this.mineSpawnLocation.rotation);
 
         // Add self to observable
