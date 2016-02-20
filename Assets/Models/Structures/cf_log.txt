@@ -1,0 +1,1 @@
+Warning: None triangle mesh: Glaciertunnel2 (file: 'C:\Users\Owner\Documents\GitHub\gmap377_leathGloves_inc\Assets\Models\Structures\Acciavatti_IceCave.fbx') [ (line 0)]
