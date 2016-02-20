@@ -1,0 +1,227 @@
+fileFormatVersion: 2
+guid: 493726e3eb94e4b4b939f9ca0de63b13
+timeCreated: 1455999225
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: BlasterArmHousing
+    100002: BlasterFin1
+    100004: BlasterFin2
+    100006: BlasterFin3
+    100008: BlasterFin4
+    100010: BlasterTiltBase
+    100012: BlasterTurningBase
+    100014: BlasterVentFin
+    100016: BlasterVentFin 1
+    100018: BlasterVentFin1
+    100020: BlasterVentFin1 1
+    100022: BlasterVentFin10
+    100024: BlasterVentFin10 1
+    100026: BlasterVentFin11
+    100028: BlasterVentFin11 1
+    100030: BlasterVentFin12
+    100032: BlasterVentFin12 1
+    100034: BlasterVentFin2
+    100036: BlasterVentFin2 1
+    100038: BlasterVentFin3
+    100040: BlasterVentFin3 1
+    100042: BlasterVentFin4
+    100044: BlasterVentFin4 1
+    100046: BlasterVentFin5
+    100048: BlasterVentFin5 1
+    100050: BlasterVentFin6
+    100052: BlasterVentFin6 1
+    100054: BlasterVentFin7
+    100056: BlasterVentFin7 1
+    100058: BlasterVentFin8
+    100060: BlasterVentFin8 1
+    100062: BlasterVentFin9
+    100064: BlasterVentFin9 1
+    100066: BlasterVentFins
+    100068: BlasterVentFins1
+    100070: MegaPlasmaBlasterBarrel
+    100072: MegaPlasmaBlasterBarrel 1
+    100074: PlasmaBlaster
+    100076: RightArm
+    100078: RightBlasterBicep
+    100080: //RootNode
+    100082: transform1
+    100084: transform10
+    100086: transform11
+    100088: transform12
+    100090: transform13
+    100092: transform14
+    100094: transform15
+    100096: transform16
+    100098: transform17
+    100100: transform18
+    100102: transform19
+    100104: transform2
+    100106: transform20
+    100108: transform21
+    100110: transform22
+    100112: transform23
+    100114: transform24
+    100116: transform25
+    100118: transform26
+    100120: transform27
+    100122: transform28
+    100124: transform29
+    100126: transform3
+    100128: transform30
+    100130: transform31
+    100132: transform32
+    100134: transform33
+    100136: transform34
+    100138: transform4
+    100140: transform5
+    100142: transform6
+    100144: transform7
+    100146: transform8
+    100148: transform9
+    400000: BlasterArmHousing
+    400002: BlasterFin1
+    400004: BlasterFin2
+    400006: BlasterFin3
+    400008: BlasterFin4
+    400010: BlasterTiltBase
+    400012: BlasterTurningBase
+    400014: BlasterVentFin
+    400016: BlasterVentFin 1
+    400018: BlasterVentFin1
+    400020: BlasterVentFin1 1
+    400022: BlasterVentFin10
+    400024: BlasterVentFin10 1
+    400026: BlasterVentFin11
+    400028: BlasterVentFin11 1
+    400030: BlasterVentFin12
+    400032: BlasterVentFin12 1
+    400034: BlasterVentFin2
+    400036: BlasterVentFin2 1
+    400038: BlasterVentFin3
+    400040: BlasterVentFin3 1
+    400042: BlasterVentFin4
+    400044: BlasterVentFin4 1
+    400046: BlasterVentFin5
+    400048: BlasterVentFin5 1
+    400050: BlasterVentFin6
+    400052: BlasterVentFin6 1
+    400054: BlasterVentFin7
+    400056: BlasterVentFin7 1
+    400058: BlasterVentFin8
+    400060: BlasterVentFin8 1
+    400062: BlasterVentFin9
+    400064: BlasterVentFin9 1
+    400066: BlasterVentFins
+    400068: BlasterVentFins1
+    400070: MegaPlasmaBlasterBarrel
+    400072: MegaPlasmaBlasterBarrel 1
+    400074: PlasmaBlaster
+    400076: RightArm
+    400078: RightBlasterBicep
+    400080: //RootNode
+    400082: transform1
+    400084: transform10
+    400086: transform11
+    400088: transform12
+    400090: transform13
+    400092: transform14
+    400094: transform15
+    400096: transform16
+    400098: transform17
+    400100: transform18
+    400102: transform19
+    400104: transform2
+    400106: transform20
+    400108: transform21
+    400110: transform22
+    400112: transform23
+    400114: transform24
+    400116: transform25
+    400118: transform26
+    400120: transform27
+    400122: transform28
+    400124: transform29
+    400126: transform3
+    400128: transform30
+    400130: transform31
+    400132: transform32
+    400134: transform33
+    400136: transform34
+    400138: transform4
+    400140: transform5
+    400142: transform6
+    400144: transform7
+    400146: transform8
+    400148: transform9
+    2300000: MegaPlasmaBlasterBarrel
+    2300002: RightBlasterBicep
+    3300000: MegaPlasmaBlasterBarrel
+    3300002: RightBlasterBicep
+    4300000: RightBlasterBicep
+    4300002: MegaPlasmaBlasterBarrel
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -19,9 +20,10 @@ public class ScoreManager : MonoBehaviour
 
     // The current bolt count, and the goal to activate the teleporters
     public float BoltCount = 0f,
-        BoltGoal = 200f;   
+        BoltGoal = 150f;   
          
     public string multiplierText;
+	public Text BoltTxt;
 
     /// <summary>
     /// Awake this instance.
@@ -39,6 +41,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         multiplierText = "x" + multi.ToString();
+		BoltTxt.text = "Bolt: " + (int)((this.BoltCount / this.BoltGoal) * 100)  + "%";
         // Reset the score.
         score = 0;
         
@@ -121,7 +124,7 @@ public class ScoreManager : MonoBehaviour
         SystemLogger.write("Bolt Collected");
         // Add to the bolt count
         this.BoltCount += amount;
-
+		BoltTxt.text = "Bolt: " + (int)((this.BoltCount / this.BoltGoal) * 100)  + "%";
         // If the goal is reached, call event
         if(BoltCount >= BoltGoal)
         {
@@ -137,7 +140,7 @@ public class ScoreManager : MonoBehaviour
     {
         SystemLogger.write("Bolts Reset");
         this.BoltCount = 0f;
-
+		BoltTxt.text = "Bolt: " + (int)((this.BoltCount / this.BoltGoal) * 100 ) + "%";
         // Call deactivate event
         PlayerTeleported();
     }
