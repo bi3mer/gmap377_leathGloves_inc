@@ -83,7 +83,7 @@ public class LaserBeamCylinder : MonoBehaviour
             }
             else if(this.Target == "Player")
             {
-                ScoreManager.Instance.DecreaseScore((int)GetComponent<Weapon>().damage);
+                ScoreManager.Instance.DecreaseScore((int)GetComponentInParent<Weapon>().damage);
             }
         }
     }
