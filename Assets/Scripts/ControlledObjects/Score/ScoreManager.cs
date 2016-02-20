@@ -35,6 +35,7 @@ public class ScoreManager : MonoBehaviour
         else
         {
             Instance = this;
+            SystemLogger.write("Score Manager attached to: " + this.gameObject.name);
         }
 
         multiplierText = "x" + multi.ToString();
@@ -50,6 +51,7 @@ public class ScoreManager : MonoBehaviour
     /// <param name="mult">Mult.</param>
     public void SetMultiplier(int mult)
     {
+        SystemLogger.write("Score multiplier set");
         this.multi *= mult;
         this.multiplierText = "x" + multi.ToString();
     }
@@ -60,6 +62,7 @@ public class ScoreManager : MonoBehaviour
     /// <param name="mult"></param>
     public void DecreaseMultiplier(int mult)
     {
+        SystemLogger.write("Score Multiplier Decreased");
         this.multi = mult;
         this.multiplierText = "x" + multi.ToString();
     }
@@ -70,6 +73,7 @@ public class ScoreManager : MonoBehaviour
     /// <param name="increaseAmount">Increase amount.</param>
    public void IncreaseScore(int increaseAmount)
     {
+        SystemLogger.write("Score Increased by: " + increaseAmount*multi);
         score += increaseAmount * multi;
     }
     
@@ -83,6 +87,7 @@ public class ScoreManager : MonoBehaviour
         {
             score -= decreaseAmount;
             PlayerHitImage.Instance.playerHit();
+            SystemLogger.write("Score Decreased by: " + decreaseAmount);
         }
 		
     }
@@ -93,6 +98,7 @@ public class ScoreManager : MonoBehaviour
     /// <returns>The name.</returns>
     public string GetName()
     {
+        SystemLogger.write("");
         return ScoreManager.Instance.PlayerName;
     }
 
@@ -101,8 +107,9 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     /// <param name="PlayerName">Player name.</param>
     public void SetName(string PlayerName)
-   	{
-   		ScoreManager.Instance.PlayerName = PlayerName;
+    {
+        SystemLogger.write("Player Name Set to: " + PlayerName);
+        ScoreManager.Instance.PlayerName = PlayerName;
    	}
   
     /// <summary>
@@ -111,6 +118,7 @@ public class ScoreManager : MonoBehaviour
     /// <param name="amount">Amount to add</param>
     public void collectBolt(float amount)
     {
+        SystemLogger.write("Bolt Collected");
         // Add to the bolt count
         this.BoltCount += amount;
 
@@ -127,6 +135,7 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     public void resetBoltCount()
     {
+        SystemLogger.write("Bolts Reset");
         this.BoltCount = 0f;
 
         // Call deactivate event

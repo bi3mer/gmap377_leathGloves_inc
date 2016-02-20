@@ -56,7 +56,7 @@ public class LaserBeamCylinder : MonoBehaviour
     /// <param name="col">The collider the cylinder interacted with</param>
     void OnTriggerEnter(Collider col)
     {
-
+        SystemLogger.write("Laser beam collision");
         // If it's the right tag
         if (col.transform.gameObject.tag == this.Target)
         {
@@ -93,6 +93,7 @@ public class LaserBeamCylinder : MonoBehaviour
     /// </summary>
     void OnDestroy()
     {
+        SystemLogger.write("Laser beam destruction");
         if (this.Target == "Enemy")
         {
             // Decrease the laser count by 1

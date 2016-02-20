@@ -14,6 +14,7 @@ public class PickupCache : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
+            SystemLogger.write("Pickup Cache Instantiated On: " + this.gameObject.name);
         }
         else
         {

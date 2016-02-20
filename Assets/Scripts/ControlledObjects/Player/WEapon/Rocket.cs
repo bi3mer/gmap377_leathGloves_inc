@@ -17,6 +17,7 @@ public class Rocket : MonoBehaviour
     /// <param name="obj"></param>
     void OnCollisionEnter(Collision obj)
     {
+        SystemLogger.write("Rocket collision");
         // Get all the objects in a <ExplosionRadius> radius from where the bullet collided
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
         

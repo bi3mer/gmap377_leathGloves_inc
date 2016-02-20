@@ -98,6 +98,7 @@ public class EnemyStats : MonoBehaviour
 
             // Create the bolt
             Instantiate(Bolt, transform.position + boltOffset, transform.rotation);
+            SystemLogger.write("Bolt Created");
         }
     }
     public virtual void MakeExplosion()

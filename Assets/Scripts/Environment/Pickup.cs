@@ -34,6 +34,7 @@ public class Pickup : MonoBehaviour
     {
         if (obj.gameObject.tag == "Player")
         {
+            SystemLogger.write("Player Picked Up Bolt");
             Destroy(this.gameObject);
             
             // Activate the pickup type
@@ -71,6 +72,7 @@ public class Pickup : MonoBehaviour
         };
 
         this.Type[0] = pickupOne;
+        SystemLogger.write("Rocket Pickup Initialized");
     }
 
     /// <summary>
@@ -78,6 +80,7 @@ public class Pickup : MonoBehaviour
     /// </summary>
     public void AddLaserBeamPickup()
     {
+        SystemLogger.write("Laser beam collision");
         template pickupTwo = (obj) =>
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
@@ -87,6 +90,7 @@ public class Pickup : MonoBehaviour
         };
         
         this.Type[1] = pickupTwo;
+        SystemLogger.write("Laser Beam Pickup Initialized");
     }
 
     /// <summary>
@@ -102,6 +106,7 @@ public class Pickup : MonoBehaviour
         };
 
         this.Type[2] = pickupThree;
+        SystemLogger.write("Score Multiplier Pickup Initialized");
     }
 
     /// <summary>
@@ -118,6 +123,7 @@ public class Pickup : MonoBehaviour
         };
 
         this.Type[3] = minePickup;
+        SystemLogger.write("Mine Pickup Initialized");
     }
 
     /// <summary>
@@ -134,6 +140,7 @@ public class Pickup : MonoBehaviour
         };
         
         this.Type[4] = multiPickup;
+        SystemLogger.write("Multishot Pickup Initialized");
     }
 
     /// <summary>
@@ -150,6 +157,7 @@ public class Pickup : MonoBehaviour
         };
         
         this.Type[5] = dmgPickup;
+        SystemLogger.write("Damage Multiplier Pickup Initialized");
     }
 
     /// <summary>
@@ -187,6 +195,7 @@ public class Pickup : MonoBehaviour
         };
         
         this.Type[6] = bomb;
+        SystemLogger.write("Bomb Pickup Initialized");
     }
 
     /// <summary>
@@ -221,6 +230,7 @@ public class Pickup : MonoBehaviour
 
 
         this.Type[7] = shieldPickup;
+        SystemLogger.write("Shield Pickup Initialized");
     }
 
     /// <summary>
@@ -236,5 +246,6 @@ public class Pickup : MonoBehaviour
         
         // Add them to the array
         this.Type[8] = speedPickup;
+        SystemLogger.write("Speed Pickup Initialized");
     }
 }
