@@ -68,12 +68,14 @@ public class searchAndAttack : MonoBehaviour
 				{
 					bullet.transform.parent = this.attackSpawnPoint;
 				}
+				else
+				{
+					// add target to bullet
+					bullet.GetComponent<FireForward>().target = targ.position;
+				}
 
 				// reset timer
 				timer = 0f;
-
-				// add target to bullet
-				bullet.GetComponent<FireForward>().target = targ.position;
 			}
 		}
 	}
