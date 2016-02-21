@@ -68,6 +68,7 @@ public class GameStartManager : MonoBehaviour {
 		LoadingCanvas.gameObject.SetActive (true);
         StartCoroutine(CycleLoadingText());
 		SaveSystem.Instance.setLoaded (true);
+        //Application.backgroundLoadingPriority = ThreadPriority.Low;  // Still not smooth enough
         Application.LoadLevelAsync("OriginalScene");
         StartCoroutine(DestroyLoadingScreenOnLoad());
     }
@@ -77,6 +78,7 @@ public class GameStartManager : MonoBehaviour {
         StartScreenCanvas.enabled = false;
         StartCoroutine(CycleLoadingText());
         SaveSystem.Instance.SetLoadAtGameStart();
+        //Application.backgroundLoadingPriority = ThreadPriority.Low;
         Application.LoadLevelAsync("OriginalScene");
     }
 
