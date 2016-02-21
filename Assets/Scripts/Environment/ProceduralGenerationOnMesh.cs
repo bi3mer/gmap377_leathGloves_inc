@@ -92,10 +92,23 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 
 	List<Vector3> faceNormals;
 
-	static Dictionary<string, serializedInformation> serializedSamplePointsByPlanet = new Dictionary<string, serializedInformation>();
+	public static Dictionary<string, serializedInformation> serializedSamplePointsByPlanet = new Dictionary<string, serializedInformation>();
 	// Use this for initialization
 	void Start () 
 	{
+		if(serializedSamplePointsByPlanet.Count < 2)
+		{
+			if(!serializedSamplePointsByPlanet.ContainsKey("DesertPlanet"))
+			{
+				serializedSamplePointsByPlanet.Add("DesertPlanet", new serializedInformation());
+			}
+
+			if(!serializedSamplePointsByPlanet.ContainsKey("IcePlanet"))
+			{
+				serializedSamplePointsByPlanet.Add("IcePlanet", new serializedInformation());
+			}
+		}
+
 		mesh = GetComponent<MeshFilter> ().mesh;
 		grid = new Dictionary<long, ProceduralGenerationPoint>();
 		chunkGrid = new Dictionary<long, List<EnvironmentOrienter>> ();
@@ -112,13 +125,14 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		chunkCellSize = 1f / planetSections;
 		layerMask = gameObject.layer;
 
-		LoadPlanet ();
+		StartCoroutine(waitForLoad());
 	}
 
 	public void LoadPlanet()
 	{
-		if(serializedSamplePointsByPlanet.ContainsKey(planetName))
+		if(serializedSamplePointsByPlanet.ContainsKey(planetName) && serializedSamplePointsByPlanet[planetName].samplePointKeys != null)
 		{
+			samplePoints = new Dictionary<long, List<ProceduralGenerationPoint>>();
 			reconstructSamplePoints(planetName);
 		}
 		else
@@ -127,13 +141,16 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		}
 
 		if (generateAllAtOnce) {
+			generateObjectsByName();
 			generateAll();
 		}
 		else
 		{
 			generateInitialObjects ();
+
 		}
 
+		serializeSamplePoints ();
 
 	}
 	
@@ -192,10 +209,12 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 					
 					ob.transform.parent = transform;
 					ob.transform.localPosition = samplePoints[key][i].position + samplePoints[key][i].size * faceNormals[samplePoints[key][i].triangleIndex];
+					ob.gameObject.name = selection.name;
 					samplePoints[key][i].objectName = ob.gameObject.name;
 				}
 				else
 				{
+					Debug.Log (samplePoints[key][i].objectName);
 					ob = GameObject.Instantiate(objectByName[samplePoints[key][i].objectName]);
 					ob.name = samplePoints[key][i].objectName;
 				}
@@ -206,6 +225,36 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 			}
 
 		}
+	}
+
+	/// <summary>
+	/// Generates the objects in the objectsByName pool. To be used during reloading sample points from save file.
+	/// </summary>
+	public void generateObjectsByName()
+	{
+		Object[] largeObjects = Resources.LoadAll (folder + "/Large");
+		Object[] mediumObjects = Resources.LoadAll (folder + "/Medium");
+		Object[] smallObjects = Resources.LoadAll (folder + "/Small");
+		
+		int i;
+		
+		objectBySize.Add ("Small", new List<GameObject> ());
+		
+		for(i = 0; i < smallObjects.Length; i++)
+		{
+			objectByName.Add (smallObjects[i].name, (GameObject) smallObjects[i]);
+		}
+
+		for(i = 0; i < mediumObjects.Length; i++)
+		{
+			objectByName.Add (mediumObjects[i].name, (GameObject) mediumObjects[i]);
+		}
+
+		for(i = 0; i < largeObjects.Length; i++)
+		{
+			objectByName.Add (largeObjects[i].name, (GameObject) largeObjects[i]);
+		}
+
 	}
 
 	/// <summary>
@@ -245,7 +294,6 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		{
 			objectBySize["Medium"].Add((GameObject) mediumObjects[i]);
 			objectPoolByName.Add(mediumObjects[i].name, new List<EnvironmentOrienter>());
-			objectByName.Add (mediumObjects[i].name, (GameObject) mediumObjects[i]);
 
 			for(j = 0; j < initialObjects; j++)
 			{
@@ -263,7 +311,6 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		{
 			objectBySize["Large"].Add((GameObject) largeObjects[i]);
 			objectPoolByName.Add(largeObjects[i].name, new List<EnvironmentOrienter>());
-			objectByName.Add (largeObjects[i].name, (GameObject) largeObjects[i]);
 
 			for(j = 0; j < initialObjects; j++)
 			{
@@ -281,7 +328,6 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		{
 			objectBySize["PowerUp"].Add((GameObject) powerUpObjects[i]);
 			objectPoolByName.Add(powerUpObjects[i].name, new List<EnvironmentOrienter>());
-			objectByName.Add (powerUpObjects[i].name, (GameObject) powerUpObjects[i]);
 
 			for(j = 0; j < initialObjects; j++)
 			{
@@ -293,8 +339,6 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 				objectPoolByName[ob.name].Add(ob.GetComponent<EnvironmentOrienter>());
 			}
 		}
-
-	
 	}
 
 	/// <summary>
@@ -902,7 +946,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		return density;
 	}
 
-	struct serializedInformation
+	public struct serializedInformation
 	{
 		public List<long> samplePointKeys;
 		public List<Vector3> samplePointLocations;
@@ -929,21 +973,24 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		info.samplePointLocations = samplePointLocations;
 		info.samplePointObjects = samplePointObjects;
 
-		if(!serializedSamplePointsByPlanet.ContainsKey(this.gameObject.name))
+		Debug.Log ("Save to " + planetName);
+		if(!serializedSamplePointsByPlanet.ContainsKey(planetName))
 		{
-			serializedSamplePointsByPlanet.Add(this.gameObject.name, info);
+			serializedSamplePointsByPlanet.Add(planetName, info);
 		}
 		else
 		{
-			serializedSamplePointsByPlanet[this.gameObject.name] = info;
+			serializedSamplePointsByPlanet[planetName] = info;
 		}
 	}
 
 	public void reconstructSamplePoints(string name)
 	{
+		Debug.Log ("Resuing old sample points " + name);
 		List<long> keys = new List<long> (serializedSamplePointsByPlanet [name].samplePointKeys);
 		for(int i = 0; i < keys.Count; i++)
 		{
+			Debug.Log ("Hi");
 			samplePoints.Add(keys[i], new List<ProceduralGenerationPoint>());
 			
 			for(int j = 0; j < serializedSamplePointsByPlanet[name].samplePointLocations.Count; j++)
@@ -953,5 +1000,18 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 				samplePoints[keys[i]].Add (p);
 			}
 		}
+
+		Debug.Log ("COUNT " + samplePoints.Keys.Count);
+	}
+
+	public IEnumerator waitForLoad()
+	{
+		while (!SaveSystem.Instance.getLoaded()) 
+		{
+			Debug.Log ("Still not loaded....");
+			yield return null;
+		}
+
+		LoadPlanet ();
 	}
 }

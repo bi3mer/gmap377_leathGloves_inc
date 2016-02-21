@@ -67,6 +67,7 @@ public class GameStartManager : MonoBehaviour {
 		StartScreenCanvas.enabled = false;
 		LoadingCanvas.gameObject.SetActive (true);
         StartCoroutine(CycleLoadingText());
+		SaveSystem.Instance.setLoaded (true);
         Application.LoadLevelAsync("OriginalScene");
         StartCoroutine(DestroyLoadingScreenOnLoad());
     }

@@ -41,6 +41,7 @@ public class RotatingMenuPanel : MonoBehaviour {
 		}
 
 		displayPanel.color = new Color(displayPanel.color.r, displayPanel.color.g, displayPanel.color.b, 0.1f);
+		setPanelObjectStates (false);
 	}
 
 	public void activatePanel()
@@ -82,6 +83,16 @@ public class RotatingMenuPanel : MonoBehaviour {
 		else
 		{
 			displayPanel.color = new Color(displayPanel.color.r, displayPanel.color.g, displayPanel.color.b, 0.6f);
+		}
+
+		setPanelObjectStates (true);
+	}
+
+	public void setPanelObjectStates(bool active)
+	{
+		for(int i = 0; i < transform.childCount; i++)
+		{
+			displayPanel.transform.GetChild(i).gameObject.SetActive(active);
 		}
 	}
 

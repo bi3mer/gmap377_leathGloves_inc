@@ -33,6 +33,7 @@ public class Name_InputField : MonoBehaviour
 		{
 			continueButton.interactable = true;
             setPlayerName(nameInput.text);
+			Application.LoadLevelAsync ("MenuSelectScreen");
 		}
 	}
 }

@@ -13,6 +13,8 @@ public class SaveSystem : MonoBehaviour {
     public static int SaveVersion = 1;
     public bool LoadOnGameStart = false;
 
+	static bool loadFinished = false;
+
     public class SaveFile {
         public int SaveVersion = SaveSystem.SaveVersion;
         public int Score = ScoreManager.Instance.score;
@@ -22,6 +24,60 @@ public class SaveSystem : MonoBehaviour {
         public float MineAmmo = PickupCache.Instance.Mine.GetComponent<Weapon>().ammo;
         public float RocketAmmo = PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo;
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+		public List<long> desertSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointKeys;
+		public List<string> desertSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointObjects;
+		public List<Vector3> desertSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointLocations;
+
+		public List<long> iceSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointKeys;
+		public List<string> iceSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointObjects;
+		public List<Vector3> iceSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointLocations;
+
+        public void Load() {
+            ScoreManager.Instance.score = Score;
+	            Player.Instance.transform.position = PlayerPosition;
+	            Player.Instance.transform.rotation = PlayerRotation;
+	            Player.Instance.GetComponent<InterplanetaryObject>().NearestPlanet = InterplanetaryObject.GetNearestPlanet(PlayerPosition);
+	            PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo = BeamAmmo;
+	            PickupCache.Instance.Mine.GetComponent<Weapon>().ammo = MineAmmo;
+            	PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo = RocketAmmo;
+
+				ProceduralGenerationOnMesh.serializedInformation desertInfo = new ProceduralGenerationOnMesh.serializedInformation ();
+				desertInfo.samplePointKeys = desertSamplePointChunks;
+				desertInfo.samplePointLocations = desertSamplePointLocations;
+				desertInfo.samplePointObjects = desertSamplePointObjectNames;
+
+				ProceduralGenerationOnMesh.serializedInformation iceInfo = new ProceduralGenerationOnMesh.serializedInformation ();
+				iceInfo.samplePointKeys = iceSamplePointChunks;
+				iceInfo.samplePointLocations = iceSamplePointLocations;
+				iceInfo.samplePointObjects = iceSamplePointObjectNames;
+
+				if (ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.ContainsKey ("DesertPlanet")) 
+				{
+					ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"] = desertInfo;
+				}
+				else
+				{
+					ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.Add ("DesertPlanet", desertInfo);
+				}
+
+				if (ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.ContainsKey ("IcePlanet")) 
+				{
+				Debug.Log (System.Environment.StackTrace);
+					ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"] = iceInfo;
+				}
+				else
+				{
+					ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.Add ("IcePlanet", iceInfo);
+				}
+			loadFinished = true;
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         public bool TankBossDead = BossManager.Instance.Planet1Tank ? false : true;
         public bool ScorpionDead = BossManager.Instance.Scorpion ? false : true;
         public bool MineLayerDead = BossManager.Instance.MineLayer ? false : true;
@@ -40,6 +96,13 @@ public class SaveSystem : MonoBehaviour {
             if (ScorpionDead) Destroy(BossManager.Instance.Scorpion);
             if (MineLayerDead) Destroy(BossManager.Instance.MineLayer);
             if (GoliathDead) Destroy(BossManager.Instance.Goliath);
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         }
     }
 
@@ -74,7 +137,12 @@ public class SaveSystem : MonoBehaviour {
         else if (Application.loadedLevelName == "OriginalScene") {
             CanLoad = true;
             CanSave = true;
-            if (LoadOnGameStart) LoadGame();
+
+			Debug.Log (LoadOnGameStart + " huh");
+            if (LoadOnGameStart) 
+			{
+				LoadGame();
+			}
             LoadOnGameStart = false;
         }
 
@@ -107,7 +175,7 @@ public class SaveSystem : MonoBehaviour {
         if (System.IO.File.Exists(SaveSystem.Instance.SaveDirectory + "/" + PlayerID + FileExt)) {
             System.IO.File.Delete(SaveSystem.Instance.SaveDirectory + "/" + PlayerID + FileExt);
         }
-        System.IO.FileStream file = System.IO.File.OpenWrite(SaveDirectory + "\\" + PlayerID + FileExt);
+        System.IO.FileStream file = System.IO.File.OpenWrite(SaveDirectory + "/" + PlayerID + FileExt);
         writer.Serialize(file, save);
         file.Close();
 
@@ -121,14 +189,15 @@ public class SaveSystem : MonoBehaviour {
         }
 
         System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(SaveFile));
-        System.IO.StreamReader file = new System.IO.StreamReader(SaveDirectory + "\\" + PlayerID + FileExt);
+        System.IO.StreamReader file = new System.IO.StreamReader(SaveDirectory + "/" + PlayerID + FileExt);
         SaveFile save = (SaveFile)reader.Deserialize(file);
         save.Load();
         file.Close();
     }
 
     public void SetLoadAtGameStart() {
-        StartCoroutine(LoadAtGameStart());
+
+		StartCoroutine(LoadAtGameStart());
     }
 
     IEnumerator LoadAtGameStart() {
@@ -136,7 +205,8 @@ public class SaveSystem : MonoBehaviour {
             yield return null;
         }
 
-        LoadGame();
+		Debug.Log (System.Environment.StackTrace);
+       	LoadGame();
     }
 
     void SaveOnGameOver() {
@@ -144,6 +214,17 @@ public class SaveSystem : MonoBehaviour {
         CanSave = false;
         CanLoad = false;
     }
+
+	
+	public bool getLoaded()
+	{
+		return loadFinished;
+	}
+
+	public void setLoaded(bool s)
+	{
+		loadFinished = s;
+	}
 }
 
 #if UNITY_EDITOR

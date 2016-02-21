@@ -1,7 +1,25 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: b5714ff876ff74da59dce61097db63e6
 timeCreated: 1455999223
 licenseType: Pro
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+guid: 83aafe3a3f57142a2959aff346a844b1
+timeCreated: 1455999755
+licenseType: Free
+=======
+guid: b5714ff876ff74da59dce61097db63e6
+timeCreated: 1455999223
+licenseType: Pro
+>>>>>>> origin/master
+=======
+guid: b5714ff876ff74da59dce61097db63e6
+timeCreated: 1455999223
+licenseType: Pro
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2
@@ -43,7 +61,19 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
+<<<<<<< Updated upstream
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  spriteBorder: {x: 250, y: 250, z: 250, w: 250}
+=======
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+>>>>>>> origin/master
+=======
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+>>>>>>> origin/master
+>>>>>>> Stashed changes
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
