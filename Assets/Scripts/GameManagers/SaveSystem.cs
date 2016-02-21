@@ -24,10 +24,6 @@ public class SaveSystem : MonoBehaviour {
         public float MineAmmo = PickupCache.Instance.Mine.GetComponent<Weapon>().ammo;
         public float RocketAmmo = PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo;
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
 		public List<long> desertSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointKeys;
 		public List<string> desertSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointObjects;
 		public List<Vector3> desertSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointLocations;
@@ -36,74 +32,50 @@ public class SaveSystem : MonoBehaviour {
 		public List<string> iceSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointObjects;
 		public List<Vector3> iceSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointLocations;
 
+		public bool TankBossDead = BossManager.Instance.Planet1Tank ? false : true;
+		public bool ScorpionDead = BossManager.Instance.Scorpion ? false : true;
+		public bool MineLayerDead = BossManager.Instance.MineLayer ? false : true;
+		public bool GoliathDead = BossManager.Instance.Goliath ? false : true;
+
         public void Load() {
-            ScoreManager.Instance.score = Score;
-	            Player.Instance.transform.position = PlayerPosition;
-	            Player.Instance.transform.rotation = PlayerRotation;
-	            Player.Instance.GetComponent<InterplanetaryObject>().NearestPlanet = InterplanetaryObject.GetNearestPlanet(PlayerPosition);
-	            PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo = BeamAmmo;
-	            PickupCache.Instance.Mine.GetComponent<Weapon>().ammo = MineAmmo;
-            	PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo = RocketAmmo;
+			ScoreManager.Instance.score = Score;
+			Player.Instance.transform.position = PlayerPosition;
+			Player.Instance.transform.rotation = PlayerRotation;
+			Player.Instance.GetComponent<InterplanetaryObject> ().NearestPlanet = InterplanetaryObject.GetNearestPlanet (PlayerPosition);
+			PickupCache.Instance.LaserBeam.GetComponent<Weapon> ().ammo = BeamAmmo;
+			PickupCache.Instance.Mine.GetComponent<Weapon> ().ammo = MineAmmo;
+			PickupCache.Instance.Rocket.GetComponent<Weapon> ().ammo = RocketAmmo;
 
-				ProceduralGenerationOnMesh.serializedInformation desertInfo = new ProceduralGenerationOnMesh.serializedInformation ();
-				desertInfo.samplePointKeys = desertSamplePointChunks;
-				desertInfo.samplePointLocations = desertSamplePointLocations;
-				desertInfo.samplePointObjects = desertSamplePointObjectNames;
+			if (TankBossDead) Destroy(BossManager.Instance.Planet1Tank);
+			if (ScorpionDead) Destroy(BossManager.Instance.Scorpion);
+			if (MineLayerDead) Destroy(BossManager.Instance.MineLayer);
+			if (GoliathDead) Destroy(BossManager.Instance.Goliath);
 
-				ProceduralGenerationOnMesh.serializedInformation iceInfo = new ProceduralGenerationOnMesh.serializedInformation ();
-				iceInfo.samplePointKeys = iceSamplePointChunks;
-				iceInfo.samplePointLocations = iceSamplePointLocations;
-				iceInfo.samplePointObjects = iceSamplePointObjectNames;
+			ProceduralGenerationOnMesh.serializedInformation desertInfo = new ProceduralGenerationOnMesh.serializedInformation ();
+			desertInfo.samplePointKeys = desertSamplePointChunks;
+			desertInfo.samplePointLocations = desertSamplePointLocations;
+			desertInfo.samplePointObjects = desertSamplePointObjectNames;
 
-				if (ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.ContainsKey ("DesertPlanet")) 
-				{
-					ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"] = desertInfo;
-				}
-				else
-				{
-					ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.Add ("DesertPlanet", desertInfo);
-				}
+			ProceduralGenerationOnMesh.serializedInformation iceInfo = new ProceduralGenerationOnMesh.serializedInformation ();
+			iceInfo.samplePointKeys = iceSamplePointChunks;
+			iceInfo.samplePointLocations = iceSamplePointLocations;
+			iceInfo.samplePointObjects = iceSamplePointObjectNames;
 
-				if (ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.ContainsKey ("IcePlanet")) 
-				{
+			if (ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.ContainsKey ("DesertPlanet")) {
+				ProceduralGenerationOnMesh.serializedSamplePointsByPlanet ["DesertPlanet"] = desertInfo;
+			} else {
+				ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.Add ("DesertPlanet", desertInfo);
+			}
+
+			if (ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.ContainsKey ("IcePlanet")) {
 				Debug.Log (System.Environment.StackTrace);
-					ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"] = iceInfo;
-				}
-				else
-				{
-					ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.Add ("IcePlanet", iceInfo);
-				}
+				ProceduralGenerationOnMesh.serializedSamplePointsByPlanet ["IcePlanet"] = iceInfo;
+			} else {
+				ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.Add ("IcePlanet", iceInfo);
+			}
 			loadFinished = true;
-=======
-=======
->>>>>>> origin/master
->>>>>>> Stashed changes
-        public bool TankBossDead = BossManager.Instance.Planet1Tank ? false : true;
-        public bool ScorpionDead = BossManager.Instance.Scorpion ? false : true;
-        public bool MineLayerDead = BossManager.Instance.MineLayer ? false : true;
-        public bool GoliathDead = BossManager.Instance.Goliath ? false : true;
+		}
 
-        public void Load() {
-            ScoreManager.Instance.score = Score;
-            Player.Instance.transform.position = PlayerPosition;
-            Player.Instance.transform.rotation = PlayerRotation;
-            Player.Instance.GetComponent<InterplanetaryObject>().NearestPlanet = InterplanetaryObject.GetNearestPlanet(PlayerPosition);
-            PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo = BeamAmmo;
-            PickupCache.Instance.Mine.GetComponent<Weapon>().ammo = MineAmmo;
-            PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo = RocketAmmo;
-
-            if (TankBossDead) Destroy(BossManager.Instance.Planet1Tank);
-            if (ScorpionDead) Destroy(BossManager.Instance.Scorpion);
-            if (MineLayerDead) Destroy(BossManager.Instance.MineLayer);
-            if (GoliathDead) Destroy(BossManager.Instance.Goliath);
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
->>>>>>> Stashed changes
-        }
     }
 
 
