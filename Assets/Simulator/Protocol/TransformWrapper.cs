@@ -31,7 +31,7 @@ public class TransformWrapper : Wrapper {
 		lastPosition = this.transform.position;
 	}
 	
-	void Update () {
+	void FixedUpdate () {
 		//There is no need to update in editor
 		if(!Application.isPlaying)
 			return;
