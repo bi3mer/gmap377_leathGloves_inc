@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -10,7 +11,7 @@ using UnityEditor;
 public class SaveSystem : MonoBehaviour {
 
     public static SaveSystem Instance = null;
-    public static int SaveVersion = 1;
+    public static int SaveVersion = 2;
     public bool LoadOnGameStart = false;
 
 	static bool loadFinished = false;
@@ -18,27 +19,29 @@ public class SaveSystem : MonoBehaviour {
     public class SaveFile {
         public int SaveVersion = SaveSystem.SaveVersion;
         public int Score = ScoreManager.Instance.score;
+        public int Multiplier = ScoreManager.Instance.multi;
         public Vector3 PlayerPosition = Player.Instance.transform.position;
         public Quaternion PlayerRotation = Player.instance.transform.rotation;
         public float BeamAmmo = PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo;
         public float MineAmmo = PickupCache.Instance.Mine.GetComponent<Weapon>().ammo;
         public float RocketAmmo = PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo;
 
-		public List<long> desertSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointKeys;
-		public List<string> desertSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointObjects;
-		public List<Vector3> desertSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointLocations;
+        public bool TankBossDead = BossManager.Instance.Planet1Tank ? false : true;
+        public bool ScorpionDead = BossManager.Instance.Scorpion ? false : true;
+        public bool MineLayerDead = BossManager.Instance.MineLayer ? false : true;
+        public bool GoliathDead = BossManager.Instance.Goliath ? false : true;
 
-		public List<long> iceSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointKeys;
-		public List<string> iceSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointObjects;
-		public List<Vector3> iceSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointLocations;
+        public List<long> desertSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointKeys;
+        public List<string> desertSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointObjects;
+        public List<Vector3> desertSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointLocations;
 
-		public bool TankBossDead = BossManager.Instance.Planet1Tank ? false : true;
-		public bool ScorpionDead = BossManager.Instance.Scorpion ? false : true;
-		public bool MineLayerDead = BossManager.Instance.MineLayer ? false : true;
-		public bool GoliathDead = BossManager.Instance.Goliath ? false : true;
+        public List<long> iceSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointKeys;
+        public List<string> iceSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointObjects;
+        public List<Vector3> iceSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointLocations;
 
         public void Load() {
-			ScoreManager.Instance.score = Score;
+            //ScoreManager.Instance.score = Score;
+            ScoreManager.Instance.SetMultiplier(Multiplier);
 			Player.Instance.transform.position = PlayerPosition;
 			Player.Instance.transform.rotation = PlayerRotation;
 			Player.Instance.GetComponent<InterplanetaryObject> ().NearestPlanet = InterplanetaryObject.GetNearestPlanet (PlayerPosition);
@@ -74,7 +77,7 @@ public class SaveSystem : MonoBehaviour {
 				ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.Add ("IcePlanet", iceInfo);
 			}
 			loadFinished = true;
-		}
+        }
 
     }
 
@@ -141,7 +144,7 @@ public class SaveSystem : MonoBehaviour {
             System.IO.Directory.CreateDirectory(SaveDirectory);
         }
 
-        System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(SaveFile));
+        XmlSerializer writer = new XmlSerializer(typeof(SaveFile));
         SaveFile save = new SaveFile();
 
         if (System.IO.File.Exists(SaveSystem.Instance.SaveDirectory + "/" + PlayerID + FileExt)) {

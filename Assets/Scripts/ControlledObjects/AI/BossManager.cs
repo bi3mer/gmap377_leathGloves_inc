@@ -10,7 +10,16 @@ public class BossManager : MonoBehaviour {
     public GameObject Goliath;
 
 
-	void Start () {
+    void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        }
+        else {
+            Destroy(this);
+        }
+    }
+
+	void Start() {
 	
 	}
 }

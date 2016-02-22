@@ -1,0 +1,1842 @@
+fileFormatVersion: 2
+guid: d92dffff7496bd64598638ea41b214f1
+timeCreated: 1456103843
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Back_2_Plate
+    100002: Back_Plate
+    100004: Boss_Scorpion_Joints
+    100006: Boss_Scorpion_Mesh
+    100008: Crystal_End_J
+    100010: Crystal_J
+    100012: Crystals
+    100014: Front_2_Plate
+    100016: Front_Plate
+    100018: Left_Arm_j
+    100020: Left_Elbow_j
+    100022: Left_Inner_End_j
+    100024: Left_Inner_Pincer_j
+    100026: Left_Leg_Back
+    100028: Left_Leg_Back_Ankle_j
+    100030: Left_Leg_Back_End_j
+    100032: Left_Leg_Back_Hip_j
+    100034: Left_Leg_Back_Knee_j
+    100036: Left_Leg_Forward
+    100038: Left_Leg_Forward_Ankle_j
+    100040: Left_Leg_Forward_End_j
+    100042: Left_Leg_Forward_Hip_j
+    100044: Left_Leg_Forward_Knee_j
+    100046: Left_Leg_Mid
+    100048: Left_Leg_Mid_Ankle_j
+    100050: Left_Leg_Mid_End_j
+    100052: Left_Leg_Mid_Hip_j
+    100054: Left_Leg_Mid_Knee_j
+    100056: Left_Outer_End_j
+    100058: Left_Outer_Pincer_j
+    100060: Left_Shoulder_j
+    100062: Left_Wrist_j
+    100064: leftArm
+    100066: LowerJaw
+    100068: //RootNode
+    100070: Right_Arm_j
+    100072: Right_Elbow_j
+    100074: Right_Inner_End_j
+    100076: Right_Inner_Pincer_j
+    100078: Right_Leg_Back
+    100080: Right_Leg_Back_Ankle_j
+    100082: Right_Leg_Back_End_j
+    100084: Right_Leg_Back_Hip_j
+    100086: Right_Leg_Back_Knee_j
+    100088: Right_Leg_Forward
+    100090: Right_Leg_Forward_Ankle_j
+    100092: Right_Leg_Forward_End_j
+    100094: Right_Leg_Forward_Hip_j
+    100096: Right_Leg_Forward_Knee_j
+    100098: Right_Leg_Mid
+    100100: Right_Leg_Mid_Ankle_j
+    100102: Right_Leg_Mid_End_j
+    100104: Right_Leg_Mid_Hip_j
+    100106: Right_Leg_Mid_Knee_j
+    100108: Right_Outer_End_j
+    100110: Right_Outer_Pincer_j
+    100112: Right_Shoulder_j
+    100114: Right_Wrist_j
+    100116: rightArm
+    100118: Rotater
+    100120: Rotater_j
+    100122: Scoprion_Bot_Head_j
+    100124: Scoprion_Root_j
+    100126: Scoprion_Top_Head_End_j
+    100128: Scorpion_Back_Armor_Plate_End_j
+    100130: Scorpion_Back_Armor_Plate_j
+    100132: Scorpion_Back_Crystal_Plate_End_j
+    100134: Scorpion_Back_Crystal_Plate_j
+    100136: Scorpion_Base_j
+    100138: Scorpion_Bot_Head_End_j
+    100140: Scorpion_Front_Plate_End_j
+    100142: Scorpion_Front_Plate_j
+    100144: Scorpion_Mid_Plate_End_j
+    100146: Scorpion_Mid_Plate_j
+    100148: Scorpion_Top_Head_j
+    100150: Tail1
+    100152: Tail_1_j
+    100154: Tail_2_j
+    100156: Tail_3_j
+    100158: Tail_4_j
+    100160: Tail_5_j
+    100162: Tail_6_j
+    100164: Tail_7_j
+    100166: Tail_8_j
+    100168: Tail_9_j
+    400000: Back_2_Plate
+    400002: Back_Plate
+    400004: Boss_Scorpion_Joints
+    400006: Boss_Scorpion_Mesh
+    400008: Crystal_End_J
+    400010: Crystal_J
+    400012: Crystals
+    400014: Front_2_Plate
+    400016: Front_Plate
+    400018: Left_Arm_j
+    400020: Left_Elbow_j
+    400022: Left_Inner_End_j
+    400024: Left_Inner_Pincer_j
+    400026: Left_Leg_Back
+    400028: Left_Leg_Back_Ankle_j
+    400030: Left_Leg_Back_End_j
+    400032: Left_Leg_Back_Hip_j
+    400034: Left_Leg_Back_Knee_j
+    400036: Left_Leg_Forward
+    400038: Left_Leg_Forward_Ankle_j
+    400040: Left_Leg_Forward_End_j
+    400042: Left_Leg_Forward_Hip_j
+    400044: Left_Leg_Forward_Knee_j
+    400046: Left_Leg_Mid
+    400048: Left_Leg_Mid_Ankle_j
+    400050: Left_Leg_Mid_End_j
+    400052: Left_Leg_Mid_Hip_j
+    400054: Left_Leg_Mid_Knee_j
+    400056: Left_Outer_End_j
+    400058: Left_Outer_Pincer_j
+    400060: Left_Shoulder_j
+    400062: Left_Wrist_j
+    400064: leftArm
+    400066: LowerJaw
+    400068: //RootNode
+    400070: Right_Arm_j
+    400072: Right_Elbow_j
+    400074: Right_Inner_End_j
+    400076: Right_Inner_Pincer_j
+    400078: Right_Leg_Back
+    400080: Right_Leg_Back_Ankle_j
+    400082: Right_Leg_Back_End_j
+    400084: Right_Leg_Back_Hip_j
+    400086: Right_Leg_Back_Knee_j
+    400088: Right_Leg_Forward
+    400090: Right_Leg_Forward_Ankle_j
+    400092: Right_Leg_Forward_End_j
+    400094: Right_Leg_Forward_Hip_j
+    400096: Right_Leg_Forward_Knee_j
+    400098: Right_Leg_Mid
+    400100: Right_Leg_Mid_Ankle_j
+    400102: Right_Leg_Mid_End_j
+    400104: Right_Leg_Mid_Hip_j
+    400106: Right_Leg_Mid_Knee_j
+    400108: Right_Outer_End_j
+    400110: Right_Outer_Pincer_j
+    400112: Right_Shoulder_j
+    400114: Right_Wrist_j
+    400116: rightArm
+    400118: Rotater
+    400120: Rotater_j
+    400122: Scoprion_Bot_Head_j
+    400124: Scoprion_Root_j
+    400126: Scoprion_Top_Head_End_j
+    400128: Scorpion_Back_Armor_Plate_End_j
+    400130: Scorpion_Back_Armor_Plate_j
+    400132: Scorpion_Back_Crystal_Plate_End_j
+    400134: Scorpion_Back_Crystal_Plate_j
+    400136: Scorpion_Base_j
+    400138: Scorpion_Bot_Head_End_j
+    400140: Scorpion_Front_Plate_End_j
+    400142: Scorpion_Front_Plate_j
+    400144: Scorpion_Mid_Plate_End_j
+    400146: Scorpion_Mid_Plate_j
+    400148: Scorpion_Top_Head_j
+    400150: Tail1
+    400152: Tail_1_j
+    400154: Tail_2_j
+    400156: Tail_3_j
+    400158: Tail_4_j
+    400160: Tail_5_j
+    400162: Tail_6_j
+    400164: Tail_7_j
+    400166: Tail_8_j
+    400168: Tail_9_j
+    4300000: LowerJaw
+    4300002: Crystals
+    4300004: Left_Leg_Forward
+    4300006: Left_Leg_Mid
+    4300008: Left_Leg_Back
+    4300010: Right_Leg_Back
+    4300012: Right_Leg_Mid
+    4300014: Right_Leg_Forward
+    4300016: leftArm
+    4300018: rightArm
+    4300020: Rotater
+    4300022: Tail1
+    7400000: T-Pose
+    7400002: Idle
+    7400004: Attack_Melee
+    7400006: Pre_Laser
+    7400008: Post_Laser
+    7400010: Walk_Cycle
+    7400012: Laser_Loop
+    7400014: Spawn
+    9500000: //RootNode
+    13700000: Crystals
+    13700002: Left_Leg_Back
+    13700004: Left_Leg_Forward
+    13700006: Left_Leg_Mid
+    13700008: leftArm
+    13700010: LowerJaw
+    13700012: Right_Leg_Back
+    13700014: Right_Leg_Forward
+    13700016: Right_Leg_Mid
+    13700018: rightArm
+    13700020: Rotater
+    13700022: Tail1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: T-Pose
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Scorpion_Joints
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j/Left_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j/Left_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j/Right_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j/Right_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j/Scorpion_Bot_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j/Scorpion_Front_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j/Scoprion_Top_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j/Left_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j/Right_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j/Scorpion_Mid_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j/Left_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j/Right_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j/Scorpion_Back_Crystal_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j/Left_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j/Right_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j/Scorpion_Back_Armor_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J/Crystal_End_J
+        weight: 1
+      - path: Boss_Scorpion_Mesh
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Crystals
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/leftArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/LowerJaw
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/rightArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Rotater
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Tail1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 2
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Scorpion_Joints
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j/Left_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j/Left_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j/Right_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j/Right_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j/Scorpion_Bot_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j/Scorpion_Front_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j/Scoprion_Top_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j/Left_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j/Right_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j/Scorpion_Mid_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j/Left_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j/Right_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j/Scorpion_Back_Crystal_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j/Left_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j/Right_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j/Scorpion_Back_Armor_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J/Crystal_End_J
+        weight: 1
+      - path: Boss_Scorpion_Mesh
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Crystals
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/leftArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/LowerJaw
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/rightArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Rotater
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Tail1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack_Melee
+      takeName: Take 001
+      firstFrame: 47
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Scorpion_Joints
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j/Left_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j/Left_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j/Right_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j/Right_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j/Scorpion_Bot_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j/Scorpion_Front_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j/Scoprion_Top_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j/Left_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j/Right_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j/Scorpion_Mid_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j/Left_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j/Right_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j/Scorpion_Back_Crystal_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j/Left_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j/Right_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j/Scorpion_Back_Armor_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J/Crystal_End_J
+        weight: 1
+      - path: Boss_Scorpion_Mesh
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Crystals
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/leftArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/LowerJaw
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/rightArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Rotater
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Tail1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Pre_Laser
+      takeName: Take 001
+      firstFrame: 81
+      lastFrame: 141
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Scorpion_Joints
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j/Left_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j/Left_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j/Right_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j/Right_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j/Scorpion_Bot_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j/Scorpion_Front_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j/Scoprion_Top_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j/Left_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j/Right_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j/Scorpion_Mid_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j/Left_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j/Right_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j/Scorpion_Back_Crystal_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j/Left_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j/Right_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j/Scorpion_Back_Armor_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J/Crystal_End_J
+        weight: 1
+      - path: Boss_Scorpion_Mesh
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Crystals
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/leftArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/LowerJaw
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/rightArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Rotater
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Tail1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Post_Laser
+      takeName: Take 001
+      firstFrame: 169
+      lastFrame: 190
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Scorpion_Joints
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j/Left_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j/Left_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j/Right_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j/Right_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j/Scorpion_Bot_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j/Scorpion_Front_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j/Scoprion_Top_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j/Left_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j/Right_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j/Scorpion_Mid_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j/Left_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j/Right_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j/Scorpion_Back_Crystal_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j/Left_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j/Right_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j/Scorpion_Back_Armor_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J/Crystal_End_J
+        weight: 1
+      - path: Boss_Scorpion_Mesh
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Crystals
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/leftArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/LowerJaw
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/rightArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Rotater
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Tail1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Walk_Cycle
+      takeName: Take 001
+      firstFrame: 191
+      lastFrame: 208
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Scorpion_Joints
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j/Left_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j/Left_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j/Right_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j/Right_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j/Scorpion_Bot_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j/Scorpion_Front_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j/Scoprion_Top_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j/Left_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j/Right_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j/Scorpion_Mid_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j/Left_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j/Right_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j/Scorpion_Back_Crystal_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j/Left_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j/Right_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j/Scorpion_Back_Armor_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J/Crystal_End_J
+        weight: 1
+      - path: Boss_Scorpion_Mesh
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Crystals
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/leftArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/LowerJaw
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/rightArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Rotater
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Tail1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Laser_Loop
+      takeName: Take 001
+      firstFrame: 141
+      lastFrame: 169
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Scorpion_Joints
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j/Left_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j/Left_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j/Right_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j/Right_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j/Scorpion_Bot_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j/Scorpion_Front_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j/Scoprion_Top_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j/Left_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j/Right_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j/Scorpion_Mid_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j/Left_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j/Right_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j/Scorpion_Back_Crystal_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j/Left_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j/Right_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j/Scorpion_Back_Armor_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J/Crystal_End_J
+        weight: 1
+      - path: Boss_Scorpion_Mesh
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Crystals
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/leftArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/LowerJaw
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/rightArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Rotater
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Tail1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Spawn
+      takeName: Take 001
+      firstFrame: 210
+      lastFrame: 258
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Boss_Scorpion_Joints
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Inner_Pincer_j/Left_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Left_Shoulder_j/Left_Arm_j/Left_Elbow_j/Left_Wrist_j/Left_Outer_Pincer_j/Left_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Inner_Pincer_j/Right_Inner_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Right_Shoulder_j/Right_Arm_j/Right_Elbow_j/Right_Wrist_j/Right_Outer_Pincer_j/Right_Outer_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scoprion_Bot_Head_j/Scorpion_Bot_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Front_Plate_j/Scorpion_Front_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Front_Plate/Scorpion_Top_Head_j/Scoprion_Top_Head_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Left_Leg_Forward_Hip_j/Left_Leg_Forward_Knee_j/Left_Leg_Forward_Ankle_j/Left_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Right_Leg_Forward_Hip_j/Right_Leg_Forward_Knee_j/Right_Leg_Forward_Ankle_j/Right_Leg_Forward_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Front_2_Plate/Scorpion_Mid_Plate_j/Scorpion_Mid_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Left_Leg_Mid_Hip_j/Left_Leg_Mid_Knee_j/Left_Leg_Mid_Ankle_j/Left_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Right_Leg_Mid_Hip_j/Right_Leg_Mid_Knee_j/Right_Leg_Mid_Ankle_j/Right_Leg_Mid_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Back_2_Plate/Scorpion_Back_Crystal_Plate_j/Scorpion_Back_Crystal_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Left_Leg_Back_Hip_j/Left_Leg_Back_Knee_j/Left_Leg_Back_Ankle_j/Left_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Right_Leg_Back_Hip_j/Right_Leg_Back_Knee_j/Right_Leg_Back_Ankle_j/Right_Leg_Back_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Scorpion_Back_Armor_Plate_j/Scorpion_Back_Armor_Plate_End_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J
+        weight: 1
+      - path: Boss_Scorpion_Joints/Scoprion_Root_j/Scorpion_Base_j/Back_Plate/Tail_1_j/Tail_2_j/Tail_3_j/Tail_4_j/Tail_5_j/Tail_6_j/Tail_7_j/Tail_8_j/Tail_9_j/Rotater_j/Crystal_J/Crystal_End_J
+        weight: 1
+      - path: Boss_Scorpion_Mesh
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Crystals
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Left_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/leftArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/LowerJaw
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Back
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Forward
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Right_Leg_Mid
+        weight: 1
+      - path: Boss_Scorpion_Mesh/rightArm
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Rotater
+        weight: 1
+      - path: Boss_Scorpion_Mesh/Tail1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
