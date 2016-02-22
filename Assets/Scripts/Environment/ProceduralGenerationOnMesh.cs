@@ -1000,8 +1000,6 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 				samplePoints[keys[i]].Add (p);
 			}
 		}
-
-		Debug.Log ("COUNT " + samplePoints.Keys.Count);
 	}
 
 	public IEnumerator waitForLoad()
