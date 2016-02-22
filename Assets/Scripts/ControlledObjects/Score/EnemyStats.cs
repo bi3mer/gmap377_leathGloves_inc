@@ -14,6 +14,7 @@ public class EnemyStats : MonoBehaviour
     public int ScatterMin = -5;
     public int ScatterMax = 5;
     public GameObject[] Drops;
+    public GameObject HitEffect;
 
     private System.Random drop;
     bool isDead;                           // Whether the enemy is dead.
@@ -50,6 +51,10 @@ public class EnemyStats : MonoBehaviour
             
         // Reduce the current health by the amount of damage sustained.
         currentHealth -= amount;
+        if (HitEffect)
+        {
+            Instantiate(this.HitEffect, this.transform.position, Quaternion.identity);
+        }
 
         // If the current health is less than or equal to zero...
         if (currentHealth <= 0)
