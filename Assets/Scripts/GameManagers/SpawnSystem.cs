@@ -56,6 +56,9 @@ public class SpawnSystem : MonoBehaviour
         }
     }
 
+	/// <summary>
+	/// Tries to spawn an enemy
+	/// </summary>
     void SpawnEnemy() 
 	{
         bool foundVertex = false;
@@ -69,25 +72,23 @@ public class SpawnSystem : MonoBehaviour
         int tries = 0;
 
 		long playerLoc = getPlayerGridLoc();
-		Debug.Log (playerLoc);
+
+		SystemLogger.write ("Trying to spawn an enemy around grid " + playerLoc);
+
 		spawnDirectionChoice = Random.Range(0, 4);
 		List<long> possibleKeys = null;
 
 		MinSpawnDistanceActual = MinSpawnDistanceEmpty + (MinSpawnDistancePopulated - MinSpawnDistanceEmpty) * (CurrentEnemyNumber / CurrentDifficulty);
 		MaxSpawnDistanceActual = MinSpawnDistancePopulated + (MaxSpawnDistanceActual - MinSpawnDistancePopulated) * (CurrentEnemyNumber / CurrentDifficulty);
 
+		// the minimum number of cells away
 		maxCellsAway = Mathf.CeilToInt(MaxSpawnDistanceActual * gridCellSize);
 		minCellsAway = Mathf.CeilToInt(MinSpawnDistanceActual * gridCellSize);
 
-
+		// choose a direction to spawn the enemies
 		if (spawnDirectionChoice == 0) 
 		{
-			possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway, Player.instance.transform.forward);
-
-			if(possibleKeys.Count > 0)
-			{
-				Debug.Log (possibleKeys[0] + " " + playerLoc);
-			}
+			possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway, Player.instance.transform.forward);    
 		} 
 		else if (spawnDirectionChoice == 1) 
 		{
@@ -102,11 +103,13 @@ public class SpawnSystem : MonoBehaviour
 			possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway, -Player.instance.transform.forward);
 		}
 
+		// tries x time to find a valid vertice
         while (!foundVertex && tries < MaxTries) {
 			if (Player.Instance == null) {
 				break;
 			}
 
+			// all the possible grids to look for a vertice
 			if (possibleKeys.Count > 0)
 			{
 				long key = possibleKeys [Random.Range (0, possibleKeys.Count)];
@@ -128,6 +131,7 @@ public class SpawnSystem : MonoBehaviour
 			}
 			else
 			{
+				// if non of those keys contain any valid points, then try another direction
 				spawnDirectionChoice = Random.Range(0, 4);
 				if (spawnDirectionChoice == 0) 
 				{
@@ -197,9 +201,7 @@ public class SpawnSystem : MonoBehaviour
         if (ChanceDifficultyIncreaseDeath > Random.Range(0, 100) / 100.0f) {
             CurrentDifficulty++;
         }
-		Debug.Log ("DEAD!");
         CurrentEnemyNumber -= 1;
-		Debug.Log (CurrentEnemyNumber);
     }
 
 	public void DestroyAllChildren()
@@ -247,8 +249,17 @@ public class SpawnSystem : MonoBehaviour
 		return toGrid(Player.instance.getUVLocation(LayerMask.NameToLayer("Planet")), gridCellSize, gridOffset);
 	}
 
+	/// <summary>
+	/// Gets the list of possible grids in which enemies can be spawned.
+	/// </summary>
+	/// <returns>The spawn cells.</returns>
+	/// <param name="playerLoc">Player location.</param>
+	/// <param name="maxCellsAway">Max cells away.</param>
+	/// <param name="minCellsAway">Minimum cells away.</param>
+	/// <param name="direction">Direction.</param>
 	public List<long> getSpawnCells(long playerLoc, int maxCellsAway, int minCellsAway, Vector3 direction)
 	{
+		SystemLogger.write ("Getting cells where enemy can be spawned...");
 		List<long> possibleKeys = new List<long> ();
 
 		int y = (int) (playerLoc / gridOffset);

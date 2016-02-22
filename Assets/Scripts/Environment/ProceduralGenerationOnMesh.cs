@@ -130,6 +130,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 
 	public void LoadPlanet()
 	{
+		SystemLogger.write ("Loading sample points from save file.");
+
 		if(serializedSamplePointsByPlanet.ContainsKey(planetName) && serializedSamplePointsByPlanet[planetName].samplePointKeys != null)
 		{
 			samplePoints = new Dictionary<long, List<ProceduralGenerationPoint>>();
@@ -168,6 +170,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	/// </summary>
 	public void generateAll()
 	{
+		SystemLogger.write ("Creating objects for all sample points...");
 		Object[] largeObjects = Resources.LoadAll (folder + "/Large");
 		Object[] mediumObjects = Resources.LoadAll (folder + "/Medium");
 		Object[] smallObjects = Resources.LoadAll (folder + "/Small");
@@ -214,7 +217,6 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 				}
 				else
 				{
-					Debug.Log (samplePoints[key][i].objectName);
 					ob = GameObject.Instantiate(objectByName[samplePoints[key][i].objectName]);
 					ob.name = samplePoints[key][i].objectName;
 				}
@@ -225,6 +227,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 			}
 
 		}
+
+		SystemLogger.write ("Generated objects!");
 	}
 
 	/// <summary>
@@ -232,6 +236,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	/// </summary>
 	public void generateObjectsByName()
 	{
+		SystemLogger.write ("Setting objects by name...");
 		Object[] largeObjects = Resources.LoadAll (folder + "/Large");
 		Object[] mediumObjects = Resources.LoadAll (folder + "/Medium");
 		Object[] smallObjects = Resources.LoadAll (folder + "/Small");
@@ -262,6 +267,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	/// </summary>
 	public void generateInitialObjects()
 	{
+		SystemLogger.write ("Creating object pool...");
+
 		Object[] largeObjects = Resources.LoadAll (folder + "/Large");
 		Object[] mediumObjects = Resources.LoadAll (folder + "/Medium");
 		Object[] smallObjects = Resources.LoadAll (folder + "/Small");
@@ -390,6 +397,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	/// <param name="key">All sample points are hashed into chunks by the key. So this key will give a list of objects within a chunk.</param>
 	public void activateChunk(long key)
 	{
+		SystemLogger.write ("Activating chunk " + key);
 		List<ProceduralGenerationPoint> points = samplePoints [key];
 		int choice;
 		string name;
@@ -484,6 +492,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	/// <param name="newPointsCount">Number of new points that should be generated around an existing point.</param>
 	public Dictionary<long, List<ProceduralGenerationPoint>> generatePoisson(float minDistance, int newPointsCount)
 	{
+		SystemLogger.write ("Began generating poisson sample points");
 		// gets triangle indices from first submesh
 		int[] triangleIndices = mesh.GetTriangles (0);
 
@@ -552,7 +561,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		power = Mathf.CeilToInt (Mathf.Log10(planetSections));
 		chunkGridOffset = Mathf.RoundToInt (Mathf.Pow (10, power));
 
-
+		SystemLogger.write ("Creating starting seeds...");
 		// creates the starting seeds from which points will be generated around
 		for (int i = 0; i < startingSeeds; ++i) 
 		{
@@ -641,6 +650,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		currentObjects = startingSeeds;
 
 		// not based on those seeds, generate objects around them
+
+		SystemLogger.write ("Creating the surrounding points....");
 
 		while (currentObjects < maxObjects && processList.Count != 0) 
 		{
@@ -946,6 +957,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		return density;
 	}
 
+	// Struct that contains serializable information
 	public struct serializedInformation
 	{
 		public List<long> samplePointKeys;
@@ -953,6 +965,9 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		public List<string> samplePointObjects;
 	}
 
+	/// <summary>
+	/// Sets up the sample points for serialization.
+	/// </summary>
 	public void serializeSamplePoints()
 	{
 		serializedInformation info = new serializedInformation ();
@@ -973,7 +988,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		info.samplePointLocations = samplePointLocations;
 		info.samplePointObjects = samplePointObjects;
 
-		Debug.Log ("Save to " + planetName);
+		SystemLogger.write("Setting up sample points for serialization for " + planetName);
 		if(!serializedSamplePointsByPlanet.ContainsKey(planetName))
 		{
 			serializedSamplePointsByPlanet.Add(planetName, info);
@@ -984,9 +999,13 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Reconstructs the sample points after save file load.
+	/// </summary>
+	/// <param name="name">Name of planet.</param>
 	public void reconstructSamplePoints(string name)
 	{
-		Debug.Log ("Resuing old sample points " + name);
+		SystemLogger.write ("Reconstructing sample points");
 		List<long> keys = new List<long> (serializedSamplePointsByPlanet [name].samplePointKeys);
 		for(int i = 0; i < keys.Count; i++)
 		{
@@ -1002,14 +1021,20 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Waits for loading of the save file so that on continue,
+	/// it will wait until the file has been loaded before the 
+	/// procedural generation will be set off.
+	/// </summary>
+	/// <returns>The for load.</returns>
 	public IEnumerator waitForLoad()
 	{
 		while (!SaveSystem.Instance.getLoaded()) 
 		{
-			Debug.Log ("Still not loaded....");
 			yield return null;
 		}
 
+		SystemLogger.write ("Finished loading save file!");
 		LoadPlanet ();
 	}
 }

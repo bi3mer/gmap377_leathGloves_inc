@@ -86,6 +86,12 @@ public class Player : MonoBehaviour
 //		return (VertexNavigation) this.GetComponent<InterplanetaryObject>().NearestPlanet.GetComponent<VertexNavigation>();
 	}
 
+	/// <summary>
+	/// Gets the player location on the uv map.
+	/// </summary>
+	/// <returns>The UV location.</returns>
+	/// <param name="layerMask">Layer mask.</param>
+
 	public Vector2 getUVLocation(int layerMask)
 	{
 		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, Player.Instance.getPlanetNavigation().transform.position - this.transform.position, 
