@@ -5,6 +5,8 @@ public abstract class BufferedMovement : AbstractMover
 {
 	public float updatePlanBuffer = .5f;
 
+    public bool shouldExecutePlan = true;
+
     [Tooltip ("Make false if another script is going to be running this game object")]
     public bool shouldRunCoRoutine = true;
 
@@ -81,7 +83,10 @@ public abstract class BufferedMovement : AbstractMover
     // Update is called once per frame
     void Update()
 	{
-		// Execute movement
-		this.executeCurrentPlan();
+        if (this.shouldExecutePlan)
+        {
+            // Execute movement
+            this.executeCurrentPlan();
+        }
 	}
 }

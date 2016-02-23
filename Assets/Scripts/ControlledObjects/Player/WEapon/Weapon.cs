@@ -13,7 +13,7 @@ public class Weapon: MonoBehaviour
     {
         SystemLogger.write("Bullet collision");
         // If it's an enemy
-        if (col.gameObject.tag == this.targetTag)
+        if (col.gameObject.CompareTag(this.targetTag))
         {
             // Try and find an EnemyHealth script on the gameobject hit.
             EnemyStats enemyHealth = col.gameObject.GetComponent<EnemyStats>();

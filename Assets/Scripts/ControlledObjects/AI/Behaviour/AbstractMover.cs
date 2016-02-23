@@ -45,12 +45,15 @@ public abstract class AbstractMover : Enemy
     // Assigner methods
     public void setTarget(Vector3 targ)
     {
+        Debug.Log("targetLocation: " + targ);
+        Debug.Log("AIMovement: " + this.aiMovement);
         this.targetLocation = targ;
-        this.aiMovement.setTarget(targetLocation);
+        this.aiMovement.setTarget(targ);
     }
 
     public void setMovementScript(AiMovement move)
     {
+        Debug.Log("here!@@");
         this.aiMovement = move;
     }
 

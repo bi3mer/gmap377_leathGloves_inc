@@ -227,7 +227,7 @@ public class AStar: MonoBehaviour, AiMovement
 	/// </summary>
 	void Start()
 	{
-		SystemLogger.write("Init this");
+		SystemLogger.write("Init Astar");
 
 		// Divide by 2 to get radius not diameter 
 		this.radius = this.body.GetComponent<Collider>().bounds.size.magnitude / 2;
