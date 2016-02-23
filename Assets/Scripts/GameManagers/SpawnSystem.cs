@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class SpawnSystem : MonoBehaviour 
 {
@@ -18,20 +19,22 @@ public class SpawnSystem : MonoBehaviour
     public int MaxTries = 50;
 
     private int _timer = 3;
-
 	public static SpawnSystem Instance = null;
 	public int gridDimension;
 
 	float gridCellSize;
 	long gridOffset;
+	string planetName;
 
-	Dictionary<long, List<Vector3>> verticesInGrid;
+	Dictionary<string, Dictionary<long, List<Vector3>>> verticesInGridByPlanet;
 
 	void Start() 
 	{
 		_timer = DifficultyIncreaseTime;
-		verticesInGrid = new Dictionary<long, List<Vector3>> ();
-		CreateGrid ();
+		verticesInGridByPlanet = new Dictionary<string, Dictionary<long, List<Vector3>>> ();
+
+		planetName = Player.instance.getPlanetNavigation ().gameObject.name;
+		CreateGrid (planetName);
 	}
 	
 	void Update () 
@@ -42,12 +45,15 @@ public class SpawnSystem : MonoBehaviour
             DifficultyIncreaseTime += 5;
             _timer = (int)(DifficultyIncreaseTime / Time.deltaTime);
         }
-	    if (CurrentEnemyNumber < CurrentDifficulty) {
-            SpawnEnemy();
-        }
+
+		if (CurrentEnemyNumber < CurrentDifficulty) {
+			SpawnEnemy ();
+		}
+
 	}
 
-    void Awake() {
+    void Awake() 
+	{
         if (Instance) {
             Destroy(this);
         }
@@ -56,11 +62,28 @@ public class SpawnSystem : MonoBehaviour
         }
     }
 
+	public void setPlanetName(string name)
+	{
+		planetName = name;
+	}
+
+	public void moveToPlanet(string name)
+	{
+		setPlanetName (name);
+		if(!verticesInGridByPlanet.ContainsKey(name))
+		{
+			CreateGrid(name);
+		}
+
+		CurrentEnemyNumber = 0;
+	}
+
 	/// <summary>
 	/// Tries to spawn an enemy
 	/// </summary>
     void SpawnEnemy() 
 	{
+		Dictionary<long, List<Vector3>> verticesInGrid = verticesInGridByPlanet [planetName];
         bool foundVertex = false;
         Vector3 position = Vector3.zero;
 		int maxCellsAway = 0;
@@ -105,6 +128,8 @@ public class SpawnSystem : MonoBehaviour
 
 		// tries x time to find a valid vertice
         while (!foundVertex && tries < MaxTries) {
+			SystemLogger.write("Tries: " + tries);
+
 			if (Player.Instance == null) {
 				break;
 			}
@@ -113,17 +138,20 @@ public class SpawnSystem : MonoBehaviour
 			if (possibleKeys.Count > 0)
 			{
 				long key = possibleKeys [Random.Range (0, possibleKeys.Count)];
-
-				if (verticesInGrid [key].Count > 0) 
+	
+				if (verticesInGrid.ContainsKey(key) && verticesInGrid [key].Count > 0) 
 				{
 					position = verticesInGrid [key] [Random.Range (0, verticesInGrid [key].Count)];
 
 					float dist = Vector2.Distance (position, Player.Instance.transform.position);
+
 					if (dist > MinSpawnDistanceActual && dist < MaxSpawnDistance) 
 					{
 						Collider[] hits = Physics.OverlapSphere (position, CollisionCheckRadius);
+						Debug.Log (hits.Length);
 						if (hits.Length <= 1) 
 						{
+							foundVertex = true;
 							break;
 						}
 					}
@@ -131,11 +159,11 @@ public class SpawnSystem : MonoBehaviour
 			}
 			else
 			{
-				// if non of those keys contain any valid points, then try another direction
 				spawnDirectionChoice = Random.Range(0, 4);
+				// choose a direction to spawn the enemies
 				if (spawnDirectionChoice == 0) 
 				{
-					possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway, Player.instance.transform.forward);
+					possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway, Player.instance.transform.forward);    
 				} 
 				else if (spawnDirectionChoice == 1) 
 				{
@@ -155,7 +183,7 @@ public class SpawnSystem : MonoBehaviour
 		}
 
         // Can't find a location to spawn
-        if (tries == MaxTries) return;
+        if (tries >= MaxTries) return;
 
         List<GameObject> prefabsToUse;
         List<float> weightsToUse;
@@ -192,7 +220,7 @@ public class SpawnSystem : MonoBehaviour
         e.AddComponent<EnvironmentOrienter>();
         e.GetComponent<EnvironmentOrienter>().OrientToPlanet();
 
-		
+		Debug.Log ("spawned enemy");
 		CurrentEnemyNumber++;
 
     }
@@ -212,15 +240,18 @@ public class SpawnSystem : MonoBehaviour
 		}
 	}
 
-	public void CreateGrid()
+	public void CreateGrid(string planetName)
 	{
 		Vector3[] vertices = Player.Instance.getPlanetNavigation ().vertices;
+		Debug.Log ("First ob" + planetName);
 		float power = Mathf.CeilToInt (Mathf.Log10(gridDimension));
 		gridOffset = Mathf.RoundToInt (Mathf.Pow (10, power));
 		gridCellSize = 1f / gridDimension;
 
 		Vector2[] planetUVs = Player.instance.getPlanetNavigation ().mesh.uv;
 		long key;
+
+		Dictionary<long, List<Vector3>> verticesInGrid = new Dictionary<long, List<Vector3>> ();
 
 		for(int i = 0; i < vertices.Length; i++)
 		{
@@ -229,11 +260,12 @@ public class SpawnSystem : MonoBehaviour
 			if(!verticesInGrid.ContainsKey(key))
 			{
 				verticesInGrid.Add(key, new List<Vector3>());
-			
 			}
 
 			verticesInGrid[key].Add(vertices[i]);
 		}
+
+		verticesInGridByPlanet.Add (planetName, verticesInGrid);
 	}
 
 	public long toGrid(Vector2 point, float minSize, long gridOffset)
@@ -270,29 +302,33 @@ public class SpawnSystem : MonoBehaviour
 		int minY = Mathf.CeilToInt(direction.z * minCellsAway);
 		int maxY = Mathf.CeilToInt(direction.z * maxCellsAway);
 
+		int newX, newY;
 		for(int i = x - minX; i <= x + maxX; i++)
 		{
 			for(int j = y - minY; j < y + maxY; j++)
 			{
+				newX = i;
+				newY = j;
+
 				if(i > gridDimension)
 				{
-					i= i - gridDimension;
+					newX= i - gridDimension;
 				}
 				else if(i < 0)
 				{
-					i = gridDimension + i;
+					newX = gridDimension + i;
 				}
 
 				if(j > gridDimension)
 				{
-					j = j - gridDimension;
+					newY = j - gridDimension;
 				}
 				else if(j< 0)
 				{
-					j = gridDimension + j;
+					newY = gridDimension + j;
 				}
 
-				possibleKeys.Add(i + (j * gridOffset));
+				possibleKeys.Add(newX + (newY * gridOffset));
 			}
 		}
 
