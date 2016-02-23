@@ -9,7 +9,7 @@ using System.Collections;
 public class ScorpionController : MonoBehaviour
 {
     [Tooltip("Place from which the laser will spawn from")]
-    public Transform LaserSpawnPoint;
+    public Transform[] LaserSpawnPoints;
 
     [Tooltip("Laser to fire")]
     public GameObject LaserBeam;
@@ -141,11 +141,14 @@ public class ScorpionController : MonoBehaviour
     /// </summary>
     private void spawnLaser()
     {
-        // Create new laser
-        GameObject laser = Instantiate(this.LaserBeam, this.LaserSpawnPoint.position, this.LaserSpawnPoint.rotation) as GameObject;
-
-        // Attach to spawnpoint
-        laser.transform.parent = this.LaserSpawnPoint;
+		for(int i = 0; i < this.LaserSpawnPoints.Length; ++i)
+		{
+			// Create new laser
+			GameObject laser = Instantiate(this.LaserBeam, this.LaserSpawnPoints[i].position, this.LaserSpawnPoints[i].rotation) as GameObject;
+			
+			// Attach to spawnpoint
+			laser.transform.parent = this.LaserSpawnPoints[i];
+		}
     }
 
     /// <summary>

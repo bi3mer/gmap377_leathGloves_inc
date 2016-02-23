@@ -50,7 +50,16 @@ public class AStar: MonoBehaviour, AiMovement
 			// pass
 		}
 	}
-	
+
+	/// <summary>
+	/// Gets the planet vertex navigation.
+	/// </summary>
+	/// <returns>The planet vertex navigation.</returns>
+	public VertexNavigation GetPlanetVertexNavigation()
+	{
+		return this.planetVertexNavigation;
+	}
+
 	/// <summary>
 	/// Gets the plan.
 	/// </summary>

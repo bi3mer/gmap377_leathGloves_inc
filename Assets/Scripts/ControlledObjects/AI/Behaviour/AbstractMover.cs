@@ -45,15 +45,12 @@ public abstract class AbstractMover : Enemy
     // Assigner methods
     public void setTarget(Vector3 targ)
     {
-        Debug.Log("targetLocation: " + targ);
-        Debug.Log("AIMovement: " + this.aiMovement);
         this.targetLocation = targ;
         this.aiMovement.setTarget(targ);
     }
 
     public void setMovementScript(AiMovement move)
     {
-        Debug.Log("here!@@");
         this.aiMovement = move;
     }
 
@@ -91,11 +88,11 @@ public abstract class AbstractMover : Enemy
 
 				if(this.vertType == AStar.VerticeType.GROUND)
 				{
-					targPos = Player.Instance.getPlanetNavigation().getVertex(this.plan[this.targetIndex]).position;
+					targPos = this.aiMovement.GetPlanetVertexNavigation().getVertex(this.plan[this.targetIndex]).position;
 				}
 				else
 				{
-					targPos = Player.Instance.getPlanetNavigation().flyingVertices[Player.Instance.getPlanetNavigation().getVertex(this.plan[this.targetIndex]).key];
+					targPos = this.aiMovement.GetPlanetVertexNavigation().flyingVertices[this.aiMovement.GetPlanetVertexNavigation().getVertex(this.plan[this.targetIndex]).key];
 				}
 
                 // Check if we've reached the target in the plan

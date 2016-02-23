@@ -7,21 +7,19 @@ public class Scorpion : BufferedMovement
     public float laserSquareDistanceMax = 15.0f;
     public float meleeSquareDistance    = 2.0f;
 
-    // Getcomponent wasn't working
-    [Header("Here because getcomponent not working, idk")]
-    public ScorpionController controller;
-    public AStar astar;
+    private ScorpionController controller;
 
     /// <summary>
     /// Initialize information
     /// </summary>
-    void Init()
+    void Awake()
     {
         // Init movement info
         base.init();
-        base.setMovementScript(this.astar);
+        base.setMovementScript(this.gameObject.GetComponent<AStar>());
         base.moveTowardsPlayerAtEndOfPath = true;
         base.targetLocation = Player.Instance.getClosestVertice();
+		this.controller = this.gameObject.GetComponent<ScorpionController>();
     }
 
     /// <summary>
@@ -63,6 +61,7 @@ public class Scorpion : BufferedMovement
 
             if (distance > this.laserSquareDistanceMin && distance < this.laserSquareDistanceMax)
             {
+				Debug.Log("here");
                 // set controller to attack with laser
                 this.controller.AttackLaser = true;
             }

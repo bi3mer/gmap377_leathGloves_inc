@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public interface AiMovement 
 {
+	VertexNavigation GetPlanetVertexNavigation();
+
 	// Get plan
 	List<int> getNewPlan(Vector3 target);
 
