@@ -73,8 +73,9 @@ public class WarpTransport : MonoBehaviour {
 		Player.Instance.transform.DOKill ();
 
         // Change the player's nearest planet*/
-        Player.Instance.GetComponent<InterplanetaryObject>().NearestPlanet = InterplanetaryObject.GetNearestPlanet(Player.Instance.transform.position);
 
+        Player.Instance.GetComponent<InterplanetaryObject>().NearestPlanet = InterplanetaryObject.GetNearestPlanet(Player.Instance.transform.position);
+		SpawnSystem.Instance.setPlanetName (InterplanetaryObject.GetNearestPlanet (Player.Instance.transform.position).gameObject.name);
         // Sets player rotation to the same as the destination warp pad, which will be orientated properly
         Player.Instance.transform.rotation = destinationWarpPad.transform.rotation;
 

@@ -65,6 +65,11 @@ public class SpawnSystem : MonoBehaviour
 	public void setPlanetName(string name)
 	{
 		planetName = name;
+
+		if(!verticesInGridByPlanet.ContainsKey(name))
+		{
+			CreateGrid(name);
+		}
 	}
 
 	public void moveToPlanet(string name)
@@ -83,6 +88,7 @@ public class SpawnSystem : MonoBehaviour
 	/// </summary>
     void SpawnEnemy() 
 	{
+		Debug.Log ("Spawn!!");
 		Dictionary<long, List<Vector3>> verticesInGrid = verticesInGridByPlanet [planetName];
         bool foundVertex = false;
         Vector3 position = Vector3.zero;
@@ -144,11 +150,10 @@ public class SpawnSystem : MonoBehaviour
 					position = verticesInGrid [key] [Random.Range (0, verticesInGrid [key].Count)];
 
 					float dist = Vector2.Distance (position, Player.Instance.transform.position);
-
+				
 					if (dist > MinSpawnDistanceActual && dist < MaxSpawnDistance) 
 					{
 						Collider[] hits = Physics.OverlapSphere (position, CollisionCheckRadius);
-						Debug.Log (hits.Length);
 						if (hits.Length <= 1) 
 						{
 							foundVertex = true;
