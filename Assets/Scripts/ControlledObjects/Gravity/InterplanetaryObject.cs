@@ -24,7 +24,7 @@ public class InterplanetaryObject : MonoBehaviour
 	}
 	public float NearestPlanetForce = 0f;
 
-	void Awake()
+	void Start()
 	{
 		this.NearestPlanet = InterplanetaryObject.GetNearestPlanet(this.transform.position);
 	}
