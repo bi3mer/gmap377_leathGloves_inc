@@ -35,6 +35,18 @@ public class InputManager : MonoBehaviour {
                 return Input.GetAxisRaw("Strafe");
         }
     }
+    public static float Player1Jump {
+        get {
+            if (XCI.GetNumPluggedCtrlrs() >= 1) {
+                if (XCI.GetButton(XboxButton.A))
+                    return 1;
+                else
+                    return 0;
+            }
+            else
+                return Input.GetAxisRaw("Jump");
+        }
+    }
     public static float Player2HorizontalInput {
         get {
             if (XCI.GetNumPluggedCtrlrs() >= 2) {
@@ -65,7 +77,14 @@ public class InputManager : MonoBehaviour {
     public static float PlayerStartInput
     {
         get {
-            return Input.GetAxisRaw("Submit");
+            if (XCI.GetNumPluggedCtrlrs() >= 1) {
+                if (XCI.GetButton(XboxButton.Start, 1) || XCI.GetButton(XboxButton.Start, 2))
+                    return 1;
+                else
+                    return 0;
+            }
+            else
+                return Input.GetAxisRaw("Submit");
         }
     }
     public static float Player2Shoot 
@@ -81,7 +100,7 @@ public class InputManager : MonoBehaviour {
     {
         get {
             if (XCI.GetNumPluggedCtrlrs() >= 2)
-                return XCI.GetAxisRaw(XboxAxis.LeftStickX, 2);
+                return XCI.GetAxisRaw(XboxAxis.RightStickX, 2);
             else
                 return Input.GetAxisRaw("Player2AimHorizontal");
         }
@@ -90,7 +109,7 @@ public class InputManager : MonoBehaviour {
     {
         get {
             if (XCI.GetNumPluggedCtrlrs() >= 2)
-                return XCI.GetAxisRaw(XboxAxis.LeftStickY, 2);
+                return XCI.GetAxisRaw(XboxAxis.RightStickY, 2);
             else
                 return Input.GetAxisRaw("Player2AimVertical");
         }
