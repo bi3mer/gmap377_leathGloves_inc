@@ -121,7 +121,7 @@ public class ScoreManager : MonoBehaviour
     /// <param name="amount">Amount to add</param>
     public void collectBolt(float amount)
     {
-        SystemLogger.write("Bolt Collected");
+        IncreaseScore(5);
         // Add to the bolt count
         this.BoltCount += amount;
 		BoltTxt.text = "Bolt: " + (int)((this.BoltCount / this.BoltGoal) * 100)  + "%";

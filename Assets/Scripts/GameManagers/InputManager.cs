@@ -24,15 +24,39 @@ public class InputManager : MonoBehaviour {
     }
     public static float Player1Strafe {
         get {
-            if (XCI.GetNumPluggedCtrlrs() >= 1) { 
-                if (XCI.GetButton(XboxButton.LeftBumper, 1))
-                    return -1;
-                if (XCI.GetButton(XboxButton.RightBumper, 1))
-                    return 1;
-                return 0;
+            if (Application.loadedLevel == 0 || Application.loadedLevel == 1)
+            {
+                if (XCI.GetNumPluggedCtrlrs() >= 1 && (XCI.GetButton(XboxButton.LeftBumper, 1) || XCI.GetButton(XboxButton.RightBumper, 1)))
+                {
+                    if (XCI.GetButton(XboxButton.LeftBumper, 1))
+                        return -1;
+                    if (XCI.GetButton(XboxButton.RightBumper, 1))
+                        return 1;
+                    return 0;
+                }
+                if (XCI.GetNumPluggedCtrlrs() >= 2)
+                {
+                    if (XCI.GetButton(XboxButton.LeftBumper, 2))
+                        return -1;
+                    if (XCI.GetButton(XboxButton.RightBumper, 2))
+                        return 1;
+                    return 0;
+                }
+                else
+                    return Input.GetAxisRaw("Strafe");
             }
-            else
-                return Input.GetAxisRaw("Strafe");
+            else {
+                if (XCI.GetNumPluggedCtrlrs() >= 1)
+                {
+                    if (XCI.GetButton(XboxButton.LeftBumper, 1))
+                        return -1;
+                    if (XCI.GetButton(XboxButton.RightBumper, 1))
+                        return 1;
+                    return 0;
+                }
+                else
+                    return Input.GetAxisRaw("Strafe");
+            }
         }
     }
     public static float Player1Jump {
@@ -90,28 +114,81 @@ public class InputManager : MonoBehaviour {
     public static float Player2Shoot 
     {
         get {
-            if (XCI.GetNumPluggedCtrlrs() >= 2)
-                return XCI.GetAxisRaw(XboxAxis.RightTrigger, 2);
-            else 
-                return Input.GetAxisRaw("Player2Shoot");
+            if (Application.loadedLevel == 0 || Application.loadedLevel == 1)
+            {
+                if (XCI.GetNumPluggedCtrlrs() >= 1 && (XCI.GetAxisRaw(XboxAxis.RightTrigger, 1) > float.Epsilon || XCI.GetButton(XboxButton.A, 1)))
+                {
+                    if (XCI.GetAxisRaw(XboxAxis.RightTrigger, 1) > float.Epsilon)
+                        return XCI.GetAxisRaw(XboxAxis.RightTrigger, 1);
+                    if (XCI.GetButton(XboxButton.A, 1))
+                        return 1;
+                    return 0;
+                }
+                if (XCI.GetNumPluggedCtrlrs() >= 2)
+                {
+                    if (XCI.GetAxisRaw(XboxAxis.RightTrigger, 2) > float.Epsilon)
+                        return XCI.GetAxisRaw(XboxAxis.RightTrigger, 2);
+                    if (XCI.GetButton(XboxButton.A, 2))
+                        return 1;
+                    return 0;
+                }
+                else
+                    return Input.GetAxisRaw("Player2Shoot");
+
+            }
+            else {
+                if (XCI.GetNumPluggedCtrlrs() >= 2)
+                {
+                    if (XCI.GetAxisRaw(XboxAxis.RightTrigger, 2) > float.Epsilon)
+                        return XCI.GetAxisRaw(XboxAxis.RightTrigger, 2);
+                    if (XCI.GetButton(XboxButton.A, 2))
+                        return 1;
+                    return 0;
+                }
+                else
+                    return Input.GetAxisRaw("Player2Shoot");
+            }
         }
     }
     public static float Player2AimHorizontal 
     {
         get {
-            if (XCI.GetNumPluggedCtrlrs() >= 2)
-                return XCI.GetAxisRaw(XboxAxis.RightStickX, 2);
-            else
-                return Input.GetAxisRaw("Player2AimHorizontal");
+            if (Application.loadedLevel == 0 || Application.loadedLevel == 1)
+            {
+                if (XCI.GetNumPluggedCtrlrs() >= 1 && Mathf.Abs(XCI.GetAxisRaw(XboxAxis.RightStickX, 1)) > float.Epsilon)
+                    return XCI.GetAxisRaw(XboxAxis.RightStickX, 1);
+                if (XCI.GetNumPluggedCtrlrs() >= 2)
+                    return XCI.GetAxisRaw(XboxAxis.RightStickX, 2);
+                else
+                    return Input.GetAxisRaw("Player2AimHorizontal");
+            }
+            else {
+                if (XCI.GetNumPluggedCtrlrs() >= 2)
+                    return XCI.GetAxisRaw(XboxAxis.RightStickX, 2);
+                else
+                    return Input.GetAxisRaw("Player2AimHorizontal");
+            }
         }
     }
     public static float Player2AimVertical 
     {
         get {
-            if (XCI.GetNumPluggedCtrlrs() >= 2)
-                return XCI.GetAxisRaw(XboxAxis.RightStickY, 2);
+            if (Application.loadedLevel == 0 || Application.loadedLevel == 1)
+            {
+                if (XCI.GetNumPluggedCtrlrs() >= 1 && Mathf.Abs(XCI.GetAxisRaw(XboxAxis.RightStickY, 1)) > float.Epsilon)
+                    return -1 * XCI.GetAxisRaw(XboxAxis.RightStickY, 1);
+                if (XCI.GetNumPluggedCtrlrs() >= 2)
+                    return -1 * XCI.GetAxisRaw(XboxAxis.RightStickY, 2);
+                else
+                    return Input.GetAxisRaw("Player2AimVertical");
+            }
             else
-                return Input.GetAxisRaw("Player2AimVertical");
+            {
+                if (XCI.GetNumPluggedCtrlrs() >= 2)
+                    return -1 * XCI.GetAxisRaw(XboxAxis.RightStickY, 2);
+                else
+                    return Input.GetAxisRaw("Player2AimVertical");
+            }
         }
     }
 

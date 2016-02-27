@@ -100,7 +100,6 @@ public class AimController : MonoBehaviour
                 if (!ButtonHeld)
                 {
                     this.ButtonHeld = true;
-                    Debug.Log("Shooting");
                     CallMouseEventLeftDown();
                 }
             }
@@ -108,7 +107,6 @@ public class AimController : MonoBehaviour
             {
                 if (ButtonHeld)
                 {
-                    Debug.Log("Shooting released");
                     this.ButtonHeld = false;
                     CallMouseEventLeftUp();
                 }
