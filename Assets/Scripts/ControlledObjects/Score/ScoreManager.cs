@@ -56,6 +56,7 @@ public class ScoreManager : MonoBehaviour
         SystemLogger.write("Score multiplier set");
         this.multi *= mult;
         this.multiplierText = "x" + multi.ToString();
+        Multi.Instance.MultiTxtSet();
     }
 
     /// <summary>
@@ -67,6 +68,7 @@ public class ScoreManager : MonoBehaviour
         SystemLogger.write("Score Multiplier Decreased");
         this.multi = mult;
         this.multiplierText = "x" + multi.ToString();
+        Multi.Instance.MultiTxtSet();
     }
     
     /// <summary>
@@ -110,8 +112,15 @@ public class ScoreManager : MonoBehaviour
     /// <param name="PlayerName">Player name.</param>
     public void SetName()
 	{
-		PlayerName = SaveSystem.Instance.PlayerID;
-		SystemLogger.write("Player Name Set to: " + PlayerName);
+		if (SaveSystem.Instance == null) 
+		{
+			PlayerName = "LumpyLabs";
+		} 
+		else 
+		{
+			PlayerName = SaveSystem.Instance.PlayerID;
+			SystemLogger.write ("Player Name Set to: " + PlayerName);
+		}
         
    	}
   
@@ -121,7 +130,7 @@ public class ScoreManager : MonoBehaviour
     /// <param name="amount">Amount to add</param>
     public void collectBolt(float amount)
     {
-        SystemLogger.write("Bolt Collected");
+        IncreaseScore(5);
         // Add to the bolt count
         this.BoltCount += amount;
 		BoltTxt.text = "Bolt: " + (int)((this.BoltCount / this.BoltGoal) * 100)  + "%";

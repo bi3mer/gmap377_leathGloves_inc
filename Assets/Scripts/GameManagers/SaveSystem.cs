@@ -66,7 +66,7 @@ public class SaveSystem : MonoBehaviour {
 
     public void Load() {
             //ScoreManager.Instance.score = Score;
-            ScoreManager.Instance.SetMultiplier(Multiplier);
+            //ScoreManager.Instance.SetMultiplier(Multiplier);
 			Player.Instance.transform.position = PlayerPosition;
 			Player.Instance.transform.rotation = PlayerRotation;
 			Player.Instance.GetComponent<InterplanetaryObject> ().NearestPlanet = InterplanetaryObject.GetNearestPlanet (PlayerPosition);

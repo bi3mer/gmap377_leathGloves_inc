@@ -9,27 +9,52 @@ ModelImporter:
     100006: Rocket
     100008: Ship
     100010: Wings
+    100012: Claw1
+    100014: Cockpit1
+    100016: Rocket1
+    100018: Rocket2
+    100020: Ship1
+    100022: transform1
+    100024: transform2
+    100026: transform3
+    100028: transform4
+    100030: transform5
+    100032: Wings1
     400000: Claw
     400002: Cockpit
     400004: //RootNode
     400006: Rocket
     400008: Ship
     400010: Wings
+    400012: Claw1
+    400014: Cockpit1
+    400016: Rocket1
+    400018: Rocket2
+    400020: Ship1
+    400022: transform1
+    400024: transform2
+    400026: transform3
+    400028: transform4
+    400030: transform5
+    400032: Wings1
     2300000: Claw
     2300002: Cockpit
     2300004: Rocket
     2300006: Ship
     2300008: Wings
+    2300010: Rocket2
     3300000: Claw
     3300002: Cockpit
     3300004: Rocket
     3300006: Ship
     3300008: Wings
+    3300010: Rocket2
     4300000: Rocket
     4300002: Claw
     4300004: Wings
     4300006: Ship
     4300008: Cockpit
+    4300010: Rocket2
     9500000: //RootNode
   materials:
     importMaterials: 1
