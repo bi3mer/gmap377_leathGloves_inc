@@ -56,6 +56,7 @@ public class ScoreManager : MonoBehaviour
         SystemLogger.write("Score multiplier set");
         this.multi *= mult;
         this.multiplierText = "x" + multi.ToString();
+        Multi.Instance.MultiTxtSet();
     }
 
     /// <summary>
@@ -67,6 +68,7 @@ public class ScoreManager : MonoBehaviour
         SystemLogger.write("Score Multiplier Decreased");
         this.multi = mult;
         this.multiplierText = "x" + multi.ToString();
+        Multi.Instance.MultiTxtSet();
     }
     
     /// <summary>
