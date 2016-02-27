@@ -52,7 +52,7 @@ public class EnemyArtillery : MonoBehaviour
 
             if (distanceToPlayer >= Mathf.Pow(calculationSwitchDistance, 2f))
             { 
-              clone.GetComponent<Rigidbody>().AddForce(clone.transform.forward * Vector3.Distance(attackSpawnPoint.position, Player.Instance.transform.position) * 10);
+				clone.GetComponent<Rigidbody>().AddForce(clone.transform.forward * Vector3.Distance(attackSpawnPoint.position, Player.Instance.transform.position) * 10);
             }
             else
             {

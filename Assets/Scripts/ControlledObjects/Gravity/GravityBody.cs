@@ -7,9 +7,9 @@ public class GravityBody : MonoBehaviour {
 	private GravityAttractor planet;
 	Rigidbody rb;
 	
-	void Awake () 
+	void Start () 
 	{
-		this.planet = GameObject.FindGameObjectWithTag("Planet").GetComponent<GravityAttractor>();
+		this.planet = Player.Instance.getPlanetNavigation().GetComponent<GravityAttractor>();
 		this.rb = this.GetComponent<Rigidbody>();
 		
 		this.rb.useGravity = false;
