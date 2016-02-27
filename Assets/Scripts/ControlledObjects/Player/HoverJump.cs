@@ -15,7 +15,7 @@ public class HoverJump : MonoBehaviour {
 
 	void Update () {
 		// Check for timer cooldown and key input
-		if (Input.GetButtonDown("Jump") && jumpTimer <= 0f) 
+		if (InputManager.Player1Jump > float.Epsilon && jumpTimer <= 0f) 
 		{
 			// Gets `up` direction relative to player object
 			// and multiplies it by the modifiable magnitude

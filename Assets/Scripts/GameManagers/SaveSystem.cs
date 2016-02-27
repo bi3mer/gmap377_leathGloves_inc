@@ -17,29 +17,54 @@ public class SaveSystem : MonoBehaviour {
 	static bool loadFinished = false;
 
     public class SaveFile {
-        public int SaveVersion = SaveSystem.SaveVersion;
-        public int Score = ScoreManager.Instance.score;
-        public int Multiplier = ScoreManager.Instance.multi;
-        public Vector3 PlayerPosition = Player.Instance.transform.position;
-        public Quaternion PlayerRotation = Player.instance.transform.rotation;
-        public float BeamAmmo = PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo;
-        public float MineAmmo = PickupCache.Instance.Mine.GetComponent<Weapon>().ammo;
-        public float RocketAmmo = PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo;
+        public int SaveVersion;
+        public int Score;
+        public int Multiplier;
+        public Vector3 PlayerPosition;
+        public Quaternion PlayerRotation;
+        public float BeamAmmo;
+        public float MineAmmo;
+        public float RocketAmmo;
 
-        public bool TankBossDead = BossManager.Instance.Planet1Tank ? false : true;
-        public bool ScorpionDead = BossManager.Instance.Scorpion ? false : true;
-        public bool MineLayerDead = BossManager.Instance.MineLayer ? false : true;
-        public bool GoliathDead = BossManager.Instance.Goliath ? false : true;
+        public bool TankBossDead;
+        public bool ScorpionDead;
+        public bool MineLayerDead;
+        public bool GoliathDead;
 
-        public List<long> desertSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointKeys;
-        public List<string> desertSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointObjects;
-        public List<Vector3> desertSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointLocations;
+        public List<long> desertSamplePointChunks;
+        public List<string> desertSamplePointObjectNames;
+        public List<Vector3> desertSamplePointLocations;
 
-        public List<long> iceSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointKeys;
-        public List<string> iceSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointObjects;
-        public List<Vector3> iceSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointLocations;
+        public List<long> iceSamplePointChunks;
+        public List<string> iceSamplePointObjectNames;
+        public List<Vector3> iceSamplePointLocations;
 
-        public void Load() {
+        public SaveFile() {
+            SaveVersion = SaveSystem.SaveVersion;
+            Score = ScoreManager.Instance.score;
+            Multiplier = ScoreManager.Instance.multi;
+            PlayerPosition = Player.Instance.transform.position;
+            PlayerRotation = Player.instance.transform.rotation;
+            BeamAmmo = PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo;
+            MineAmmo = PickupCache.Instance.Mine.GetComponent<Weapon>().ammo;
+            RocketAmmo = PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo;
+
+            TankBossDead = BossManager.Instance.Planet1Tank ? false : true;
+            ScorpionDead = BossManager.Instance.Scorpion ? false : true;
+            MineLayerDead = BossManager.Instance.MineLayer ? false : true;
+            GoliathDead = BossManager.Instance.Goliath ? false : true;
+
+            desertSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointKeys;
+            desertSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointObjects;
+            desertSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointLocations;
+
+            iceSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointKeys;
+            iceSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointObjects;
+            iceSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointLocations;
+
+    }
+
+    public void Load() {
             //ScoreManager.Instance.score = Score;
             ScoreManager.Instance.SetMultiplier(Multiplier);
 			Player.Instance.transform.position = PlayerPosition;

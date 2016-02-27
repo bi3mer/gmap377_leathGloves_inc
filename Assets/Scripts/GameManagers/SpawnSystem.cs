@@ -45,8 +45,7 @@ public class SpawnSystem : MonoBehaviour
             DifficultyIncreaseTime += 5;
             _timer = (int)(DifficultyIncreaseTime / Time.deltaTime);
         }
-
-		if (CurrentEnemyNumber < CurrentDifficulty) {
+	    if (CurrentEnemyNumber < CurrentDifficulty && Time.timeScale > float.Epsilon) {
 			SpawnEnemy ();
 		}
 
