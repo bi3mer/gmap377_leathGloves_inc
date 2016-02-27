@@ -87,7 +87,7 @@ public class SpawnSystem : MonoBehaviour
 	/// </summary>
     void SpawnEnemy() 
 	{
-		Debug.Log ("Spawn!!");
+		//Debug.Log ("Spawn!!");
 		Dictionary<long, List<Vector3>> verticesInGrid = verticesInGridByPlanet [planetName];
         bool foundVertex = false;
         Vector3 position = Vector3.zero;
@@ -224,7 +224,7 @@ public class SpawnSystem : MonoBehaviour
         e.AddComponent<EnvironmentOrienter>();
         e.GetComponent<EnvironmentOrienter>().OrientToPlanet();
 
-		Debug.Log ("spawned enemy");
+		//Debug.Log ("spawned enemy");
 		CurrentEnemyNumber++;
 
     }
@@ -247,7 +247,7 @@ public class SpawnSystem : MonoBehaviour
 	public void CreateGrid(string planetName)
 	{
 		Vector3[] vertices = Player.Instance.getPlanetNavigation ().vertices;
-		Debug.Log ("First ob" + planetName);
+		//Debug.Log ("First ob" + planetName);
 		float power = Mathf.CeilToInt (Mathf.Log10(gridDimension));
 		gridOffset = Mathf.RoundToInt (Mathf.Pow (10, power));
 		gridCellSize = 1f / gridDimension;
