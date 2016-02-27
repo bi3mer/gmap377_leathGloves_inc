@@ -1,11 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/*
- * 2/22
- * I'm going to be lazy and do two things in this script instead of just one. This should be updated in the future, but I just want
- * to test some of this stuff out first.
- */
 public class ScorpionController : MonoBehaviour
 {
     [Tooltip("Place from which the laser will spawn from")]
@@ -23,6 +18,12 @@ public class ScorpionController : MonoBehaviour
 
     [Tooltip("Duration of animation for spawning")]
     public float MoveToOnSpawnDuration = 1.16f;
+
+	[Tooltip("Time between melee attack and movement again")]
+	public float attackAfterMovementTime = 0.2f;
+
+	// Movement script
+	private BufferedMovement movement;
 
     [HideInInspector]
     public bool CanMove = false;
@@ -61,9 +62,9 @@ public class ScorpionController : MonoBehaviour
     static int beforeSpawn = Animator.StringToHash("Base Layer.BeforeSpawn");
     static int spawn = Animator.StringToHash("Base Layer.Spawn");
     static int idle = Animator.StringToHash("Base Layer.Idle");
-    static int preLaser = Animator.StringToHash("Base Layer.Pre_laser");
+    static int preLaser = Animator.StringToHash("Base Layer.Pre_Laser");
     static int laser = Animator.StringToHash("Base Layer.Laser_Loop");
-    static int postLaser = Animator.StringToHash("Base Layer.Post_laser");
+    static int postLaser = Animator.StringToHash("Base Layer.Post_Laser");
     static int walk = Animator.StringToHash("Base Layer.Walk_Cycle");
     static int meleeAttack = Animator.StringToHash("Base Layer.Attack_Melee");
 
@@ -73,15 +74,9 @@ public class ScorpionController : MonoBehaviour
     void Start()
     {
         this.animator = this.GetComponent<Animator>();
+		this.movement = this.GetComponent<BufferedMovement>();
     }
-
-    // TODO: delete this once done implementing
-    private IEnumerator test()
-    {
-        yield return new WaitForSeconds(1.5f);
-        this.AttackMelee = true;
-    }
-
+	
     /// <summary>
     /// Update animation
     /// </summary>
@@ -96,6 +91,7 @@ public class ScorpionController : MonoBehaviour
             // set our currentState variable to the current state of the Base Layer (0) of animation
             this.currentState = this.animator.GetCurrentAnimatorStateInfo(0);
 
+			// Run based on state of animation machine
             if (this.currentState.fullPathHash == idle)
             {
                 // Check if should attack
@@ -118,23 +114,45 @@ public class ScorpionController : MonoBehaviour
             }
             else if (this.currentState.fullPathHash == preLaser)
             {
-                Debug.Log("Implement IK look at");
+				this.movement.enabled = false;
             }
             else if (this.currentState.fullPathHash == laser)
             {
                 // Reset to be able to laser again
-                this.AttackLaser = false;
-                this.resetBool("LaserAttack");
-                this.spawnLaser();
+				if(this.AttackLaser)
+				{
+	                this.AttackLaser = false;
+	                this.resetBool("LaserAttack");
+	                this.spawnLaser();
+				}
             }
+			else if(this.currentState.fullPathHash == postLaser)
+			{
+				this.movement.enabled = true;
+				this.AttackLaser = true;
+			}
             else if (this.currentState.fullPathHash == meleeAttack)
             {
                 // Reset to be able to melee again
-                this.AttackMelee = false;
-                this.resetBool("MeleeAttack");
+				if(this.AttackMelee)
+				{
+	                this.AttackMelee = false;
+	                this.resetBool("MeleeAttack");
+				}
             }
         }
     }
+
+	/// <summary>
+	/// Starts the moving again after time
+	/// </summary>
+	/// <returns>The moving.</returns>
+	private IEnumerator startMovingMelee()
+	{
+		yield return new WaitForSeconds(this.attackAfterMovementTime);
+		this.movement.enabled = true;
+		this.AttackMelee = true;
+	}
 
     /// <summary>
     /// Spawn laser beam at point
@@ -156,9 +174,11 @@ public class ScorpionController : MonoBehaviour
     /// </summary>
     private void attackWithMelee()
     {
+		this.movement.enabled = false;
         this.Walking = false;
         this.animator.SetBool("MeleeAttack", true);
         this.AttackMelee = false;
+		StartCoroutine(this.startMovingMelee());
     }
 
     /// <summary>

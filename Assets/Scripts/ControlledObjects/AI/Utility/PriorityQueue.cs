@@ -122,11 +122,13 @@ public class PriorityQueue
 	/// </summary>
 	public void debugPrint()
 	{
+		string costs = "";
 		foreach (AStarNode node in this.queue)
 		{
 			Debug.Log("Cost: " + node.getCost());
+			costs += node.getCost() + ", ";
 		}
-		Debug.Log("");
+		Debug.Log(costs);
 		this.debugSimulatePop();
 		Debug.Log("------");
 	}

@@ -14,8 +14,8 @@ public class AStar: MonoBehaviour, AiMovement
 	public int distanceToGround = 10;
 	public LayerMask layersToAvoid;
 
-	[Tooltip("Body of AI being moved, should be largest part horizontoally.")]
-	public GameObject body;
+	[Tooltip("Multiplier to account for longer vertices")]
+	public float ExtraDistanceMultiplier = 1.1f;
 
 	[Tooltip("If you want to keep a minimum distance from the Player")]
 	public bool keepMinimumDistance = false;
@@ -36,6 +36,11 @@ public class AStar: MonoBehaviour, AiMovement
 	public VerticeType movementType;
 
 	private float radius;
+
+	[Header("Object avoidance information")]
+	[Tooltip("Body of AI being moved, should be largest part horizontoally.")]
+	public GameObject body;
+	public float multiplier = 1;
 
 	// Plan for movement
 	private List<int> plan = new List<int>();
@@ -154,50 +159,55 @@ public class AStar: MonoBehaviour, AiMovement
 			// Loop through the nodes available paths
 			for (int i = 0; i < availableMoves.Count; ++i)
 			{
-				bool pointCollision;
-				if(this.movementType == VerticeType.GROUND) 
-				{
-					pointCollision = !this.collisionAtPoint(this.planetVertexNavigation.getVertex(availableMoves[i]).position);
-				}
-				else
-				{
-					pointCollision = !this.collisionAtPoint(this.planetVertexNavigation.flyingVertices[this.planetVertexNavigation.getVertex(availableMoves[i]).key]);
-				}
-
 				// Only use vertex if we haven't already explored this node
-				if (!visitedNodes.Contains(availableMoves[i]) && pointCollision)
+				if (!visitedNodes.Contains(availableMoves[i]))
 				{
-					// Calculate distance between vertex and target
-					float vertexHeuristic = DistanceCalculator.squareEuclidianDistance(this.planetVertexNavigation.getVertex(availableMoves[i]).position, this.target);
-					
-					// Check if close enough to target
-					if (vertexHeuristic < this.planetVertexNavigation.avgVertexlength)
+					// Find obstacles
+					bool pointCollision;
+					if(this.movementType == VerticeType.GROUND) 
 					{
-						SystemLogger.write("Path has been found");
-
-						// Yes we are, solved
-						this.plan = node.Moves;
-						this.plan.Add(availableMoves[i]);
-						
-						// break out of loop
-						return; 
+						pointCollision = !this.collisionAtPoint(this.planetVertexNavigation.getVertex(availableMoves[i]).position);
 					}
 					else
 					{
-						// add to visited
-						visitedNodes.Add(availableMoves[i]);
-						
-						// Create cropy of moves
-						List<int> newMoves = new List<int>(node.Moves); 
+						pointCollision = !this.collisionAtPoint(this.planetVertexNavigation.flyingVertices[this.planetVertexNavigation.getVertex(availableMoves[i]).key]);
+					}
 
-						// Add available moves
-						newMoves.Add(availableMoves[i]);
+					// if obstacle was not found
+					if(pointCollision)
+					{
+						// Calculate distance between vertex and target
+						float vertexHeuristic = DistanceCalculator.squareEuclidianDistance(this.planetVertexNavigation.getVertex(availableMoves[i]).position, this.target);
 						
-						// Create new nodes with heuristic and step cost
-						AStarNode newNode = new AStarNode(node.G + this.calculateDistanceFromVertex(availableMoves[i]), vertexHeuristic, availableMoves[i], newMoves);
-						
-						// add node to queue
-						queue.addNode(newNode);
+						// Check if close enough to target
+						if (vertexHeuristic < this.planetVertexNavigation.avgVertexlength * this.ExtraDistanceMultiplier)
+						{
+							SystemLogger.write("Path has been found");
+							
+							// Yes we are, solved
+							this.plan = node.Moves;
+							this.plan.Add(availableMoves[i]);
+							
+							// break out of loop
+							return; 
+						}
+						else
+						{
+							// add to visited
+							visitedNodes.Add(availableMoves[i]);
+							
+							// Create cropy of moves
+							List<int> newMoves = new List<int>(node.Moves); 
+							
+							// Add available moves
+							newMoves.Add(availableMoves[i]);
+							
+							// Create new nodes with heuristic and step cost
+							AStarNode newNode = new AStarNode(node.G + this.calculateDistanceFromVertex(availableMoves[i]), vertexHeuristic, availableMoves[i], newMoves);
+							
+							// add node to queue
+							queue.addNode(newNode);
+						}
 					}
 				}
 			}
@@ -239,9 +249,9 @@ public class AStar: MonoBehaviour, AiMovement
 		SystemLogger.write("Init Astar");
 
 		// Divide by 2 to get radius not diameter 
-		this.radius = this.body.GetComponent<Collider>().bounds.size.magnitude / 2;
+		this.radius = this.body.GetComponent<Collider>().bounds.size.magnitude * this.multiplier / 2;
 		
-		// Get planets navigation cod
+		// Get planets navigation
 		this.planetVertexNavigation = Player.Instance.getPlanetNavigation();
 	}
 	

@@ -6,6 +6,8 @@ public class Scorpion : BufferedMovement
     public float laserSquareDistanceMin = 10.0f;
     public float laserSquareDistanceMax = 15.0f;
     public float meleeSquareDistance    = 2.0f;
+	public float minAngleToAttack       = 80.0f;
+	public float maxAngleToAttack       = 105.0f;
 
     private ScorpionController controller;
 
@@ -44,6 +46,20 @@ public class Scorpion : BufferedMovement
         }
     }
 
+	// Check angle
+	private bool lookingAtPlayer()
+	{
+		// Get angle between to player and self
+		float angle = Vector3.Angle(this.transform.forward, this.transform.forward - Player.Instance.transform.forward);
+
+		// Check angle is ideal range and return valid or not
+		if(angle > this.minAngleToAttack && angle < this.maxAngleToAttack)
+		{
+			return true;
+		}
+		return false;
+	}
+
     /// <summary>
     /// Handle Controller
     /// </summary>
@@ -52,23 +68,27 @@ public class Scorpion : BufferedMovement
         // Only run if controller is ready to start
         if (this.controller.CanMove)
         {
-            // TODO: Optimize to only call this once at beginning post spawn
             this.shouldExecutePlan = true;
             this.setTarget(Player.Instance.transform.position);
 
             // Get Distance
             float distance = DistanceCalculator.squareEuclidianDistance(this.transform.position, Player.Instance.transform.position);
-
+			
             if (distance > this.laserSquareDistanceMin && distance < this.laserSquareDistanceMax)
             {
-				Debug.Log("here");
-                // set controller to attack with laser
-                this.controller.AttackLaser = true;
+				if(this.lookingAtPlayer())
+				{
+	                // set controller to attack with laser
+	                this.controller.AttackLaser = true;
+				}
             }
             else if (distance < this.meleeSquareDistance)
             {
-                // Set controller to attack with melee
-                this.controller.AttackMelee = true;
+				if(this.lookingAtPlayer()) 
+				{
+	                // Set controller to attack with melee
+	                this.controller.AttackMelee = true;
+				}
             }
             else
             {
