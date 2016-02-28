@@ -55,12 +55,16 @@ public class EnvironmentOrienter : MonoBehaviour {
             int i = 1;
             Vector3 startPos = transform.position;
             float move = hit.distance / 2;
-            Rigidbody rb = gameObject.AddComponent<Rigidbody>();
-
+            
             while (i < 15) {
                 transform.position = startPos - transform.up * move;
 
-                Vector3 closestPoint = GetComponent<Rigidbody>().ClosestPointOnBounds(io.NearestPlanet.transform.position);
+                //Vector3 closestPoint = rb.ClosestPointOnBounds(io.NearestPlanet.transform.position);
+                RaycastHit closestPointHit;
+                Ray closestPointRay = new Ray(io.NearestPlanet.transform.position, transform.position - io.NearestPlanet.transform.position);
+                collider.Raycast(closestPointRay, out closestPointHit, Mathf.Infinity);
+                Vector3 closestPoint = closestPointHit.point;
+
                 if (Physics.Raycast(closestPoint, io.NearestPlanet.transform.position - closestPoint, hit.distance * 2)) {
                     move += hit.distance / ((float)Mathf.Pow(2, i));
                 }
@@ -72,8 +76,6 @@ public class EnvironmentOrienter : MonoBehaviour {
             }
 
             transform.position -= transform.up * ExtraDropDistance;
-
-            DestroyImmediate(rb);
         }
 
         DestroyImmediate(io);
