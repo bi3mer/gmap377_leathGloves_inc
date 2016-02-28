@@ -103,6 +103,7 @@ public class Pickup : MonoBehaviour
         {
             GameObject multi = new GameObject();
             multi.AddComponent<ScoreMulti>();
+			PopUpText.Instance.NewPopUp("Multiplier!");
         };
 
         this.Type[2] = pickupThree;
@@ -136,6 +137,7 @@ public class Pickup : MonoBehaviour
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
                 PowerUpManager.Instance.Activate("Multishot");
+				PopUpText.Instance.NewPopUp("Multi Shot!");
             }
         };
         
@@ -153,6 +155,7 @@ public class Pickup : MonoBehaviour
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
                 PowerUpManager.Instance.Activate("DamageUp");
+				PopUpText.Instance.NewPopUp("Double Damage!");
             }
         };
         
@@ -174,7 +177,7 @@ public class Pickup : MonoBehaviour
                     transform.position,
                     PowerUpManager.Instance.BombRadius,
                     PowerUpManager.Instance.BombLayer);
-
+				PopUpText.Instance.NewPopUp("Nuke!");
                 // For every object in the explosion
                 for (int i = 0; i < hitColliders.Length; ++i)
                 {
@@ -208,6 +211,7 @@ public class Pickup : MonoBehaviour
             // If the shield isn't already active
             if (!PowerUpManager.Instance.Powerups["Shield"].IsActive)
             {
+				PopUpText.Instance.NewPopUp("Force Field!");
                 // Make a shield around the player. This may change from my shitty particle effect
                 GameObject shield = Instantiate(PowerUpManager.Instance.ShieldModel, obj.transform.position, obj.transform.rotation) as GameObject;
 
@@ -242,6 +246,7 @@ public class Pickup : MonoBehaviour
         {
             // Activate the speed boost power up
             PowerUpManager.Instance.Activate("SpeedBoost");
+			PopUpText.Instance.NewPopUp("Speed Boost!");
         };
         
         // Add them to the array
