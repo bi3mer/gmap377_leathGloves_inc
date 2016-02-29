@@ -24,16 +24,20 @@ public class Planet1BossMover : BufferedMovement {
 
     void OnTriggerEnter(Collider obj)
     {
-        if(obj.gameObject.CompareTag("Player"))
+        if (obj.gameObject.CompareTag("Player"))
+        {
             playerInRange = true;
-        playerRangeChanged = true;
+            playerRangeChanged = true;
+        }
     }
 
     void OnTriggerExit(Collider obj)
     {
-        if(obj.gameObject.CompareTag("Player"))
+        if (obj.gameObject.CompareTag("Player"))
+        {
             playerInRange = false;
-        playerRangeChanged = true;
+            playerRangeChanged = true;
+        }
     }
 
     public override void checkPlan()
@@ -95,6 +99,6 @@ public class Planet1BossMover : BufferedMovement {
 
     public override bool shouldUpdatePlan()
     {
-        return (this.plan == null || DistanceCalculator.squareEuclidianDistance(base.targetLocation, Player.Instance.transform.position) < base.minReachDistance || playerRangeChanged);
+        return (this.plan == null || DistanceCalculator.squareEuclidianDistance(base.targetLocation, Player.Instance.transform.position) >= base.minMoveDistance || playerRangeChanged);
     }
 }
