@@ -14,7 +14,7 @@ public class Scorpion : BufferedMovement
     /// <summary>
     /// Initialize information
     /// </summary>
-    void Awake()
+    void Start()
     {
         // Init movement info
         base.init();
