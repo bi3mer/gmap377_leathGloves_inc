@@ -5,7 +5,9 @@ using System.Collections.Generic;
 public class TriggerSignalObject : MonoBehaviour {
 
 	[Tooltip("List of objects affected by this trigger.")]
-	public List<TriggeredObject> objectsAffected;
+	public List<GameObject> gameObjectsAffected;
+
+	List<TriggeredObject> objectsAffected;
 
 	[Tooltip("If checked, waits for an animation event to fire off trigger instead")]
 	public bool waitForAnimation;
@@ -16,7 +18,11 @@ public class TriggerSignalObject : MonoBehaviour {
 	int currentObject;
 	// Use this for initialization
 	void Start () {
-	
+		objectsAffected = new List<TriggeredObject> ();
+		for(int i = 0; i < gameObjectsAffected.Count; i++)
+		{
+			objectsAffected.Add (gameObjectsAffected[i].GetComponent<TriggeredObject>());
+		}
 	}
 	
 	// Update is called once per frame
@@ -36,7 +42,7 @@ public class TriggerSignalObject : MonoBehaviour {
 	{
 		if(objectsAffected.Count > 0)
 		{
-			if(!objectsAffected[0].IsTriggered)
+			if(!objectsAffected[0].getIsTriggered())
 			{
 				objectsAffected [0].doAction (this);
 				currentObject = 0;
@@ -46,7 +52,7 @@ public class TriggerSignalObject : MonoBehaviour {
 			{
 				for(int i = 1; i < objectsAffected.Count; i++)
 				{
-					if(!objectsAffected[i].IsTriggered)
+					if(!objectsAffected[i].getIsTriggered())
 					{
 						objectsAffected[i].doAction(this);
 					}
@@ -70,13 +76,13 @@ public class TriggerSignalObject : MonoBehaviour {
 
 				for(int i = 0; i < objectsAffected.Count; i++)
 				{
-					if(!objectsAffected[i].loop)
+					if(!objectsAffected[i].getLoop())
 					{
 						objectsToRemove.Add(objectsAffected[i]);
 					}
 					else
 					{
-						objectsAffected[i].IsTriggered = false;
+						objectsAffected[i].setIsTriggered(false);
 					}
 				}
 
@@ -88,13 +94,13 @@ public class TriggerSignalObject : MonoBehaviour {
 		}
 		else
 		{
-			if(!ob.loop)
+			if(!ob.getLoop())
 			{
 				objectsAffected.Remove(ob);
 			}
 			else
 			{
-				ob.IsTriggered = false;
+				ob.setIsTriggered(false);
 			}
 		}
 

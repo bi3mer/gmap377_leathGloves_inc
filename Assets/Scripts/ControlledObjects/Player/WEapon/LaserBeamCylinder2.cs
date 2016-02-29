@@ -41,9 +41,8 @@ public class LaserBeamCylinder2 : MonoBehaviour
     /// <param name="col">The object collided with</param>
     void OnTriggerEnter(Collider col)
     {
-
         // If it's a layer you can't pass through, stop growing
-        if (CantPassThrough != (CantPassThrough | (1 << col.gameObject.layer)))
+        if (CantPassThrough == (CantPassThrough | (1 << col.gameObject.layer)))
         {
             // Stop growing the laser
             this.stopGrowing = true;
@@ -56,9 +55,11 @@ public class LaserBeamCylinder2 : MonoBehaviour
     /// <param name="col">The object it collided with</param>
     void OnTriggerExit(Collider col)
     {
+		Debug.Log (col.gameObject.layer);
         // If the object was in a layer in the layer mask
         if (CantPassThrough != (CantPassThrough | (1 << col.gameObject.layer)))
         {
+			Debug.Log ("stop");
             // Continue growing lasers
             this.stopGrowing = false;
         }

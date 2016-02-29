@@ -86,6 +86,12 @@ public class LaserBeamCylinder : MonoBehaviour
                 ScoreManager.Instance.DecreaseScore((int)GetComponentInParent<Weapon>().damage);
             }
         }
+
+		if (CantPassThrough == (CantPassThrough | (1 << col.gameObject.layer)))
+		{
+			// Stop growing the laser
+			this.stopGrowing = true;
+		}
     }
 
     /// <summary>

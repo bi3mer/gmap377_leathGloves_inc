@@ -34,10 +34,11 @@ public class SaveSystem : MonoBehaviour {
         public List<long> desertSamplePointChunks;
         public List<string> desertSamplePointObjectNames;
         public List<Vector3> desertSamplePointLocations;
-
+		public List<int> desertTriangleIndexes;
         public List<long> iceSamplePointChunks;
         public List<string> iceSamplePointObjectNames;
         public List<Vector3> iceSamplePointLocations;
+		public List<int> iceTriangleIndexes;
 
         public SaveFile() {
             SaveVersion = SaveSystem.SaveVersion;
@@ -83,11 +84,14 @@ public class SaveSystem : MonoBehaviour {
 			desertInfo.samplePointKeys = desertSamplePointChunks;
 			desertInfo.samplePointLocations = desertSamplePointLocations;
 			desertInfo.samplePointObjects = desertSamplePointObjectNames;
+			desertInfo.triangleIndexes = desertTriangleIndexes;
 
 			ProceduralGenerationOnMesh.serializedInformation iceInfo = new ProceduralGenerationOnMesh.serializedInformation ();
 			iceInfo.samplePointKeys = iceSamplePointChunks;
 			iceInfo.samplePointLocations = iceSamplePointLocations;
 			iceInfo.samplePointObjects = iceSamplePointObjectNames;
+			iceInfo.triangleIndexes = iceTriangleIndexes;
+
 
 			if (ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.ContainsKey ("DesertPlanet")) {
 				ProceduralGenerationOnMesh.serializedSamplePointsByPlanet ["DesertPlanet"] = desertInfo;

@@ -130,21 +130,22 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 
 	public void LoadPlanet()
 	{
-		SystemLogger.write ("Loading sample points from save file.");
 
 		if(serializedSamplePointsByPlanet.ContainsKey(planetName) && serializedSamplePointsByPlanet[planetName].samplePointKeys != null)
 		{
+			SystemLogger.write ("Loading sample points from save file.");
 			samplePoints = new Dictionary<long, List<ProceduralGenerationPoint>>();
 			reconstructSamplePoints(planetName);
 		}
 		else
 		{
 			samplePoints = generatePoisson (minDistance, newPointsCount);
+
 		}
 
 		if (generateAllAtOnce) {
 			generateObjectsByName();
-			generateAll();
+			StartCoroutine("generateAll");
 		}
 		else
 		{
@@ -168,7 +169,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	/// <summary>
 	/// Generates objects at eaach sample point at once.
 	/// </summary>
-	public void generateAll()
+	public IEnumerator generateAll()
 	{
 		SystemLogger.write ("Creating objects for all sample points...");
 		Object[] largeObjects = Resources.LoadAll (folder + "/Large");
@@ -211,7 +212,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 					}
 					
 					ob.transform.parent = transform;
-					ob.transform.localPosition = samplePoints[key][i].position + samplePoints[key][i].size * faceNormals[samplePoints[key][i].triangleIndex];
+					//ob.transform.localPosition = samplePoints[key][i].position + medium * faceNormals[samplePoints[key][i].triangleIndex];
+					ob.transform.localPosition = samplePoints[key][i].position ;
 					ob.gameObject.name = selection.name;
 					samplePoints[key][i].objectName = ob.gameObject.name;
 				}
@@ -226,6 +228,7 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 				orienter.DropToPlanet();
 			}
 
+			yield return null;
 		}
 
 		SystemLogger.write ("Generated objects!");
@@ -963,6 +966,8 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		public List<long> samplePointKeys;
 		public List<Vector3> samplePointLocations;
 		public List<string> samplePointObjects;
+		public List<long> samplePointChunks;
+		public List<int> triangleIndexes;
 	}
 
 	/// <summary>
@@ -975,19 +980,25 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 		List<long> samplePointChunks = new List<long> (samplePoints.Keys);
 		List<Vector3> samplePointLocations = new List<Vector3> ();
 		List<string> samplePointObjects = new List<string> ();
+		List<long> samplePointKeys = new List<long> ();
+		List<int> triangleIndices = new List<int> ();
+
 		for(int i = 0; i < samplePointChunks.Count; i++)
 		{
 			for(int j = 0; j < samplePoints[samplePointChunks[i]].Count; j++)
 			{
 				samplePointLocations.Add(samplePoints[samplePointChunks[i]][j].position);
 				samplePointObjects.Add(samplePoints[samplePointChunks[i]][j].objectName);
+				samplePointKeys.Add(samplePointChunks[i]);
+			//	triangleIndices.Add (samplePoints[samplePointChunks[i]][j].triangleIndex);
 			}
 		}
 
-		info.samplePointKeys = samplePointChunks;
 		info.samplePointLocations = samplePointLocations;
 		info.samplePointObjects = samplePointObjects;
-
+		info.samplePointKeys = samplePointKeys;
+		info.samplePointChunks = samplePointChunks;
+		//info.triangleIndexes = triangleIndices;
 		SystemLogger.write("Setting up sample points for serialization for " + planetName);
 		if(!serializedSamplePointsByPlanet.ContainsKey(planetName))
 		{
@@ -1006,18 +1017,22 @@ public class ProceduralGenerationOnMesh : MonoBehaviour
 	public void reconstructSamplePoints(string name)
 	{
 		SystemLogger.write ("Reconstructing sample points");
-		List<long> keys = new List<long> (serializedSamplePointsByPlanet [name].samplePointKeys);
-		for(int i = 0; i < keys.Count; i++)
+
+		int i = 0;
+
+		while(i < serializedSamplePointsByPlanet[name].samplePointLocations.Count)
 		{
-			Debug.Log ("Hi");
-			samplePoints.Add(keys[i], new List<ProceduralGenerationPoint>());
-			
-			for(int j = 0; j < serializedSamplePointsByPlanet[name].samplePointLocations.Count; j++)
+			long key = serializedSamplePointsByPlanet[name].samplePointKeys[i];
+			if(!samplePoints.ContainsKey(key))
 			{
-				ProceduralGenerationPoint p = new ProceduralGenerationPoint(serializedSamplePointsByPlanet[name].samplePointLocations[j]);
-				p.objectName = serializedSamplePointsByPlanet[name].samplePointObjects[j];
-				samplePoints[keys[i]].Add (p);
+				samplePoints.Add(key, new List<ProceduralGenerationPoint>());
 			}
+
+			ProceduralGenerationPoint p = new ProceduralGenerationPoint(serializedSamplePointsByPlanet[name].samplePointLocations[i]);
+			p.objectName = serializedSamplePointsByPlanet[name].samplePointObjects[i];
+			//p.triangleIndex = serializedSamplePointsByPlanet[name].triangleIndexes[i];
+			samplePoints[key].Add (p);
+			i++;
 		}
 	}
 
