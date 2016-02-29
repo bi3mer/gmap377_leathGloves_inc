@@ -12,9 +12,12 @@ public class DropTheBomb : MonoBehaviour {
 
     private float furthestDistance;
 
+    private FlyingEnemyMover mover;
+
     void Start()
     {
-        furthestDistance = this.GetComponent<MoveAwayFromPlayer>().minMoveDistance;
+        mover = this.GetComponent<FlyingEnemyMover>();
+        furthestDistance = mover.maxDistanceFromPlayer;
         StartCoroutine(CheckProximity());
     }
 
@@ -23,7 +26,7 @@ public class DropTheBomb : MonoBehaviour {
         while(true)
         {
             yield return new WaitForSeconds(1f);
-            if (Vector3.Angle(Player.Instance.transform.position - this.transform.position, -this.transform.up) <= 10f)
+            if (Vector3.Angle(Player.Instance.transform.position - this.transform.position, -this.transform.up) <= 20f)
             {
                 dropBomb(new Vector3());
                 break;
@@ -66,6 +69,6 @@ public class DropTheBomb : MonoBehaviour {
         }*/
 
         bomb.GetComponent<Rigidbody>().useGravity = true;
-
+        mover.flyingTowardsPlayer = false;
     }
 }
