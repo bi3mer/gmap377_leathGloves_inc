@@ -19,6 +19,8 @@ public class EnemyArtillery : MonoBehaviour
 	private bool readyToFire = true;
 	private bool inPositionToFire = true;
 
+    private Animator bossAnimator;
+
 	void Start()
 	{
 		this.previousAngle = Vector3.Angle(this.transform.forward, Player.Instance.transform.position - this.transform.position);
@@ -26,6 +28,11 @@ public class EnemyArtillery : MonoBehaviour
         {
             this.readyToFire = false;
             StartCoroutine(delayedFiring());
+        }
+
+        if (bossAttack)
+        {
+            bossAnimator = this.GetComponentInParent<Animator>();
         }
 	}
 
@@ -62,6 +69,18 @@ public class EnemyArtillery : MonoBehaviour
                 float shellVelocity = Mathf.Sqrt(Mathf.Pow(shellVelocityX, 2) + Mathf.Pow(shellVelocityY, 2)) / 2f;
 
                 clone.GetComponent<Rigidbody>().AddForce(clone.transform.forward * shellVelocity, ForceMode.Impulse);
+            }
+
+            if (this.bossAttack)
+            {
+                if (this.delayedFire)
+                {
+                    bossAnimator.SetTrigger("FireLeftArtillery");
+                }
+                else
+                {
+                    bossAnimator.SetTrigger("FireRightArtillery");
+                }
             }
 
 			this.readyToFire = false;

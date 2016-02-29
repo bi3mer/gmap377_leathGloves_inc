@@ -8,6 +8,7 @@ public class searchAndAttack : MonoBehaviour
 	public GameObject weapon;
 	public float fireRate;
 	public bool bossAttack;
+    public bool turretScriptOnlyOne;
 
 	[Tooltip("check if you want the weapon to be attached to the spawnpoint")]
 	public bool AttachToPlayerOnFire = false;
@@ -17,6 +18,17 @@ public class searchAndAttack : MonoBehaviour
 
 	// player found
 	private bool playerFound = false;
+
+    private Animator bossAnimator;
+
+    void Start()
+    {
+        if (bossAttack)
+        {
+            bossAnimator = this.GetComponentInParent<Animator>();
+        }
+    }
+
 	public bool PlayerFound 
 	{
 		get
@@ -73,6 +85,11 @@ public class searchAndAttack : MonoBehaviour
 					// add target to bullet
 					bullet.GetComponent<FireForward>().target = targ.position;
 				}
+
+                if(bossAttack && turretScriptOnlyOne)
+                {
+                    bossAnimator.SetTrigger("FireTurret");   
+                }
 
 				// reset timer
 				timer = 0f;
