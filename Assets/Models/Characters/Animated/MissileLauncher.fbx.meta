@@ -1,0 +1,307 @@
+fileFormatVersion: 2
+guid: a91bb0a927b44604da6fff7e01ca0143
+timeCreated: 1456716161
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: missileLauncher
+    100004: missileLauncher_Antenna
+    100006: missileLauncher_Antenna_1_j
+    100008: missileLauncher_Antenna_2_j
+    100010: missileLauncher_Antenna_3_j
+    100012: missileLauncher_Base
+    100014: missileLauncher_Base_j
+    100016: missileLauncher_joints
+    100018: missileLauncher_Left
+    100020: missileLauncher_Left_Missile_END_j
+    100022: missileLauncher_Left_Missile_j
+    100024: missileLauncher_Right
+    100026: missileLauncher_Right_Missile_END_j
+    100028: missileLauncher_Right_Missile_j
+    100030: missileLauncher_Root_j
+    100032: missileLauncher_Rotater
+    100034: missileLauncher_Rotater_j
+    400000: //RootNode
+    400002: missileLauncher
+    400004: missileLauncher_Antenna
+    400006: missileLauncher_Antenna_1_j
+    400008: missileLauncher_Antenna_2_j
+    400010: missileLauncher_Antenna_3_j
+    400012: missileLauncher_Base
+    400014: missileLauncher_Base_j
+    400016: missileLauncher_joints
+    400018: missileLauncher_Left
+    400020: missileLauncher_Left_Missile_END_j
+    400022: missileLauncher_Left_Missile_j
+    400024: missileLauncher_Right
+    400026: missileLauncher_Right_Missile_END_j
+    400028: missileLauncher_Right_Missile_j
+    400030: missileLauncher_Root_j
+    400032: missileLauncher_Rotater
+    400034: missileLauncher_Rotater_j
+    4300000: missileLauncher_Antenna
+    4300002: missileLauncher_Right
+    4300004: missileLauncher_Left
+    4300006: missileLauncher_Base
+    4300008: missileLauncher_Rotater
+    7400000: Left_Shoot
+    7400002: Right_Shoot
+    7400004: Idle
+    9500000: //RootNode
+    13700000: missileLauncher_Antenna
+    13700002: missileLauncher_Base
+    13700004: missileLauncher_Left
+    13700006: missileLauncher_Right
+    13700008: missileLauncher_Rotater
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Left_Shoot
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: missileLauncher
+        weight: 1
+      - path: missileLauncher/missileLauncher_Antenna
+        weight: 1
+      - path: missileLauncher/missileLauncher_Base
+        weight: 1
+      - path: missileLauncher/missileLauncher_Left
+        weight: 1
+      - path: missileLauncher/missileLauncher_Right
+        weight: 1
+      - path: missileLauncher/missileLauncher_Rotater
+        weight: 1
+      - path: missileLauncher_joints
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Antenna_1_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Antenna_1_j/missileLauncher_Antenna_2_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Antenna_1_j/missileLauncher_Antenna_2_j/missileLauncher_Antenna_3_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Left_Missile_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Left_Missile_j/missileLauncher_Left_Missile_END_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Right_Missile_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Right_Missile_j/missileLauncher_Right_Missile_END_j
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Right_Shoot
+      takeName: Take 001
+      firstFrame: 18
+      lastFrame: 35
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: missileLauncher
+        weight: 1
+      - path: missileLauncher/missileLauncher_Antenna
+        weight: 1
+      - path: missileLauncher/missileLauncher_Base
+        weight: 1
+      - path: missileLauncher/missileLauncher_Left
+        weight: 1
+      - path: missileLauncher/missileLauncher_Right
+        weight: 1
+      - path: missileLauncher/missileLauncher_Rotater
+        weight: 1
+      - path: missileLauncher_joints
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Antenna_1_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Antenna_1_j/missileLauncher_Antenna_2_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Antenna_1_j/missileLauncher_Antenna_2_j/missileLauncher_Antenna_3_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Left_Missile_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Left_Missile_j/missileLauncher_Left_Missile_END_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Right_Missile_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Right_Missile_j/missileLauncher_Right_Missile_END_j
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: missileLauncher
+        weight: 1
+      - path: missileLauncher/missileLauncher_Antenna
+        weight: 1
+      - path: missileLauncher/missileLauncher_Base
+        weight: 1
+      - path: missileLauncher/missileLauncher_Left
+        weight: 1
+      - path: missileLauncher/missileLauncher_Right
+        weight: 1
+      - path: missileLauncher/missileLauncher_Rotater
+        weight: 1
+      - path: missileLauncher_joints
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Antenna_1_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Antenna_1_j/missileLauncher_Antenna_2_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Antenna_1_j/missileLauncher_Antenna_2_j/missileLauncher_Antenna_3_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Left_Missile_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Left_Missile_j/missileLauncher_Left_Missile_END_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Right_Missile_j
+        weight: 1
+      - path: missileLauncher_joints/missileLauncher_Root_j/missileLauncher_Base_j/missileLauncher_Rotater_j/missileLauncher_Right_Missile_j/missileLauncher_Right_Missile_END_j
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

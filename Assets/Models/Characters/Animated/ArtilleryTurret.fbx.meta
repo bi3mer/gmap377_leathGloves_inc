@@ -1,0 +1,198 @@
+fileFormatVersion: 2
+guid: 0cdce6ba97469734d9188938c876160a
+timeCreated: 1456715731
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Artillery_Turret_Barrel
+    100002: Artillery_Turret_Barrel_Housing
+    100004: Artillery_Turret_Barrel_j
+    100006: Artillery_Turret_Base
+    100008: Artillery_Turret_Base_j
+    100010: Artillery_Turret_End_j
+    100012: Artillery_Turret_Joints
+    100014: Artillery_Turret_Mesh
+    100016: Artillery_Turret_Root_j
+    100018: Artillery_Turret_Rotater_j
+    100020: //RootNode
+    400000: Artillery_Turret_Barrel
+    400002: Artillery_Turret_Barrel_Housing
+    400004: Artillery_Turret_Barrel_j
+    400006: Artillery_Turret_Base
+    400008: Artillery_Turret_Base_j
+    400010: Artillery_Turret_End_j
+    400012: Artillery_Turret_Joints
+    400014: Artillery_Turret_Mesh
+    400016: Artillery_Turret_Root_j
+    400018: Artillery_Turret_Rotater_j
+    400020: //RootNode
+    4300000: Artillery_Turret_Barrel_Housing
+    4300002: Artillery_Turret_Barrel
+    4300004: Artillery_Turret_Base
+    7400000: Shoot
+    7400002: Idle
+    9500000: //RootNode
+    13700000: Artillery_Turret_Barrel
+    13700002: Artillery_Turret_Barrel_Housing
+    13700004: Artillery_Turret_Base
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Shoot
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Artillery_Turret_Joints
+        weight: 1
+      - path: Artillery_Turret_Joints/Artillery_Turret_Root_j
+        weight: 1
+      - path: Artillery_Turret_Joints/Artillery_Turret_Root_j/Artillery_Turret_Base_j
+        weight: 1
+      - path: Artillery_Turret_Joints/Artillery_Turret_Root_j/Artillery_Turret_Base_j/Artillery_Turret_Rotater_j
+        weight: 1
+      - path: Artillery_Turret_Joints/Artillery_Turret_Root_j/Artillery_Turret_Base_j/Artillery_Turret_Rotater_j/Artillery_Turret_Barrel_j
+        weight: 1
+      - path: Artillery_Turret_Joints/Artillery_Turret_Root_j/Artillery_Turret_Base_j/Artillery_Turret_Rotater_j/Artillery_Turret_Barrel_j/Artillery_Turret_End_j
+        weight: 1
+      - path: Artillery_Turret_Mesh
+        weight: 1
+      - path: Artillery_Turret_Mesh/Artillery_Turret_Barrel
+        weight: 1
+      - path: Artillery_Turret_Mesh/Artillery_Turret_Barrel_Housing
+        weight: 1
+      - path: Artillery_Turret_Mesh/Artillery_Turret_Base
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Artillery_Turret_Joints
+        weight: 1
+      - path: Artillery_Turret_Joints/Artillery_Turret_Root_j
+        weight: 1
+      - path: Artillery_Turret_Joints/Artillery_Turret_Root_j/Artillery_Turret_Base_j
+        weight: 1
+      - path: Artillery_Turret_Joints/Artillery_Turret_Root_j/Artillery_Turret_Base_j/Artillery_Turret_Rotater_j
+        weight: 1
+      - path: Artillery_Turret_Joints/Artillery_Turret_Root_j/Artillery_Turret_Base_j/Artillery_Turret_Rotater_j/Artillery_Turret_Barrel_j
+        weight: 1
+      - path: Artillery_Turret_Joints/Artillery_Turret_Root_j/Artillery_Turret_Base_j/Artillery_Turret_Rotater_j/Artillery_Turret_Barrel_j/Artillery_Turret_End_j
+        weight: 1
+      - path: Artillery_Turret_Mesh
+        weight: 1
+      - path: Artillery_Turret_Mesh/Artillery_Turret_Barrel
+        weight: 1
+      - path: Artillery_Turret_Mesh/Artillery_Turret_Barrel_Housing
+        weight: 1
+      - path: Artillery_Turret_Mesh/Artillery_Turret_Base
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
