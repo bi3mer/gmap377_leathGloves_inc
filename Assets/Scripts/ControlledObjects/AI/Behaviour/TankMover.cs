@@ -13,14 +13,11 @@ public class TankMover : BufferedMovement {
     {
         base.init();
 
-        this.planetVertexNavigation = this.GetComponent<AStar>().planetVertexNavigation;
-
         base.targetLocation = Player.Instance.getClosestVertice();
 		base.setMovementScript(this.GetComponent<AStar>());
 		base.moveTowardsPlayerAtEndOfPath = false;
 
 		this.getNewPlan(Player.Instance.transform.position);
-		
     }
 
     void OnTriggerEnter(Collider obj)
@@ -49,15 +46,13 @@ public class TankMover : BufferedMovement {
             base.resetTargetIndex();
 
             // TODO: Use x vertices away functionality in updated A*
-            if (playerInRange)
+            if (this.playerInRange)
             {
                 // set target to be above the planet (TODO: remove magic number)
-                this.targetLocation = this.transform.position + this.transform.forward * -1 * 50;
+				this.targetLocation = this.transform.position + this.transform.forward * -1 * this.aiMovement.GetPlanetVertexNavigation().Radius;
 
                 // Place target onto planet by using raycast from the point away from planet that we calculated with cross product
-                RaycastHit[] hits = Physics.RaycastAll(this.targetLocation, this.planetVertexNavigation.transform.position - this.targetLocation, this.planetVertexNavigation.Radius);
-
-                Debug.DrawRay(this.targetLocation, this.planetVertexNavigation.transform.position - this.targetLocation, Color.yellow, 10f);
+				RaycastHit[] hits = Physics.RaycastAll(this.targetLocation, this.aiMovement.GetPlanetVertexNavigation().transform.position - this.targetLocation, this.aiMovement.GetPlanetVertexNavigation().Radius);
 
                 for (int i = 0; i < hits.Length; ++i)
                 {
@@ -69,6 +64,7 @@ public class TankMover : BufferedMovement {
                         break;
                     }
                 }
+
                 base.setTarget(this.targetLocation);
             }
             else
@@ -80,6 +76,10 @@ public class TankMover : BufferedMovement {
         }
     }
 
+	/// <summary>
+	/// Move Towards the given target
+	/// </summary>
+	/// <param name="targ"></param>
     public override void move(Vector3 targ)
     {
         if (playerInRange)
