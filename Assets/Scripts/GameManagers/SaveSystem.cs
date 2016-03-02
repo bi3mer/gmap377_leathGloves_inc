@@ -58,10 +58,12 @@ public class SaveSystem : MonoBehaviour {
             desertSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointKeys;
             desertSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointObjects;
             desertSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointLocations;
+			desertTriangleIndexes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].triangleIndexes;
 
             iceSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointKeys;
             iceSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointObjects;
             iceSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointLocations;
+			iceTriangleIndexes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].triangleIndexes;
 
     }
 

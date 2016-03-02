@@ -110,26 +110,11 @@ public class SpawnSystem : MonoBehaviour
 		MaxSpawnDistanceActual = MinSpawnDistancePopulated + (MaxSpawnDistanceActual - MinSpawnDistancePopulated) * (CurrentEnemyNumber / CurrentDifficulty);
 
 		// the minimum number of cells away
-		maxCellsAway = Mathf.CeilToInt(MaxSpawnDistanceActual * gridCellSize);
-		minCellsAway = Mathf.CeilToInt(MinSpawnDistanceActual * gridCellSize);
-
+		maxCellsAway = 7;
+		minCellsAway = 2;
+	
 		// choose a direction to spawn the enemies
-		if (spawnDirectionChoice == 0) 
-		{
-			possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway, Player.instance.transform.forward);    
-		} 
-		else if (spawnDirectionChoice == 1) 
-		{
-			possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway, Player.instance.transform.right);
-		} 
-		else if (spawnDirectionChoice == 2)
-		{
-			possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway, -Player.instance.transform.right);
-		} 
-		else 
-		{
-			possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway, -Player.instance.transform.forward);
-		}
+		possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway);    
 
 		// tries x time to find a valid vertice
         while (!foundVertex && tries < MaxTries) {
@@ -143,7 +128,7 @@ public class SpawnSystem : MonoBehaviour
 			if (possibleKeys.Count > 0)
 			{
 				long key = possibleKeys [Random.Range (0, possibleKeys.Count)];
-	
+
 				if (verticesInGrid.ContainsKey(key) && verticesInGrid [key].Count > 0) 
 				{
 					position = verticesInGrid [key] [Random.Range (0, verticesInGrid [key].Count)];
@@ -161,31 +146,22 @@ public class SpawnSystem : MonoBehaviour
 					}
 				}
 			}
-			else
-			{
-				spawnDirectionChoice = Random.Range(0, 4);
-				// choose a direction to spawn the enemies
-				if (spawnDirectionChoice == 0) 
-				{
-					possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway, Player.instance.transform.forward);    
-				} 
-				else if (spawnDirectionChoice == 1) 
-				{
-					possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway, Player.instance.transform.right);
-				} 
-				else if (spawnDirectionChoice == 2)
-				{
-					possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway, -Player.instance.transform.right);
-				} 
-				else 
-				{
-					possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway, -Player.instance.transform.forward);
-				}
-			}
 
 			tries++;
 		}
 
+		/*foreach(long key in possibleKeys)
+		{
+			if(verticesInGrid.ContainsKey(key))
+			{
+				for(int i = 0; i < verticesInGrid[key].Count; i++)
+				{
+					Debug.DrawLine(Player.instance.transform.position, verticesInGrid[key][i]);
+				}
+			}
+		}*/
+
+		//Debug.Break ();
         // Can't find a location to spawn
         if (tries >= MaxTries) return;
 
@@ -246,6 +222,7 @@ public class SpawnSystem : MonoBehaviour
 
 	public void CreateGrid(string planetName)
 	{
+		Debug.Log ("Creating grid...");
 		Vector3[] vertices = Player.Instance.getPlanetNavigation ().vertices;
 		//Debug.Log ("First ob" + planetName);
 		float power = Mathf.CeilToInt (Mathf.Log10(gridDimension));
@@ -268,7 +245,6 @@ public class SpawnSystem : MonoBehaviour
 
 			verticesInGrid[key].Add(vertices[i]);
 		}
-
 		verticesInGridByPlanet.Add (planetName, verticesInGrid);
 	}
 
@@ -293,46 +269,50 @@ public class SpawnSystem : MonoBehaviour
 	/// <param name="maxCellsAway">Max cells away.</param>
 	/// <param name="minCellsAway">Minimum cells away.</param>
 	/// <param name="direction">Direction.</param>
-	public List<long> getSpawnCells(long playerLoc, int maxCellsAway, int minCellsAway, Vector3 direction)
+	public List<long> getSpawnCells(long playerLoc, int maxCellsAway, int minCellsAway)
 	{
 		SystemLogger.write ("Getting cells where enemy can be spawned...");
 		List<long> possibleKeys = new List<long> ();
 
 		int y = (int) (playerLoc / gridOffset);
 		int x = (int) (playerLoc - (y * gridOffset));
-		int minX = Mathf.CeilToInt(direction.x * minCellsAway);
-		int maxX = Mathf.CeilToInt(direction.x * maxCellsAway);
+		int minX = x - maxCellsAway;
+		int maxX = x + maxCellsAway;
 
-		int minY = Mathf.CeilToInt(direction.z * minCellsAway);
-		int maxY = Mathf.CeilToInt(direction.z * maxCellsAway);
+		int minY = y - maxCellsAway;
+		int maxY = y + maxCellsAway;
 
+		//Debug.Log (minX + " " + maxX + " " + minY + " " + maxY);
 		int newX, newY;
-		for(int i = x - minX; i <= x + maxX; i++)
+		for(int i = minX; i <= maxX; i++)
 		{
-			for(int j = y - minY; j < y + maxY; j++)
+			for(int j = minY; j < maxY; j++)
 			{
 				newX = i;
 				newY = j;
 
-				if(i > gridDimension)
+				if(Mathf.Abs(x - newX) >= minCellsAway && Mathf.Abs(y - newY) >= minCellsAway)
 				{
-					newX= i - gridDimension;
-				}
-				else if(i < 0)
-				{
-					newX = gridDimension + i;
-				}
+					if(i > gridDimension)
+					{
+						newX= i - gridDimension;
+					}
+					else if(i < 0)
+					{
+						newX = gridDimension + i;
+					}
 
-				if(j > gridDimension)
-				{
-					newY = j - gridDimension;
-				}
-				else if(j< 0)
-				{
-					newY = gridDimension + j;
-				}
+					if(j > gridDimension)
+					{
+						newY = j - gridDimension;
+					}
+					else if(j< 0)
+					{
+						newY = gridDimension + j;
+					}
 
-				possibleKeys.Add(newX + (newY * gridOffset));
+					possibleKeys.Add(newX + (newY * gridOffset));
+				}
 			}
 		}
 
