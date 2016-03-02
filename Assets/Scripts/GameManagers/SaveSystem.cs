@@ -35,10 +35,12 @@ public class SaveSystem : MonoBehaviour {
         public List<string> desertSamplePointObjectNames;
         public List<Vector3> desertSamplePointLocations;
 		public List<int> desertTriangleIndexes;
+		public List<float> desertSamplePointSizes;
         public List<long> iceSamplePointChunks;
         public List<string> iceSamplePointObjectNames;
         public List<Vector3> iceSamplePointLocations;
 		public List<int> iceTriangleIndexes;
+		public List<float> iceSamplePointSizes;
 
         public SaveFile() {
             SaveVersion = SaveSystem.SaveVersion;
@@ -59,12 +61,13 @@ public class SaveSystem : MonoBehaviour {
             desertSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointObjects;
             desertSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointLocations;
 			desertTriangleIndexes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].triangleIndexes;
+			desertSamplePointSizes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointSizes;
 
             iceSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointKeys;
             iceSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointObjects;
             iceSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointLocations;
 			iceTriangleIndexes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].triangleIndexes;
-
+			iceSamplePointSizes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointSizes;
     }
 
     public void Load() {
@@ -87,12 +90,14 @@ public class SaveSystem : MonoBehaviour {
 			desertInfo.samplePointLocations = desertSamplePointLocations;
 			desertInfo.samplePointObjects = desertSamplePointObjectNames;
 			desertInfo.triangleIndexes = desertTriangleIndexes;
+			desertInfo.samplePointSizes = desertSamplePointSizes;
 
 			ProceduralGenerationOnMesh.serializedInformation iceInfo = new ProceduralGenerationOnMesh.serializedInformation ();
 			iceInfo.samplePointKeys = iceSamplePointChunks;
 			iceInfo.samplePointLocations = iceSamplePointLocations;
 			iceInfo.samplePointObjects = iceSamplePointObjectNames;
 			iceInfo.triangleIndexes = iceTriangleIndexes;
+			iceInfo.samplePointSizes = iceSamplePointSizes;
 
 
 			if (ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.ContainsKey ("DesertPlanet")) {
