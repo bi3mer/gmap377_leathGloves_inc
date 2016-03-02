@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class Planet1BossMover : BufferedMovement {
+public class TankMover : BufferedMovement {
 
     private VertexNavigation planetVertexNavigation;
 
@@ -12,13 +12,14 @@ public class Planet1BossMover : BufferedMovement {
     void Start()
     {
         base.init();
+
         this.planetVertexNavigation = this.GetComponent<AStar>().planetVertexNavigation;
 
-		base.targetLocation = Player.Instance.getClosestVertice();
+        base.targetLocation = Player.Instance.getClosestVertice();
 		base.setMovementScript(this.GetComponent<AStar>());
 		base.moveTowardsPlayerAtEndOfPath = false;
 
-		this.getNewPlan(base.targetLocation);
+		this.getNewPlan(Player.Instance.transform.position);
 		
     }
 

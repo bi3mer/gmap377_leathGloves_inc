@@ -9,7 +9,7 @@ public abstract class AbstractMover : Enemy
 
 	public float minMoveDistance = 10f;
 
-    private AiMovement aiMovement;
+    protected AiMovement aiMovement;
 
     // Movement variables
     public float moveSpeed = 2;
