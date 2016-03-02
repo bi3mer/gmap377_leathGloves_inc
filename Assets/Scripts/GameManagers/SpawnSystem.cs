@@ -179,14 +179,24 @@ public class SpawnSystem : MonoBehaviour
 
         GameObject prefab = null;
         float r = Random.Range(0, 100) / 100.0f;
+
+		float weightTotal = 0f;
+
+		for(int i = 0; i < weightsToUse.Count; i++)
+		{
+			weightTotal += weightsToUse[i];
+		}
+
         float sum = 0;
         for (int i=0; i<prefabsToUse.Count; i++) {
-            if (r < sum + weightsToUse[i]) {
+            if (r < (sum + weightsToUse[i])/weightTotal) {
                 prefab = prefabsToUse[i];
                 break;
             }
             sum += weightsToUse[i];
         }
+
+
         GameObject e = GameObject.Instantiate(prefab, position, new Quaternion()) as GameObject;
 
 		// add to hierarchy
