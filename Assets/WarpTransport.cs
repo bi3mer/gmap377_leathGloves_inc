@@ -64,9 +64,6 @@ public class WarpTransport : MonoBehaviour {
 		// Sets player position to new warp pad location, plus an offset so they are above the warp pad
 		Player.Instance.transform.position = destinationWarpPad.transform.position + destinationWarpPad.transform.up * 1.5f;
 
-		Player.Instance.transform.DOShakeRotation (transportDelaySeconds - 0.5f, shakeIntensity, 2);
-		Player.Instance.transform.DOMove (Player.Instance.transform.position - destinationWarpPad.transform.up * 1.5f, transportDelaySeconds - 0.5f);
-
 		// Wait for the above specified time
 		yield return new WaitForSeconds(transportDelaySeconds);
 

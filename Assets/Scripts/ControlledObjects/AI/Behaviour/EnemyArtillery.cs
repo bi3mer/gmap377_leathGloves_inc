@@ -57,6 +57,9 @@ public class EnemyArtillery : MonoBehaviour
 
             GameObject clone = (GameObject)Instantiate(this.projectile, this.attackSpawnPoint.position, this.attackSpawnPoint.rotation);
 
+            clone.GetComponent<Rigidbody>().AddForce(clone.transform.forward * Vector3.Distance(attackSpawnPoint.position, Player.Instance.transform.position) * 10);
+
+            /*
             if (distanceToPlayer >= Mathf.Pow(calculationSwitchDistance, 2f))
             { 
 				clone.GetComponent<Rigidbody>().AddForce(clone.transform.forward * Vector3.Distance(attackSpawnPoint.position, Player.Instance.transform.position) * 10);
@@ -69,7 +72,7 @@ public class EnemyArtillery : MonoBehaviour
                 float shellVelocity = Mathf.Sqrt(Mathf.Pow(shellVelocityX, 2) + Mathf.Pow(shellVelocityY, 2)) / 2f;
 
                 clone.GetComponent<Rigidbody>().AddForce(clone.transform.forward * shellVelocity, ForceMode.Impulse);
-            }
+            }*/
 
             if (this.bossAttack)
             {

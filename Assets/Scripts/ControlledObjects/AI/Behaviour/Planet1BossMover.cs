@@ -15,10 +15,11 @@ public class Planet1BossMover : BufferedMovement {
         this.planetVertexNavigation = this.GetComponent<AStar>().planetVertexNavigation;
 
 		base.targetLocation = Player.Instance.getClosestVertice();
+        Debug.Log(targetLocation);
 		base.setMovementScript(this.GetComponent<AStar>());
 		base.moveTowardsPlayerAtEndOfPath = false;
 
-		this.getNewPlan(Player.Instance.transform.position);
+		this.getNewPlan(base.targetLocation);
 		
     }
 
