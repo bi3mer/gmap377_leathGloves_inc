@@ -3,11 +3,11 @@ using System.Collections;
 using DG.Tweening;
 
 public class WarpTransport : MonoBehaviour {
-    //to do
-    //take out shit cody added (week 4)
+    
     public GameObject destinationWarpPad;
     public float transportDelaySeconds;
 	public float shakeIntensity;
+	public string warpToPlanetName = "Name not Set";
 
 	public GameObject[] planetBosses;
 
@@ -83,6 +83,9 @@ public class WarpTransport : MonoBehaviour {
         
         // Re-enables SpawnSystem script to create new enemies
         SpawnSystem.Instance.enabled = true;
+
+		//popup for new planet.
+		PopUpText.Instance.NewPopUp("Arrived at planet " + warpToPlanetName);
     }
 
     /// <summary>
@@ -92,6 +95,7 @@ public class WarpTransport : MonoBehaviour {
     {
         // Start dat particle effect!
         this.onEffect.Play();
+
     }
 
     /// <summary>

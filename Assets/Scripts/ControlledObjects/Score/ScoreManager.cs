@@ -18,6 +18,9 @@ public class ScoreManager : MonoBehaviour
 	// The player's score.
     public int score = 0;
 
+	//warp text active
+	bool warpTextActive = false;
+
     // The current bolt count, and the goal to activate the teleporters
     public float BoltCount = 0f,
         BoltGoal = 150f;   
@@ -133,11 +136,18 @@ public class ScoreManager : MonoBehaviour
         IncreaseScore(5);
         // Add to the bolt count
         this.BoltCount += amount;
-		BoltTxt.text = "Bolt: " + (int)((this.BoltCount / this.BoltGoal) * 100)  + "%";
+		BoltTxt.text = "Warp: " + (int)((this.BoltCount / this.BoltGoal) * 100)  + "%";
         // If the goal is reached, call event
         if(BoltCount >= BoltGoal)
         {
             AmountReached();
+			if(warpTextActive == false)
+			{
+				warpTextActive = true;
+				PopUpText.Instance.NewPopUp ("Warp Activated!");
+
+			}
+
         }
     }
 
@@ -149,6 +159,7 @@ public class ScoreManager : MonoBehaviour
     {
         SystemLogger.write("Bolts Reset");
         this.BoltCount = 0f;
+		warpTextActive = false;
 		BoltTxt.text = "Bolt: " + (int)((this.BoltCount / this.BoltGoal) * 100 ) + "%";
         // Call deactivate event
         PlayerTeleported();
