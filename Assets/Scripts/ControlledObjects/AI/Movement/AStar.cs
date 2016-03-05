@@ -234,7 +234,7 @@ public class AStar: MonoBehaviour, AiMovement
 		{
 			// http://docs.unity3d.com/ScriptReference/RaycastHit-triangleIndex.html
 			// Raycast towards center of planet and generate a plan
-			this.GeneratePath(Physics.RaycastAll(this.transform.position, this.planetVertexNavigation.transform.position - this.transform.position, this.planetVertexNavigation.Radius));
+			this.GeneratePath(Physics.RaycastAll(this.transform.position, this.planetVertexNavigation.transform.position - this.transform.position, this.planetVertexNavigation.Radius / 2));
 		}
 
 		// Return plan found
