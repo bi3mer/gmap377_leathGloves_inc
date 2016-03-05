@@ -11,7 +11,7 @@ public class searchAndAttack : MonoBehaviour
     public bool turretScriptOnlyOne;
 
 	[Tooltip("check if you want the weapon to be attached to the spawnpoint")]
-	public bool AttachToPlayerOnFire = false;
+	public bool AttachToSpawnPointOnFire = false;
 
 	// timer for shooting
 	private float timer = 0f;
@@ -76,7 +76,7 @@ public class searchAndAttack : MonoBehaviour
 				GameObject bullet = Instantiate(this.weapon, this.attackSpawnPoint.position, this.transform.rotation) as GameObject; 
 
 				// Check if it should be attached to player
-				if(this.AttachToPlayerOnFire)
+				if(this.AttachToSpawnPointOnFire)
 				{
 					bullet.transform.parent = this.attackSpawnPoint;
 				}
