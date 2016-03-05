@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -87,7 +87,6 @@ public class SpawnSystem : MonoBehaviour
 	/// </summary>
     void SpawnEnemy() 
 	{
-		//Debug.Log ("Spawn!!");
 		Dictionary<long, List<Vector3>> verticesInGrid = verticesInGridByPlanet [planetName];
         bool foundVertex = false;
         Vector3 position = Vector3.zero;
@@ -110,8 +109,8 @@ public class SpawnSystem : MonoBehaviour
 		MaxSpawnDistanceActual = MinSpawnDistancePopulated + (MaxSpawnDistanceActual - MinSpawnDistancePopulated) * (CurrentEnemyNumber / CurrentDifficulty);
 
 		// the minimum number of cells away
-		maxCellsAway = 7;
-		minCellsAway = 2;
+		maxCellsAway = 5;
+		minCellsAway = 3;
 	
 		// choose a direction to spawn the enemies
 		possibleKeys = getSpawnCells (playerLoc, maxCellsAway, minCellsAway);    
@@ -128,7 +127,7 @@ public class SpawnSystem : MonoBehaviour
 			if (possibleKeys.Count > 0)
 			{
 				long key = possibleKeys [Random.Range (0, possibleKeys.Count)];
-
+	
 				if (verticesInGrid.ContainsKey(key) && verticesInGrid [key].Count > 0) 
 				{
 					position = verticesInGrid [key] [Random.Range (0, verticesInGrid [key].Count)];
@@ -150,18 +149,6 @@ public class SpawnSystem : MonoBehaviour
 			tries++;
 		}
 
-		/*foreach(long key in possibleKeys)
-		{
-			if(verticesInGrid.ContainsKey(key))
-			{
-				for(int i = 0; i < verticesInGrid[key].Count; i++)
-				{
-					Debug.DrawLine(Player.instance.transform.position, verticesInGrid[key][i]);
-				}
-			}
-		}*/
-
-		//Debug.Break ();
         // Can't find a location to spawn
         if (tries >= MaxTries) return;
 
@@ -210,7 +197,6 @@ public class SpawnSystem : MonoBehaviour
         e.AddComponent<EnvironmentOrienter>();
         e.GetComponent<EnvironmentOrienter>().OrientToPlanet();
 
-		//Debug.Log ("spawned enemy");
 		CurrentEnemyNumber++;
 
     }
@@ -232,9 +218,7 @@ public class SpawnSystem : MonoBehaviour
 
 	public void CreateGrid(string planetName)
 	{
-		Debug.Log ("Creating grid...");
 		Vector3[] vertices = Player.Instance.getPlanetNavigation ().vertices;
-		//Debug.Log ("First ob" + planetName);
 		float power = Mathf.CeilToInt (Mathf.Log10(gridDimension));
 		gridOffset = Mathf.RoundToInt (Mathf.Pow (10, power));
 		gridCellSize = 1f / gridDimension;
@@ -260,9 +244,9 @@ public class SpawnSystem : MonoBehaviour
 
 	public long toGrid(Vector2 point, float minSize, long gridOffset)
 	{
-		long x = Mathf.CeilToInt (point.x / minSize);
-		long y = Mathf.CeilToInt (point.y / minSize);
-		
+		long x = Mathf.FloorToInt (point.x / minSize);
+		long y = Mathf.FloorToInt (point.y / minSize);
+
 		return x + y * gridOffset;
 	}
 
@@ -292,7 +276,6 @@ public class SpawnSystem : MonoBehaviour
 		int minY = y - maxCellsAway;
 		int maxY = y + maxCellsAway;
 
-		//Debug.Log (minX + " " + maxX + " " + minY + " " + maxY);
 		int newX, newY;
 		for(int i = minX; i <= maxX; i++)
 		{
@@ -301,26 +284,8 @@ public class SpawnSystem : MonoBehaviour
 				newX = i;
 				newY = j;
 
-				if(Mathf.Abs(x - newX) >= minCellsAway && Mathf.Abs(y - newY) >= minCellsAway)
+				if(Mathf.Abs(x - newX) + Mathf.Abs(y - newY) >= minCellsAway)
 				{
-					if(i > gridDimension)
-					{
-						newX= i - gridDimension;
-					}
-					else if(i < 0)
-					{
-						newX = gridDimension + i;
-					}
-
-					if(j > gridDimension)
-					{
-						newY = j - gridDimension;
-					}
-					else if(j< 0)
-					{
-						newY = gridDimension + j;
-					}
-
 					possibleKeys.Add(newX + (newY * gridOffset));
 				}
 			}
