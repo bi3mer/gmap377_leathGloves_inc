@@ -68,6 +68,7 @@ public class Pickup : MonoBehaviour
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
                 PickupCache.Instance.Rocket.GetComponent<Weapon>().ammo += 5;
+				PopUpText.Instance.NewPopUp("Rocket Ammo!");
             }
         };
 
@@ -86,6 +87,7 @@ public class Pickup : MonoBehaviour
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
                 PickupCache.Instance.LaserBeam.GetComponent<Weapon>().ammo += 3;
+				PopUpText.Instance.NewPopUp("Laser Ammo!");
             }
         };
         
@@ -120,6 +122,7 @@ public class Pickup : MonoBehaviour
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
                 PickupCache.Instance.Mine.GetComponent<Weapon>().ammo += 3;
+				PopUpText.Instance.NewPopUp("Mine Ammo!");
             }
         };
 
