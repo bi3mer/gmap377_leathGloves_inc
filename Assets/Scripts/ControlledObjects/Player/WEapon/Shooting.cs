@@ -125,6 +125,11 @@ public class Shooting : MonoBehaviour
                             ).normalized * bullet.GetComponent<Weapon>().speed);
                     }
 
+                    if (this.bullet.Equals(PickupCache.Instance.Rocket))
+                    {
+                        Camera.main.GetComponent<CameraShake>().Shake();
+                    }
+
                     // If there is still ammo left decrement it by 1
                     if (bullet.GetComponent<Weapon>().ammo > ZERO)
                     {
