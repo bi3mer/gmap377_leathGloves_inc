@@ -10,6 +10,10 @@ public abstract class BufferedMovement : AbstractMover
     [Tooltip ("Make false if another script is going to be running this game object")]
     public bool shouldRunCoRoutine = true;
 
+	[Header("Max Alive Distance")]
+	public bool CanDestroySelfOnMaxDistance = true;
+	public float DestroySelfDistance = 1500;
+
 	/// <summary>
 	/// Checks the plan.
 	/// </summary>
@@ -48,6 +52,7 @@ public abstract class BufferedMovement : AbstractMover
 		while (true)
 		{
 			this.checkPlan();
+			this.testToDestroySelf();
 			
 			yield return new WaitForSeconds(this.updatePlanBuffer);
 		}
@@ -69,6 +74,17 @@ public abstract class BufferedMovement : AbstractMover
         this.enabled = true;
     }
 
+	/// <summary>
+	/// See if should destroy self
+	/// </summary>
+	private void testToDestroySelf()
+	{
+		if(this.CanDestroySelfOnMaxDistance && DistanceCalculator.squareEuclidianDistance(this.transform.position, this.targetLocation) > this.DestroySelfDistance)
+		{
+			// Kill self
+			Destroy(this.gameObject);
+		}
+	}
     
     void OnEnable()
     {

@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 	/// 	Create Singleton
 	/// </summary>
 	public static Player instance;
-
+	
     /// <summary>
     /// Initialize Weapon Display Controler
     /// </summary>
@@ -94,14 +94,16 @@ public class Player : MonoBehaviour
 
 	public Vector2 getUVLocation(int layerMask)
 	{
-		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, Player.Instance.getPlanetNavigation().transform.position - this.transform.position, 
+		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, -transform.up, 
 		                                       20f);
 
 		foreach(RaycastHit hit in hits)
 		{
-			if (hit.collider != null && hit.collider.tag == "Planet") 
+			// Check if correct mesh was hit
+			if (hit.collider != null && hit.collider.tag == "Planet" && hit.triangleIndex > -1)
 			{
-				return hit.textureCoord;
+				this.verticePosition = Player.Instance.getPlanetNavigation().mesh.uv[Player.Instance.getPlanetNavigation().triangles[hit.triangleIndex * 3]];
+				return this.verticePosition;
 			}
 		}
 		
