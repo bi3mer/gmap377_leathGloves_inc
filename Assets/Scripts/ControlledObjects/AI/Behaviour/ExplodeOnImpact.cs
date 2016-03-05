@@ -35,9 +35,9 @@ public class ExplodeOnImpact : MonoBehaviour
 	}
 
     // Explosion!
-    void OnCollisionEnter(Collision col)
+	void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.CompareTag("Player"))
         {
 			this.collisionPlayer(col);
         }
