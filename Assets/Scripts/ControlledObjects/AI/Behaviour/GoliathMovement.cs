@@ -10,70 +10,102 @@ public class GoliathMovement : BufferedMovement
 
     public float chargeDistanceThreshold = 25f;
     public float chargeDistanceChange = 20f;
-    public float distanceInFrontOfPlayer = 50f;
+    public float distanceInFrontOfPlayer = 20f;
 
+    private float baseSpeed;
+    public float chargeSpeed = 6f;
+
+    /// <summary>
+    /// Initialize information
+    /// </summary>
     void Start()
     {
-        planetVertexNavigation = this.GetComponent<AStar>().planetVertexNavigation;
+        base.init();
+
+        this.planetVertexNavigation = this.GetComponent<AStar>().planetVertexNavigation;
+
+        base.targetLocation = Player.Instance.getClosestVertice();
         base.setMovementScript(this.GetComponent<AStar>());
         base.moveTowardsPlayerAtEndOfPath = false;
+        this.getNewPlan(Player.Instance.transform.position);
 
-        this.targetLocation = this.transform.position;
+        baseSpeed = this.moveSpeed;
     }
 
-    void Update()
+    /// <summary>
+    /// Return  true if plan needs to be updated
+    /// </summary>
+    /// <returns></returns>
+    public override bool shouldUpdatePlan()
     {
-        isCharging = (DistanceCalculator.squareEuclidianDistance(this.transform.position, this.targetLocation) >= chargeDistanceThreshold) && playerInChargeRange;
+        return (this.plan == null || DistanceCalculator.squareEuclidianDistance(base.targetLocation, Player.Instance.transform.position) >= base.minMoveDistance && !isCharging);
     }
 
     void OnTriggerEnter(Collider obj)
     {
-        if (obj.CompareTag("Player"))
+        if (obj.gameObject.CompareTag("Player"))
+        {
             playerInChargeRange = true;
+        }
     }
 
+    void OnTriggerExit(Collider obj)
+    {
+        if (obj.gameObject.CompareTag("Player"))
+        {
+            playerInChargeRange = false;
+        }
+    }
+
+    
+    void FixedUpdate()
+    {
+        if (DistanceCalculator.squareEuclidianDistance(this.transform.position, this.targetLocation) <= chargeDistanceThreshold)
+        {
+            isCharging = false;
+        }
+
+        if (isCharging)
+        {
+            this.moveSpeed = chargeSpeed;
+        }
+        else
+        {
+            this.moveSpeed = baseSpeed;
+        }
+    }
+
+    /// <summary>
+    /// Checks the plan and sees if it needs to be updated
+    /// </summary>
     public override void checkPlan()
     {
+        // Check if plan is null or the square distance is to large
         if (this.shouldUpdatePlan())
         {
             base.resetTargetIndex();
-            this.getChargeLocation();
+            if(playerInChargeRange)
+                this.getChargePoint();
+            else
+            {
+                this.targetLocation = Player.Instance.transform.position;
+            }
             this.getNewPlan(this.targetLocation);
         }
     }
 
-    public override bool shouldUpdatePlan()
+    void getChargePoint()
     {
-        return (this.plan == null || playerInChargeRange) && !isCharging;
-    }
+        isCharging = true;
+        Vector3 chargePoint = (Player.Instance.transform.position - this.transform.position);
 
-    private void getChargeLocation()
-    {
-        Vector3 inFrontOfPlayer = (Player.Instance.transform.forward * distanceInFrontOfPlayer);
-        Vector3 groundPointInFrontOfPlayer = Vector3.zero;
-        RaycastHit[] playerVectorHits = Physics.RaycastAll(inFrontOfPlayer, planetVertexNavigation.transform.position - inFrontOfPlayer, planetVertexNavigation.Radius);
-        for(int i = 0; i < playerVectorHits.Length; i++)
+        RaycastHit[] hits = Physics.RaycastAll(chargePoint, this.planetVertexNavigation.transform.position - chargePoint, this.planetVertexNavigation.Radius);
+        for(int i = 0; i < hits.Length; i++)
         {
-            if (playerVectorHits[i].collider.CompareTag("Planet"))
+            if (hits[i].collider.CompareTag("Planet"))
             {
-                groundPointInFrontOfPlayer = playerVectorHits[i].point;
+                this.targetLocation = hits[i].point;
                 break;
-            }
-        }
-
-        Vector3 bossToFrontOfPlayer = groundPointInFrontOfPlayer - this.transform.position;
-        float angleBetweenBossUp = Vector3.Angle(bossToFrontOfPlayer, this.transform.up);
-
-        Vector3 inFrontOfBoss = Quaternion.AngleAxis(-angleBetweenBossUp, this.transform.right) * bossToFrontOfPlayer * chargeDistanceChange;
-        RaycastHit[] bossVectorHits = Physics.RaycastAll(inFrontOfBoss, planetVertexNavigation.transform.position - inFrontOfBoss, planetVertexNavigation.Radius);
-
-        Vector3 groundPointInFrontOfBoss = Vector3.zero;
-        for (int i = 0; i < bossVectorHits.Length; i++)
-        {
-            if (bossVectorHits[i].collider.CompareTag("Planet"))
-            {
-                groundPointInFrontOfBoss = bossVectorHits[i].point;
-                this.targetLocation = groundPointInFrontOfBoss;
             }
         }
     }
