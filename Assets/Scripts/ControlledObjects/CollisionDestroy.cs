@@ -10,7 +10,7 @@ public class CollisionDestroy : MonoBehaviour
 	void OnCollisionEnter(Collision collision) 
 	{
         // Create Explosion object
-        Instantiate(destroyEffect, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+        Instantiate(destroyEffect, collision.contacts[0].point, transform.rotation);
         Destroy(gameObject);
     }
 }
