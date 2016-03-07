@@ -32,9 +32,7 @@ public class SpawnSystem : MonoBehaviour
 	{
 		_timer = DifficultyIncreaseTime;
 		verticesInGridByPlanet = new Dictionary<string, Dictionary<long, List<Vector3>>> ();
-
-		planetName = Player.instance.getPlanetNavigation ().gameObject.name;
-		CreateGrid (planetName);
+		StartCoroutine(waitForPlanet());
 	}
 	
 	void Update () 
@@ -205,6 +203,7 @@ public class SpawnSystem : MonoBehaviour
         if (ChanceDifficultyIncreaseDeath > Random.Range(0, 100) / 100.0f) {
             CurrentDifficulty++;
         }
+
         CurrentEnemyNumber -= 1;
     }
 
@@ -292,5 +291,16 @@ public class SpawnSystem : MonoBehaviour
 		}
 
 		return possibleKeys;
+	}
+
+	public IEnumerator waitForPlanet()
+	{
+		while (Player.instance.getPlanetNavigation().gameObject == null) 
+		{
+			yield return null;
+		}
+		
+		planetName = Player.instance.getPlanetNavigation ().gameObject.name;
+		CreateGrid (planetName);
 	}
 }
