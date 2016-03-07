@@ -30,7 +30,7 @@ public class WarpTransport : MonoBehaviour {
     void OnTriggerStay(Collider collider)
     {
         // TODO:  add check for player bolt quantity
-        if (collider.gameObject.CompareTag("Player") && ScoreManager.Instance.BoltCount >= ScoreManager.Instance.BoltGoal)
+        if (collider.gameObject.CompareTag("Player") && ScoreManager.Instance.BoltCount >= ScoreManager.Instance.BoltGoal && this.destinationWarpPad != null)
         {
             // Disable player movement while transport is happening
             Player.Instance.GetComponent<ForceMover>().enabled = false;
