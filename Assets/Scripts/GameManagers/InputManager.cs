@@ -32,6 +32,10 @@ public class InputManager : MonoBehaviour {
                         return -1;
                     if (XCI.GetButton(XboxButton.RightBumper, 1))
                         return 1;
+                    if (XCI.GetAxisRaw(XboxAxis.RightStickX, 1) < 0)
+                        return -1;
+                    if (XCI.GetAxisRaw(XboxAxis.RightStickX, 1) > 0)
+                        return 1;
                     return 0;
                 }
                 if (XCI.GetNumPluggedCtrlrs() >= 2)
@@ -39,6 +43,10 @@ public class InputManager : MonoBehaviour {
                     if (XCI.GetButton(XboxButton.LeftBumper, 2))
                         return -1;
                     if (XCI.GetButton(XboxButton.RightBumper, 2))
+                        return 1;
+                    if (XCI.GetAxisRaw(XboxAxis.RightStickX, 2) < 0)
+                        return -1;
+                    if (XCI.GetAxisRaw(XboxAxis.RightStickX, 2) > 0)
                         return 1;
                     return 0;
                 }
@@ -102,7 +110,8 @@ public class InputManager : MonoBehaviour {
     {
         get {
             if (XCI.GetNumPluggedCtrlrs() >= 1) {
-                if (XCI.GetButton(XboxButton.Start, 1) || XCI.GetButton(XboxButton.Start, 2))
+                if (XCI.GetButton(XboxButton.Start, 1) || XCI.GetButton(XboxButton.Start, 2)
+                    || XCI.GetButton(XboxButton.A, 1) || XCI.GetButton(XboxButton.A, 2))
                     return 1;
                 else
                     return 0;
