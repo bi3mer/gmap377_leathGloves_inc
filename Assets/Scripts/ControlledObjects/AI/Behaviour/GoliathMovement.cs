@@ -15,6 +15,8 @@ public class GoliathMovement : BufferedMovement
     private float baseSpeed;
     public float chargeSpeed = 6f;
 
+    private Animator goliathAnimator;
+
     /// <summary>
     /// Initialize information
     /// </summary>
@@ -28,6 +30,8 @@ public class GoliathMovement : BufferedMovement
         base.setMovementScript(this.GetComponent<AStar>());
         base.moveTowardsPlayerAtEndOfPath = false;
         this.getNewPlan(Player.Instance.transform.position);
+
+        this.goliathAnimator = this.GetComponent<Animator>();
 
         baseSpeed = this.moveSpeed;
     }
@@ -57,6 +61,11 @@ public class GoliathMovement : BufferedMovement
         }
     }
 
+    void OnDisable()
+    {
+        this.goliathAnimator.SetFloat("moveSpeed", 0f);
+    }
+
     
     void FixedUpdate()
     {
@@ -73,6 +82,9 @@ public class GoliathMovement : BufferedMovement
         {
             this.moveSpeed = baseSpeed;
         }
+
+        this.goliathAnimator.SetFloat("moveSpeed", this.moveSpeed);
+        this.goliathAnimator.SetBool("isCharging", this.isCharging);
     }
 
     /// <summary>
