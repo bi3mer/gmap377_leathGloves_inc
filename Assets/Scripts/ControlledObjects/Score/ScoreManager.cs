@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class ScoreManager : MonoBehaviour
          
     public string multiplierText;
 	public Text BoltTxt;
+    public float BoltTxtColorChange = 2.0f;
 
     /// <summary>
     /// Awake this instance.
@@ -148,7 +150,21 @@ public class ScoreManager : MonoBehaviour
 
 			}
 
+            StartCoroutine(FlashWarpText());
         }
+    }
+
+    IEnumerator FlashWarpText() {
+        Color oldColor = BoltTxt.color;
+
+        float timer = 0;
+        while (BoltCount >= BoltGoal) {
+            timer += Time.deltaTime * BoltTxtColorChange;
+            BoltTxt.color = new Color((float) (1 - Mathf.Sin(timer) / 2 - 0.5), (float) (1 - Mathf.Sin(timer + Mathf.PI / 2) / 2 - 0.5), (float) (1 - Mathf.Sin(timer + Mathf.PI) / 2 - 0.5));
+
+            yield return null;
+        }
+        BoltTxt.color = new Color(1, 1, 1);
     }
 
     /// <summary>

@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyStats : MonoBehaviour
 {
@@ -15,6 +17,12 @@ public class EnemyStats : MonoBehaviour
     public int ScatterMax = 5;
     public GameObject[] Drops;
     public GameObject HitEffect;
+
+    public bool Flashing = false;
+    public Material HitFlashMaterial;
+    public float HitFlashLength;
+    private List<Material[]> _childMaterials = new List<Material[]>();
+
 
     private System.Random drop;
     bool isDead;                           // Whether the enemy is dead.
@@ -54,6 +62,7 @@ public class EnemyStats : MonoBehaviour
         if (HitEffect)
         {
             Instantiate(this.HitEffect, this.transform.position, Quaternion.identity);
+            if (!Flashing) StartCoroutine(HitFlash());
         }
 
         // If the current health is less than or equal to zero...
@@ -63,6 +72,67 @@ public class EnemyStats : MonoBehaviour
             Death();
         }
     }
+
+    IEnumerator HitFlash() {
+        Flashing = true;
+        Material[] hitFlashList = new Material[1];
+        hitFlashList[0] = HitFlashMaterial;
+
+        _childMaterials.Clear();
+        HitFlashMeshes(transform, hitFlashList);
+
+        yield return new WaitForSeconds(HitFlashLength);
+
+        ReplaceMeshes(transform, 0);
+        _childMaterials.Clear();
+        Flashing = false;
+    }
+
+    void HitFlashMeshes(Transform root, Material[] hitFlashMaterials) {
+        if (root.GetComponents<MeshRenderer>().Length != 0) {
+            MeshRenderer meshRenderer = root.GetComponent<MeshRenderer>();
+            List<Material> replacement = new List<Material>();
+            _childMaterials.Add(meshRenderer.materials);
+            foreach (Material m in meshRenderer.materials) replacement.Add(HitFlashMaterial);
+            meshRenderer.materials = replacement.ToArray();
+        }
+        else if (root.GetComponents<SkinnedMeshRenderer>().Length != 0) {
+            SkinnedMeshRenderer meshRenderer = root.GetComponent<SkinnedMeshRenderer>();
+            List<Material> replacement = new List<Material>();
+            _childMaterials.Add(meshRenderer.materials);
+            foreach (Material m in meshRenderer.materials) replacement.Add(HitFlashMaterial);
+            meshRenderer.materials = replacement.ToArray();
+        }
+
+        for (int i=0; i < root.childCount; i++) {
+            HitFlashMeshes(root.GetChild(i), hitFlashMaterials);
+        }
+    }
+
+    int ReplaceMeshes(Transform root, int found) {
+        int foundHere = 0;
+        if (root.GetComponents<MeshRenderer>().Length != 0) {
+            MeshRenderer meshRenderer = root.GetComponent<MeshRenderer>();
+            if (meshRenderer) {
+                meshRenderer.materials = _childMaterials[found];
+                foundHere++;
+            }
+        }
+        else if (root.GetComponents<SkinnedMeshRenderer>().Length != 0) {
+            SkinnedMeshRenderer meshRenderer = root.GetComponent<SkinnedMeshRenderer>();
+            if (meshRenderer) {
+                meshRenderer.materials = _childMaterials[found];
+                foundHere++;
+            }
+        }
+
+        for (int i = 0; i < root.childCount; i++) {
+            foundHere += ReplaceMeshes(root.GetChild(i), found + foundHere);
+        }
+
+        return foundHere;
+    }
+
 
     void Death()
     {
