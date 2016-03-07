@@ -295,11 +295,13 @@ public class SpawnSystem : MonoBehaviour
 
 	public IEnumerator waitForPlanet()
 	{
-		while (Player.instance.getPlanetNavigation().gameObject == null) 
+		while (Player.instance == null || Player.instance.getPlanetNavigation().gameObject == null) 
 		{
 			yield return null;
 		}
-		
+
+		SystemLogger.write ("The planet has been loaded!");
+		SystemLogger.write (Player.instance.getPlanetNavigation ().gameObject.name);
 		planetName = Player.instance.getPlanetNavigation ().gameObject.name;
 		CreateGrid (planetName);
 	}

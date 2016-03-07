@@ -11,7 +11,7 @@ public static class SystemLogger
 #if UNITY_EDITOR
 	public static bool logToFile = true;
 #else
-	public static bool logToFile = false;
+	public static bool logToFile = true;
 #endif
 
     // Initializes FileStream for output into specified log file
