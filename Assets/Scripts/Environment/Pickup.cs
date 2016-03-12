@@ -4,7 +4,8 @@ public class Pickup : MonoBehaviour
 {
     // Specifies the type of pickup it is
     public int PickupType;
-
+	
+	public GameObject bombExplosion = null;
     // A template for the action the pickup will have on the player
     delegate void template(GameObject obj);
 
@@ -175,6 +176,7 @@ public class Pickup : MonoBehaviour
         {
             if (obj.gameObject.GetComponent<Shooting>() != null)
             {
+            	Instantiate(bombExplosion, obj.transform.position, obj.transform.rotation);
                 // Get all the objects in a <ExplosionRadius> radius from where the bullet collided
                 Collider[] hitColliders = Physics.OverlapSphere(
                     transform.position,
