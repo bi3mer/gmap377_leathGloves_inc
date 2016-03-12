@@ -42,6 +42,7 @@ public class SoundManager : MonoBehaviour {
         float reverbZoneMix = source.reverbZoneMix;
 
         GameObject obj = new GameObject();
+        obj.name = "Play " + clip.name;
         obj.transform.parent = transform;
         obj.transform.position = source.gameObject.transform.position;
         obj.AddComponent<AudioSource>();
