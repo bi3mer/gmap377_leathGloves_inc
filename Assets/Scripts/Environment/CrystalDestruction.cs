@@ -2,9 +2,7 @@
 using System.Collections;
 
 public class CrystalDestruction : MonoBehaviour {
-
-    public GameObject DestructionEffect;
-
+    
     private EnemyStats enemyStats;
 
     void Start()

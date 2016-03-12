@@ -157,7 +157,7 @@ public class EnemyStats : MonoBehaviour
         System.Random rand = new System.Random();
         Vector3 boltOffset;
 
-        for (int i = 0; i < this.BoltDropAmount; ++i)
+        for (int i = 0; i < this.BoltDropAmount && this.Bolt; ++i)
         {
             // Move the position of the bolt a little so they're not all overlapping
             boltOffset = new Vector3(
