@@ -5,7 +5,7 @@ public class Pickup : MonoBehaviour
     // Specifies the type of pickup it is
     public int PickupType;
 	
-	public GameObject bombExplosion = null;
+	public GameObject bombExplosion;
     // A template for the action the pickup will have on the player
     delegate void template(GameObject obj);
 
