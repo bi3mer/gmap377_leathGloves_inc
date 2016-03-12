@@ -169,21 +169,16 @@ public class EnemyStats : MonoBehaviour
             Instantiate(Bolt, transform.position + boltOffset, transform.rotation);
             SystemLogger.write("Bolt Created");
         }
-
-        if (DeathEffect)
-        {
-            Instantiate(DeathEffect, transform.position, transform.rotation);
-        }
     }
-    public virtual void MakeExplosion()
-    {
-        Vector3 explosionPosition = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
-        Instantiate(ParticleHolder.Instance.enemySimpleExplosion, explosionPosition, Quaternion.identity);
-    }
-
+    
     public void DestroySelf()
     {
-        MakeExplosion();
+        if (DeathEffect) {
+            Instantiate(DeathEffect, transform.position, transform.rotation);
+        }
+        else {
+            Instantiate(ParticleHolder.Instance.enemySimpleExplosion, transform.position, Quaternion.identity);
+        }
         
         Destroy(this.gameObject);            // delete self
     }
