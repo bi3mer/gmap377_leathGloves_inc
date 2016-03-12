@@ -5,10 +5,23 @@ public class CrystalDestruction : MonoBehaviour {
 
     public GameObject DestructionEffect;
 
+    private EnemyStats enemyStats;
+
+    void Start()
+    {
+        this.enemyStats = GetComponent<EnemyStats>();
+    }
+
     void OnTriggerEnter(Collider col)
     {
-        Instantiate(this.DestructionEffect, transform.position,transform.parent.rotation);
+        if (enemyStats)
+        {
+            if (col.GetComponent<Weapon>())
+            {
+                enemyStats.TakeDamage((int)col.gameObject.GetComponent<Weapon>().damage);
+            }
+        }
        
-        Destroy(this.gameObject);
     }
+
 }

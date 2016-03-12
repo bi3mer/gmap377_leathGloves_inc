@@ -17,6 +17,7 @@ public class EnemyStats : MonoBehaviour
     public int ScatterMax = 5;
     public GameObject[] Drops;
     public GameObject HitEffect;
+    public GameObject DeathEffect;
 
     public bool Flashing = false;
     public Material HitFlashMaterial;
@@ -167,6 +168,11 @@ public class EnemyStats : MonoBehaviour
             // Create the bolt
             Instantiate(Bolt, transform.position + boltOffset, transform.rotation);
             SystemLogger.write("Bolt Created");
+        }
+
+        if (DeathEffect)
+        {
+            Instantiate(DeathEffect, transform.position, transform.rotation);
         }
     }
     public virtual void MakeExplosion()
