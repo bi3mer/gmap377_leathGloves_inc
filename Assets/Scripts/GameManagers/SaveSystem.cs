@@ -13,11 +13,13 @@ public class SaveSystem : MonoBehaviour {
     public static SaveSystem Instance = null;
     public static int SaveVersion = 2;
     public bool LoadOnGameStart = false;
+    public int TimesBeaten = 0;
 
 	static bool loadFinished = false;
 
     public class SaveFile {
         public int SaveVersion;
+        public int TimesBeaten;
         public int Score;
         public int Multiplier;
         public Vector3 PlayerPosition;
@@ -44,6 +46,7 @@ public class SaveSystem : MonoBehaviour {
 
         public SaveFile() {
             SaveVersion = SaveSystem.SaveVersion;
+            TimesBeaten = SaveSystem.Instance.TimesBeaten;
             Score = ScoreManager.Instance.score;
             Multiplier = ScoreManager.Instance.multi;
             PlayerPosition = Player.Instance.transform.position;
@@ -68,11 +71,16 @@ public class SaveSystem : MonoBehaviour {
             iceSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointLocations;
 			iceTriangleIndexes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].triangleIndexes;
 			iceSamplePointSizes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointSizes;
-    }
+        }
 
-    public void Load() {
+        public void SoftLoad() {
+            SaveSystem.Instance.TimesBeaten = TimesBeaten;
+        }
+
+        public void Load() {
             //ScoreManager.Instance.score = Score;
             //ScoreManager.Instance.SetMultiplier(Multiplier);
+            SaveSystem.Instance.TimesBeaten = TimesBeaten;
 			Player.Instance.transform.position = PlayerPosition;
 			Player.Instance.transform.rotation = PlayerRotation;
 			Player.Instance.GetComponent<InterplanetaryObject> ().NearestPlanet = InterplanetaryObject.GetNearestPlanet (PlayerPosition);
@@ -236,6 +244,16 @@ public class SaveSystem : MonoBehaviour {
 	{
 		loadFinished = s;
 	}
+
+    public int GetTimesBeaten() {
+        XmlSerializer reader = new XmlSerializer(typeof(SaveFile));
+        System.IO.StreamReader file = new System.IO.StreamReader(SaveDirectory + "/" + PlayerID + FileExt);
+        SaveFile save = (SaveFile)reader.Deserialize(file);
+        save.SoftLoad();
+        file.Close();
+
+        return save.TimesBeaten;
+    }
 }
 
 #if UNITY_EDITOR
