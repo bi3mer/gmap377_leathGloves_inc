@@ -94,6 +94,10 @@ public class Player : MonoBehaviour
 
 	public Vector2 getUVLocation(int layerMask)
 	{
+		if(Input.GetKeyDown(KeyCode.E))
+		{
+			Application.LoadLevel("Credits");
+		}
 		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, -transform.up, 
 		                                       20f);
 
