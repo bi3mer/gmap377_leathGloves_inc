@@ -24,6 +24,7 @@ public class Multi : MonoBehaviour
 	void Start ()
     {
         this.multiText = GetComponent<Text>();
+
 	}
 
     /// <summary>
@@ -31,7 +32,13 @@ public class Multi : MonoBehaviour
     /// </summary>
     public void MultiTxtSet()
     {
-        multiText.text = ScoreManager.Instance.multiplierText;
+		if(this.multiText == null)
+		{
+			this.multiText = GetComponent<Text>();
+		}
+
+		multiText.text = ScoreManager.Instance.multiplierText;
+
     }
 
 }

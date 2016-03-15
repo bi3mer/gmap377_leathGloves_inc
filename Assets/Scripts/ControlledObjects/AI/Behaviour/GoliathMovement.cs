@@ -89,7 +89,6 @@ public class GoliathMovement : BufferedMovement
     /// </summary>
     public override void checkPlan()
     {
-        Debug.Log(shouldUpdatePlan());
         // Check if plan is null or the square distance is to large
         if (this.shouldUpdatePlan())
         {

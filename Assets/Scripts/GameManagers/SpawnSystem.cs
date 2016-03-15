@@ -37,6 +37,16 @@ public class SpawnSystem : MonoBehaviour
 	
 	void Update () 
 	{
+		if(Input.GetKeyDown(KeyCode.P))
+		{
+			EndGameManager.instance.PrepForNewGamePlus();
+		}
+
+		if(Input.GetKeyDown(KeyCode.R))
+		{
+			Player.instance.ReOrient();
+		}
+
         _timer--;
         if (_timer <= 0) {
             CurrentDifficulty++;

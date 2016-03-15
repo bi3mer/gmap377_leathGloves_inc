@@ -53,6 +53,8 @@ public class SaveSystem : MonoBehaviour {
         public void Initialize() {
             SaveVersion = SaveSystem.SaveVersion;
             TimesBeaten = SaveSystem.Instance.TimesBeaten;
+			newGamePlus = SaveSystem.Instance.NewGamePlus;
+
             Score = ScoreManager.Instance.score;
             Multiplier = ScoreManager.Instance.multi;
             PlayerPosition = Player.Instance.transform.position;
@@ -128,11 +130,15 @@ public class SaveSystem : MonoBehaviour {
 				ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.Add ("IcePlanet", iceInfo);
 			}
 
+			
+			int multi = 1;
 			for(int i = 0; i < TimesBeaten; i++)
 			{
-				ScoreManager.Instance.multi = ScoreManager.Instance.multi * 2;
+				multi = multi * 2;
+				
 			}
-
+			
+			ScoreManager.Instance.SetMultiplier (multi);
 			loadFinished = true;
         }
 
@@ -151,8 +157,10 @@ public class SaveSystem : MonoBehaviour {
 			iceInfo.samplePointObjects = iceSamplePointObjectNames;
 			iceInfo.triangleIndexes = iceTriangleIndexes;
 			iceInfo.samplePointSizes = iceSamplePointSizes;
-			
-			
+
+			SaveSystem.Instance.NewGamePlus = false;
+			newGamePlus = SaveSystem.Instance.NewGamePlus;
+
 			if (ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.ContainsKey ("DesertPlanet")) {
 				ProceduralGenerationOnMesh.serializedSamplePointsByPlanet ["DesertPlanet"] = desertInfo;
 			} else {
@@ -166,10 +174,14 @@ public class SaveSystem : MonoBehaviour {
 				ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.Add ("IcePlanet", iceInfo);
 			}
 
+			int multi = 1;
 			for(int i = 0; i < TimesBeaten; i++)
 			{
-				ScoreManager.Instance.multi = ScoreManager.Instance.multi * 2;
+				multi = multi * 2;
+
 			}
+
+			ScoreManager.Instance.SetMultiplier (multi);
 
 			loadFinished = true;
 		}
@@ -208,7 +220,6 @@ public class SaveSystem : MonoBehaviour {
             CanLoad = true;
             CanSave = true;
 
-			Debug.Log (LoadOnGameStart + " huh");
             if (LoadOnGameStart) 
 			{
 				LoadGame();
@@ -239,7 +250,6 @@ public class SaveSystem : MonoBehaviour {
             System.IO.Directory.CreateDirectory(SaveDirectory);
         }
 
-		SaveSystem.Instance.NewGamePlus = false;
         XmlSerializer writer = new XmlSerializer(typeof(SaveFile));
         SaveFile save = new SaveFile();
         save.Initialize();

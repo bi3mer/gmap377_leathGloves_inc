@@ -11,7 +11,7 @@ public class WarpTransport : MonoBehaviour {
 
 	public GameObject[] planetBosses;
 
-    private ParticleSystem onEffect;
+   	public ParticleSystem onEffect;
 
     /// <summary>
     /// Subscribe to activate and deactivate, and initialize the particle effect

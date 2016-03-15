@@ -34,7 +34,6 @@ public class CreditsRoll : MonoBehaviour {
 		{
 			if(XCI.GetButton(XboxButton.Start) || Input.anyKeyDown)
 			{
-				SaveSystem.Instance.setUpNewGamePlus();
 				Application.LoadLevel("StartScreen");
 			}
 		}

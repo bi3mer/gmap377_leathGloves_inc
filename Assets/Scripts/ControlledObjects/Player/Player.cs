@@ -94,13 +94,8 @@ public class Player : MonoBehaviour
 
 	public Vector2 getUVLocation(int layerMask)
 	{
-		if(Input.GetKeyDown(KeyCode.E))
-		{
-			Application.LoadLevel("Credits");
-		}
 		RaycastHit[] hits = Physics.RaycastAll(this.transform.position, -transform.up, 
 		                                       20f);
-
 		foreach(RaycastHit hit in hits)
 		{
 			// Check if correct mesh was hit
@@ -112,5 +107,23 @@ public class Player : MonoBehaviour
 		}
 		
 		return Vector2.zero;
+	}
+
+	public void ReOrient()
+	{
+		RaycastHit[] hits = Physics.RaycastAll(transform.position + transform.up*50f, -transform.up, 
+		                                       50f);
+		foreach(RaycastHit hit in hits)
+		{
+			// Check if correct mesh was hit
+			if (hit.collider != null && hit.collider.tag == "Planet" && hit.triangleIndex > -1)
+			{
+				Mesh mesh = getPlanetNavigation().mesh;
+
+				transform.position = mesh.normals[mesh.triangles[hit.triangleIndex * 3]] * 5f + mesh.vertices[mesh.triangles[hit.triangleIndex * 3]];
+				//this.verticePosition = Player.Instance.getPlanetNavigation().mesh.uv[Player.Instance.getPlanetNavigation().triangles[hit.triangleIndex * 3]];
+				return;
+			}
+		}
 	}
 }
