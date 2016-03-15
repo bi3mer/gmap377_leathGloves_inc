@@ -47,6 +47,10 @@ public class SaveSystem : MonoBehaviour {
 		public List<float> iceSamplePointSizes;
 
         public SaveFile() {
+            
+        }
+
+        public void Initialize() {
             SaveVersion = SaveSystem.SaveVersion;
             TimesBeaten = SaveSystem.Instance.TimesBeaten;
             Score = ScoreManager.Instance.score;
@@ -65,14 +69,14 @@ public class SaveSystem : MonoBehaviour {
             desertSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointKeys;
             desertSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointObjects;
             desertSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointLocations;
-			desertTriangleIndexes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].triangleIndexes;
-			desertSamplePointSizes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointSizes;
+            desertTriangleIndexes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].triangleIndexes;
+            desertSamplePointSizes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["DesertPlanet"].samplePointSizes;
 
             iceSamplePointChunks = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointKeys;
             iceSamplePointObjectNames = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointObjects;
             iceSamplePointLocations = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointLocations;
-			iceTriangleIndexes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].triangleIndexes;
-			iceSamplePointSizes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointSizes;
+            iceTriangleIndexes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].triangleIndexes;
+            iceSamplePointSizes = ProceduralGenerationOnMesh.serializedSamplePointsByPlanet["IcePlanet"].samplePointSizes;
         }
 
         public void SoftLoad() {
@@ -238,6 +242,7 @@ public class SaveSystem : MonoBehaviour {
 		SaveSystem.Instance.NewGamePlus = false;
         XmlSerializer writer = new XmlSerializer(typeof(SaveFile));
         SaveFile save = new SaveFile();
+        save.Initialize();
 
         if (System.IO.File.Exists(SaveSystem.Instance.SaveDirectory + "/" + PlayerID + FileExt)) {
             System.IO.File.Delete(SaveSystem.Instance.SaveDirectory + "/" + PlayerID + FileExt);
