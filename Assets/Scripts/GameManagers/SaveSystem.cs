@@ -14,6 +14,7 @@ public class SaveSystem : MonoBehaviour {
     public static int SaveVersion = 2;
     public bool LoadOnGameStart = false;
     public int TimesBeaten = 0;
+	public bool NewGamePlus = false;
 
 	static bool loadFinished = false;
 
@@ -28,6 +29,7 @@ public class SaveSystem : MonoBehaviour {
         public float MineAmmo;
         public float RocketAmmo;
 
+		public bool newGamePlus;
         public bool TankBossDead;
         public bool ScorpionDead;
         public bool MineLayerDead;
@@ -75,6 +77,7 @@ public class SaveSystem : MonoBehaviour {
 
         public void SoftLoad() {
             SaveSystem.Instance.TimesBeaten = TimesBeaten;
+			SaveSystem.Instance.NewGamePlus = newGamePlus;
         }
 
         public void Load() {
@@ -120,8 +123,52 @@ public class SaveSystem : MonoBehaviour {
 			} else {
 				ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.Add ("IcePlanet", iceInfo);
 			}
+
+			for(int i = 0; i < TimesBeaten; i++)
+			{
+				ScoreManager.Instance.multi = ScoreManager.Instance.multi * 2;
+			}
+
 			loadFinished = true;
         }
+
+		public void NewGamePlusLoad()
+		{
+			ProceduralGenerationOnMesh.serializedInformation desertInfo = new ProceduralGenerationOnMesh.serializedInformation ();
+			desertInfo.samplePointKeys = desertSamplePointChunks;
+			desertInfo.samplePointLocations = desertSamplePointLocations;
+			desertInfo.samplePointObjects = desertSamplePointObjectNames;
+			desertInfo.triangleIndexes = desertTriangleIndexes;
+			desertInfo.samplePointSizes = desertSamplePointSizes;
+			
+			ProceduralGenerationOnMesh.serializedInformation iceInfo = new ProceduralGenerationOnMesh.serializedInformation ();
+			iceInfo.samplePointKeys = iceSamplePointChunks;
+			iceInfo.samplePointLocations = iceSamplePointLocations;
+			iceInfo.samplePointObjects = iceSamplePointObjectNames;
+			iceInfo.triangleIndexes = iceTriangleIndexes;
+			iceInfo.samplePointSizes = iceSamplePointSizes;
+			
+			
+			if (ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.ContainsKey ("DesertPlanet")) {
+				ProceduralGenerationOnMesh.serializedSamplePointsByPlanet ["DesertPlanet"] = desertInfo;
+			} else {
+				ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.Add ("DesertPlanet", desertInfo);
+			}
+			
+			if (ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.ContainsKey ("IcePlanet")) {
+				Debug.Log (System.Environment.StackTrace);
+				ProceduralGenerationOnMesh.serializedSamplePointsByPlanet ["IcePlanet"] = iceInfo;
+			} else {
+				ProceduralGenerationOnMesh.serializedSamplePointsByPlanet.Add ("IcePlanet", iceInfo);
+			}
+
+			for(int i = 0; i < TimesBeaten; i++)
+			{
+				ScoreManager.Instance.multi = ScoreManager.Instance.multi * 2;
+			}
+
+			loadFinished = true;
+		}
 
     }
 
@@ -188,6 +235,7 @@ public class SaveSystem : MonoBehaviour {
             System.IO.Directory.CreateDirectory(SaveDirectory);
         }
 
+		SaveSystem.Instance.NewGamePlus = false;
         XmlSerializer writer = new XmlSerializer(typeof(SaveFile));
         SaveFile save = new SaveFile();
 
@@ -210,7 +258,15 @@ public class SaveSystem : MonoBehaviour {
         System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(SaveFile));
         System.IO.StreamReader file = new System.IO.StreamReader(SaveDirectory + "/" + PlayerID + FileExt);
         SaveFile save = (SaveFile)reader.Deserialize(file);
-        save.Load();
+
+		if(IsNewGamePlus())
+		{
+			save.NewGamePlusLoad();
+		}
+		else
+		{
+       		save.Load();
+		}
         file.Close();
     }
 
@@ -254,6 +310,23 @@ public class SaveSystem : MonoBehaviour {
 
         return save.TimesBeaten;
     }
+
+	public bool IsNewGamePlus(){
+		XmlSerializer reader = new XmlSerializer(typeof(SaveFile));
+		System.IO.StreamReader file = new System.IO.StreamReader(SaveDirectory + "/" + PlayerID + FileExt);
+		SaveFile save = (SaveFile)reader.Deserialize(file);
+		save.SoftLoad();
+		file.Close();
+		
+		return save.newGamePlus;
+	}
+
+	public void setUpNewGamePlus()
+	{
+		SaveSystem.Instance.NewGamePlus = true;
+		SaveSystem.Instance.TimesBeaten = SaveSystem.Instance.TimesBeaten + 1;
+		SaveGame ();
+	}
 }
 
 #if UNITY_EDITOR
