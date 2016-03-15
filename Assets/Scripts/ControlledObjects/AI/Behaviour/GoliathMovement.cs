@@ -15,7 +15,7 @@ public class GoliathMovement : BufferedMovement
     private float baseSpeed;
     public float chargeSpeed = 6f;
 
-    private Animator goliathAnimator;
+    public Animator goliathAnimator;
 
     /// <summary>
     /// Initialize information
@@ -26,12 +26,10 @@ public class GoliathMovement : BufferedMovement
 
         this.planetVertexNavigation = this.GetComponent<AStar>().planetVertexNavigation;
 
-        base.targetLocation = Player.Instance.getClosestVertice();
         base.setMovementScript(this.GetComponent<AStar>());
+        base.setTarget(Player.Instance.getClosestVertice());
         base.moveTowardsPlayerAtEndOfPath = false;
         this.getNewPlan(Player.Instance.transform.position);
-
-        this.goliathAnimator = this.GetComponent<Animator>();
 
         baseSpeed = this.moveSpeed;
     }
@@ -65,7 +63,6 @@ public class GoliathMovement : BufferedMovement
     {
         this.goliathAnimator.SetFloat("moveSpeed", 0f);
     }
-
     
     void FixedUpdate()
     {
@@ -92,9 +89,11 @@ public class GoliathMovement : BufferedMovement
     /// </summary>
     public override void checkPlan()
     {
+        Debug.Log(shouldUpdatePlan());
         // Check if plan is null or the square distance is to large
         if (this.shouldUpdatePlan())
         {
+            
             base.resetTargetIndex();
             if(playerInChargeRange)
                 this.getChargePoint();
