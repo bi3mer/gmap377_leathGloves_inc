@@ -85,7 +85,7 @@ public class WarpTransport : MonoBehaviour {
         SpawnSystem.Instance.enabled = true;
 
 		//popup for new planet.
-		PopUpText.Instance.NewPopUp("Arrived at planet " + warpToPlanetName);
+		PopUpText.Instance.NewPopUp("Planet " + warpToPlanetName);
     }
 
     /// <summary>
