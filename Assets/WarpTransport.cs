@@ -120,7 +120,7 @@ public class WarpTransport : MonoBehaviour {
 	{
 		for (int i = 0; i < planetBosses.Length; i++) 
 		{
-			planetBosses[i].SetActive(false);
+			if (planetBosses[i]) planetBosses[i].SetActive(false);
 		}
 	}
 
