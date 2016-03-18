@@ -54,7 +54,12 @@ public class WarpTransport : MonoBehaviour {
     IEnumerator TransportAfterTime()
     {
 		DisableBosses ();
-		Player.Instance.transform.DOShakeRotation (transportDelaySeconds - 0.5f, shakeIntensity, 2);
+        AudioSource planetAudio = InterplanetaryObject.GetNearestPlanet(Player.Instance.transform.position).GetComponent<AudioSource>();
+        if (planetAudio) {
+            planetAudio.enabled = false;
+        }
+
+        Player.Instance.transform.DOShakeRotation (transportDelaySeconds - 0.5f, shakeIntensity, 2);
 		Player.Instance.transform.DOMove (Player.Instance.transform.position + this.transform.up * 1.5f, transportDelaySeconds - 0.5f);
         // Wait for the above specified time
         yield return new WaitForSeconds(transportDelaySeconds);
@@ -75,6 +80,11 @@ public class WarpTransport : MonoBehaviour {
 		SpawnSystem.Instance.setPlanetName (InterplanetaryObject.GetNearestPlanet (Player.Instance.transform.position).gameObject.name);
         // Sets player rotation to the same as the destination warp pad, which will be orientated properly
         Player.Instance.transform.rotation = destinationWarpPad.transform.rotation;
+
+        AudioSource destPlanetAudio = Player.Instance.GetComponent<InterplanetaryObject>().NearestPlanet.GetComponent<AudioSource>();
+        if (destPlanetAudio) {
+            destPlanetAudio.enabled = true;
+        }
 
         // Re-enables ForceMover script so player can move again
         // TODO: uncomment this COLANASDFJAS;LDKJA;SKLDFJALSKD;JAS;LKDJASL;KDJ;ALKSDFJLAK;SDF;LKASDFJAL;KSDFJ;LKJ
@@ -122,6 +132,7 @@ public class WarpTransport : MonoBehaviour {
 		{
 			if (planetBosses[i]) planetBosses[i].SetActive(false);
 		}
+
 	}
 
 	void EnableBosses()
@@ -129,7 +140,7 @@ public class WarpTransport : MonoBehaviour {
 		GameObject[] destinationBosses = destinationWarpPad.GetComponent<WarpTransport> ().planetBosses;
 		for (int i = 0; i < destinationBosses.Length; i++) 
 		{
-			destinationBosses[i].SetActive(true);
+			if (destinationBosses[i]) destinationBosses[i].SetActive(true);
 		}
 	}
 }
