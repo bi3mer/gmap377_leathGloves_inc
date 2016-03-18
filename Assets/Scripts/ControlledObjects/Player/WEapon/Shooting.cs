@@ -76,10 +76,10 @@ public class Shooting : MonoBehaviour
 
                         // Make the bullets face the right way
                         leftBullet.transform.LookAt(lookPos);
-                        leftBullet.transform.Rotate(new Vector3(0f, -PowerUpManager.Instance.MultiShotAngle, 0f));
+                      //  leftBullet.transform.Rotate(new Vector3(0f, -PowerUpManager.Instance.MultiShotAngle, 0f));
                         rightBullet.transform.LookAt(lookPos);
-                        rightBullet.transform.Rotate(new Vector3(0f, PowerUpManager.Instance.MultiShotAngle, 0f));
-
+                        //rightBullet.transform.Rotate(new Vector3(0f, PowerUpManager.Instance.MultiShotAngle, 0f));
+         
                         // Parent left and right button
                         if (bullet.gameObject.name == PickupCache.Instance.LaserBeam.gameObject.name)
                         {
@@ -91,21 +91,11 @@ public class Shooting : MonoBehaviour
                         if (leftBullet.GetComponent<Rigidbody>() != null && rightBullet.GetComponent<Rigidbody>() != null)
                         {
                             // Add velocity to the bullets
-                            leftBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenToWorldPoint(
-                            new Vector3(
-                                Input.mousePosition.x - PowerUpManager.Instance.MultiOffset,
-                                Input.mousePosition.y,
-                                this.DistanceFromCamera
-                                )
-                            ).normalized * bullet.GetComponent<Weapon>().speed);
+                            leftBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenPointToRay(
+                            Input.mousePosition).direction * bullet.GetComponent<Weapon>().speed);
 
-                            rightBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenToWorldPoint(
-                            new Vector3(
-                                Input.mousePosition.x + PowerUpManager.Instance.MultiOffset,
-                                Input.mousePosition.y,
-                                this.DistanceFromCamera
-                                )
-                            ).normalized * bullet.GetComponent<Weapon>().speed);
+                            rightBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenPointToRay(
+                            Input.mousePosition).direction * bullet.GetComponent<Weapon>().speed);
                         }
                     }
 
@@ -116,13 +106,8 @@ public class Shooting : MonoBehaviour
                     // accurately. It seems fine to me, but if aim fine tuning is needed check here.
                     if (newBullet.GetComponent<Rigidbody>() != null)
                     {
-                        newBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenToWorldPoint(
-                            new Vector3(
-                                Input.mousePosition.x,
-                                Input.mousePosition.y,
-                                this.DistanceFromCamera
-                                )
-                            ).normalized * bullet.GetComponent<Weapon>().speed);
+                        newBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenPointToRay(
+                            Input.mousePosition).direction * bullet.GetComponent<Weapon>().speed);
                     }
 
                     if (this.bullet.Equals(PickupCache.Instance.Rocket))
@@ -176,9 +161,9 @@ public class Shooting : MonoBehaviour
 
                     // Make the bullets face the right way
                     leftBullet.transform.LookAt(lookPos);
-                    leftBullet.transform.Rotate(new Vector3(0f, -PowerUpManager.Instance.MultiShotAngle, 0f));
+                    //leftBullet.transform.Rotate(new Vector3(0f, -PowerUpManager.Instance.MultiShotAngle, 0f));
                     rightBullet.transform.LookAt(lookPos);
-                    rightBullet.transform.Rotate(new Vector3(0f, PowerUpManager.Instance.MultiShotAngle, 0f));
+                    //rightBullet.transform.Rotate(new Vector3(0f, PowerUpManager.Instance.MultiShotAngle, 0f));
 
                     // Parent left and right button
                     if (bullet.gameObject.name == PickupCache.Instance.LaserBeam.gameObject.name)
@@ -191,21 +176,11 @@ public class Shooting : MonoBehaviour
                     if (leftBullet.GetComponent<Rigidbody>() != null && rightBullet.GetComponent<Rigidbody>() != null)
                     {
                         // Add velocity to the bullets
-                        leftBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenToWorldPoint(
-                        new Vector3(
-                            Input.mousePosition.x - PowerUpManager.Instance.MultiOffset,
-                            Input.mousePosition.y,
-                            this.DistanceFromCamera
-                            )
-                        ).normalized * bullet.GetComponent<Weapon>().speed);
+                        leftBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenPointToRay(
+                            Input.mousePosition).direction * bullet.GetComponent<Weapon>().speed);
 
-                        rightBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenToWorldPoint(
-                        new Vector3(
-                            Input.mousePosition.x + PowerUpManager.Instance.MultiOffset,
-                            Input.mousePosition.y,
-                            this.DistanceFromCamera
-                            )
-                        ).normalized * bullet.GetComponent<Weapon>().speed);
+                        rightBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenPointToRay(
+                            Input.mousePosition).direction * bullet.GetComponent<Weapon>().speed);
                     }
                 }
 
@@ -215,13 +190,8 @@ public class Shooting : MonoBehaviour
                 // accurately. It seems fine to me, but if aim fine tuning is needed check here.
                 if (newBullet.GetComponent<Rigidbody>() != null)
                 {
-                    newBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenToWorldPoint(
-                        new Vector3(
-                            Input.mousePosition.x,
-                            Input.mousePosition.y,
-                            this.DistanceFromCamera
-                            )
-                        ).normalized * bullet.GetComponent<Weapon>().speed);
+                    newBullet.GetComponent<Rigidbody>().velocity = (Camera.main.ScreenPointToRay(
+                            Input.mousePosition).direction * bullet.GetComponent<Weapon>().speed);
                 }
             }
 
