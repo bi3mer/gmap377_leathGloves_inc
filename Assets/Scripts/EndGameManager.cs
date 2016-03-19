@@ -15,4 +15,9 @@ public class EndGameManager : MonoBehaviour {
 		SaveSystem.Instance.setUpNewGamePlus();
 		Application.LoadLevel("Credits");
 	}
+
+	void OnDestroy()
+	{
+		this.PrepForNewGamePlus();
+	}
 }
