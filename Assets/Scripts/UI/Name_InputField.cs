@@ -24,6 +24,13 @@ public class Name_InputField : MonoBehaviour
     /// <param name="playerName">The desired name for the player</param>
     public void setPlayerName(string playerName)
     {
+		// Check if is id
+		if(NameGenerator.IsIDCard(playerName))
+		{
+			// Generate name
+			playerName = NameGenerator.GenerateNewName(playerName);
+		}
+
         SaveSystem.Instance.PlayerID = playerName;
     }
 
