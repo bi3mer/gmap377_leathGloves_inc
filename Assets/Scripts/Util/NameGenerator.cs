@@ -109,7 +109,7 @@ public class NameGenerator
 	public static string GenerateNewName(string name)
 	{
 		// Set random seed
-		Random rand  = new Random(oldName.GetHashCode());
+		Random rand  = new Random(name.GetHashCode());
 
 		// create name with rand plugins
 		name = firstPartFirstNames[rand.Next(firstPartFirstNames.Length)]
