@@ -25,11 +25,9 @@ public class GoliathMovement : BufferedMovement
         base.init();
 
         this.planetVertexNavigation = this.GetComponent<AStar>().planetVertexNavigation;
-
+        base.targetLocation = Player.Instance.getClosestVertice();
         base.setMovementScript(this.GetComponent<AStar>());
-        base.setTarget(Player.Instance.getClosestVertice());
         base.moveTowardsPlayerAtEndOfPath = false;
-        this.getNewPlan(Player.Instance.transform.position);
 
         baseSpeed = this.moveSpeed;
     }
@@ -40,7 +38,7 @@ public class GoliathMovement : BufferedMovement
     /// <returns></returns>
     public override bool shouldUpdatePlan()
     {
-        return (this.plan == null || DistanceCalculator.squareEuclidianDistance(base.targetLocation, Player.Instance.transform.position) >= base.minMoveDistance && !isCharging);
+        return (this.plan == null || DistanceCalculator.squareEuclidianDistance(base.targetLocation, Player.Instance.transform.position) >= base.minMoveDistance) && !isCharging;
     }
 
     void OnTriggerEnter(Collider obj)
@@ -92,15 +90,15 @@ public class GoliathMovement : BufferedMovement
         // Check if plan is null or the square distance is to large
         if (this.shouldUpdatePlan())
         {
-            
             base.resetTargetIndex();
             if(playerInChargeRange)
                 this.getChargePoint();
             else
             {
-                this.targetLocation = Player.Instance.transform.position;
+                this.targetLocation = Player.Instance.getClosestVertice();
             }
             this.getNewPlan(this.targetLocation);
+            Debug.Log(this.targetLocation);
         }
     }
 
