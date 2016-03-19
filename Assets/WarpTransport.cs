@@ -67,7 +67,7 @@ public class WarpTransport : MonoBehaviour {
 		Player.Instance.DOKill ();
 
         // Sets player position to new warp pad location, plus an offset so they are above the warp pad
-		Player.Instance.transform.position = destinationWarpPad.transform.position + (destinationWarpPad.transform.up * (destinationWarpPad.GetComponent<Mesh>().bounds.size.y / 2f));
+		Player.Instance.transform.position = destinationWarpPad.transform.position + (destinationWarpPad.transform.up * (destinationWarpPad.GetComponent<Collider>().bounds.size.y / 2f));
 
 		// Wait for the above specified time
 		yield return new WaitForSeconds(transportDelaySeconds);
