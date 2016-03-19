@@ -10,6 +10,8 @@ public class Shake : MonoBehaviour
     private float sin = 0;
     private bool waitStart = false;
     float tempTime = 0;
+
+	private Vector3 startPos;
   
     /// <summary>
     /// every frame

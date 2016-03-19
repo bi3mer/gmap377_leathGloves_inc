@@ -114,7 +114,7 @@ public class NameGenerator
 		// create name with rand plugins
 		name = firstPartFirstNames[rand.Next(firstPartFirstNames.Length)]
 		        + secondPartFirstNames[rand.Next(secondPartFirstNames.Length)]
-		        + " "
+//		        + " "p
 		        + firstPartLastNames[rand.Next(firstPartLastNames.Length)]
 		        + secondPartLastNames[rand.Next(secondPartLastNames.Length)];
 
