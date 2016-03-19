@@ -91,8 +91,10 @@ public class NameGenerator
 	{
 		bool isID = false;
 
+		// Check length
 		if(str.Length > 1)
 		{
+			// based on first two characters if number or not
 			isID = char.IsNumber(str[0]) && char.IsNumber(str[1]);
 		}
 
