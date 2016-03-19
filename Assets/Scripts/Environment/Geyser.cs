@@ -7,6 +7,7 @@ public class Geyser : MonoBehaviour
 	public float sizeX;
 	public float sizeY;
 	public float sizeZ;
+	public ParticleSystem particles;
 	private float sin = 0;
 	private bool waitStart = false;
 	float tempTime = 0;
@@ -21,6 +22,8 @@ public class Geyser : MonoBehaviour
 	{
 		// Get starting posiition
 		this.startPos = this.transform.position;
+		this.particles.Play();
+		this.particles.enableEmission = false;
 	}
 
 	/// <summary>
@@ -71,6 +74,9 @@ public class Geyser : MonoBehaviour
 		float pastDistance = 0;
 		float currentDistance = 0;
 
+		// Enable particles
+		this.particles.enableEmission = true;
+
 		do
 		{
 			// Set past
@@ -93,6 +99,10 @@ public class Geyser : MonoBehaviour
 
 		// reset sin
 		sin = 0;
+
+		// disable particles
+		this.particles.enableEmission = false;
+//		this.particles.Pause();
 
 		// set transform back to start
 		this.transform.position = this.startPos;
