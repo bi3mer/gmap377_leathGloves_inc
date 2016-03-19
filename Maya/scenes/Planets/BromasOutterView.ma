@@ -1,6 +1,6 @@
 //Maya ASCII 2016 scene
 //Name: BromasOutterView.ma
-//Last modified: Sat, Mar 19, 2016 01:12:18 AM
+//Last modified: Sat, Mar 19, 2016 01:03:19 PM
 //Codeset: 1252
 requires maya "2016";
 requires -nodeType "gameFbxExporter" "gameFbxExporter" "1.0";
@@ -14,8 +14,8 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "0C772387-4D83-F2D7-81C4-73BFEB1D0DF4";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -303.62288421665033 1.8432057151637338 -72.333174008636064 ;
-	setAttr ".r" -type "double3" -0.33835272906331026 256.60000000001264 0 ;
+	setAttr ".t" -type "double3" -311.60283111514099 -17.758613363638389 3.2632165017785799 ;
+	setAttr ".r" -type "double3" 3.2616472710469417 270.60000000000173 -1.8982884423915448e-014 ;
 	setAttr ".rp" -type "double3" -2.1085292359509565e-014 1.1562884652842367e-014 0 ;
 	setAttr ".rpt" -type "double3" 1.3598639447033402e-015 -1.3535142444268052e-015 
 		9.9905205883380353e-015 ;
@@ -75,10 +75,10 @@ createNode camera -s -n "sideShape" -p "side";
 	setAttr ".man" -type "string" "side_mask";
 	setAttr ".hc" -type "string" "viewSet -s %camera";
 	setAttr ".o" yes;
-createNode transform -n "AngioOutterView";
+createNode transform -n "BromasOutterView";
 	rename -uid "A7B4BA37-43F6-B589-BC4A-64A7269CBD58";
 	setAttr ".s" -type "double3" 50.956948216100329 50.956948216100329 50.956948216100329 ;
-createNode mesh -n "AngioOutterViewShape" -p "AngioOutterView";
+createNode mesh -n "BromasOutterViewShape" -p "BromasOutterView";
 	rename -uid "4E83421C-4850-B801-F508-689BD42BE7D4";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
@@ -90,15 +90,15 @@ createNode mesh -n "AngioOutterViewShape" -p "AngioOutterView";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "94064F31-404F-EF9A-CDC1-ABBA2B129D9C";
+	rename -uid "57F34DC5-4F78-C1A5-8812-48BA1A31D790";
 	setAttr -s 5 ".lnk";
 	setAttr -s 5 ".slnk";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "B20988AE-4C5E-4DD4-D548-DF9C87DB70A3";
+	rename -uid "57B694A7-4F4D-DA4A-1BDB-C1AE5D5C1F70";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "85232B8F-4409-6540-DA13-8799C7723485";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "2DFE5EE5-4851-97D2-5C48-90B35CE090CE";
+	rename -uid "24CFB363-42C3-CBE0-F5CC-D5BAEF4F210B";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "E09970FE-444D-A0AF-76A2-68B0EBA64CD2";
 	setAttr ".g" yes;
@@ -226,13 +226,13 @@ createNode file -n "file4";
 	rename -uid "DBC16B1E-4E7B-5E12-AF0E-FAB13DA881E7";
 	setAttr ".ail" yes;
 	setAttr ".dc" -type "float3" 0.41610739 0.41610739 0.41610739 ;
-	setAttr ".ftn" -type "string" "C:/Users/bernard/Documents/GitHub/gmap377_leathGloves_inc/Maya//sourceimages/Bromas_bump.jpg";
+	setAttr ".ftn" -type "string" "C:/Users/bernard/Documents/GitHub/gmap377_leathGloves_inc/Maya//sourceimages/Bromas_BUMP.jpg";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "place2dTexture4";
 	rename -uid "FBC7760E-4B8D-ADAB-41B4-9BB1FE424C17";
 createNode bump2d -n "bump2d2";
 	rename -uid "6A7CBC68-4767-915D-60C5-CBB89A9705A8";
-	setAttr ".vc1" -type "float3" 0 0.0010300004 0 ;
+	setAttr ".vc1" -type "float3" 0 9.9999997e-006 0 ;
 	setAttr ".vc2" -type "float3" 9.9999997e-006 9.9999997e-006 0 ;
 createNode gameFbxExporter -n "gameExporterPreset1";
 	rename -uid "7367DA35-4CEA-9C14-7A68-888DF26E2279";
@@ -255,40 +255,40 @@ createNode gameFbxExporter -n "gameExporterPreset2";
 	setAttr ".ebm" yes;
 	setAttr ".fv" -type "string" "FBX201600";
 createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
-	rename -uid "82EA4272-4C8D-463F-050B-8CAD5346FCE7";
+	rename -uid "4E19C944-4D67-E6D9-B88B-B6B0F33151E8";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
-	setAttr ".tgi[0].vl" -type "double2" -623.80949902156146 -141.66666103733934 ;
-	setAttr ".tgi[0].vh" -type "double2" 213.09522962759445 429.76188768470172 ;
+	setAttr ".tgi[0].vl" -type "double2" -623.21426094997605 -142.26189910892475 ;
+	setAttr ".tgi[0].vh" -type "double2" 213.69046769917986 429.16664961311625 ;
 	setAttr -s 10 ".tgi[0].ni";
-	setAttr ".tgi[0].ni[0].x" 1.4285714626312256;
-	setAttr ".tgi[0].ni[0].y" -20;
+	setAttr ".tgi[0].ni[0].x" 524.28570556640625;
+	setAttr ".tgi[0].ni[0].y" -12.857142448425293;
 	setAttr ".tgi[0].ni[0].nvs" 1923;
-	setAttr ".tgi[0].ni[1].x" 262.85714721679687;
-	setAttr ".tgi[0].ni[1].y" -1.4285714626312256;
+	setAttr ".tgi[0].ni[1].x" 524.28570556640625;
+	setAttr ".tgi[0].ni[1].y" -12.857142448425293;
 	setAttr ".tgi[0].ni[1].nvs" 1923;
-	setAttr ".tgi[0].ni[2].x" 524.28570556640625;
-	setAttr ".tgi[0].ni[2].y" -12.857142448425293;
+	setAttr ".tgi[0].ni[2].x" 1.4285714626312256;
+	setAttr ".tgi[0].ni[2].y" -97.142860412597656;
 	setAttr ".tgi[0].ni[2].nvs" 1923;
 	setAttr ".tgi[0].ni[3].x" 1.4285714626312256;
-	setAttr ".tgi[0].ni[3].y" -1.4285714626312256;
+	setAttr ".tgi[0].ni[3].y" -20;
 	setAttr ".tgi[0].ni[3].nvs" 1923;
 	setAttr ".tgi[0].ni[4].x" 262.85714721679687;
-	setAttr ".tgi[0].ni[4].y" -74.285713195800781;
+	setAttr ".tgi[0].ni[4].y" -1.4285714626312256;
 	setAttr ".tgi[0].ni[4].nvs" 1923;
-	setAttr ".tgi[0].ni[5].x" 262.85714721679687;
-	setAttr ".tgi[0].ni[5].y" -74.285713195800781;
+	setAttr ".tgi[0].ni[5].x" 1.4285714626312256;
+	setAttr ".tgi[0].ni[5].y" -24.285715103149414;
 	setAttr ".tgi[0].ni[5].nvs" 1923;
-	setAttr ".tgi[0].ni[6].x" 1.4285714626312256;
-	setAttr ".tgi[0].ni[6].y" -97.142860412597656;
+	setAttr ".tgi[0].ni[6].x" 262.85714721679687;
+	setAttr ".tgi[0].ni[6].y" -74.285713195800781;
 	setAttr ".tgi[0].ni[6].nvs" 1923;
-	setAttr ".tgi[0].ni[7].x" 262.85714721679687;
+	setAttr ".tgi[0].ni[7].x" 1.4285714626312256;
 	setAttr ".tgi[0].ni[7].y" -1.4285714626312256;
 	setAttr ".tgi[0].ni[7].nvs" 1923;
-	setAttr ".tgi[0].ni[8].x" 1.4285714626312256;
-	setAttr ".tgi[0].ni[8].y" -24.285715103149414;
+	setAttr ".tgi[0].ni[8].x" 262.85714721679687;
+	setAttr ".tgi[0].ni[8].y" -1.4285714626312256;
 	setAttr ".tgi[0].ni[8].nvs" 1923;
-	setAttr ".tgi[0].ni[9].x" 524.28570556640625;
-	setAttr ".tgi[0].ni[9].y" -12.857142448425293;
+	setAttr ".tgi[0].ni[9].x" 262.85714721679687;
+	setAttr ".tgi[0].ni[9].y" -74.285713195800781;
 	setAttr ".tgi[0].ni[9].nvs" 1923;
 select -ne :time1;
 	setAttr ".o" 1;
@@ -320,7 +320,9 @@ select -ne :defaultResolution;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
-connectAttr "polySphere1.out" "AngioOutterViewShape.i";
+select -ne :ikSystem;
+	setAttr -s 4 ".sol";
+connectAttr "polySphere1.out" "BromasOutterViewShape.i";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "lambert2SG.message" ":defaultLightSet.message";
@@ -390,7 +392,7 @@ connectAttr "file2.oa" "bump2d1.bv";
 connectAttr "file3.oc" "Bromas.c";
 connectAttr "bump2d2.o" "Bromas.n";
 connectAttr "Bromas.oc" "lambert4SG.ss";
-connectAttr "AngioOutterViewShape.iog" "lambert4SG.dsm" -na;
+connectAttr "BromasOutterViewShape.iog" "lambert4SG.dsm" -na;
 connectAttr "lambert4SG.msg" "materialInfo3.sg";
 connectAttr "Bromas.msg" "materialInfo3.m";
 connectAttr "file3.msg" "materialInfo3.t" -na;
@@ -439,25 +441,25 @@ connectAttr "place2dTexture4.vc1" "file4.vc1";
 connectAttr "place2dTexture4.o" "file4.uv";
 connectAttr "place2dTexture4.ofs" "file4.fs";
 connectAttr "file4.oa" "bump2d2.bv";
-connectAttr "place2dTexture2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
+connectAttr "bump2d2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
 		;
-connectAttr "file2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
+connectAttr "bump2d1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
 		;
-connectAttr "bump2d1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
+connectAttr "place2dTexture3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
 		;
-connectAttr "Bromas.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
+connectAttr "place2dTexture2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
 		;
-connectAttr "lambert4SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
+connectAttr "file2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
 		;
-connectAttr "file3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
+connectAttr "place2dTexture4.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
 		;
-connectAttr "place2dTexture3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
+connectAttr "lambert4SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
 		;
-connectAttr "file4.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
+connectAttr "Bromas.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
 		;
-connectAttr "place2dTexture4.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
+connectAttr "file4.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
 		;
-connectAttr "bump2d2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[9].dn"
+connectAttr "file3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[9].dn"
 		;
 connectAttr "lambert2SG.pa" ":renderPartition.st" -na;
 connectAttr "lambert3SG.pa" ":renderPartition.st" -na;
