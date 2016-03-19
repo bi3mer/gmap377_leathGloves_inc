@@ -126,6 +126,12 @@ public class WarpTransport : MonoBehaviour {
         ScoreManager.PlayerTeleported -= DeactivateTeleport;
     }
 
+	void  OnDestroy()
+	{
+		ScoreManager.AmountReached -= ActivateTeleport;
+		ScoreManager.PlayerTeleported -= DeactivateTeleport;
+	}
+
 	void DisableBosses()
 	{
 		for (int i = 0; i < planetBosses.Length; i++) 
