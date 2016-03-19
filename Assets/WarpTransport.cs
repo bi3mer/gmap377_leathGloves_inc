@@ -95,6 +95,11 @@ public class WarpTransport : MonoBehaviour {
         SpawnSystem.Instance.enabled = true;
 
 		//popup for new planet.
+		if(warpToPlanetName.Equals("Scion Delta"))
+		{
+			SpawnFactoryHandler.instance.Activate();
+		}
+
 		PopUpText.Instance.NewPopUp("Planet " + warpToPlanetName);
     }
 
