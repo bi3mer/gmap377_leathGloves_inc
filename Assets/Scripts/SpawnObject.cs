@@ -22,7 +22,8 @@ public class SpawnObject : MonoBehaviour {
 	{
 		while (true) {
 			yield return new WaitForSeconds (delay);
-			GameObject.Instantiate (triDrone, transform.position, transform.rotation);
+			GameObject enemy = (GameObject) GameObject.Instantiate (triDrone, transform.position, transform.rotation);
+			enemy.transform.parent = SpawnSystem.Instance.transform;
 		}
 	}
 
